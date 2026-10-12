@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cwa67l6y7xawp"]
+
+[ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://Background.webp" id="1_67p1w"]
+[ext_resource type="Texture2D" uid="uid://cvo43i2x1bssu" path="res://turtlePenPLACEHOLDER.png" id="2_g252b"]
+[ext_resource type="Texture2D" uid="uid://cmsaiw6ec5tgk" path="res://turtlePLACEHOLDER.png" id="3_k8oh1"]
+[ext_resource type="Texture2D" uid="uid://b76gr1it0crhc" path="res://StartButton.png" id="4_8v67e"]
+[ext_resource type="Texture2D" uid="uid://6vnp1dfo2ve8" path="res://Logo.png" id="5_bfwpr"]
+[ext_resource type="Script" uid="uid://b6su2vlbr73pb" path="res://button.gd" id="6_g252b"]
+
+[node name="Node2D" type="Node2D" unique_id=681850459]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1671754858]
+position = Vector2(367.99997, 641.99994)
+scale = Vector2(1.5840001, 2.7079997)
+texture = ExtResource("1_67p1w")
+
+[node name="TurtlePenPlaceholder" type="Sprite2D" parent="." unique_id=1411439550]
+position = Vector2(1608, 532)
+scale = Vector2(0.42222226, 0.7754855)
+texture = ExtResource("2_g252b")
+
+[node name="Timmy the turtle" type="Sprite2D" parent="." unique_id=1741682384]
+position = Vector2(359, 951)
+scale = Vector2(0.2068783, 0.2528685)
+texture = ExtResource("3_k8oh1")
+
+[node name="Label" type="Label" parent="." unique_id=1385392336]
+offset_left = 896.0001
+offset_top = 359.00003
+offset_right = 2968.041
+offset_bottom = 897.0713
+rotation = 0.0032878227
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 65
+text = "Turtle Tower
+"
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1230447166]
+position = Vector2(368, 193)
+scale = Vector2(0.262963, 0.2747132)
+texture = ExtResource("5_bfwpr")
+
+[node name="Button" type="Button" parent="." unique_id=538247072]
+offset_left = 149.99994
+offset_top = 485.99994
+offset_right = 2048.0
+offset_bottom = 1627.0
+scale = Vector2(0.2241024, 0.21116629)
+icon = ExtResource("4_8v67e")
+script = ExtResource("6_g252b")
