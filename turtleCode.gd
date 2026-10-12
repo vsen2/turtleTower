@@ -8,21 +8,50 @@ var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+# Cache the radius/extent so it's calculated reliably
+var turtle_radius: float = 16.0
 
 func _ready() -> void:
 	_pick_random_direction()
 	input_event.connect(_on_input_event)
+	_calculate_turtle_size()
+
+func _calculate_turtle_size() -> void:
+	# Priority 1: Use CollisionShape2D if present (most accurate)
+	if collision_shape and collision_shape.shape:
+		var shape = collision_shape.shape
+		if shape is CircleShape2D:
+			turtle_radius = shape.radius * collision_shape.global_scale.x
+			return
+		elif shape is RectangleShape2D:
+			turtle_radius = max(shape.size.x, shape.size.y) * 0.5 * collision_shape.global_scale.x
+			return
+
+	# Priority 2: Fallback to Sprite dimensions
+	if sprite and sprite.texture:
+		var scaled_size: Vector2 = sprite.texture.get_size() * sprite.global_scale
+		# Using the larger dimension prevents corners poking out during rotation
+		turtle_radius = max(scaled_size.x, scaled_size.y) / 2.0
 
 func _process(delta: float) -> void:
-	# Calculate margin so the turtle sprite stays fully inside the pen
-	var half_size: Vector2 = Vector2.ZERO
-	if sprite and sprite.texture:
-		half_size = (sprite.texture.get_size() * sprite.global_scale) / 2.0
+	if bounds == Rect2():
+		return
 
-	var min_x = bounds.position.x + half_size.x
-	var max_x = bounds.end.x - half_size.x
-	var min_y = bounds.position.y + half_size.y
-	var max_y = bounds.end.y - half_size.y
+	# Pad inner bounds using the calculated turtle radius
+	var min_x = bounds.position.x + turtle_radius
+	var max_x = bounds.end.x - turtle_radius
+	var min_y = bounds.position.y + turtle_radius
+	var max_y = bounds.end.y - turtle_radius
+
+	# Prevent inversions if pen is smaller than the turtle
+	if min_x > max_x:
+		min_x = bounds.get_center().x
+		max_x = min_x
+	if min_y > max_y:
+		min_y = bounds.get_center().y
+		max_y = min_y
 
 	if is_dragging:
 		global_position = get_global_mouse_position() + drag_offset
@@ -30,22 +59,20 @@ func _process(delta: float) -> void:
 		global_position.y = clamp(global_position.y, min_y, max_y)
 	else:
 		global_position += direction * speed * delta
-		
-		# Bounce off inner walls of TurtlePen
+
+		# Bounce using outer radius rather than center point
 		if global_position.x <= min_x:
 			direction.x = abs(direction.x)
 		elif global_position.x >= max_x:
 			direction.x = -abs(direction.x)
-			
+
 		if global_position.y <= min_y:
 			direction.y = abs(direction.y)
 		elif global_position.y >= max_y:
 			direction.y = -abs(direction.y)
-			
+
 		global_position.x = clamp(global_position.x, min_x, max_x)
 		global_position.y = clamp(global_position.y, min_y, max_y)
-		
-		# rotation = direction.angle()
 
 func _pick_random_direction() -> void:
 	direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU)).normalized()
