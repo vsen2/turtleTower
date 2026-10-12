@@ -1,10 +1,73 @@
 [gd_scene format=3 uid="uid://8x74inh2eu35"]
 
+[ext_resource type="Script" uid="uid://bmknanxfs4vu8" path="res://mainGame.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://Background.webp" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://p2e1f1s83asv" path="res://turtlePen.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://c0veadudg475c" path="res://buyTurtle.png" id="5_272bh"]
+[ext_resource type="Script" uid="uid://f7asyiehuoav" path="res://turtleCoins.gd" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bkpus5kqc0jdc" path="res://line2.png" id="6_272bh"]
 
 [node name="Node2D" type="Node2D" unique_id=1208055871]
+script = ExtResource("1_0xm2m")
+
+[node name="Turtle" type="Node2D" parent="." unique_id=625131241]
+position = Vector2(358, 750.00006)
+scale = Vector2(0.33174604, 0.85900265)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1554020935]
-position = Vector2(358.5, 636.5)
-scale = Vector2(1.522, 2.6299999)
+position = Vector2(358.5, 3.9997559)
+scale = Vector2(1.522, 20.519999)
 texture = ExtResource("1_ig7tw")
+
+[node name="TurtlePen" type="Sprite2D" parent="." unique_id=910034301]
+position = Vector2(358, 750.00006)
+scale = Vector2(0.33174604, 0.85900265)
+texture = ExtResource("3_lquwl")
+
+[node name="addTurtle" type="Button" parent="." unique_id=1279380004]
+offset_left = 226.0
+offset_top = 43.0
+offset_right = 2124.0
+offset_bottom = 1184.0
+scale = Vector2(0.15201971, 0.13893068)
+icon = ExtResource("5_272bh")
+
+[node name="turtleCost" type="Label" parent="addTurtle" unique_id=1541145669]
+layout_mode = 0
+offset_left = 269.70178
+offset_top = 770.16833
+offset_right = 1650.7018
+offset_bottom = 1050.8838
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 180
+text = "Turtle Cost: XXX"
+
+[node name="turtleCoins" type="Label" parent="." unique_id=1745811126]
+offset_left = 559.0
+offset_top = 11.0
+offset_right = 709.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TURTLE COINS: XXX"
+script = ExtResource("6_7mycd")
+
+[node name="Line2" type="Sprite2D" parent="." unique_id=423661434]
+position = Vector2(359, 1541)
+scale = Vector2(0.39708996, 0.011253348)
+texture = ExtResource("6_272bh")
+
+[node name="Line2" type="Sprite2D" parent="Line2" unique_id=1794060792]
+position = Vector2(339.25, 1320.625)
+scale = Vector2(0.39708996, 0.011253348)
+texture = ExtResource("6_272bh")
+
+[node name="turtleCount" type="Label" parent="." unique_id=1950608965]
+offset_left = 589.0
+offset_top = 1208.0
+offset_right = 704.0
+offset_bottom = 1270.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "XX/XX"
+
+[connection signal="pressed" from="addTurtle" to="." method="_on_addTurtle_pressed"]
