@@ -9,13 +9,9 @@ var hasWorker: bool = false
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
 func can_accept_customer() -> bool:
 	return unlocked and hasWorker
-
-func get_customer_position() -> Vector2:
-	return global_position + customer_spawn_offset

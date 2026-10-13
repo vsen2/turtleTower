@@ -29,7 +29,7 @@ var floorLevel: int = 0
 var customer_timer: Timer
 
 func _ready() -> void:
-	_setup_customer_timer()
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	var screen_height: float = get_viewport_rect().size.y
@@ -109,45 +109,5 @@ func add_turtle_icon_to_grid() -> void:
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	grid.add_child(icon)
 
-func _setup_customer_timer() -> void:
-	customer_timer = Timer.new()
-	customer_timer.wait_time = customer_interval
-	customer_timer.autostart = true
-	customer_timer.one_shot = false
-	customer_timer.timeout.connect(_on_customer_timer_timeout)
-	add_child(customer_timer)
 
-func _on_customer_timer_timeout() -> void:
-	# 1. Gather all registers that meet both conditions
-	var eligible_registers: Array[Node2D] = []
-	for reg in registers:
-		if reg.has_method("can_accept_customer") and reg.can_accept_customer():
-			eligible_registers.append(reg)
-
-	# 2. Stop here if no registers are ready
-	if eligible_registers.is_empty():
-		return
-
-	# 3. Pick one eligible register
-	var chosen_register: Node2D = eligible_registers.pick_random()
-
-	# 4. Spawn the customer turtle
-	_spawn_customer(chosen_register)
-
-func _spawn_customer(register: Node2D) -> void:
-	if not customer_scene:
-		return
-
-	var customer = customer_scene.instantiate()
-	
-	# Place the customer at the register's customer spot
-	customer.global_position = register.get_customer_position()
-	
-	# Give coins when the purchase finishes
-	customer.purchase_completed.connect(func(amount: int):
-		turtleCoins += amount
-		turtleCoinsLabel.text = "Turtle Coins: %d" % turtleCoins
-	)
-
-	add_child(customer)
 		
