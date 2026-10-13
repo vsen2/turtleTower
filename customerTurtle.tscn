@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bobjkphaiwufk"]
+
+[ext_resource type="Script" uid="uid://b3hpu3momkfb" path="res://customerTurtle.gd" id="1_51v7g"]
+[ext_resource type="Texture2D" uid="uid://ci4t6q8l0p7ej" path="res://turtleNoBG.png" id="2_1rxnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
+size = Vector2(168, 117)
+
+[node name="Turtle" type="Area2D" unique_id=330427929]
+position = Vector2(88, 82)
+script = ExtResource("1_51v7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328151684]
+position = Vector2(-1, -2.5)
+shape = SubResource("RectangleShape2D_6snss")
+
+[node name="TimmyOG" type="Sprite2D" parent="." unique_id=1640845142]
+position = Vector2(-2.0000153, -1.0000153)
+scale = Vector2(0.12169312, 0.12135922)
+texture = ExtResource("2_1rxnc")

@@ -9,12 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://b8t0t5p5iev1r" path="res://THEMINEnoBG.png" id="5_efxa6"]
 [ext_resource type="Texture2D" uid="uid://p6trwfmg4fm3" path="res://editTurtles.png" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://f7asyiehuoav" path="res://turtleCoins.gd" id="6_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bkpus5kqc0jdc" path="res://line2.png" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://lineNoBG.png" id="7_vivmo"]
+[ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://cashRegister.png" id="8_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://b4afpafq5udlr" path="res://TurtleBase.png" id="9_4c57u"]
+[ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://cashRegister.gd" id="9_074og"]
+[ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://plusButtonWhite.png" id="9_vivmo"]
+[ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://storeNoBG.png" id="9_yaehf"]
+[ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://plusButtonGrey.png" id="10_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://3eomfluya4kt" path="res://towerButtonIcon.png" id="10_efxa6"]
+[ext_resource type="Script" uid="uid://clylnevohe7cm" path="res://buyRegister.gd" id="11_yaehf"]
 
 [node name="Node2D" type="Node2D" unique_id=1208055871]
 script = ExtResource("1_0xm2m")
+turtle_icon = null
+turtle_scene = null
 
 [node name="Turtle" type="Node2D" parent="." unique_id=625131241]
 position = Vector2(358, 750.00006)
@@ -30,61 +38,178 @@ position = Vector2(362.00003, 719.00006)
 scale = Vector2(0.69969666, 0.85900265)
 texture = ExtResource("3_dg77c")
 
-[node name="Basement1" type="Control" parent="." unique_id=561868939]
+[node name="THE MINE" type="Control" parent="." unique_id=561868939]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Rocks" type="Sprite2D" parent="Basement1" unique_id=42756874]
-position = Vector2(356, 1483.0001)
+[node name="Rocks" type="Sprite2D" parent="THE MINE" unique_id=42756874]
+position = Vector2(361.00003, 2997.0002)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
-[node name="TheMine" type="Sprite2D" parent="Basement1" unique_id=1775904572]
-position = Vector2(174.00002, 1328.9999)
+[node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
+position = Vector2(158.00002, 2613)
 scale = Vector2(0.17116404, 0.1371269)
 texture = ExtResource("5_efxa6")
 
-[node name="Line2" type="Sprite2D" parent="Basement1" unique_id=423661434]
-position = Vector2(355, 1847.0001)
-scale = Vector2(0.39708996, 0.011253348)
-texture = ExtResource("6_272bh")
-
-[node name="Line3" type="Sprite2D" parent="Basement1" unique_id=386462063]
-position = Vector2(351, 1594)
-scale = Vector2(0.39708996, 0.011253348)
-texture = ExtResource("6_272bh")
-
-[node name="Line4" type="Sprite2D" parent="Basement1" unique_id=77212945]
-position = Vector2(347, 2093.0002)
-scale = Vector2(0.39708996, 0.011253348)
-texture = ExtResource("6_272bh")
-
-[node name="Line5" type="Sprite2D" parent="Basement1" unique_id=27629702]
-position = Vector2(351, 2336.0002)
-scale = Vector2(0.39708996, 0.011253348)
-texture = ExtResource("6_272bh")
-
-[node name="Rocks3" type="Sprite2D" parent="Basement1" unique_id=1812265107]
-position = Vector2(358, 1965.0001)
+[node name="Rocks3" type="Sprite2D" parent="THE MINE" unique_id=1812265107]
+position = Vector2(361.00003, 3487.0002)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
-[node name="Rocks2" type="Sprite2D" parent="Basement1" unique_id=327818512]
-position = Vector2(360, 1717)
+[node name="Rocks2" type="Sprite2D" parent="THE MINE" unique_id=327818512]
+position = Vector2(360.00003, 3739.0002)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
-[node name="Rocks4" type="Sprite2D" parent="Basement1" unique_id=580728311]
-position = Vector2(356, 2225)
+[node name="Rocks4" type="Sprite2D" parent="THE MINE" unique_id=580728311]
+position = Vector2(359.00003, 3240)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
-[node name="Rocks5" type="Sprite2D" parent="Basement1" unique_id=1475961898]
-position = Vector2(352, 2445)
+[node name="Rocks5" type="Sprite2D" parent="THE MINE" unique_id=1475961898]
+position = Vector2(362, 2756)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
+
+[node name="LineNoBg" type="Sprite2D" parent="THE MINE" unique_id=966892866]
+position = Vector2(369, 2865.0002)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg2" type="Sprite2D" parent="THE MINE" unique_id=1960956491]
+position = Vector2(369, 3108)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg3" type="Sprite2D" parent="THE MINE" unique_id=620346352]
+position = Vector2(364, 3349)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg4" type="Sprite2D" parent="THE MINE" unique_id=924993338]
+position = Vector2(371, 3588)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg5" type="Sprite2D" parent="THE MINE" unique_id=1582417116]
+position = Vector2(369, 3846)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="STORE" type="Control" parent="." unique_id=1154920962]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StoreNoBg" type="Sprite2D" parent="STORE" unique_id=1229957735]
+position = Vector2(200.99994, 1381)
+scale = Vector2(0.19470899, 0.1760812)
+texture = ExtResource("9_yaehf")
+
+[node name="CashRegister1" type="Sprite2D" parent="STORE" unique_id=599831646]
+modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
+position = Vector2(361, 1600.0001)
+scale = Vector2(0.45450792, 0.25138354)
+texture = ExtResource("8_2cqfq")
+script = ExtResource("9_074og")
+
+[node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349]
+modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
+position = Vector2(363.00003, 1860.0001)
+scale = Vector2(0.45450792, 0.25138354)
+texture = ExtResource("8_2cqfq")
+script = ExtResource("9_074og")
+
+[node name="CashRegister3" type="Sprite2D" parent="STORE" unique_id=174330305]
+modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
+position = Vector2(369, 2125)
+scale = Vector2(0.45450792, 0.25138354)
+texture = ExtResource("8_2cqfq")
+script = ExtResource("9_074og")
+
+[node name="CashRegister4" type="Sprite2D" parent="STORE" unique_id=1601957721]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(363, 2400)
+scale = Vector2(0.45450792, 0.25138354)
+texture = ExtResource("8_2cqfq")
+script = ExtResource("9_074og")
+
+[node name="LineNoBg" type="Sprite2D" parent="STORE" unique_id=2120682538]
+position = Vector2(366, 2207.0005)
+scale = Vector2(0.38928586, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg3" type="Sprite2D" parent="STORE" unique_id=519897394]
+position = Vector2(370, 1935.0002)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg4" type="Sprite2D" parent="STORE" unique_id=12210971]
+position = Vector2(365, 1685.0002)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg5" type="Sprite2D" parent="STORE" unique_id=310251075]
+position = Vector2(370, 1421)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="LineNoBg2" type="Sprite2D" parent="STORE" unique_id=1199954359]
+position = Vector2(371, 2477.0002)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("7_vivmo")
+
+[node name="addRegister1" type="TextureButton" parent="STORE" unique_id=2073438634 node_paths=PackedStringArray("targetNode")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 1555.0
+offset_right = 1050.0
+offset_bottom = 2544.0
+scale = Vector2(0.09648591, 0.08774316)
+texture_normal = ExtResource("9_vivmo")
+texture_hover = ExtResource("10_2cqfq")
+script = ExtResource("11_yaehf")
+targetNode = NodePath("../CashRegister1")
+
+[node name="addRegister2" type="TextureButton" parent="STORE" unique_id=1546708164 node_paths=PackedStringArray("targetNode")]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 1815.9999
+offset_right = 1041.0
+offset_bottom = 2805.0
+scale = Vector2(0.09648591, 0.08774316)
+texture_normal = ExtResource("9_vivmo")
+texture_hover = ExtResource("10_2cqfq")
+script = ExtResource("11_yaehf")
+targetNode = NodePath("../CashRegister2")
+
+[node name="addRegister3" type="TextureButton" parent="STORE" unique_id=277414394 node_paths=PackedStringArray("targetNode")]
+layout_mode = 0
+offset_left = 59.999996
+offset_top = 2082.0
+offset_right = 1046.0
+offset_bottom = 3071.0
+scale = Vector2(0.09648591, 0.08774316)
+texture_normal = ExtResource("9_vivmo")
+texture_hover = ExtResource("10_2cqfq")
+script = ExtResource("11_yaehf")
+targetNode = NodePath("../CashRegister3")
+
+[node name="addRegister4" type="TextureButton" parent="STORE" unique_id=23590649 node_paths=PackedStringArray("targetNode")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 2355.0
+offset_right = 1042.0
+offset_bottom = 3344.0
+scale = Vector2(0.09648591, 0.08774316)
+texture_normal = ExtResource("9_vivmo")
+texture_hover = ExtResource("10_2cqfq")
+script = ExtResource("11_yaehf")
+targetNode = NodePath("../CashRegister4")
 
 [node name="turtleCount" type="Label" parent="." unique_id=1950608965]
 offset_left = 589.0
