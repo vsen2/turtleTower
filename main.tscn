@@ -21,15 +21,13 @@
 
 [node name="Node2D" type="Node2D" unique_id=1208055871]
 script = ExtResource("1_0xm2m")
-turtle_icon = null
-turtle_scene = null
 
 [node name="Turtle" type="Node2D" parent="." unique_id=625131241]
 position = Vector2(358, 750.00006)
 scale = Vector2(0.33174604, 0.85900265)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1554020935]
-position = Vector2(361, 36)
+position = Vector2(360, 58)
 scale = Vector2(1.522, 20.519999)
 texture = ExtResource("1_ig7tw")
 
@@ -106,8 +104,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="StoreNoBg" type="Sprite2D" parent="STORE" unique_id=1229957735]
-position = Vector2(200.99994, 1381)
-scale = Vector2(0.19470899, 0.1760812)
+position = Vector2(168, 1377)
+scale = Vector2(0.1708995, 0.14011475)
 texture = ExtResource("9_yaehf")
 
 [node name="CashRegister1" type="Sprite2D" parent="STORE" unique_id=599831646]

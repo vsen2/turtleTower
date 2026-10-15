@@ -7,7 +7,7 @@ var direction: Vector2 = Vector2.ZERO
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 # Cache the radius/extent so it's calculated reliably
@@ -17,6 +17,7 @@ func _ready() -> void:
 	_pick_random_direction()
 	input_event.connect(_on_input_event)
 	_calculate_turtle_size()
+	sprite.play("default")
 
 func _calculate_turtle_size() -> void:
 	# Priority 1: Use CollisionShape2D if present (most accurate)
@@ -70,10 +71,16 @@ func _process(delta: float) -> void:
 			direction.y = abs(direction.y)
 		elif global_position.y >= max_y:
 			direction.y = -abs(direction.y)
-
+		
 		global_position.x = clamp(global_position.x, min_x, max_x)
 		global_position.y = clamp(global_position.y, min_y, max_y)
-
+		
+		if sprite:
+			if direction.x > 0:
+				sprite.flip_h = true
+			elif direction.x < 0:
+				sprite.flip_h = false
+	
 func _pick_random_direction() -> void:
 	direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU)).normalized()
 

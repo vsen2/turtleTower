@@ -1,20 +1,41 @@
 [gd_scene format=3 uid="uid://dqbtfsg04rb4m"]
 
 [ext_resource type="Script" uid="uid://b6an50qt5dcoy" path="res://turtleCode.gd" id="1_2ssyi"]
-[ext_resource type="Texture2D" uid="uid://ci4t6q8l0p7ej" path="res://turtleNoBG.png" id="2_2ssyi"]
+[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://turtlewalk1.png" id="2_ghgcf"]
+[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://turtleWalk2.png" id="3_hlk0a"]
+[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://turtlewalk3.png" id="4_e1omo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
 size = Vector2(168, 117)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ghgcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hlk0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e1omo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Turtle" type="Area2D" unique_id=330427929]
 position = Vector2(88, 82)
 script = ExtResource("1_2ssyi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328151684]
-position = Vector2(-1, -2.5)
+position = Vector2(-2, -1)
 shape = SubResource("RectangleShape2D_6snss")
 
-[node name="TimmyOG" type="Sprite2D" parent="." unique_id=1640845142]
-position = Vector2(-2.0000153, -1.0000153)
-scale = Vector2(0.12169312, 0.12135922)
-texture = ExtResource("2_2ssyi")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=669674736]
+position = Vector2(13, -1)
+rotation = -0.005483886
+scale = Vector2(0.10383152, 0.10350519)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.23228993
