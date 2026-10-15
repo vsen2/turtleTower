@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bmknanxfs4vu8" path="res://mainGame.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://Background.webp" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://cjyg06kmje357" path="res://penNoBG.png" id="3_dg77c"]
-[ext_resource type="Texture2D" uid="uid://p2e1f1s83asv" path="res://turtlePen.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://c6051emrfpa4j" path="res://newPen3.png" id="3_074og"]
 [ext_resource type="Texture2D" uid="uid://8snly1qg6fkn" path="res://rocks.png" id="4_efxa6"]
-[ext_resource type="Texture2D" uid="uid://c0veadudg475c" path="res://buyTurtle.png" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://b8t0t5p5iev1r" path="res://THEMINEnoBG.png" id="5_efxa6"]
-[ext_resource type="Texture2D" uid="uid://p6trwfmg4fm3" path="res://editTurtles.png" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://f7asyiehuoav" path="res://turtleCoins.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://lineNoBG.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://cashRegister.png" id="8_2cqfq"]
@@ -18,6 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://plusButtonGrey.png" id="10_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://3eomfluya4kt" path="res://towerButtonIcon.png" id="10_efxa6"]
 [ext_resource type="Script" uid="uid://clylnevohe7cm" path="res://buyRegister.gd" id="11_yaehf"]
+[ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://CroppedWhiteTurtleButton.png" id="13_cegan"]
+[ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://croppedGreyTurtleButton.png" id="14_82xsv"]
+[ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://buyTurtleWhite.png" id="16_82xsv"]
+[ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://BuyTurtleGrey.png" id="17_getpj"]
+[ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://upgradePenWhite.png" id="18_getpj"]
+[ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://upgradePenGrey.png" id="19_ryguw"]
 
 [node name="Node2D" type="Node2D" unique_id=1208055871]
 script = ExtResource("1_0xm2m")
@@ -32,9 +35,9 @@ scale = Vector2(1.522, 20.519999)
 texture = ExtResource("1_ig7tw")
 
 [node name="TurtlePen" type="Sprite2D" parent="." unique_id=910034301]
-position = Vector2(362.00003, 719.00006)
-scale = Vector2(0.69969666, 0.85900265)
-texture = ExtResource("3_dg77c")
+position = Vector2(363, 719.00006)
+scale = Vector2(0.84944916, 0.85900265)
+texture = ExtResource("3_074og")
 
 [node name="THE MINE" type="Control" parent="." unique_id=561868939]
 layout_mode = 3
@@ -137,12 +140,12 @@ texture = ExtResource("8_2cqfq")
 script = ExtResource("9_074og")
 
 [node name="LineNoBg" type="Sprite2D" parent="STORE" unique_id=2120682538]
-position = Vector2(366, 2207.0005)
+position = Vector2(366, 2211.0005)
 scale = Vector2(0.38928586, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg3" type="Sprite2D" parent="STORE" unique_id=519897394]
-position = Vector2(370, 1935.0002)
+position = Vector2(370, 1946.0004)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
@@ -157,7 +160,7 @@ scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg2" type="Sprite2D" parent="STORE" unique_id=1199954359]
-position = Vector2(371, 2477.0002)
+position = Vector2(371, 2485.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
@@ -220,13 +223,14 @@ text = "XX/XX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1540102641]
 
-[node name="ChangeTurtles" type="Button" parent="CanvasLayer" unique_id=1353817373]
-offset_left = 576.0
-offset_top = 60.0
-offset_right = 1760.0
-offset_bottom = 1201.0
+[node name="ChangeTurtles" type="TextureButton" parent="CanvasLayer" unique_id=372462518]
+offset_left = 604.0
+offset_top = 46.0
+offset_right = 1466.0
+offset_bottom = 794.0
 scale = Vector2(0.10426618, 0.09999122)
-icon = ExtResource("6_5vw27")
+texture_normal = ExtResource("13_cegan")
+texture_hover = ExtResource("14_82xsv")
 
 [node name="turtleCoins" type="Label" parent="CanvasLayer" unique_id=1745811126]
 offset_left = 559.0
@@ -243,46 +247,48 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="addTurtle" type="Button" parent="CanvasLayer/TowerUI" unique_id=1279380004]
+[node name="addTurtle" type="TextureButton" parent="CanvasLayer/TowerUI" unique_id=1403598825]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 43.0
-offset_right = 2124.0
-offset_bottom = 1184.0
-scale = Vector2(0.15201971, 0.13893068)
-icon = ExtResource("5_272bh")
+offset_left = 212.00002
+offset_top = 34.0
+offset_right = 1772.0
+offset_bottom = 910.0
+scale = Vector2(0.20036061, 0.18369158)
+texture_normal = ExtResource("16_82xsv")
+texture_hover = ExtResource("17_getpj")
 
 [node name="turtleCost" type="Label" parent="CanvasLayer/TowerUI/addTurtle" unique_id=1541145669]
 layout_mode = 0
-offset_left = 269.70178
-offset_top = 770.16833
-offset_right = 1650.7018
-offset_bottom = 1050.8838
+offset_left = 499.10004
+offset_top = 495.3956
+offset_right = 1880.1001
+offset_bottom = 773.0349
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 180
-text = "Turtle Cost: XXX"
+theme_override_font_sizes/font_size = 160
+text = "Cost: XXX"
 
-[node name="addPenSpace" type="Button" parent="CanvasLayer/TowerUI" unique_id=1522470891]
+[node name="addPenSpace" type="TextureButton" parent="CanvasLayer/TowerUI" unique_id=611735595]
 layout_mode = 0
-offset_left = 17.000008
-offset_top = 1158.0
-offset_right = 1915.0
-offset_bottom = 2299.0
-scale = Vector2(0.21201897, 0.07611531)
-icon = ExtResource("3_lquwl")
+offset_left = 19.0
+offset_top = 1132.0
+offset_right = 1589.6143
+offset_bottom = 1779.0
+scale = Vector2(0.23073152, 0.19869651)
+texture_normal = ExtResource("18_getpj")
+texture_hover = ExtResource("19_ryguw")
 
 [node name="penSpaceLabel" type="Label" parent="CanvasLayer/TowerUI/addPenSpace" unique_id=712537936]
 layout_mode = 0
-offset_left = 9.433083
-offset_top = 52.551846
-offset_right = 1844.1747
-offset_bottom = 1064.174
+offset_left = 589.4296
+offset_top = 412.68958
+offset_right = 2424.1711
+offset_bottom = 1424.3116
+scale = Vector2(0.5066718, 0.6269463)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 200
-text = "Upgrade Cost: XXX"
+text = "Cost: XXX"
 
 [node name="TurtleUI" type="Control" parent="CanvasLayer" unique_id=815006092]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -305,19 +311,19 @@ text = "Turtles"
 
 [node name="UItowerButton" type="Button" parent="CanvasLayer/TurtleUI" unique_id=1801757311]
 layout_mode = 0
-offset_left = 97.99999
-offset_top = 185.0
-offset_right = 1174.0
-offset_bottom = 1289.0
+offset_left = 93.99999
+offset_top = 188.99998
+offset_right = 1170.0
+offset_bottom = 1293.0
 scale = Vector2(0.10004232, 0.08610254)
 icon = ExtResource("10_efxa6")
 
 [node name="UImine" type="Button" parent="CanvasLayer/TurtleUI" unique_id=1984179623]
 layout_mode = 0
-offset_left = 372.0
-offset_top = 188.0
-offset_right = 1448.0
-offset_bottom = 1292.0
+offset_left = 384.0
+offset_top = 192.0
+offset_right = 1460.0
+offset_bottom = 1296.0
 scale = Vector2(0.10004232, 0.08610254)
 icon = ExtResource("10_efxa6")
 

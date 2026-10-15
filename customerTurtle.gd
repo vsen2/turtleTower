@@ -1,19 +1,34 @@
 extends Area2D
 
-signal purchase_completed(amount: int)
+@export var speed: float = 80.0
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-@export var payment_amount: int = 15
-@export var browse_time: float = 2.0
+var target_x: float = 0.0
+var has_reached_target: bool = false
+var turtle_radius: float = 16.0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Wait for browse/checkout time, complete payment, then leave
-	await get_tree().create_timer(browse_time).timeout
-	purchase_completed.emit(payment_amount)
-	queue_free()
+	sprite.play("default")
+	var screen_width = get_viewport_rect().size.x
+	target_x = screen_width * 0.25
+	
+	# Face left since it spawns on the right and walks left
+	if sprite:
+		sprite.flip_h = false
+		
+func _physics_process(delta: float) -> void:
+	if has_reached_target:
+		return
 
+	# Move left toward the target
+	global_position.x -= speed * delta
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+	# Check if it has arrived at or passed the first quarter mark
+	if global_position.x <= target_x:
+		global_position.x = target_x
+		has_reached_target = true
+		_on_target_reached()
+
+func _on_target_reached() -> void:
 	pass

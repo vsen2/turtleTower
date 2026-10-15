@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var turtle_icon: Texture2D = preload("res://turtleIcon.png")
+@export var turtle_icon: Texture2D = preload("res://turtleNoBG.png")
 @export var turtle_scene: PackedScene = preload("res://Turtle.tscn")
 @export var customer_scene: PackedScene = preload("res://customerTurtle.tscn")
 @export var customer_interval: float = 3.0
@@ -94,9 +94,9 @@ func _on_addPenSpace_pressed() -> void:
 
 func _process(_delta: float) -> void:
 	turtleCoinsLabel.text = "Turtle Coins: %d" % turtleCoins
-	turtleCostLabel.text = "Turtle Cost: %d" % turtleCost
+	turtleCostLabel.text = "Cost: %d" % turtleCost
 	turtleCountLabel.text = "%d/%d" % [turtleCount, turtleMax]
-	penSpaceLabel.text = "Upgrade Cost: %d" % penSpaceCost
+	penSpaceLabel.text = "Cost: %d" % penSpaceCost
 
 func _on_changeTurtles_pressed() -> void:
 	turtleUI.visible = !turtleUI.visible
