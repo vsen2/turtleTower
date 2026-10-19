@@ -34,6 +34,7 @@ position = Vector2(-2, -1)
 shape = SubResource("RectangleShape2D_6snss")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=669674736]
+z_index = 11
 position = Vector2(13, -1)
 rotation = -0.005483886
 scale = Vector2(0.10383152, 0.10350519)

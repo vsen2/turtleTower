@@ -17,8 +17,7 @@ extends Node2D
 @onready var towerUI: Control = $CanvasLayer/TowerUI
 @onready var grid: GridContainer = $CanvasLayer/TurtleUI/scrollContainer/turtleGrid
 @onready var turtleUI: Control = $CanvasLayer/TurtleUI
-@onready var registers: Array[Node2D] = [$STORE/CashRegister1, $STORE/CashRegister2, $STORE/CashRegister3, $STORE/CashRegister4
-]
+@onready var registers: Array[Node2D] = [$STORE/CashRegister1, $STORE/CashRegister2, $STORE/CashRegister3, $STORE/CashRegister4]
 
 var turtleCoins: int = 99999999
 var penSpaceCost: int = 1
@@ -27,6 +26,7 @@ var turtleCount: int = 0
 var turtleMax: int = 50
 var floorLevel: int = 0
 var customer_timer: Timer
+
 
 func _ready() -> void:
 	pass
@@ -84,7 +84,7 @@ func _on_addTurtle_pressed() -> void:
 		)
 		
 		add_child(new_turtle)
-		add_turtle_icon_to_grid()
+		add_turtle_icon_to_grid(new_turtle)
 
 func _on_addPenSpace_pressed() -> void:
 	if turtleCoins >= penSpaceCost:
@@ -101,13 +101,69 @@ func _process(_delta: float) -> void:
 func _on_changeTurtles_pressed() -> void:
 	turtleUI.visible = !turtleUI.visible
 
-func add_turtle_icon_to_grid() -> void:
-	var icon = TextureRect.new()
-	icon.texture = turtle_icon
-	icon.custom_minimum_size = Vector2(96, 96)
-	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	grid.add_child(icon)
+func add_turtle_icon_to_grid(turtle_ref: Node2D) -> void:
+	# Container to stack the icon and label vertically
+	var item_container = VBoxContainer.new()
+	item_container.alignment = BoxContainer.ALIGNMENT_CENTER
 
+	# Turtle Icon Button
+	var btn = TextureButton.new()
+	btn.texture_normal = turtle_icon
+	btn.custom_minimum_size = Vector2(96, 96)
+	btn.ignore_texture_size = true
+	btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+
+	# Label showing current assignment
+	var status_label = Label.new()
+	status_label.text = "Idle"
+	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	status_label.add_theme_color_override("font_color", Color.BLACK)
+	
+	# Give the turtle node a reference to its label so it can update it
+	turtle_ref.status_label = status_label
+
+	# Connect button press
+	btn.pressed.connect(_on_turtle_icon_selected.bind(turtle_ref))
+
+	# Assemble hierarchy
+	item_container.add_child(btn)
+	item_container.add_child(status_label)
+	grid.add_child(item_container)
+	
+func _on_turtle_icon_selected(turtle: Node2D) -> void:
+	if not is_instance_valid(turtle):
+		return
+	
+	# Close the turtle menu
+	turtleUI.visible = false
+	
+	# Move turtle to an available cash register or the store area
+	if !turtle.current_job == null:
+		turtle.return_to_pen(get_pen_bounds())
+	else:
+		assign_turtle_to_store(turtle)
+
+func assign_turtle_to_store(turtle: Node2D) -> void:
+	var target_spot: Vector2 = Vector2.ZERO
+	var chosen_register: Node2D = null
+	var register_number: int = -1
+
+	for i in registers.size():
+		print(registers[i].hasWorker)
+		print(registers[i].unlocked)
+		if is_instance_valid(registers[i]) and not registers[i].hasWorker and registers[i].unlocked:
+			print("works")
+			target_spot = registers[i].global_position
+			chosen_register = registers[i]
+			register_number = i + 1  # 1-based index (Register 1, Register 2, etc.)
+			target_spot.x -= 200
+			target_spot.y -= 60
+			break
+	if chosen_register != null:
+		chosen_register.hasWorker = true
+		turtle.send_to_station(target_spot, register_number, chosen_register)
+	else:
+		print("All registers are full!")
+	
 
 		

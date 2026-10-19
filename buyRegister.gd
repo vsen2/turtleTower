@@ -1,5 +1,6 @@
 extends TextureButton
 @export var targetNode: CanvasItem
+@export var turtleUI: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,5 +14,7 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	if true:
 		targetNode.modulate = "ffffff"
+		if turtleUI:
+			turtleUI.visible = true
 		targetNode.set("unlocked", true)
-		queue_free()
+		visible = false

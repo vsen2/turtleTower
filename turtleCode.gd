@@ -3,9 +3,14 @@ extends Area2D
 @export var speed: float = 80.0
 var bounds: Rect2
 
+var current_job: String = "Idle"          # Descriptive name of the job
+var assigned_station: Node2D = null 
+
 var direction: Vector2 = Vector2.ZERO
 var is_dragging: bool = false
+var is_assigned_to_store: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
+var status_label: Label = null
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -18,6 +23,7 @@ func _ready() -> void:
 	input_event.connect(_on_input_event)
 	_calculate_turtle_size()
 	sprite.play("default")
+	z_index = 5
 
 func _calculate_turtle_size() -> void:
 	# Priority 1: Use CollisionShape2D if present (most accurate)
@@ -37,8 +43,12 @@ func _calculate_turtle_size() -> void:
 		turtle_radius = max(scaled_size.x, scaled_size.y) / 2.0
 
 func _process(delta: float) -> void:
-	if bounds == Rect2():
+	if is_assigned_to_store:
 		return
+		
+	if !is_assigned_to_store:
+		if bounds == Rect2():
+			return
 
 	# Pad inner bounds using the calculated turtle radius
 	var min_x = bounds.position.x + turtle_radius
@@ -80,6 +90,33 @@ func _process(delta: float) -> void:
 				sprite.flip_h = true
 			elif direction.x < 0:
 				sprite.flip_h = false
+				
+func send_to_station(target_pos: Vector2, registerNum: int = 1, register_node: Node2D = null) -> void:
+	if is_instance_valid(assigned_station):
+		assigned_station.hasWorker = false
+	print("Inside turtle send_to_station, setting pos from ", global_position, " to ", target_pos)
+	current_job = "Register %d" % registerNum
+	assigned_station = register_node
+	is_assigned_to_store = true
+	global_position = target_pos
+	print(global_position)
+	if status_label:
+		status_label.text = "Working at:\nRegister %d" % registerNum
+
+func return_to_pen(new_bounds: Rect2) -> void:
+	if is_instance_valid(assigned_station):
+		assigned_station.hasWorker = false
+		
+	current_job = "Idle"
+	assigned_station = null
+	is_assigned_to_store = false
+		
+	bounds = new_bounds
+	is_assigned_to_store = false
+	_pick_random_direction()
+	
+	if status_label:
+		status_label.text = "Idle"
 	
 func _pick_random_direction() -> void:
 	direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU)).normalized()

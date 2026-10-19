@@ -164,7 +164,8 @@ position = Vector2(371, 2485.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
-[node name="addRegister1" type="TextureButton" parent="STORE" unique_id=2073438634 node_paths=PackedStringArray("targetNode")]
+[node name="addRegister1" type="TextureButton" parent="STORE" unique_id=2073438634 node_paths=PackedStringArray("targetNode", "turtleUI")]
+z_index = 11
 layout_mode = 0
 offset_left = 64.0
 offset_top = 1555.0
@@ -175,8 +176,10 @@ texture_normal = ExtResource("9_vivmo")
 texture_hover = ExtResource("10_2cqfq")
 script = ExtResource("11_yaehf")
 targetNode = NodePath("../CashRegister1")
+turtleUI = NodePath("../../CanvasLayer/TurtleUI")
 
-[node name="addRegister2" type="TextureButton" parent="STORE" unique_id=1546708164 node_paths=PackedStringArray("targetNode")]
+[node name="addRegister2" type="TextureButton" parent="STORE" unique_id=1546708164 node_paths=PackedStringArray("targetNode", "turtleUI")]
+z_index = 11
 layout_mode = 0
 offset_left = 55.0
 offset_top = 1815.9999
@@ -187,8 +190,10 @@ texture_normal = ExtResource("9_vivmo")
 texture_hover = ExtResource("10_2cqfq")
 script = ExtResource("11_yaehf")
 targetNode = NodePath("../CashRegister2")
+turtleUI = NodePath("../../CanvasLayer/TurtleUI")
 
-[node name="addRegister3" type="TextureButton" parent="STORE" unique_id=277414394 node_paths=PackedStringArray("targetNode")]
+[node name="addRegister3" type="TextureButton" parent="STORE" unique_id=277414394 node_paths=PackedStringArray("targetNode", "turtleUI")]
+z_index = 11
 layout_mode = 0
 offset_left = 59.999996
 offset_top = 2082.0
@@ -199,8 +204,10 @@ texture_normal = ExtResource("9_vivmo")
 texture_hover = ExtResource("10_2cqfq")
 script = ExtResource("11_yaehf")
 targetNode = NodePath("../CashRegister3")
+turtleUI = NodePath("../../CanvasLayer/TurtleUI")
 
-[node name="addRegister4" type="TextureButton" parent="STORE" unique_id=23590649 node_paths=PackedStringArray("targetNode")]
+[node name="addRegister4" type="TextureButton" parent="STORE" unique_id=23590649 node_paths=PackedStringArray("targetNode", "turtleUI")]
+z_index = 11
 layout_mode = 0
 offset_left = 56.0
 offset_top = 2355.0
@@ -211,6 +218,7 @@ texture_normal = ExtResource("9_vivmo")
 texture_hover = ExtResource("10_2cqfq")
 script = ExtResource("11_yaehf")
 targetNode = NodePath("../CashRegister4")
+turtleUI = NodePath("../../CanvasLayer/TurtleUI")
 
 [node name="turtleCount" type="Label" parent="." unique_id=1950608965]
 offset_left = 589.0
@@ -289,6 +297,7 @@ theme_override_font_sizes/font_size = 200
 text = "Cost: XXX"
 
 [node name="TurtleUI" type="Control" parent="CanvasLayer" unique_id=815006092]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
