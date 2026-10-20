@@ -95,7 +95,7 @@ func send_to_station(target_pos: Vector2, register_number: int = 1, register_nod
 	global_position = target_pos
 
 	if status_label:
-		status_label.text = "Working at:\nRegister %d" % register_number
+		status_label.text = "Register %d" % register_number
 
 func return_to_pen(new_bounds: Rect2) -> void:
 	if is_instance_valid(assigned_station):

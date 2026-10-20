@@ -1,4 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-addons/viva/
+addons\ziva_agent\bin\
