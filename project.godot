@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="turtle-tower"
-run/main_scene="uid://dy7l4mxt6fckw"
+run/main_scene="uid://cwa67l6y7xawp"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://gameManager.gd"
 
 [display]
 

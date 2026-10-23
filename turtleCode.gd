@@ -88,7 +88,7 @@ func _process(delta: float) -> void:
 func send_to_station(target_pos: Vector2, register_number: int = 1, register_node: Node2D = null) -> void:
 	if is_instance_valid(assigned_station):
 		assigned_station.hasWorker = false
-
+	sprite.flip_h = false
 	current_job = "Register %d" % register_number
 	assigned_station = register_node
 	is_assigned_to_store = true

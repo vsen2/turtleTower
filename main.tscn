@@ -61,7 +61,7 @@ scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
 [node name="Rocks2" type="Sprite2D" parent="THE MINE" unique_id=327818512]
-position = Vector2(360.00003, 3739.0002)
+position = Vector2(360, 3716.0002)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
@@ -96,7 +96,7 @@ scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg5" type="Sprite2D" parent="THE MINE" unique_id=1582417116]
-position = Vector2(369, 3846)
+position = Vector2(365, 3823)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cwa67l6y7xawp"]
 
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://Background.webp" id="1_67p1w"]
-[ext_resource type="Texture2D" uid="uid://cmsaiw6ec5tgk" path="res://turtlePLACEHOLDER.png" id="3_k8oh1"]
 [ext_resource type="Texture2D" uid="uid://b76gr1it0crhc" path="res://StartButton.png" id="4_8v67e"]
+[ext_resource type="Texture2D" uid="uid://ci4t6q8l0p7ej" path="res://turtleNoBG.png" id="5_67p1w"]
 [ext_resource type="Texture2D" uid="uid://6vnp1dfo2ve8" path="res://Logo.png" id="5_bfwpr"]
 [ext_resource type="Script" uid="uid://b6su2vlbr73pb" path="res://button.gd" id="6_g252b"]
 
@@ -12,11 +12,6 @@
 position = Vector2(367.99997, 641.99994)
 scale = Vector2(1.5840001, 2.7079997)
 texture = ExtResource("1_67p1w")
-
-[node name="Timmy the turtle" type="Sprite2D" parent="." unique_id=1741682384]
-position = Vector2(359, 951)
-scale = Vector2(0.2068783, 0.2528685)
-texture = ExtResource("3_k8oh1")
 
 [node name="Label" type="Label" parent="." unique_id=1385392336]
 offset_left = 419.99997
@@ -42,5 +37,10 @@ offset_bottom = 1627.0
 scale = Vector2(0.2241024, 0.21116629)
 icon = ExtResource("4_8v67e")
 script = ExtResource("6_g252b")
+
+[node name="TurtleNoBg" type="Sprite2D" parent="." unique_id=1324075959]
+position = Vector2(352, 971)
+scale = Vector2(0.29134136, 0.31053698)
+texture = ExtResource("5_67p1w")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]

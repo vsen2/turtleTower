@@ -33,9 +33,10 @@ func _on_target_reached() -> void:
 func spawn_coin_label(amount: int) -> void:
 	var label: Label = Label.new()
 	label.text = "+%d coins" % amount
+	GameManager.add_coins(amount)
 	label.global_position = global_position + Vector2(50, -75)
 	label.z_index = 30
-	label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0)) # white
+	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
 	label.add_theme_color_override("font_outline_color", Color.BLACK)
 	label.add_theme_constant_override("outline_size", 4)
 	label.add_theme_font_size_override("font_size", 25)

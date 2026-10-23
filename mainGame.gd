@@ -19,13 +19,14 @@ extends Node2D
 	$STORE/CashRegister4,
 ]
 
-var turtleCoins: int = 99999999
 var turtleCost: int = 1
 var turtleCount: int = 0
 var turtleMax: int = 50
 var penSpaceCost: int = 1
 var floorLevel: int = 0
 
+func _ready() -> void:
+	print("starting main game...")
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.is_pressed() and not turtleUI.visible):
 		return
@@ -55,41 +56,36 @@ func get_pen_bounds() -> Rect2:
 func _on_addTurtle_pressed() -> void:
 	if not turtle_scene:
 		return
-	if turtleCoins < turtleCost or turtleCount >= turtleMax:
-		return
+	if GameManager.spend_coins(turtleCost):
+		turtleCost += 1
+		turtleCount += 1
 
-	turtleCoins -= turtleCost
-	turtleCost += 1
-	turtleCount += 1
+		var bounds: Rect2 = get_pen_bounds()
+		var new_turtle: Node2D = turtle_scene.instantiate()
 
-	var bounds: Rect2 = get_pen_bounds()
-	var new_turtle: Node2D = turtle_scene.instantiate()
+		# Spawn inside the pen with a safety margin from the fence.
+		var pad: float = 24.0
+		var min_x: float = bounds.position.x + pad
+		var max_x: float = max(min_x, bounds.end.x - pad)
+		var min_y: float = bounds.position.y + pad
+		var max_y: float = max(min_y, bounds.end.y - pad)
 
-	# Spawn inside the pen with a safety margin from the fence.
-	var pad: float = 24.0
-	var min_x: float = bounds.position.x + pad
-	var max_x: float = max(min_x, bounds.end.x - pad)
-	var min_y: float = bounds.position.y + pad
-	var max_y: float = max(min_y, bounds.end.y - pad)
+		new_turtle.global_position = Vector2(
+			randf_range(min_x, max_x),
+			randf_range(min_y, max_y)
+		)
+		new_turtle.bounds = bounds
 
-	new_turtle.global_position = Vector2(
-		randf_range(min_x, max_x),
-		randf_range(min_y, max_y)
-	)
-	new_turtle.bounds = bounds
-
-	add_child(new_turtle)
-	add_turtle_icon_to_grid(new_turtle)
+		add_child(new_turtle)
+		add_turtle_icon_to_grid(new_turtle)
 
 func _on_addPenSpace_pressed() -> void:
-	if turtleCoins < penSpaceCost:
-		return
-	turtleCoins -= penSpaceCost
-	penSpaceCost += 1
-	turtleMax += 1
+	if GameManager.spend_coins(penSpaceCost):
+		penSpaceCost += 1
+		turtleMax += 1
 
 func _process(_delta: float) -> void:
-	turtleCoinsLabel.text = "Turtle Coins: %d" % turtleCoins
+	turtleCoinsLabel.text = "Turtle Coins: %d" % GameManager.turtle_coins
 	turtleCostLabel.text = "Cost: %d" % turtleCost
 	turtleCountLabel.text = "%d/%d" % [turtleCount, turtleMax]
 	penSpaceLabel.text = "Cost: %d" % penSpaceCost
