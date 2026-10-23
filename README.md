@@ -14,5 +14,7 @@ thats it for now more updates coming soon!
 
 <img width="702" height="1260" alt="Screenshot 2026-10-22 143911" src="https://github.com/user-attachments/assets/128e7c84-6f8c-4cdd-ba01-0ce0296233a4" />
 <img width="700" height="1250" alt="Screenshot 2026-10-22 143930" src="https://github.com/user-attachments/assets/0cfabcd8-31b1-4aa2-a174-86e1bfbb2aff" />
+<img width="703" height="1268" alt="image" src="https://github.com/user-attachments/assets/fae5f2b4-791c-40a4-913d-9659fd53122f" />
+
 
 
