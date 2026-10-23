@@ -10,19 +10,45 @@ var drag_offset: Vector2 = Vector2.ZERO
 var current_job: String = "Idle"
 var assigned_station: Node2D = null
 var status_label: Label = null
+var random_hat = randi_range(0, 13)
+
+@onready var turtleHat: Node2D = $timmyTheTurtle/turtleHat
+@onready var turtleHats: Array[Texture2D] = [
+	preload("res://hatChef.png"),
+	preload("res://hatDunce.png"),
+	preload("res://hatEgg.png"),
+	preload("res://hatFishbowl.png"),
+	preload("res://hatFishingRod.png"),
+	preload("res://hatFunnyPropellor.png"),
+	preload("res://hatGooglyEyes.png"),
+	preload("res://hatKingCrown.png"),
+	preload("res://hatLeaf.png"),
+	preload("res://hatPlunger.png"),
+	preload("res://hatQueenCrown.png"),
+	preload("res://hatSombrero.png"),
+	preload("res://hatTophat.png"),
+	preload("res://hatTophat.png"),
+]
+
 
 # Radius used to keep the turtle inside its pen; calculated in _ready().
 var turtle_radius: float = 16.0
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var sprite: AnimatedSprite2D = $timmyTheTurtle
+@onready var collision_shape: CollisionShape2D = $turtleHitbox
 
 func _ready() -> void:
+	
 	_pick_random_direction()
 	input_event.connect(_on_input_event)
 	_calculate_turtle_size()
 	sprite.play("default")
 	z_index = 5
+	turtleHat.texture = turtleHats[random_hat]
+	turtleHat.visible = true
+	
+	print(turtleHat.global_position)
+	print(global_position)
 
 func _calculate_turtle_size() -> void:
 	# Prefer the collision shape (most accurate), fall back to the sprite.
@@ -82,8 +108,13 @@ func _process(delta: float) -> void:
 	# Face the direction of travel.
 	if direction.x > 0:
 		sprite.flip_h = true
+		turtleHat.flip_h = true
+		turtleHat.global_position.x = sprite.global_position.x + 57
+		
 	elif direction.x < 0:
 		sprite.flip_h = false
+		turtleHat.flip_h = false
+		turtleHat.global_position.x = sprite.global_position.x - 59
 
 func send_to_station(target_pos: Vector2, register_number: int = 1, register_node: Node2D = null) -> void:
 	if is_instance_valid(assigned_station):

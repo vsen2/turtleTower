@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://turtlewalk1.png" id="2_ghgcf"]
 [ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://turtleWalk2.png" id="3_hlk0a"]
 [ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://turtlewalk3.png" id="4_e1omo"]
+[ext_resource type="Texture2D" uid="uid://vkktea23nv5n" path="res://hatKingCrown.png" id="5_hlk0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
 size = Vector2(168, 117)
@@ -29,13 +30,20 @@ animations = [{
 position = Vector2(88, 82)
 script = ExtResource("1_2ssyi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328151684]
+[node name="turtleHitbox" type="CollisionShape2D" parent="." unique_id=1328151684]
 position = Vector2(-2, -1)
 shape = SubResource("RectangleShape2D_6snss")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=669674736]
+[node name="timmyTheTurtle" type="AnimatedSprite2D" parent="." unique_id=669674736]
 position = Vector2(13, -1)
 rotation = -0.005483886
 scale = Vector2(0.10383152, 0.10350519)
 sprite_frames = SubResource("SpriteFrames_ccrme")
 frame_progress = 0.23228993
+
+[node name="turtleHat" type="Sprite2D" parent="timmyTheTurtle" unique_id=316693269]
+position = Vector2(-546.89813, -379.807)
+rotation = 0.005501176
+scale = Vector2(1.2140648, 1.0891639)
+skew = -3.4570694e-05
+texture = ExtResource("5_hlk0a")
