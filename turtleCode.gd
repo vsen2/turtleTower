@@ -10,9 +10,9 @@ var drag_offset: Vector2 = Vector2.ZERO
 var current_job: String = "Idle"
 var assigned_station: Node2D = null
 var status_label: Label = null
-var random_hat = randi_range(0, 13)
+var random_hat: int = 0
 
-@onready var turtleHat: Node2D = $timmyTheTurtle/turtleHat
+@onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
 @onready var turtleHats: Array[Texture2D] = [
 	preload("res://hatChef.png"),
 	preload("res://hatDunce.png"),
@@ -27,9 +27,7 @@ var random_hat = randi_range(0, 13)
 	preload("res://hatQueenCrown.png"),
 	preload("res://hatSombrero.png"),
 	preload("res://hatTophat.png"),
-	preload("res://hatTophat.png"),
 ]
-
 
 # Radius used to keep the turtle inside its pen; calculated in _ready().
 var turtle_radius: float = 16.0
@@ -38,7 +36,8 @@ var turtle_radius: float = 16.0
 @onready var collision_shape: CollisionShape2D = $turtleHitbox
 
 func _ready() -> void:
-	
+	# Pick a random hat, keeping the range in sync with the list above.
+	random_hat = randi_range(0, turtleHats.size() - 1)
 	_pick_random_direction()
 	input_event.connect(_on_input_event)
 	_calculate_turtle_size()
@@ -46,9 +45,6 @@ func _ready() -> void:
 	z_index = 5
 	turtleHat.texture = turtleHats[random_hat]
 	turtleHat.visible = true
-	
-	print(turtleHat.global_position)
-	print(global_position)
 
 func _calculate_turtle_size() -> void:
 	# Prefer the collision shape (most accurate), fall back to the sprite.
@@ -110,7 +106,6 @@ func _process(delta: float) -> void:
 		sprite.flip_h = true
 		turtleHat.flip_h = true
 		turtleHat.global_position.x = sprite.global_position.x + 57
-		
 	elif direction.x < 0:
 		sprite.flip_h = false
 		turtleHat.flip_h = false
@@ -154,7 +149,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not event.is_pressed() and is_dragging:
 			is_dragging = false
 			_pick_random_direction()
-			
+
 func save_data() -> Dictionary:
 	return {
 		"pos_x": global_position.x,
@@ -163,5 +158,3 @@ func save_data() -> Dictionary:
 		"is_assigned_to_store": is_assigned_to_store,
 		"assigned_station": assigned_station
 	}
-	
-	
