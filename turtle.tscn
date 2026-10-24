@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dqbtfsg04rb4m"]
 
-[ext_resource type="Script" uid="uid://b6an50qt5dcoy" path="res://turtleCode.gd" id="1_2ssyi"]
-[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://turtlewalk1.png" id="2_ghgcf"]
-[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://turtleWalk2.png" id="3_hlk0a"]
-[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://turtlewalk3.png" id="4_e1omo"]
-[ext_resource type="Texture2D" uid="uid://vkktea23nv5n" path="res://hatKingCrown.png" id="5_hlk0a"]
+[ext_resource type="Script" uid="uid://b6an50qt5dcoy" path="res://assets/turtleCode.gd" id="1_2ssyi"]
+[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://assets/turtlewalk1.png" id="2_ghgcf"]
+[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://assets/turtleWalk2.png" id="3_hlk0a"]
+[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://assets/turtlewalk3.png" id="4_e1omo"]
+[ext_resource type="Texture2D" uid="uid://vkktea23nv5n" path="res://assets/hatKingCrown.png" id="5_hlk0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
 size = Vector2(168, 117)

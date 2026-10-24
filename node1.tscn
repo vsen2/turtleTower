@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dy7l4mxt6fckw"]
 
-[ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://Background.webp" id="1_dedig"]
-[ext_resource type="Texture2D" uid="uid://cvo43i2x1bssu" path="res://turtlePenPLACEHOLDER.png" id="2_q6rfk"]
-[ext_resource type="Texture2D" uid="uid://cmsaiw6ec5tgk" path="res://turtlePLACEHOLDER.png" id="3_b3qmp"]
+[ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://assets/Background.webp" id="1_dedig"]
+[ext_resource type="Texture2D" path="res://turtlePenPLACEHOLDER.png" id="2_q6rfk"]
+[ext_resource type="Texture2D" path="res://turtlePLACEHOLDER.png" id="3_b3qmp"]
 
 [node name="Node2D" type="Node2D" unique_id=681850459]
 

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bobjkphaiwufk"]
 
 [ext_resource type="Script" uid="uid://b3hpu3momkfb" path="res://customerTurtle.gd" id="1_51v7g"]
-[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://turtlewalk1.png" id="2_dfwo6"]
-[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://turtleWalk2.png" id="3_ptnus"]
-[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://turtlewalk3.png" id="4_kw0fr"]
+[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://assets/turtlewalk1.png" id="2_dfwo6"]
+[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://assets/turtleWalk2.png" id="3_ptnus"]
+[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://assets/turtlewalk3.png" id="4_kw0fr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
 size = Vector2(168, 117)
