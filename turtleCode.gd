@@ -154,3 +154,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not event.is_pressed() and is_dragging:
 			is_dragging = false
 			_pick_random_direction()
+			
+func save_data() -> Dictionary:
+	return {
+		"pos_x": global_position.x,
+		"pos_y": global_position.y,
+		"random_hat": random_hat,
+		"is_assigned_to_store": is_assigned_to_store,
+		"assigned_station": assigned_station
+	}
+	
+	

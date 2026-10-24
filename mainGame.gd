@@ -1,5 +1,7 @@
 extends Node2D
 
+const SAVE_PATH: String = "user://savegame.json"
+
 @export var turtle_icon: Texture2D = preload("res://turtleNoBG.png")
 @export var turtle_scene: PackedScene = preload("res://turtle.tscn")
 
@@ -27,6 +29,12 @@ var floorLevel: int = 0
 
 func _ready() -> void:
 	print("starting main game...")
+
+func _notification(what: int) -> void:
+	# Auto-save when the player closes or backgrounds the game window
+	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_APPLICATION_PAUSED:
+		save_game()
+		
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.is_pressed() and not turtleUI.visible):
 		return
@@ -56,28 +64,27 @@ func get_pen_bounds() -> Rect2:
 func _on_addTurtle_pressed() -> void:
 	if not turtle_scene:
 		return
+	if turtleCount >= turtleMax:
+		print("Pen is full!")
+		return
 	if GameManager.spend_coins(turtleCost):
 		turtleCost += 1
 		turtleCount += 1
 
 		var bounds: Rect2 = get_pen_bounds()
-		var new_turtle: Node2D = turtle_scene.instantiate()
-
-		# Spawn inside the pen with a safety margin from the fence.
 		var pad: float = 24.0
 		var min_x: float = bounds.position.x + pad
 		var max_x: float = max(min_x, bounds.end.x - pad)
 		var min_y: float = bounds.position.y + pad
 		var max_y: float = max(min_y, bounds.end.y - pad)
-
-		new_turtle.global_position = Vector2(
+		
+		var spawn_pos := Vector2(
 			randf_range(min_x, max_x),
 			randf_range(min_y, max_y)
 		)
-		new_turtle.bounds = bounds
-
-		add_child(new_turtle)
-		add_turtle_icon_to_grid(new_turtle)
+		
+		_instantiate_turtle(spawn_pos, -1, false, -1)
+		save_game()
 
 func _on_addPenSpace_pressed() -> void:
 	if GameManager.spend_coins(penSpaceCost):
@@ -92,6 +99,27 @@ func _process(_delta: float) -> void:
 
 func _on_changeTurtles_pressed() -> void:
 	turtleUI.visible = not turtleUI.visible
+	
+func _instantiate_turtle(pos: Vector2, hat_id: int, assigned: bool, reg_idx: int) -> Node2D:
+	var new_turtle: Node2D = turtle_scene.instantiate()
+	new_turtle.bounds = get_pen_bounds()
+	new_turtle.global_position = pos
+	
+	if hat_id != -1:
+		new_turtle.random_hat = hat_id
+
+	add_child(new_turtle)
+	add_turtle_icon_to_grid(new_turtle)
+
+	# If restoring to a station
+	if assigned and reg_idx >= 0 and reg_idx < registers.size():
+		var reg: Node2D = registers[reg_idx]
+		if is_instance_valid(reg):
+			reg.hasWorker = true
+			var target_spot: Vector2 = reg.global_position + Vector2(-200, -60)
+			new_turtle.send_to_station(target_spot, reg_idx + 1, reg)
+
+	return new_turtle
 
 func add_turtle_icon_to_grid(turtle: Node2D) -> void:
 	# Stack the icon and its status label vertically.
@@ -140,3 +168,60 @@ func assign_turtle_to_store(turtle: Node2D) -> void:
 			return
 
 	print("All registers are full!")
+	
+func save_game() -> void:
+	var turtles_data: Array[Dictionary] = []
+	for turtle in get_tree().get_nodes_in_group("turtles"):
+		if is_instance_valid(turtle) and turtle.has_method("save_data"):
+			turtles_data.append(turtle.save_data())
+
+	var data: Dictionary = {
+		"turtle_coins": GameManager.turtle_coins,
+		"turtleCost": turtleCost,
+		"turtleCount": turtleCount,
+		"turtleMax": turtleMax,
+		"penSpaceCost": penSpaceCost,
+		"turtles": turtles_data
+	}
+
+	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(data, "\t"))
+		file.close()
+
+func load_game() -> void:
+	if not FileAccess.file_exists(SAVE_PATH):
+		return
+
+	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if not file:
+		return
+
+	var json := JSON.new()
+	if json.parse(file.get_as_text()) != OK:
+		file.close()
+		return
+	file.close()
+
+	var data: Dictionary = json.data
+
+	# Restore upgrades and currencies (cast float to int where applicable)
+	if data.has("turtle_coins"):
+		GameManager.turtle_coins = int(data["turtle_coins"])
+	if data.has("turtleCost"):
+		turtleCost = int(data["turtleCost"])
+	if data.has("turtleCount"):
+		turtleCount = int(data["turtleCount"])
+	if data.has("turtleMax"):
+		turtleMax = int(data["turtleMax"])
+	if data.has("penSpaceCost"):
+		penSpaceCost = int(data["penSpaceCost"])
+
+	# Rebuild turtles
+	if data.has("turtles") and data["turtles"] is Array:
+		for t_data in data["turtles"]:
+			var pos := Vector2(t_data["pos_x"], t_data["pos_y"])
+			var hat: int = int(t_data["random_hat"])
+			var assigned: bool = bool(t_data["is_assigned_to_store"])
+			var reg_idx: int = int(t_data["assigned_register_index"])
+			_instantiate_turtle(pos, hat, assigned, reg_idx)

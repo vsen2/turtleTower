@@ -17,13 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://buyTurtleWhite.png" id="16_82xsv"]
 [ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://BuyTurtleGrey.png" id="17_getpj"]
 [ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://upgradePenWhite.png" id="18_getpj"]
+[ext_resource type="Texture2D" uid="uid://b4afpafq5udlr" path="res://turtleBase.png" id="19_cegan"]
 [ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://upgradePenGrey.png" id="19_ryguw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
 load_path = "res://.godot/imported/newPen3.png-dae1b007042f6c68dde9c948977e2a0a.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_82xsv"]
-load_path = "res://.godot/imported/TurtleBase.png-76c4efe29fe11e7ee4d04e697c9e2be6.ctex"
 
 [node name="Node2D" type="Node2D" unique_id=1208055871]
 script = ExtResource("1_0xm2m")
@@ -322,6 +320,7 @@ theme_override_font_sizes/font_size = 200
 text = "Cost: XXX"
 
 [node name="TurtleUI" type="Control" parent="CanvasLayer" unique_id=815006092]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -330,7 +329,7 @@ offset_bottom = 40.0
 [node name="TurtleUIBG" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=2139334960]
 position = Vector2(361, 656.00006)
 scale = Vector2(0.7901949, 1.0082939)
-texture = SubResource("CompressedTexture2D_82xsv")
+texture = ExtResource("19_cegan")
 
 [node name="Label" type="Label" parent="CanvasLayer/TurtleUI" unique_id=49232749]
 layout_mode = 0
