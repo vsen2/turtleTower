@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2jh3meodwhdy"
-path="res://.godot/imported/whiteTurtleButton.png-877766d91d5bab19767c56998b85c39b.ctex"
+uid="uid://co5k2q3dnfmby"
+path="res://.godot/imported/newPen.png-0fdefd591bcfa440d2bb550e1af6d506.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://whiteTurtleButton.png"
-dest_files=["res://.godot/imported/whiteTurtleButton.png-877766d91d5bab19767c56998b85c39b.ctex"]
+source_file="res://newPen.png"
+dest_files=["res://.godot/imported/newPen.png-0fdefd591bcfa440d2bb550e1af6d506.ctex"]
 
 [params]
 

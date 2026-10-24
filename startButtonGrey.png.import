@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://na0bvp0di8ls"
-path="res://.godot/imported/RealTurtle.png-cf87d1dac72166b0801b0faf861ee263.ctex"
+uid="uid://bkej2qh1yulky"
+path="res://.godot/imported/startButtonGrey.png-0a0c56b2355f8b22756ac5d1d2985354.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RealTurtle.png"
-dest_files=["res://.godot/imported/RealTurtle.png-cf87d1dac72166b0801b0faf861ee263.ctex"]
+source_file="res://startButtonGrey.png"
+dest_files=["res://.godot/imported/startButtonGrey.png-0a0c56b2355f8b22756ac5d1d2985354.ctex"]
 
 [params]
 

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://cwa67l6y7xawp"]
 
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://Background.webp" id="1_67p1w"]
-[ext_resource type="Texture2D" uid="uid://b76gr1it0crhc" path="res://StartButton.png" id="4_8v67e"]
+[ext_resource type="Texture2D" uid="uid://craeuxybva6mf" path="res://startButtonWhite.png" id="2_k8oh1"]
+[ext_resource type="Texture2D" uid="uid://bkej2qh1yulky" path="res://startButtonGrey.png" id="3_8v67e"]
 [ext_resource type="Texture2D" uid="uid://ci4t6q8l0p7ej" path="res://turtleNoBG.png" id="5_67p1w"]
-[ext_resource type="Texture2D" uid="uid://6vnp1dfo2ve8" path="res://Logo.png" id="5_bfwpr"]
+[ext_resource type="Texture2D" uid="uid://dmb6alalsw8sm" path="res://turtleTower.png" id="6_bfwpr"]
 [ext_resource type="Script" uid="uid://b6su2vlbr73pb" path="res://button.gd" id="6_g252b"]
+[ext_resource type="Texture2D" uid="uid://bxpwc4jve7j2w" path="res://madeByVictor.png" id="7_8g068"]
 
 [node name="Node2D" type="Node2D" unique_id=681850459]
 
@@ -13,34 +15,29 @@ position = Vector2(367.99997, 641.99994)
 scale = Vector2(1.5840001, 2.7079997)
 texture = ExtResource("1_67p1w")
 
-[node name="Label" type="Label" parent="." unique_id=1385392336]
-offset_left = 419.99997
-offset_top = 1214.9999
-offset_right = 731.4474
-offset_bottom = 1327.9999
-rotation = 0.0032878227
-theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-theme_override_font_sizes/font_size = 40
-text = "Made by victor
-"
-
-[node name="Logo" type="Sprite2D" parent="." unique_id=1230447166]
-position = Vector2(368, 193)
-scale = Vector2(0.262963, 0.2747132)
-texture = ExtResource("5_bfwpr")
-
-[node name="Button" type="Button" parent="." unique_id=538247072]
-offset_left = 149.99994
-offset_top = 485.99994
-offset_right = 2048.0
-offset_bottom = 1627.0
-scale = Vector2(0.2241024, 0.21116629)
-icon = ExtResource("4_8v67e")
+[node name="Button" type="TextureButton" parent="." unique_id=1033818820]
+offset_left = 134.0
+offset_top = 505.0
+offset_right = 987.0
+offset_bottom = 954.0
+scale = Vector2(0.5344439, 0.5736455)
+texture_normal = ExtResource("2_k8oh1")
+texture_hover = ExtResource("3_8v67e")
 script = ExtResource("6_g252b")
 
 [node name="TurtleNoBg" type="Sprite2D" parent="." unique_id=1324075959]
-position = Vector2(352, 971)
-scale = Vector2(0.29134136, 0.31053698)
+position = Vector2(370, 1015.99994)
+scale = Vector2(0.30668908, 0.31066367)
 texture = ExtResource("5_67p1w")
+
+[node name="TurtleTower" type="Sprite2D" parent="." unique_id=897915445]
+position = Vector2(424, 296)
+scale = Vector2(0.5152672, 0.48545766)
+texture = ExtResource("6_bfwpr")
+
+[node name="2026102310yKleki" type="Sprite2D" parent="." unique_id=2030652760]
+position = Vector2(547, 1267)
+scale = Vector2(0.1976554, 0.19482464)
+texture = ExtResource("7_8g068")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]

@@ -2,18 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bmknanxfs4vu8" path="res://mainGame.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://Background.webp" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://c6051emrfpa4j" path="res://newPen3.png" id="3_074og"]
 [ext_resource type="Texture2D" uid="uid://8snly1qg6fkn" path="res://rocks.png" id="4_efxa6"]
 [ext_resource type="Texture2D" uid="uid://b8t0t5p5iev1r" path="res://THEMINEnoBG.png" id="5_efxa6"]
 [ext_resource type="Script" uid="uid://f7asyiehuoav" path="res://turtleCoins.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://lineNoBG.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://cashRegister.png" id="8_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://b4afpafq5udlr" path="res://TurtleBase.png" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://cashRegister.gd" id="9_074og"]
 [ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://plusButtonWhite.png" id="9_vivmo"]
 [ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://storeNoBG.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://plusButtonGrey.png" id="10_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://3eomfluya4kt" path="res://towerButtonIcon.png" id="10_efxa6"]
 [ext_resource type="Script" uid="uid://clylnevohe7cm" path="res://buyRegister.gd" id="11_yaehf"]
 [ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://CroppedWhiteTurtleButton.png" id="13_cegan"]
 [ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://croppedGreyTurtleButton.png" id="14_82xsv"]
@@ -21,6 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://BuyTurtleGrey.png" id="17_getpj"]
 [ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://upgradePenWhite.png" id="18_getpj"]
 [ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://upgradePenGrey.png" id="19_ryguw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
+load_path = "res://.godot/imported/newPen3.png-dae1b007042f6c68dde9c948977e2a0a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_82xsv"]
+load_path = "res://.godot/imported/TurtleBase.png-76c4efe29fe11e7ee4d04e697c9e2be6.ctex"
 
 [node name="Node2D" type="Node2D" unique_id=1208055871]
 script = ExtResource("1_0xm2m")
@@ -37,7 +40,29 @@ texture = ExtResource("1_ig7tw")
 [node name="TurtlePen" type="Sprite2D" parent="." unique_id=910034301]
 position = Vector2(363, 719.00006)
 scale = Vector2(0.84944916, 0.85900265)
-texture = ExtResource("3_074og")
+texture = SubResource("CompressedTexture2D_cegan")
+
+[node name="LEVEL_1" type="Control" parent="." unique_id=1306873373]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="addNewPen" type="TextureButton" parent="LEVEL_1" unique_id=1934710609]
+z_index = 11
+layout_mode = 0
+offset_left = 348.0
+offset_top = -732.0
+offset_right = 1334.0
+offset_bottom = 257.0
+scale = Vector2(0.09648591, 0.08774316)
+texture_normal = ExtResource("9_vivmo")
+texture_hover = ExtResource("10_2cqfq")
+
+[node name="TurtlePen" type="Sprite2D" parent="LEVEL_1" unique_id=417850940]
+position = Vector2(339.00003, -472.00018)
+scale = Vector2(0.7215639, 0.73788553)
+texture = SubResource("CompressedTexture2D_cegan")
 
 [node name="THE MINE" type="Control" parent="." unique_id=561868939]
 layout_mode = 3
@@ -119,7 +144,7 @@ texture = ExtResource("8_2cqfq")
 script = ExtResource("9_074og")
 
 [node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349]
-modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
+modulate = Color(0.5294118, 0.5294118, 0.5294118, 1)
 position = Vector2(363.00003, 1860.0001)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("8_2cqfq")
@@ -297,7 +322,6 @@ theme_override_font_sizes/font_size = 200
 text = "Cost: XXX"
 
 [node name="TurtleUI" type="Control" parent="CanvasLayer" unique_id=815006092]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -306,61 +330,25 @@ offset_bottom = 40.0
 [node name="TurtleUIBG" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=2139334960]
 position = Vector2(361, 656.00006)
 scale = Vector2(0.7901949, 1.0082939)
-texture = ExtResource("9_4c57u")
+texture = SubResource("CompressedTexture2D_82xsv")
 
 [node name="Label" type="Label" parent="CanvasLayer/TurtleUI" unique_id=49232749]
 layout_mode = 0
-offset_left = 91.0
-offset_top = 302.0
-offset_right = 246.0
-offset_bottom = 366.0
+offset_left = 89.0
+offset_top = 194.0
+offset_right = 244.0
+offset_bottom = 258.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 46
 text = "Turtles"
 
-[node name="UItowerButton" type="Button" parent="CanvasLayer/TurtleUI" unique_id=1801757311]
-layout_mode = 0
-offset_left = 93.99999
-offset_top = 188.99998
-offset_right = 1170.0
-offset_bottom = 1293.0
-scale = Vector2(0.10004232, 0.08610254)
-icon = ExtResource("10_efxa6")
-
-[node name="UImine" type="Button" parent="CanvasLayer/TurtleUI" unique_id=1984179623]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 192.0
-offset_right = 1460.0
-offset_bottom = 1296.0
-scale = Vector2(0.10004232, 0.08610254)
-icon = ExtResource("10_efxa6")
-
-[node name="UI" type="Button" parent="CanvasLayer/TurtleUI" unique_id=409997990]
-layout_mode = 0
-offset_left = 232.99998
-offset_top = 189.0
-offset_right = 1309.0
-offset_bottom = 1293.0
-scale = Vector2(0.10004232, 0.08610254)
-icon = ExtResource("10_efxa6")
-
-[node name="Button4" type="Button" parent="CanvasLayer/TurtleUI" unique_id=1243818207]
-layout_mode = 0
-offset_left = 525.0
-offset_top = 194.99997
-offset_right = 1601.0
-offset_bottom = 1299.0
-scale = Vector2(0.10004232, 0.08610254)
-icon = ExtResource("10_efxa6")
-
 [node name="scrollContainer" type="ScrollContainer" parent="CanvasLayer/TurtleUI" unique_id=910715122]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
-offset_left = 75.0
-offset_top = 378.0
-offset_right = 645.0
-offset_bottom = 1109.0
+offset_left = 77.0
+offset_top = 266.0
+offset_right = 647.0
+offset_bottom = 1151.0
 horizontal_scroll_mode = 0
 
 [node name="turtleGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/scrollContainer" unique_id=1406594791]

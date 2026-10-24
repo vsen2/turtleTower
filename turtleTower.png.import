@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkk7vesdqpgnj"
-path="res://.godot/imported/TheMine.png-c163ae1bba1cc18249ad2cf798d8299b.ctex"
+uid="uid://dmb6alalsw8sm"
+path="res://.godot/imported/turtleTower.png-05fe77b62876c025dfc6c9383d1d5a80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TheMine.png"
-dest_files=["res://.godot/imported/TheMine.png-c163ae1bba1cc18249ad2cf798d8299b.ctex"]
+source_file="res://turtleTower.png"
+dest_files=["res://.godot/imported/turtleTower.png-05fe77b62876c025dfc6c9383d1d5a80.ctex"]
 
 [params]
 

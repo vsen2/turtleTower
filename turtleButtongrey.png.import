@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvo43i2x1bssu"
-path="res://.godot/imported/turtlePenPLACEHOLDER.png-a3cddefcc7e9e57a819acb50459115e0.ctex"
+uid="uid://c7qi2rxlywjmg"
+path="res://.godot/imported/turtleButtongrey.png-4c3ffcedffe6847b3549ed0809710c40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://turtlePenPLACEHOLDER.png"
-dest_files=["res://.godot/imported/turtlePenPLACEHOLDER.png-a3cddefcc7e9e57a819acb50459115e0.ctex"]
+source_file="res://turtleButtongrey.png"
+dest_files=["res://.godot/imported/turtleButtongrey.png-4c3ffcedffe6847b3549ed0809710c40.ctex"]
 
 [params]
 
