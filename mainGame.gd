@@ -2,7 +2,7 @@ extends Node2D
 
 const SAVE_PATH: String = "user://savegame.json"
 
-@export var turtle_icon: Texture2D = preload("res://turtleNoBG.png")
+@export var turtle_icon: Texture2D = preload("res://assets/turtleNoBG.png")
 @export var turtle_scene: PackedScene = preload("res://turtle.tscn")
 
 @onready var turtle_pen: Sprite2D = $TurtlePen

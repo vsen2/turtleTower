@@ -13,20 +13,20 @@ var status_label: Label = null
 var random_hat: int = 0
 
 @onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
-@export var turtleHats: Array[Texture2D] = [
-	preload("res://hatChef.png"),
-	preload("res://hatDunce.png"),
-	preload("res://hatEgg.png"),
-	preload("res://hatFishbowl.png"),
-	preload("res://hatFishingRod.png"),
-	preload("res://hatFunnyPropellor.png"),
-	preload("res://hatGooglyEyes.png"),
-	preload("res://hatKingCrown.png"),
-	preload("res://hatLeaf.png"),
-	preload("res://hatPlunger.png"),
-	preload("res://hatQueenCrown.png"),
-	preload("res://hatSombrero.png"),
-	preload("res://hatTophat.png"),
+@onready var turtleHats: Array[Texture2D] = [
+	preload("res://assets/hatChef.png"),
+	preload("res://assets/hatDunce.png"),
+	preload("res://assets/hatEgg.png"),
+	preload("res://assets/hatFishbowl.png"),
+	preload("res://assets/hatFishingRod.png"),
+	preload("res://assets/hatFunnyPropellor.png"),
+	preload("res://assets/hatGooglyEyes.png"),
+	preload("res://assets/hatKingCrown.png"),
+	preload("res://assets/hatLeaf.png"),
+	preload("res://assets/hatPlunger.png"),
+	preload("res://assets/hatQueenCrown.png"),
+	preload("res://assets/hatSombrero.png"),
+	preload("res://assets/hatTophat.png")
 ]
 
 # Radius used to keep the turtle inside its pen; calculated in _ready().
@@ -115,6 +115,8 @@ func send_to_station(target_pos: Vector2, register_number: int = 1, register_nod
 	if is_instance_valid(assigned_station):
 		assigned_station.hasWorker = false
 	sprite.flip_h = false
+	turtleHat.flip_h = false
+	turtleHat.global_position.x = sprite.global_position.x - 59
 	current_job = "Register %d" % register_number
 	assigned_station = register_node
 	is_assigned_to_store = true
