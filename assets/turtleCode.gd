@@ -10,24 +10,11 @@ var drag_offset: Vector2 = Vector2.ZERO
 var current_job: String = "Idle"
 var assigned_station: Node2D = null
 var status_label: Label = null
-var random_hat: int = 0
+var random_hat: int = -1
+var assigned_register_index: int = -1
 
 @onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
-@onready var turtleHats: Array[Texture2D] = [
-	preload("res://assets/hatChef.png"),
-	preload("res://assets/hatDunce.png"),
-	preload("res://assets/hatEgg.png"),
-	preload("res://assets/hatFishbowl.png"),
-	preload("res://assets/hatFishingRod.png"),
-	preload("res://assets/hatFunnyPropellor.png"),
-	preload("res://assets/hatGooglyEyes.png"),
-	preload("res://assets/hatKingCrown.png"),
-	preload("res://assets/hatLeaf.png"),
-	preload("res://assets/hatPlunger.png"),
-	preload("res://assets/hatQueenCrown.png"),
-	preload("res://assets/hatSombrero.png"),
-	preload("res://assets/hatTophat.png")
-]
+var turtleHats: Array[Texture2D] = []
 
 # Radius used to keep the turtle inside its pen; calculated in _ready().
 var turtle_radius: float = 16.0
@@ -35,16 +22,46 @@ var turtle_radius: float = 16.0
 @onready var sprite: AnimatedSprite2D = $timmyTheTurtle
 @onready var collision_shape: CollisionShape2D = $turtleHitbox
 
+func _load_hat_textures() -> void:
+	turtleHats.clear()
+	# Search both root and assets folder
+	_scan_dir_for_hats("res://")
+	_scan_dir_for_hats("res://assets/")
+	print("Successfully loaded %d hats." % turtleHats.size())
+	
+func _scan_dir_for_hats(path: String) -> void:
+	var dir := DirAccess.open(path)
+	if not dir:
+		return
+		
+	dir.list_dir_begin()
+	var file_name: String = dir.get_next()
+	
+	while file_name != "":
+		# Look for files starting with 'hat' and ending with .png (ignores .import files)
+		if not dir.current_is_dir() and file_name.begins_with("hat") and file_name.ends_with(".png"):
+			var full_path: String = path + file_name
+			var tex: Texture2D = load(full_path) as Texture2D
+			if tex and not turtleHats.has(tex):
+				turtleHats.append(tex)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	
 func _ready() -> void:
-	# Pick a random hat, keeping the range in sync with the list above.
-	random_hat = randi_range(0, turtleHats.size() - 1)
+	add_to_group("turtles")
+	# Only pick a random hat if one wasn't already set (e.g. when restoring a save).
+	if turtleHats.size() > 0:
+		if random_hat < 0 or random_hat >= turtleHats.size():
+			random_hat = randi_range(0, turtleHats.size() - 1)
+		turtleHat.texture = turtleHats[random_hat]
+		turtleHat.visible = true
+	else:
+		turtleHat.visible = false # Hide hat sprite if no textures loaded
 	_pick_random_direction()
 	input_event.connect(_on_input_event)
 	_calculate_turtle_size()
 	sprite.play("default")
 	z_index = 5
-	turtleHat.texture = turtleHats[random_hat]
-	turtleHat.visible = true
 
 func _calculate_turtle_size() -> void:
 	# Prefer the collision shape (most accurate), fall back to the sprite.
@@ -119,6 +136,7 @@ func send_to_station(target_pos: Vector2, register_number: int = 1, register_nod
 	turtleHat.global_position.x = sprite.global_position.x - 59
 	current_job = "Register %d" % register_number
 	assigned_station = register_node
+	assigned_register_index = register_number - 1
 	is_assigned_to_store = true
 	global_position = target_pos
 
@@ -131,6 +149,7 @@ func return_to_pen(new_bounds: Rect2) -> void:
 
 	current_job = "Idle"
 	assigned_station = null
+	assigned_register_index = -1
 	is_assigned_to_store = false
 	bounds = new_bounds
 	_pick_random_direction()
@@ -158,5 +177,5 @@ func save_data() -> Dictionary:
 		"pos_y": global_position.y,
 		"random_hat": random_hat,
 		"is_assigned_to_store": is_assigned_to_store,
-		"assigned_station": assigned_station
+		"assigned_register_index": assigned_register_index
 	}

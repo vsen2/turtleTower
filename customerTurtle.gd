@@ -4,6 +4,7 @@ extends Area2D
 @export var coins_reward: int = 10
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var apple: Sprite2D = $Apple
 
 var target_x: float = 0.0
 var earned_money: bool = false
@@ -27,6 +28,7 @@ func _on_target_reached() -> void:
 	await get_tree().create_timer(2.0).timeout
 	if not earned_money:
 		earned_money = true
+		apple.visible = false
 		spawn_coin_label(coins_reward)
 	target_x = -1000
 

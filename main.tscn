@@ -7,18 +7,31 @@
 [ext_resource type="Script" uid="uid://f7asyiehuoav" path="res://assets/turtleCoins.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://assets/cashRegister.png" id="8_2cqfq"]
+[ext_resource type="Script" uid="uid://b2m5mlvdo42qg" path="res://store.gd" id="8_jq2sk"]
 [ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://cashRegister.gd" id="9_074og"]
 [ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://assets/plusButtonWhite.png" id="9_vivmo"]
 [ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://assets/storeNoBG.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://assets/plusButtonGrey.png" id="10_2cqfq"]
 [ext_resource type="Script" uid="uid://clylnevohe7cm" path="res://buyRegister.gd" id="11_yaehf"]
+[ext_resource type="Texture2D" uid="uid://bh0b8jc0aq3gd" path="res://assets/upgradeButtonWhite.png" id="12_getpj"]
 [ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/CroppedWhiteTurtleButton.png" id="13_cegan"]
+[ext_resource type="Texture2D" uid="uid://bcp82eb14g1jl" path="res://assets/upgradeButtonGrey.png" id="13_ryguw"]
 [ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://assets/croppedGreyTurtleButton.png" id="14_82xsv"]
+[ext_resource type="Texture2D" uid="uid://dsp76uocxbu2v" path="res://assets/backImage (2).png" id="15_lswn8"]
 [ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/buyTurtleWhite.png" id="16_82xsv"]
 [ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/BuyTurtleGrey.png" id="17_getpj"]
 [ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://assets/upgradePenWhite.png" id="18_getpj"]
 [ext_resource type="Texture2D" uid="uid://b4afpafq5udlr" path="res://assets/turtleBase.png" id="19_cegan"]
+[ext_resource type="Texture2D" uid="uid://b8onj4rhd0mia" path="res://assets/betterApplesWhite.png" id="19_kq58d"]
 [ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://assets/upgradePenGrey.png" id="19_ryguw"]
+[ext_resource type="Texture2D" uid="uid://7vxplco8ch6u" path="res://assets/betterApplesGrey.png" id="20_seu75"]
+[ext_resource type="Texture2D" uid="uid://bxhr842gb1oe0" path="res://assets/feedWorkerWhite.png" id="21_htxhm"]
+[ext_resource type="Texture2D" uid="uid://c357puwdbyomg" path="res://assets/feedWorkerGrey.png" id="22_jq2sk"]
+[ext_resource type="Texture2D" uid="uid://dade68shqm432" path="res://assets/timerWhite.png" id="24_4k2k6"]
+[ext_resource type="Texture2D" uid="uid://bkyy3ynlsnh3q" path="res://assets/UPGRADES.png" id="24_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://7ypx1qde2uj" path="res://assets/timerGrey.png" id="25_0rl1p"]
+[ext_resource type="Texture2D" uid="uid://d4a07son86dqf" path="res://assets/speedyTurtleWhite.png" id="25_qsp4k"]
+[ext_resource type="Texture2D" uid="uid://bnjwv8r8p11qm" path="res://assets/speedyTurtleGrey.png" id="26_kq58d"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
 load_path = "res://.godot/imported/newPen3.png-dae1b007042f6c68dde9c948977e2a0a.ctex"
@@ -128,6 +141,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("8_jq2sk")
 
 [node name="StoreNoBg" type="Sprite2D" parent="STORE" unique_id=1229957735]
 position = Vector2(168, 1377)
@@ -150,7 +164,7 @@ script = ExtResource("9_074og")
 
 [node name="CashRegister3" type="Sprite2D" parent="STORE" unique_id=174330305]
 modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
-position = Vector2(369, 2125)
+position = Vector2(368.99997, 2126)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("8_2cqfq")
 script = ExtResource("9_074og")
@@ -243,6 +257,216 @@ script = ExtResource("11_yaehf")
 targetNode = NodePath("../CashRegister4")
 turtleUI = NodePath("../../CanvasLayer/TurtleUI")
 
+[node name="upgradesStore" type="TextureButton" parent="STORE" unique_id=1873753868]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 1319.0
+offset_right = 1557.0
+offset_bottom = 1833.331
+scale = Vector2(0.14273988, 0.16455439)
+texture_normal = ExtResource("12_getpj")
+texture_hover = ExtResource("13_ryguw")
+
+[node name="StoreUI" type="Control" parent="STORE" unique_id=227781087]
+z_index = 22
+anchors_preset = 0
+offset_left = 44.0
+offset_top = 1421.0
+offset_right = 657.0
+offset_bottom = 2455.0
+
+[node name="BackImage" type="Sprite2D" parent="STORE/StoreUI" unique_id=1776418527]
+z_index = 20
+position = Vector2(319, 512)
+scale = Vector2(1.5436773, 1.7742473)
+texture = ExtResource("15_lswn8")
+
+[node name="Upgrades" type="Sprite2D" parent="STORE/StoreUI" unique_id=117387151]
+z_index = 21
+position = Vector2(162, 79)
+scale = Vector2(0.2630435, 0.28794006)
+texture = ExtResource("24_xuqvo")
+
+[node name="fasterCustomers" type="TextureButton" parent="STORE/StoreUI" unique_id=1772774168]
+z_index = 21
+layout_mode = 0
+offset_left = 16.538013
+offset_top = 158.62378
+offset_right = 1322.538
+offset_bottom = 1327.6238
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("25_qsp4k")
+texture_hover = ExtResource("26_kq58d")
+
+[node name="feedWorkers" type="TextureButton" parent="STORE/StoreUI" unique_id=366704706]
+z_index = 21
+layout_mode = 0
+offset_left = 17.0
+offset_top = 300.0
+offset_right = 1323.0
+offset_bottom = 1469.0
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("21_htxhm")
+texture_hover = ExtResource("22_jq2sk")
+
+[node name="betterApples" type="TextureButton" parent="STORE/StoreUI" unique_id=615860551]
+z_index = 21
+layout_mode = 0
+offset_left = 18.0
+offset_top = 447.0
+offset_right = 1324.0
+offset_bottom = 1616.0
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("19_kq58d")
+texture_hover = ExtResource("20_seu75")
+
+[node name="timer" type="TextureButton" parent="STORE/StoreUI" unique_id=456524947]
+z_index = 21
+layout_mode = 0
+offset_left = 19.0
+offset_top = 592.0
+offset_right = 1325.0
+offset_bottom = 1761.0
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("24_4k2k6")
+texture_hover = ExtResource("25_0rl1p")
+
+[node name="customerSpeedCost" type="Label" parent="STORE/StoreUI" unique_id=2116158718]
+z_index = 22
+layout_mode = 0
+offset_left = 176.0
+offset_top = 170.0
+offset_right = 303.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="customerSpeedDesc" type="Label" parent="STORE/StoreUI" unique_id=375198911]
+z_index = 22
+layout_mode = 0
+offset_left = 178.0
+offset_top = 205.0
+offset_right = 530.0
+offset_bottom = 244.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increases customer speed"
+
+[node name="customerSpeedValue" type="Label" parent="STORE/StoreUI" unique_id=932721829]
+z_index = 22
+layout_mode = 0
+offset_left = 177.0
+offset_top = 239.0
+offset_right = 529.0
+offset_bottom = 278.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="feedWorkersCost" type="Label" parent="STORE/StoreUI" unique_id=1350284315]
+z_index = 22
+layout_mode = 0
+offset_left = 178.0
+offset_top = 304.0
+offset_right = 305.0
+offset_bottom = 385.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="feedWorkersDesc" type="Label" parent="STORE/StoreUI" unique_id=513093476]
+z_index = 22
+layout_mode = 0
+offset_left = 178.0
+offset_top = 343.0
+offset_right = 530.0
+offset_bottom = 382.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increases customer speed"
+
+[node name="feedWorkersValue" type="Label" parent="STORE/StoreUI" unique_id=154587580]
+z_index = 22
+layout_mode = 0
+offset_left = 180.0
+offset_top = 379.0
+offset_right = 532.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="betterFruitCost" type="Label" parent="STORE/StoreUI" unique_id=1448740127]
+z_index = 22
+layout_mode = 0
+offset_left = 179.0
+offset_top = 456.0
+offset_right = 306.0
+offset_bottom = 537.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="betterFruitDesc" type="Label" parent="STORE/StoreUI" unique_id=2103102444]
+z_index = 22
+layout_mode = 0
+offset_left = 179.0
+offset_top = 495.0
+offset_right = 531.0
+offset_bottom = 534.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increases customer speed"
+
+[node name="betterFruitValue" type="Label" parent="STORE/StoreUI" unique_id=859409353]
+z_index = 22
+layout_mode = 0
+offset_left = 181.0
+offset_top = 531.0
+offset_right = 533.0
+offset_bottom = 570.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current multiplier: XXX"
+
+[node name="timerCost" type="Label" parent="STORE/StoreUI" unique_id=1972316916]
+z_index = 22
+layout_mode = 0
+offset_left = 180.0
+offset_top = 599.0
+offset_right = 307.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="timerDesc" type="Label" parent="STORE/StoreUI" unique_id=933106510]
+z_index = 22
+layout_mode = 0
+offset_left = 180.0
+offset_top = 638.0
+offset_right = 532.0
+offset_bottom = 677.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increases customer speed"
+
+[node name="timerValue" type="Label" parent="STORE/StoreUI" unique_id=735997440]
+z_index = 22
+layout_mode = 0
+offset_left = 182.0
+offset_top = 674.0
+offset_right = 534.0
+offset_bottom = 713.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
 [node name="turtleCount" type="Label" parent="." unique_id=1950608965]
 offset_left = 589.0
 offset_top = 1208.0
@@ -290,10 +514,10 @@ texture_hover = ExtResource("17_getpj")
 
 [node name="turtleCost" type="Label" parent="CanvasLayer/TowerUI/addTurtle" unique_id=1541145669]
 layout_mode = 0
-offset_left = 499.10004
-offset_top = 495.3956
+offset_left = 499.1001
+offset_top = 495.39575
 offset_right = 1880.1001
-offset_bottom = 773.0349
+offset_bottom = 773.03503
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 160
 text = "Cost: XXX"
@@ -359,6 +583,11 @@ columns = 5
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34444522]
 position = Vector2(361, 638)
 
+[connection signal="pressed" from="STORE/upgradesStore" to="STORE" method="_on_upgrades_store_pressed"]
+[connection signal="pressed" from="STORE/StoreUI/fasterCustomers" to="STORE" method="_on_faster_customers_pressed"]
+[connection signal="pressed" from="STORE/StoreUI/feedWorkers" to="STORE" method="_on_feed_workers_pressed"]
+[connection signal="pressed" from="STORE/StoreUI/betterApples" to="STORE" method="_on_better_apples_pressed"]
+[connection signal="pressed" from="STORE/StoreUI/timer" to="STORE" method="_on_timer_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChangeTurtles" to="." method="_on_changeTurtles_pressed"]
 [connection signal="pressed" from="CanvasLayer/TowerUI/addTurtle" to="." method="_on_addTurtle_pressed"]
 [connection signal="pressed" from="CanvasLayer/TowerUI/addPenSpace" to="." method="_on_addPenSpace_pressed"]

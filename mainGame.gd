@@ -20,6 +20,12 @@ const SAVE_PATH: String = "user://savegame.json"
 	$STORE/CashRegister3,
 	$STORE/CashRegister4,
 ]
+@onready var register_buttons: Array[Node] = [
+	$STORE/addRegister1,
+	$STORE/addRegister2,
+	$STORE/addRegister3,
+	$STORE/addRegister4,
+]
 
 var turtleCost: int = 1
 var turtleCount: int = 0
@@ -29,6 +35,7 @@ var floorLevel: int = 0
 
 func _ready() -> void:
 	print("starting main game...")
+	load_game()
 
 func _notification(what: int) -> void:
 	# Auto-save when the player closes or backgrounds the game window
@@ -90,6 +97,7 @@ func _on_addPenSpace_pressed() -> void:
 	if GameManager.spend_coins(penSpaceCost):
 		penSpaceCost += 1
 		turtleMax += 1
+		save_game()
 
 func _process(_delta: float) -> void:
 	turtleCoinsLabel.text = "Turtle Coins: %d" % GameManager.turtle_coins
@@ -157,6 +165,7 @@ func _on_turtle_icon_selected(turtle: Node2D) -> void:
 		turtle.return_to_pen(get_pen_bounds())
 	else:
 		assign_turtle_to_store(turtle)
+	save_game()
 
 func assign_turtle_to_store(turtle: Node2D) -> void:
 	for i in registers.size():
@@ -175,12 +184,17 @@ func save_game() -> void:
 		if is_instance_valid(turtle) and turtle.has_method("save_data"):
 			turtles_data.append(turtle.save_data())
 
+	var registers_unlocked: Array = []
+	for register in registers:
+		registers_unlocked.append(bool(register.unlocked))
+
 	var data: Dictionary = {
 		"turtle_coins": GameManager.turtle_coins,
 		"turtleCost": turtleCost,
 		"turtleCount": turtleCount,
 		"turtleMax": turtleMax,
 		"penSpaceCost": penSpaceCost,
+		"registers_unlocked": registers_unlocked,
 		"turtles": turtles_data
 	}
 
@@ -210,18 +224,32 @@ func load_game() -> void:
 		GameManager.turtle_coins = int(data["turtle_coins"])
 	if data.has("turtleCost"):
 		turtleCost = int(data["turtleCost"])
-	if data.has("turtleCount"):
-		turtleCount = int(data["turtleCount"])
 	if data.has("turtleMax"):
 		turtleMax = int(data["turtleMax"])
 	if data.has("penSpaceCost"):
 		penSpaceCost = int(data["penSpaceCost"])
 
-	# Rebuild turtles
+	# Restore purchased (unlocked) registers.
+	if data.has("registers_unlocked"):
+		var unlocked_states: Array = data["registers_unlocked"]
+		for i in mini(unlocked_states.size(), registers.size()):
+			if bool(unlocked_states[i]):
+				_set_register_unlocked(i)
+
+	# Rebuild turtles. turtleCount is derived from how many actually load, so it
+	# can't drift out of sync with an old save that has no turtle data.
+	turtleCount = 0
 	if data.has("turtles") and data["turtles"] is Array:
 		for t_data in data["turtles"]:
 			var pos := Vector2(t_data["pos_x"], t_data["pos_y"])
 			var hat: int = int(t_data["random_hat"])
 			var assigned: bool = bool(t_data["is_assigned_to_store"])
-			var reg_idx: int = int(t_data["assigned_register_index"])
+			var reg_idx: int = int(t_data.get("assigned_register_index", -1))
 			_instantiate_turtle(pos, hat, assigned, reg_idx)
+			turtleCount += 1
+
+func _set_register_unlocked(index: int) -> void:
+	registers[index].unlocked = true
+	registers[index].modulate = Color.WHITE
+	if is_instance_valid(register_buttons[index]):
+		register_buttons[index].visible = false
