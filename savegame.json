@@ -6,10 +6,10 @@
 		true,
 		true
 	],
-	"turtleCost": 28,
-	"turtleCount": 27,
+	"turtleCost": 22,
+	"turtleCount": 21,
 	"turtleMax": 50,
-	"turtle_coins": 290,
+	"turtle_coins": 152,
 	"turtles": [
 		{
 			"assigned_register_index": 0,
@@ -21,78 +21,99 @@
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 159.849548339844,
-			"pos_y": 865.518493652344,
+			"pos_x": 346.469024658203,
+			"pos_y": 741.306945800781,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 342.055816650391,
-			"pos_y": 987.958251953125,
+			"pos_x": 162.340759277344,
+			"pos_y": 1086.61596679688,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 386.283905029297,
-			"pos_y": 366.817565917969,
+			"pos_x": 617.134033203125,
+			"pos_y": 980.8154296875,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 343.192932128906,
-			"pos_y": 634.073608398438,
+			"pos_x": 334.250122070313,
+			"pos_y": 551.54736328125,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 458.3125,
-			"pos_y": 919.924865722656,
+			"pos_x": 252.520690917969,
+			"pos_y": 945.750305175781,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 199.112533569336,
-			"pos_y": 709.066345214844,
+			"pos_x": 137.282135009766,
+			"pos_y": 922.520141601563,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 231.543716430664,
-			"pos_y": 1078.1787109375,
+			"pos_x": 330.155242919922,
+			"pos_y": 1098.31884765625,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 108.746871948242,
-			"pos_y": 363.278900146484,
+			"pos_x": 130.666015625,
+			"pos_y": 541.506713867188,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 562.750793457031,
-			"pos_y": 623.007629394531,
+			"pos_x": 438.236236572266,
+			"pos_y": 835.08203125,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": 1,
 			"is_assigned_to_store": true,
-			"pos_x": 163.000030517578,
-			"pos_y": 1800.00012207031,
+			"pos_x": 161.0,
+			"pos_y": 1799.00012207031,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 255.157318115234,
-			"pos_y": 1087.49426269531,
+			"pos_x": 392.899230957031,
+			"pos_y": 408.529846191406,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 494.757904052734,
+			"pos_y": 460.914611816406,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 537.588989257813,
+			"pos_y": 1089.19189453125,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 125.449371337891,
+			"pos_y": 1037.8173828125,
 			"random_hat": -1
 		},
 		{
@@ -100,13 +121,6 @@
 			"is_assigned_to_store": true,
 			"pos_x": 168.999969482422,
 			"pos_y": 2066.0,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 145.321746826172,
-			"pos_y": 903.8623046875,
 			"random_hat": -1
 		},
 		{
@@ -119,87 +133,42 @@
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 126.610221862793,
-			"pos_y": 360.045043945313,
+			"pos_x": 447.306671142578,
+			"pos_y": 619.927978515625,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 510.364318847656,
-			"pos_y": 922.250061035156,
+			"pos_x": 312.853240966797,
+			"pos_y": 1062.77355957031,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 253.51171875,
-			"pos_y": 727.817077636719,
+			"pos_x": 518.150390625,
+			"pos_y": 758.738525390625,
 			"random_hat": -1
 		},
 		{
 			"assigned_register_index": -1,
 			"is_assigned_to_store": false,
-			"pos_x": 236.681594848633,
-			"pos_y": 832.192443847656,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 576.027099609375,
-			"pos_y": 1052.12463378906,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 452.314178466797,
-			"pos_y": 921.182922363281,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 434.113739013672,
-			"pos_y": 1090.076171875,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 577.728515625,
-			"pos_y": 395.493988037109,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 314.312194824219,
-			"pos_y": 568.111694335938,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 262.915557861328,
-			"pos_y": 922.946228027344,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 167.290191650391,
-			"pos_y": 920.330627441406,
-			"random_hat": -1
-		},
-		{
-			"assigned_register_index": -1,
-			"is_assigned_to_store": false,
-			"pos_x": 247.634185791016,
-			"pos_y": 649.971496582031,
+			"pos_x": 200.569381713867,
+			"pos_y": 1042.25256347656,
 			"random_hat": -1
 		}
 	],
-	"upgrades": {}
+	"upgrades": {
+		"appleMultiplier": 2,
+		"betterFruitCost": 320,
+		"betterFruitMultiplier": 2.5,
+		"customerSpeedCost": 320,
+		"customerSpeedMultiplier": 2.5,
+		"extraAppleCost": 1000,
+		"feedWorkersCost": 320,
+		"feedWorkersMultiplier": 2.5,
+		"timerCost": 640,
+		"timerMultiplier": 2.75
+	}
 }

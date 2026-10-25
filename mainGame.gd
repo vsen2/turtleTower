@@ -27,7 +27,7 @@ const SAVE_PATH: String = "res://savegame.json"
 	$STORE/addRegister3,
 	$STORE/addRegister4,
 ]
-@onready var store_upgrades: Control = $STORE/StoreUI # Node holding the store upgrade script
+@onready var store_upgrades: Control = $STORE # Node holding the store upgrade script
 
 var turtleCost: int = 1
 var turtleCount: int = 0
@@ -191,6 +191,8 @@ func save_game() -> void:
 		registers_unlocked.append(bool(register.unlocked))
 		
 	var _upgrades_data: Dictionary = {}
+	print(is_instance_valid(store_upgrades))
+	print(store_upgrades.has_method("get_save_data"))
 	if is_instance_valid(store_upgrades) and store_upgrades.has_method("get_save_data"):
 		_upgrades_data = store_upgrades.get_save_data()
 		
@@ -204,28 +206,26 @@ func save_game() -> void:
 		"turtles": turtles_data,
 		"upgrades": _upgrades_data
 	}
-
+	
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(data, "\t"))
 		file.close()
-
+		
 func load_game() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return
-
 	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if not file:
 		return
-
 	var json := JSON.new()
 	if json.parse(file.get_as_text()) != OK:
 		file.close()
 		return
 	file.close()
-
+	
 	var data: Dictionary = json.data
-
+	
 	# Restore upgrades and currencies (cast float to int where applicable)
 	if data.has("turtle_coins"):
 		GameManager.turtle_coins = int(data["turtle_coins"])

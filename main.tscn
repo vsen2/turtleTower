@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://clylnevohe7cm" path="res://buyRegister.gd" id="11_yaehf"]
 [ext_resource type="Texture2D" uid="uid://bh0b8jc0aq3gd" path="res://assets/upgradeButtonWhite.png" id="12_getpj"]
 [ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/CroppedWhiteTurtleButton.png" id="13_cegan"]
+[ext_resource type="Texture2D" uid="uid://vyqe1wm4urll" path="res://assets/trainTracks.png" id="13_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://bcp82eb14g1jl" path="res://assets/upgradeButtonGrey.png" id="13_ryguw"]
 [ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://assets/croppedGreyTurtleButton.png" id="14_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsp76uocxbu2v" path="res://assets/backImage (2).png" id="15_lswn8"]
@@ -47,7 +48,7 @@ position = Vector2(358, 750.00006)
 scale = Vector2(0.33174604, 0.85900265)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1554020935]
-position = Vector2(360, 58)
+position = Vector2(360, 99)
 scale = Vector2(1.522, 20.519999)
 texture = ExtResource("1_ig7tw")
 
@@ -59,7 +60,8 @@ texture = SubResource("CompressedTexture2D_cegan")
 [node name="LEVEL_1" type="Control" parent="." unique_id=1306873373]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 225.0
+offset_right = 265.0
 offset_bottom = 40.0
 script = ExtResource("3_jq2sk")
 
@@ -149,60 +151,65 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Rocks" type="Sprite2D" parent="THE MINE" unique_id=42756874]
-position = Vector2(361.00003, 2997.0002)
-scale = Vector2(0.37261903, 0.15412623)
-texture = ExtResource("4_efxa6")
-
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
 position = Vector2(158.00002, 2613)
 scale = Vector2(0.17116404, 0.1371269)
 texture = ExtResource("5_efxa6")
 
+[node name="Rocks" type="Sprite2D" parent="THE MINE" unique_id=42756874]
+visible = false
+position = Vector2(354.125, 2986.3127)
+scale = Vector2(0.37261903, 0.15412623)
+texture = ExtResource("4_efxa6")
+
 [node name="Rocks3" type="Sprite2D" parent="THE MINE" unique_id=1812265107]
-position = Vector2(361.00003, 3487.0002)
+visible = false
+position = Vector2(354.125, 3476.3127)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
 [node name="Rocks2" type="Sprite2D" parent="THE MINE" unique_id=327818512]
-position = Vector2(360, 3716.0002)
+visible = false
+position = Vector2(353.12497, 3705.3127)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
 [node name="Rocks4" type="Sprite2D" parent="THE MINE" unique_id=580728311]
-position = Vector2(359.00003, 3240)
+visible = false
+position = Vector2(352.125, 3229.3125)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
 [node name="Rocks5" type="Sprite2D" parent="THE MINE" unique_id=1475961898]
-position = Vector2(362, 2756)
+visible = false
+position = Vector2(355.12497, 2745.3125)
 scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("4_efxa6")
 
 [node name="LineNoBg" type="Sprite2D" parent="THE MINE" unique_id=966892866]
-position = Vector2(369, 2865.0002)
+position = Vector2(357, 2932)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg2" type="Sprite2D" parent="THE MINE" unique_id=1960956491]
-position = Vector2(369, 3108)
+position = Vector2(358, 3204)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg3" type="Sprite2D" parent="THE MINE" unique_id=620346352]
-position = Vector2(364, 3349)
+position = Vector2(368, 3471.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg4" type="Sprite2D" parent="THE MINE" unique_id=924993338]
-position = Vector2(371, 3588)
+position = Vector2(369, 3733.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
-[node name="LineNoBg5" type="Sprite2D" parent="THE MINE" unique_id=1582417116]
-position = Vector2(365, 3823)
-scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+[node name="TrainTracks" type="Sprite2D" parent="THE MINE" unique_id=1824153287]
+position = Vector2(366, 2764)
+scale = Vector2(0.47093242, 0.3719424)
+texture = ExtResource("13_ok6jj")
 
 [node name="STORE" type="Control" parent="." unique_id=1154920962]
 layout_mode = 3
@@ -226,7 +233,7 @@ location = NodePath("..")
 
 [node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349 node_paths=PackedStringArray("location")]
 modulate = Color(0.5294118, 0.5294118, 0.5294118, 1)
-position = Vector2(363.00003, 1860.0001)
+position = Vector2(361, 1859.0001)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("8_2cqfq")
 script = ExtResource("9_074og")

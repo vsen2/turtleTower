@@ -63,7 +63,6 @@ func _on_upgrades_store_pressed() -> void:
 
 func _on_faster_customers_pressed() -> void:
 	if GameManager.spend_coins(customerSpeedCost):
-		print("yes")
 		customerSpeedCost = customerSpeedCost*2
 		customerSpeedMultiplier += 0.25
 		GameManager.customer_speed_multiplier = customerSpeedMultiplier
@@ -93,7 +92,7 @@ func _on_timer_pressed() -> void:
 		
 func _on_extra_apples_pressed() -> void:
 	if GameManager.spend_coins(extraAppleCost):
-		extraAppleCost = extraAppleCost*extraAppleCost
+		extraAppleCost = extraAppleCost*10
 		appleMultiplier += 1
 		update_labels()
 		_request_save()
@@ -104,6 +103,7 @@ func _request_save() -> void:
 	var main_node = get_tree().current_scene
 	if main_node and main_node.has_method("save_game"):
 		main_node.save_game()
+		print("saving")
 
 # --- Save & Load helpers ---
 
@@ -113,10 +113,12 @@ func get_save_data() -> Dictionary:
 		"feedWorkersCost": feedWorkersCost,
 		"betterFruitCost": betterFruitCost,
 		"timerCost": timerCost,
+		"extraAppleCost": extraAppleCost,
 		"customerSpeedMultiplier": customerSpeedMultiplier,
 		"feedWorkersMultiplier": feedWorkersMultiplier,
 		"betterFruitMultiplier": betterFruitMultiplier,
-		"timerMultiplier": timerMultiplier
+		"timerMultiplier": timerMultiplier,
+		"appleMultiplier": appleMultiplier
 	}
 
 func load_save_data(data: Dictionary) -> void:
@@ -124,8 +126,12 @@ func load_save_data(data: Dictionary) -> void:
 	if data.has("feedWorkersCost"): feedWorkersCost = int(data["feedWorkersCost"])
 	if data.has("betterFruitCost"): betterFruitCost = int(data["betterFruitCost"])
 	if data.has("timerCost"): timerCost = int(data["timerCost"])
-
+	if data.has("extraAppleCost"): extraAppleCost = int(data["extraAppleCost"])
+	
 	if data.has("customerSpeedMultiplier"): customerSpeedMultiplier = float(data["customerSpeedMultiplier"])
 	if data.has("feedWorkersMultiplier"): feedWorkersMultiplier = float(data["feedWorkersMultiplier"])
 	if data.has("betterFruitMultiplier"): betterFruitMultiplier = float(data["betterFruitMultiplier"])
 	if data.has("timerMultiplier"): timerMultiplier = float(data["timerMultiplier"])
+	if data.has("appleMultiplier"): appleMultiplier = int(data["appleMultiplier"])
+	
+	update_labels()
