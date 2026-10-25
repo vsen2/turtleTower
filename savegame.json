@@ -1,0 +1,205 @@
+{
+	"penSpaceCost": 1,
+	"registers_unlocked": [
+		true,
+		true,
+		true,
+		true
+	],
+	"turtleCost": 28,
+	"turtleCount": 27,
+	"turtleMax": 50,
+	"turtle_coins": 290,
+	"turtles": [
+		{
+			"assigned_register_index": 0,
+			"is_assigned_to_store": true,
+			"pos_x": 161.0,
+			"pos_y": 1540.00012207031,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 159.849548339844,
+			"pos_y": 865.518493652344,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 342.055816650391,
+			"pos_y": 987.958251953125,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 386.283905029297,
+			"pos_y": 366.817565917969,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 343.192932128906,
+			"pos_y": 634.073608398438,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 458.3125,
+			"pos_y": 919.924865722656,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 199.112533569336,
+			"pos_y": 709.066345214844,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 231.543716430664,
+			"pos_y": 1078.1787109375,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 108.746871948242,
+			"pos_y": 363.278900146484,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 562.750793457031,
+			"pos_y": 623.007629394531,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": 1,
+			"is_assigned_to_store": true,
+			"pos_x": 163.000030517578,
+			"pos_y": 1800.00012207031,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 255.157318115234,
+			"pos_y": 1087.49426269531,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": 2,
+			"is_assigned_to_store": true,
+			"pos_x": 168.999969482422,
+			"pos_y": 2066.0,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 145.321746826172,
+			"pos_y": 903.8623046875,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": 3,
+			"is_assigned_to_store": true,
+			"pos_x": 163.0,
+			"pos_y": 2340.0,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 126.610221862793,
+			"pos_y": 360.045043945313,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 510.364318847656,
+			"pos_y": 922.250061035156,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 253.51171875,
+			"pos_y": 727.817077636719,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 236.681594848633,
+			"pos_y": 832.192443847656,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 576.027099609375,
+			"pos_y": 1052.12463378906,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 452.314178466797,
+			"pos_y": 921.182922363281,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 434.113739013672,
+			"pos_y": 1090.076171875,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 577.728515625,
+			"pos_y": 395.493988037109,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 314.312194824219,
+			"pos_y": 568.111694335938,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 262.915557861328,
+			"pos_y": 922.946228027344,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 167.290191650391,
+			"pos_y": 920.330627441406,
+			"random_hat": -1
+		},
+		{
+			"assigned_register_index": -1,
+			"is_assigned_to_store": false,
+			"pos_x": 247.634185791016,
+			"pos_y": 649.971496582031,
+			"random_hat": -1
+		}
+	],
+	"upgrades": {}
+}

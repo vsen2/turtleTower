@@ -1,6 +1,8 @@
 extends Sprite2D
 
 @export var customer_turtle_scene: PackedScene = preload("res://customerTurtle.tscn")
+
+@export var location = get_parent()
 @export var wait_time: float = 10.0
 
 var unlocked: bool = false
@@ -13,7 +15,7 @@ func _ready() -> void:
 	z_index = 10
 
 	customer_timer = Timer.new()
-	customer_timer.wait_time = wait_time
+	customer_timer.wait_time = wait_time/location.timerMultiplier
 	customer_timer.one_shot = false
 	customer_timer.autostart = false
 	customer_timer.timeout.connect(_on_customer_timer_timeout)
@@ -36,6 +38,8 @@ func _process(_delta: float) -> void:
 	if not (unlocked and hasWorker):
 		customer_timer.wait_time = wait_time
 		return
+		
+	customer_timer.wait_time = wait_time/location.timerMultiplier
 
 	timer_label.z_index = 13
 	timer_label.top_level = true
@@ -57,6 +61,10 @@ func spawn_customer_turtle() -> void:
 	var customer: Node2D = customer_turtle_scene.instantiate()
 	var spawn_x: float = get_viewport_rect().size.x
 	var spawn_y: float = global_position.y + 15
+	customer.speedMultiplier = location.customerSpeedMultiplier
+	customer.feedWorkersMultiplier = location.feedWorkersMultiplier
+	customer.fruitMultiplier = location.betterFruitMultiplier
+	customer.appleMultiplier = location.appleMultiplier
 	customer.global_position = Vector2(spawn_x, spawn_y)
 
 	get_parent().add_child(customer)

@@ -1,17 +1,36 @@
 extends Area2D
 
-@export var speed: float = 300.0
-@export var coins_reward: int = 10
+@export var speed: float
+@export var coins_reward: int = 4
+
+@export var speedMultiplier: float = 1.0
+@export var feedWorkersMultiplier: float = 1.0
+@export var fruitMultiplier: float = 1.0
+@export var appleMultiplier: int = 1
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var apple: Sprite2D = $Apple
+
+@export var apples: Array[Sprite2D] = []
 
 var target_x: float = 0.0
 var earned_money: bool = false
+var baseSpeed: float = 300.0
 
 func _ready() -> void:
+	speed = baseSpeed * speedMultiplier
+
 	sprite.play("default")
 	target_x = get_viewport_rect().size.x * 0.25
+	
+	for i in range(appleMultiplier):
+		var newApple := Sprite2D.new()
+		newApple.texture = load("res://assets/apple.png")
+		newApple.position = Vector2(45*(i+1), -58)
+		newApple.z_index = 10
+		newApple.scale = Vector2(0.15, 0.15)
+		add_child(newApple)
+		apples.append(newApple)
+		
 
 func _physics_process(delta: float) -> void:
 	# Walk left toward the first quarter of the screen.
@@ -22,14 +41,16 @@ func _physics_process(delta: float) -> void:
 		_on_target_reached()
 
 	if global_position.x < -100:
+		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
 func _on_target_reached() -> void:
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(4.0 / feedWorkersMultiplier).timeout
 	if not earned_money:
 		earned_money = true
-		apple.visible = false
-		spawn_coin_label(coins_reward)
+		for apple in apples:
+			apple.queue_free()
+		spawn_coin_label(coins_reward*fruitMultiplier*appleMultiplier)
 	target_x = -1000
 
 func spawn_coin_label(amount: int) -> void:

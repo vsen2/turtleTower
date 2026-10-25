@@ -1,6 +1,7 @@
 extends Node2D
 
-const SAVE_PATH: String = "user://savegame.json"
+# const SAVE_PATH: String = "res://savegame.json"
+const SAVE_PATH: String = "res://savegame.json"
 
 @export var turtle_icon: Texture2D = preload("res://assets/turtleNoBG.png")
 @export var turtle_scene: PackedScene = preload("res://turtle.tscn")
@@ -26,6 +27,7 @@ const SAVE_PATH: String = "user://savegame.json"
 	$STORE/addRegister3,
 	$STORE/addRegister4,
 ]
+@onready var store_upgrades: Control = $STORE/StoreUI # Node holding the store upgrade script
 
 var turtleCost: int = 1
 var turtleCount: int = 0
@@ -187,7 +189,11 @@ func save_game() -> void:
 	var registers_unlocked: Array = []
 	for register in registers:
 		registers_unlocked.append(bool(register.unlocked))
-
+		
+	var _upgrades_data: Dictionary = {}
+	if is_instance_valid(store_upgrades) and store_upgrades.has_method("get_save_data"):
+		_upgrades_data = store_upgrades.get_save_data()
+		
 	var data: Dictionary = {
 		"turtle_coins": GameManager.turtle_coins,
 		"turtleCost": turtleCost,
@@ -195,7 +201,8 @@ func save_game() -> void:
 		"turtleMax": turtleMax,
 		"penSpaceCost": penSpaceCost,
 		"registers_unlocked": registers_unlocked,
-		"turtles": turtles_data
+		"turtles": turtles_data,
+		"upgrades": _upgrades_data
 	}
 
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -235,6 +242,10 @@ func load_game() -> void:
 		for i in mini(unlocked_states.size(), registers.size()):
 			if bool(unlocked_states[i]):
 				_set_register_unlocked(i)
+		
+	if data.has("upgrades") and is_instance_valid(store_upgrades):
+		if store_upgrades.has_method("load_save_data"):
+			store_upgrades.load_save_data(data["upgrades"])
 
 	# Rebuild turtles. turtleCount is derived from how many actually load, so it
 	# can't drift out of sync with an old save that has no turtle data.
