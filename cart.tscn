@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://jpg8knd4fdbd"]
+
+[ext_resource type="Script" uid="uid://dhb54f11mafo2" path="res://cart.gd" id="1_esel8"]
+[ext_resource type="Texture2D" uid="uid://crb4pf204rwct" path="res://assets/cart20.png" id="1_jplhf"]
+[ext_resource type="Texture2D" uid="uid://b7aatflf8vg0m" path="res://assets/cart21.png" id="2_esel8"]
+[ext_resource type="Texture2D" uid="uid://bvxorn63o5kr3" path="res://assets/cart22.png" id="3_vrp51"]
+[ext_resource type="Texture2D" uid="uid://b0qi4yxfx4eej" path="res://assets/cart23.png" id="4_oxgae"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jplhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_esel8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vrp51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oxgae")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D" unique_id=1522626134]
+script = ExtResource("1_esel8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1038432567]
+position = Vector2(261, 208.00003)
+scale = Vector2(0.30752453, 0.3314799)
+sprite_frames = SubResource("SpriteFrames_6snss")
+frame_progress = 0.47704786

@@ -21,12 +21,6 @@ const SAVE_PATH: String = "res://savegame.json"
 	$STORE/CashRegister3,
 	$STORE/CashRegister4,
 ]
-@onready var register_buttons: Array[Node] = [
-	$STORE/addRegister1,
-	$STORE/addRegister2,
-	$STORE/addRegister3,
-	$STORE/addRegister4,
-]
 @onready var store_upgrades: Control = $STORE # Node holding the store upgrade script
 
 var turtleCost: int = 1
@@ -106,6 +100,8 @@ func _process(_delta: float) -> void:
 	turtleCostLabel.text = "Cost: %d" % turtleCost
 	turtleCountLabel.text = "%d/%d" % [turtleCount, turtleMax]
 	penSpaceLabel.text = "Cost: %d" % penSpaceCost
+	
+	save_game()
 
 func _on_changeTurtles_pressed() -> void:
 	turtleUI.visible = not turtleUI.visible
@@ -191,10 +187,10 @@ func save_game() -> void:
 		registers_unlocked.append(bool(register.unlocked))
 		
 	var _upgrades_data: Dictionary = {}
-	print(is_instance_valid(store_upgrades))
-	print(store_upgrades.has_method("get_save_data"))
 	if is_instance_valid(store_upgrades) and store_upgrades.has_method("get_save_data"):
 		_upgrades_data = store_upgrades.get_save_data()
+		
+	
 		
 	var data: Dictionary = {
 		"turtle_coins": GameManager.turtle_coins,
@@ -262,5 +258,3 @@ func load_game() -> void:
 func _set_register_unlocked(index: int) -> void:
 	registers[index].unlocked = true
 	registers[index].modulate = Color.WHITE
-	if is_instance_valid(register_buttons[index]):
-		register_buttons[index].visible = false

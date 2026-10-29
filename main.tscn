@@ -2,23 +2,24 @@
 
 [ext_resource type="Script" uid="uid://bmknanxfs4vu8" path="res://mainGame.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://assets/Background.webp" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cjs8q137dnn3f" path="res://assets/newPen3.png" id="3_come4"]
 [ext_resource type="Script" uid="uid://c1bc1afd5al2h" path="res://turtlePenFloor.gd" id="3_jq2sk"]
 [ext_resource type="Texture2D" uid="uid://8snly1qg6fkn" path="res://assets/rocks.png" id="4_efxa6"]
 [ext_resource type="Texture2D" uid="uid://b8t0t5p5iev1r" path="res://assets/THEMINEnoBG.png" id="5_efxa6"]
-[ext_resource type="Script" uid="uid://f7asyiehuoav" path="res://assets/turtleCoins.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://assets/cashRegister.png" id="8_2cqfq"]
-[ext_resource type="Script" uid="uid://b2m5mlvdo42qg" path="res://store.gd" id="8_jq2sk"]
+[ext_resource type="Script" uid="uid://b2m5mlvdo42qg" path="res://STORE.gd" id="8_jq2sk"]
 [ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://cashRegister.gd" id="9_074og"]
 [ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://assets/plusButtonWhite.png" id="9_vivmo"]
 [ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://assets/storeNoBG.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://assets/plusButtonGrey.png" id="10_2cqfq"]
-[ext_resource type="Script" uid="uid://clylnevohe7cm" path="res://buyRegister.gd" id="11_yaehf"]
+[ext_resource type="Script" uid="uid://c7dfifirs85k7" path="res://MINE.gd" id="10_facbu"]
 [ext_resource type="Texture2D" uid="uid://bh0b8jc0aq3gd" path="res://assets/upgradeButtonWhite.png" id="12_getpj"]
 [ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/CroppedWhiteTurtleButton.png" id="13_cegan"]
 [ext_resource type="Texture2D" uid="uid://vyqe1wm4urll" path="res://assets/trainTracks.png" id="13_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://bcp82eb14g1jl" path="res://assets/upgradeButtonGrey.png" id="13_ryguw"]
 [ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://assets/croppedGreyTurtleButton.png" id="14_82xsv"]
+[ext_resource type="Script" uid="uid://cx6bc568n7brl" path="res://trainTracks.gd" id="14_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://dsp76uocxbu2v" path="res://assets/backImage (2).png" id="15_lswn8"]
 [ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/buyTurtleWhite.png" id="16_82xsv"]
 [ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/BuyTurtleGrey.png" id="17_getpj"]
@@ -34,28 +35,30 @@
 [ext_resource type="Texture2D" uid="uid://7ypx1qde2uj" path="res://assets/timerGrey.png" id="25_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://d4a07son86dqf" path="res://assets/speedyTurtleWhite.png" id="25_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://bnjwv8r8p11qm" path="res://assets/speedyTurtleGrey.png" id="26_kq58d"]
+[ext_resource type="Texture2D" uid="uid://cqnxglyi6bl8y" path="res://assets/jackpotWhite.png" id="27_come4"]
+[ext_resource type="Texture2D" uid="uid://82wk4yu305vt" path="res://assets/jackpotGrey.png" id="28_h8e4i"]
 [ext_resource type="Texture2D" uid="uid://b0ae226bpkb6l" path="res://assets/moreApplesWhite.png" id="30_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://c26tfcuf3xgsb" path="res://assets/moreApplesGrey.png" id="31_ok6jj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
 load_path = "res://.godot/imported/newPen3.png-dae1b007042f6c68dde9c948977e2a0a.ctex"
 
+[sub_resource type="GDScript" id="GDScript_facbu"]
+script/source = "extends Label
+"
+
 [node name="Node2D" type="Node2D" unique_id=1208055871]
 script = ExtResource("1_0xm2m")
 
-[node name="Turtle" type="Node2D" parent="." unique_id=625131241]
-position = Vector2(358, 750.00006)
-scale = Vector2(0.33174604, 0.85900265)
-
 [node name="Background" type="Sprite2D" parent="." unique_id=1554020935]
-position = Vector2(360, 99)
+position = Vector2(360, 116)
 scale = Vector2(1.522, 20.519999)
 texture = ExtResource("1_ig7tw")
 
 [node name="TurtlePen" type="Sprite2D" parent="." unique_id=910034301]
-position = Vector2(363, 719.00006)
+position = Vector2(364.00003, 718)
 scale = Vector2(0.84944916, 0.85900265)
-texture = SubResource("CompressedTexture2D_cegan")
+texture = ExtResource("3_come4")
 
 [node name="LEVEL_1" type="Control" parent="." unique_id=1306873373]
 layout_mode = 3
@@ -150,10 +153,11 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("10_facbu")
 
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
-position = Vector2(158.00002, 2613)
-scale = Vector2(0.17116404, 0.1371269)
+position = Vector2(169, 2632.0002)
+scale = Vector2(0.18038498, 0.15711285)
 texture = ExtResource("5_efxa6")
 
 [node name="Rocks" type="Sprite2D" parent="THE MINE" unique_id=42756874]
@@ -192,24 +196,310 @@ scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg2" type="Sprite2D" parent="THE MINE" unique_id=1960956491]
-position = Vector2(358, 3204)
+position = Vector2(366, 3229.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg3" type="Sprite2D" parent="THE MINE" unique_id=620346352]
-position = Vector2(368, 3471.0002)
+position = Vector2(366, 3531)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="LineNoBg4" type="Sprite2D" parent="THE MINE" unique_id=924993338]
-position = Vector2(369, 3733.0002)
+position = Vector2(364, 3820.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
 [node name="TrainTracks" type="Sprite2D" parent="THE MINE" unique_id=1824153287]
-position = Vector2(366, 2764)
-scale = Vector2(0.47093242, 0.3719424)
+position = Vector2(350, 2836.9998)
+scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("13_ok6jj")
+script = ExtResource("14_ok6jj")
+
+[node name="TrainTracks2" type="Sprite2D" parent="THE MINE" unique_id=1131071358]
+position = Vector2(343, 3131)
+scale = Vector2(0.47093242, 0.21574041)
+texture = ExtResource("13_ok6jj")
+script = ExtResource("14_ok6jj")
+
+[node name="TrainTracks3" type="Sprite2D" parent="THE MINE" unique_id=869645848]
+position = Vector2(357, 3438)
+scale = Vector2(0.47093242, 0.21574041)
+texture = ExtResource("13_ok6jj")
+script = ExtResource("14_ok6jj")
+
+[node name="TrainTracks4" type="Sprite2D" parent="THE MINE" unique_id=969698093]
+position = Vector2(350, 3726)
+scale = Vector2(0.47093242, 0.21574041)
+texture = ExtResource("13_ok6jj")
+script = ExtResource("14_ok6jj")
+
+[node name="upgradesMine" type="TextureButton" parent="THE MINE" unique_id=1498263359]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 2601.0
+offset_right = 1566.0
+offset_bottom = 3115.331
+scale = Vector2(0.14273988, 0.16455439)
+texture_normal = ExtResource("12_getpj")
+texture_hover = ExtResource("13_ryguw")
+
+[node name="mineUI" type="Control" parent="THE MINE" unique_id=1603693312]
+visible = false
+z_index = 22
+anchors_preset = 0
+offset_left = 44.0
+offset_top = 2686.0
+offset_right = 657.0
+offset_bottom = 3720.0
+
+[node name="BackImage" type="Sprite2D" parent="THE MINE/mineUI" unique_id=2063979471]
+z_index = 20
+position = Vector2(320, 502)
+scale = Vector2(1.5503967, 1.6441398)
+texture = ExtResource("15_lswn8")
+
+[node name="Upgrades" type="Sprite2D" parent="THE MINE/mineUI" unique_id=1106351048]
+z_index = 21
+position = Vector2(162.25002, 106.125)
+scale = Vector2(0.2630435, 0.28794006)
+texture = ExtResource("24_xuqvo")
+
+[node name="fasterCustomers" type="TextureButton" parent="THE MINE/mineUI" unique_id=1896765284]
+z_index = 21
+layout_mode = 0
+offset_left = 16.788029
+offset_top = 185.74878
+offset_right = 1322.7881
+offset_bottom = 1354.7488
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("25_qsp4k")
+texture_hover = ExtResource("26_kq58d")
+
+[node name="feedWorkers" type="TextureButton" parent="THE MINE/mineUI" unique_id=336581085]
+z_index = 21
+layout_mode = 0
+offset_left = 17.250015
+offset_top = 327.125
+offset_right = 1323.25
+offset_bottom = 1496.125
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("21_htxhm")
+texture_hover = ExtResource("22_jq2sk")
+
+[node name="betterApples" type="TextureButton" parent="THE MINE/mineUI" unique_id=194562622]
+z_index = 21
+layout_mode = 0
+offset_left = 18.250015
+offset_top = 474.125
+offset_right = 1324.25
+offset_bottom = 1643.125
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("19_kq58d")
+texture_hover = ExtResource("20_seu75")
+
+[node name="timer" type="TextureButton" parent="THE MINE/mineUI" unique_id=1650587670]
+z_index = 21
+layout_mode = 0
+offset_left = 19.250015
+offset_top = 619.125
+offset_right = 1325.25
+offset_bottom = 1788.125
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("27_come4")
+texture_hover = ExtResource("28_h8e4i")
+
+[node name="extraApples" type="TextureButton" parent="THE MINE/mineUI" unique_id=933525678]
+z_index = 21
+layout_mode = 0
+offset_left = 19.250015
+offset_top = 776.125
+offset_right = 1325.25
+offset_bottom = 1945.125
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("30_0rl1p")
+texture_hover = ExtResource("31_ok6jj")
+
+[node name="cartSpeedCost" type="Label" parent="THE MINE/mineUI" unique_id=2084582507]
+z_index = 22
+layout_mode = 0
+offset_left = 176.25002
+offset_top = 197.125
+offset_right = 303.25
+offset_bottom = 278.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="cartSpeedDesc" type="Label" parent="THE MINE/mineUI" unique_id=890456557]
+z_index = 22
+layout_mode = 0
+offset_left = 178.25002
+offset_top = 232.125
+offset_right = 530.25
+offset_bottom = 271.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increases cart speed"
+
+[node name="cartSpeedValue" type="Label" parent="THE MINE/mineUI" unique_id=123786058]
+z_index = 22
+layout_mode = 0
+offset_left = 177.25002
+offset_top = 266.125
+offset_right = 529.25
+offset_bottom = 305.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="feedWorkersCost" type="Label" parent="THE MINE/mineUI" unique_id=1778059965]
+z_index = 22
+layout_mode = 0
+offset_left = 178.25002
+offset_top = 331.125
+offset_right = 305.25
+offset_bottom = 412.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="feedWorkersDesc" type="Label" parent="THE MINE/mineUI" unique_id=1811323883]
+z_index = 22
+layout_mode = 0
+offset_left = 178.25002
+offset_top = 370.125
+offset_right = 530.25
+offset_bottom = 409.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increases mining speed"
+
+[node name="feedWorkersValue" type="Label" parent="THE MINE/mineUI" unique_id=2094505442]
+z_index = 22
+layout_mode = 0
+offset_left = 180.25002
+offset_top = 406.125
+offset_right = 532.25
+offset_bottom = 445.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="betterFruitCost" type="Label" parent="THE MINE/mineUI" unique_id=1104046606]
+z_index = 22
+layout_mode = 0
+offset_left = 179.25002
+offset_top = 483.125
+offset_right = 306.25
+offset_bottom = 564.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="betterFruitDesc" type="Label" parent="THE MINE/mineUI" unique_id=1837741434]
+z_index = 22
+layout_mode = 0
+offset_left = 179.25002
+offset_top = 522.125
+offset_right = 531.25
+offset_bottom = 603.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increases amount of ore
+"
+
+[node name="betterFruitValue" type="Label" parent="THE MINE/mineUI" unique_id=765560080]
+z_index = 22
+layout_mode = 0
+offset_left = 181.25002
+offset_top = 558.125
+offset_right = 533.25
+offset_bottom = 597.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current multiplier: XXX"
+
+[node name="timerCost" type="Label" parent="THE MINE/mineUI" unique_id=1745665091]
+z_index = 22
+layout_mode = 0
+offset_left = 180.25002
+offset_top = 626.125
+offset_right = 307.25
+offset_bottom = 707.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="timerDesc" type="Label" parent="THE MINE/mineUI" unique_id=1559372416]
+z_index = 22
+layout_mode = 0
+offset_left = 180.25002
+offset_top = 665.125
+offset_right = 535.25
+offset_bottom = 704.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Increase chance of jackpot!"
+
+[node name="timerValue" type="Label" parent="THE MINE/mineUI" unique_id=1195340005]
+z_index = 22
+layout_mode = 0
+offset_left = 182.25002
+offset_top = 701.125
+offset_right = 534.25
+offset_bottom = 740.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="extraAppleCost" type="Label" parent="THE MINE/mineUI" unique_id=1072506771]
+z_index = 22
+layout_mode = 0
+offset_left = 184.25002
+offset_top = 786.125
+offset_right = 311.25
+offset_bottom = 867.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="extraAppleDesc" type="Label" parent="THE MINE/mineUI" unique_id=1455066841]
+z_index = 22
+layout_mode = 0
+offset_left = 184.25002
+offset_top = 825.125
+offset_right = 539.25
+offset_bottom = 864.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Adds another cart for extra ore"
+
+[node name="extraAppleValue" type="Label" parent="THE MINE/mineUI" unique_id=632107722]
+z_index = 22
+layout_mode = 0
+offset_left = 186.25002
+offset_top = 861.125
+offset_right = 538.25
+offset_bottom = 900.125
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="Label" type="Label" parent="THE MINE" unique_id=1229191578]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 2675.0
+offset_right = 628.0
+offset_bottom = 2742.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "UNDER CONSTRUCTION"
 
 [node name="STORE" type="Control" parent="." unique_id=1154920962]
 layout_mode = 3
@@ -279,62 +569,6 @@ texture = ExtResource("7_vivmo")
 position = Vector2(371, 2485.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
-
-[node name="addRegister1" type="TextureButton" parent="STORE" unique_id=2073438634 node_paths=PackedStringArray("targetNode", "turtleUI")]
-z_index = 11
-layout_mode = 0
-offset_left = 64.0
-offset_top = 1555.0
-offset_right = 1050.0
-offset_bottom = 2544.0
-scale = Vector2(0.09648591, 0.08774316)
-texture_normal = ExtResource("9_vivmo")
-texture_hover = ExtResource("10_2cqfq")
-script = ExtResource("11_yaehf")
-targetNode = NodePath("../CashRegister1")
-turtleUI = NodePath("../../CanvasLayer/TurtleUI")
-
-[node name="addRegister2" type="TextureButton" parent="STORE" unique_id=1546708164 node_paths=PackedStringArray("targetNode", "turtleUI")]
-z_index = 11
-layout_mode = 0
-offset_left = 55.0
-offset_top = 1815.9999
-offset_right = 1041.0
-offset_bottom = 2805.0
-scale = Vector2(0.09648591, 0.08774316)
-texture_normal = ExtResource("9_vivmo")
-texture_hover = ExtResource("10_2cqfq")
-script = ExtResource("11_yaehf")
-targetNode = NodePath("../CashRegister2")
-turtleUI = NodePath("../../CanvasLayer/TurtleUI")
-
-[node name="addRegister3" type="TextureButton" parent="STORE" unique_id=277414394 node_paths=PackedStringArray("targetNode", "turtleUI")]
-z_index = 11
-layout_mode = 0
-offset_left = 59.999996
-offset_top = 2082.0
-offset_right = 1046.0
-offset_bottom = 3071.0
-scale = Vector2(0.09648591, 0.08774316)
-texture_normal = ExtResource("9_vivmo")
-texture_hover = ExtResource("10_2cqfq")
-script = ExtResource("11_yaehf")
-targetNode = NodePath("../CashRegister3")
-turtleUI = NodePath("../../CanvasLayer/TurtleUI")
-
-[node name="addRegister4" type="TextureButton" parent="STORE" unique_id=23590649 node_paths=PackedStringArray("targetNode", "turtleUI")]
-z_index = 11
-layout_mode = 0
-offset_left = 56.0
-offset_top = 2355.0
-offset_right = 1042.0
-offset_bottom = 3344.0
-scale = Vector2(0.09648591, 0.08774316)
-texture_normal = ExtResource("9_vivmo")
-texture_hover = ExtResource("10_2cqfq")
-script = ExtResource("11_yaehf")
-targetNode = NodePath("../CashRegister4")
-turtleUI = NodePath("../../CanvasLayer/TurtleUI")
 
 [node name="upgradesStore" type="TextureButton" parent="STORE" unique_id=1873753868]
 layout_mode = 0
@@ -620,7 +854,7 @@ offset_right = 709.0
 offset_bottom = 75.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "TURTLE COINS: XXX"
-script = ExtResource("6_7mycd")
+script = SubResource("GDScript_facbu")
 
 [node name="TowerUI" type="Control" parent="CanvasLayer" unique_id=1170629106]
 layout_mode = 3
@@ -670,6 +904,7 @@ theme_override_font_sizes/font_size = 200
 text = "Cost: XXX"
 
 [node name="TurtleUI" type="Control" parent="CanvasLayer" unique_id=815006092]
+unique_name_in_owner = true
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -710,6 +945,7 @@ columns = 5
 position = Vector2(361, 638)
 
 [connection signal="pressed" from="LEVEL_1/addNewPen2/addPenButton" to="LEVEL_1" method="_on_add_pen_button_pressed"]
+[connection signal="pressed" from="THE MINE/upgradesMine" to="THE MINE" method="_on_upgrades_mine_pressed"]
 [connection signal="pressed" from="STORE/upgradesStore" to="STORE" method="_on_upgrades_store_pressed"]
 [connection signal="pressed" from="STORE/StoreUI/fasterCustomers" to="STORE" method="_on_faster_customers_pressed"]
 [connection signal="pressed" from="STORE/StoreUI/feedWorkers" to="STORE" method="_on_feed_workers_pressed"]
