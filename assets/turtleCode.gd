@@ -11,7 +11,8 @@ var current_job: String = "Idle"
 var assigned_station: Node2D = null
 var status_label: Label = null
 var random_hat: int = -1
-var assigned_register_index: int = -1
+var assigned_floor_id: String = ""
+var assigned_spot_index: int = -1
 
 @onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
 var turtleHats: Array[Texture2D] = []
@@ -24,21 +25,16 @@ var turtle_radius: float = 16.0
 
 func _load_hat_textures() -> void:
 	turtleHats.clear()
-	# Search both root and assets folder
 	_scan_dir_for_hats("res://")
 	_scan_dir_for_hats("res://assets/")
-	print("Successfully loaded %d hats." % turtleHats.size())
-	
+
 func _scan_dir_for_hats(path: String) -> void:
 	var dir := DirAccess.open(path)
 	if not dir:
 		return
-		
 	dir.list_dir_begin()
 	var file_name: String = dir.get_next()
-	
 	while file_name != "":
-		# Look for files starting with 'hat' and ending with .png (ignores .import files)
 		if not dir.current_is_dir() and file_name.begins_with("hat") and file_name.ends_with(".png"):
 			var full_path: String = path + file_name
 			var tex: Texture2D = load(full_path) as Texture2D
@@ -46,9 +42,10 @@ func _scan_dir_for_hats(path: String) -> void:
 				turtleHats.append(tex)
 		file_name = dir.get_next()
 	dir.list_dir_end()
-	
+
 func _ready() -> void:
 	add_to_group("turtles")
+	_load_hat_textures()
 	# Only pick a random hat if one wasn't already set (e.g. when restoring a save).
 	if turtleHats.size() > 0:
 		if random_hat < 0 or random_hat >= turtleHats.size():
@@ -56,7 +53,7 @@ func _ready() -> void:
 		turtleHat.texture = turtleHats[random_hat]
 		turtleHat.visible = true
 	else:
-		turtleHat.visible = false # Hide hat sprite if no textures loaded
+		turtleHat.visible = false
 	_pick_random_direction()
 	input_event.connect(_on_input_event)
 	_calculate_turtle_size()
@@ -64,7 +61,6 @@ func _ready() -> void:
 	z_index = 5
 
 func _calculate_turtle_size() -> void:
-	# Prefer the collision shape (most accurate), fall back to the sprite.
 	var shape: Shape2D = collision_shape.shape
 	if shape is CircleShape2D:
 		turtle_radius = shape.radius * collision_shape.global_scale.x
@@ -72,53 +68,39 @@ func _calculate_turtle_size() -> void:
 	elif shape is RectangleShape2D:
 		turtle_radius = max(shape.size.x, shape.size.y) * 0.5 * collision_shape.global_scale.x
 		return
-
 	if sprite.texture:
 		var scaled_size: Vector2 = sprite.texture.get_size() * sprite.global_scale
-		# Use the larger dimension so corners don't poke out when the turtle rotates.
 		turtle_radius = max(scaled_size.x, scaled_size.y) / 2.0
 
 func _process(delta: float) -> void:
 	if is_assigned_to_store or bounds == Rect2():
 		return
-
-	# Inset the pen bounds by the turtle radius.
 	var min_x: float = bounds.position.x + turtle_radius
 	var max_x: float = bounds.end.x - turtle_radius
 	var min_y: float = bounds.position.y + turtle_radius
 	var max_y: float = bounds.end.y - turtle_radius
-
-	# Avoid inverted bounds if the pen is smaller than the turtle.
 	if min_x > max_x:
 		min_x = bounds.get_center().x
 		max_x = min_x
 	if min_y > max_y:
 		min_y = bounds.get_center().y
 		max_y = min_y
-
 	if is_dragging:
 		global_position = get_global_mouse_position() + drag_offset
 		global_position.x = clamp(global_position.x, min_x, max_x)
 		global_position.y = clamp(global_position.y, min_y, max_y)
 		return
-
 	global_position += direction * speed * delta
-
-	# Bounce off the pen walls.
 	if global_position.x <= min_x:
 		direction.x = abs(direction.x)
 	elif global_position.x >= max_x:
 		direction.x = -abs(direction.x)
-
 	if global_position.y <= min_y:
 		direction.y = abs(direction.y)
 	elif global_position.y >= max_y:
 		direction.y = -abs(direction.y)
-
 	global_position.x = clamp(global_position.x, min_x, max_x)
 	global_position.y = clamp(global_position.y, min_y, max_y)
-
-	# Face the direction of travel.
 	if direction.x > 0:
 		sprite.flip_h = true
 		turtleHat.flip_h = true
@@ -128,32 +110,31 @@ func _process(delta: float) -> void:
 		turtleHat.flip_h = false
 		turtleHat.global_position.x = sprite.global_position.x - 59
 
-func send_to_station(target_pos: Vector2, register_number: int = 1, register_node: Node2D = null) -> void:
+func send_to_station(target_pos: Vector2, floor_id: String, spot_index: int, spot_node: Node2D = null) -> void:
 	if is_instance_valid(assigned_station):
 		assigned_station.hasWorker = false
 	sprite.flip_h = false
 	turtleHat.flip_h = false
 	turtleHat.global_position.x = sprite.global_position.x - 59
-	current_job = "Register %d" % register_number
-	assigned_station = register_node
-	assigned_register_index = register_number - 1
+	assigned_station = spot_node
+	assigned_floor_id = floor_id
+	assigned_spot_index = spot_index
 	is_assigned_to_store = true
+	current_job = "%s #%d" % [floor_id.capitalize(), spot_index + 1]
 	global_position = target_pos
-
 	if status_label:
-		status_label.text = "Register %d" % register_number
+		status_label.text = current_job
 
 func return_to_pen(new_bounds: Rect2) -> void:
 	if is_instance_valid(assigned_station):
 		assigned_station.hasWorker = false
-
 	current_job = "Idle"
 	assigned_station = null
-	assigned_register_index = -1
+	assigned_floor_id = ""
+	assigned_spot_index = -1
 	is_assigned_to_store = false
 	bounds = new_bounds
 	_pick_random_direction()
-
 	if status_label:
 		status_label.text = "Idle"
 
@@ -177,5 +158,6 @@ func save_data() -> Dictionary:
 		"pos_y": global_position.y,
 		"random_hat": random_hat,
 		"is_assigned_to_store": is_assigned_to_store,
-		"assigned_register_index": assigned_register_index
+		"assigned_floor_id": assigned_floor_id,
+		"assigned_spot_index": assigned_spot_index
 	}

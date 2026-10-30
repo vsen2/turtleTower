@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var cart: PackedScene = preload("res://cart.tscn")
-@onready var turtleUI: Control = %TurtleUI
+@export var spot_id: String = ""
 
 const BUTTON_NORMAL_TEXTURE = preload("res://assets/plusButtonWhite.png")
 const BUTTON_HOVER_TEXTURE = preload("res://assets/plusButtonGrey.png")
@@ -16,45 +16,41 @@ var hasCart: bool = false
 var unlock_button: TextureButton
 
 func _ready() -> void:
+	add_to_group("job_spots")
 	z_index = 10
-	create_unlock_button()
-	
+	if not unlocked:
+		create_unlock_button()
 
 func _process(_delta: float) -> void:
-	# Only run the customer timer while this register is unlocked and staffed.
+	if not hasWorker:
+		return
 	if hasCart:
 		return
-	else:
-		spawn_new_cart()
-	
-		
+	spawn_new_cart()
+
 func create_unlock_button() -> void:
 	unlock_button = TextureButton.new()
 	unlock_button.texture_normal = BUTTON_NORMAL_TEXTURE
 	unlock_button.texture_hover = BUTTON_HOVER_TEXTURE
 	unlock_button.z_index = 19
-	
 	unlock_button.top_level = true
-	
-	# Allow custom sizing
 	unlock_button.ignore_texture_size = true
 	unlock_button.stretch_mode = TextureButton.STRETCH_SCALE
 	unlock_button.custom_minimum_size = Vector2(100, 100)
 	unlock_button.size = Vector2(100, 100)
-	
-	# Add to tree BEFORE setting global coordinates
 	add_child(unlock_button)
-	
-	# Set exact global position
 	unlock_button.global_position = global_position - Vector2(310, 50)
-	unlock_button.pressed.connect(_on_unlock_button_pressed)
+	unlock_button.pressed.connect(_on_spot_plus_pressed)
 
-func _on_unlock_button_pressed() -> void:
+func _on_spot_plus_pressed() -> void:
 	unlocked = true
-	turtleUI.visible = true
 	modulate = Color.WHITE
 	if is_instance_valid(unlock_button):
 		unlock_button.queue_free()
+		unlock_button = null
+	var main: Node = get_tree().current_scene
+	if main and main.has_method("begin_spot_assignment"):
+		main.begin_spot_assignment(self)
 
 func spawn_new_cart() -> void:
 	if not cart:
@@ -63,11 +59,20 @@ func spawn_new_cart() -> void:
 	var spawn_x: float = get_viewport_rect().size.x
 	var spawn_y: float = global_position.y + 15
 	newCart.top_level = true
-	newCart.scale = Vector2(0.4,0.4)
-	#newCart.speedMultiplier = location.cartSpeedMultiplier
-	#newCart.feedWorkersMultiplier = location.feedWorkersMultiplier
-	#newCart.fruitMultiplier = location.betterFruitMultiplier
-	#newCart.appleMultiplier = location.appleMultiplier
+	newCart.scale = Vector2(0.4, 0.4)
 	newCart.global_position = Vector2(spawn_x, spawn_y)
-
 	add_child(newCart)
+
+func get_spot_save_data() -> Dictionary:
+	return {"spot_id": spot_id, "unlocked": unlocked, "has_worker": hasWorker}
+
+func load_spot_save_data(data: Dictionary) -> void:
+	unlocked = bool(data.get("unlocked", false))
+	hasWorker = bool(data.get("has_worker", false))
+	if unlocked:
+		modulate = Color.WHITE
+		if is_instance_valid(unlock_button):
+			unlock_button.queue_free()
+			unlock_button = null
+	elif not is_instance_valid(unlock_button):
+		create_unlock_button()
