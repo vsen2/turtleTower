@@ -18,22 +18,20 @@ var unlock_button: TextureButton
 func _ready() -> void:
 	z_index = 10
 	create_unlock_button()
+	
 
 func _process(_delta: float) -> void:
 	# Only run the customer timer while this register is unlocked and staffed.
-	return
 	if hasCart:
 		return
-		print("hasCart")
 	else:
-		print("new cart")
 		spawn_new_cart()
+	
 		
 func create_unlock_button() -> void:
 	unlock_button = TextureButton.new()
 	unlock_button.texture_normal = BUTTON_NORMAL_TEXTURE
-	unlock_button.texture_hover = BUTTON_HOVER_TEXTURE       # Changes texture on hover
-	unlock_button.texture_pressed = BUTTON_HOVER_TEXTURE     # Optional: keep texture when clicked
+	unlock_button.texture_hover = BUTTON_HOVER_TEXTURE
 	unlock_button.z_index = 19
 	
 	unlock_button.top_level = true
@@ -49,7 +47,6 @@ func create_unlock_button() -> void:
 	
 	# Set exact global position
 	unlock_button.global_position = global_position - Vector2(310, 50)
-	
 	unlock_button.pressed.connect(_on_unlock_button_pressed)
 
 func _on_unlock_button_pressed() -> void:
@@ -62,10 +59,11 @@ func _on_unlock_button_pressed() -> void:
 func spawn_new_cart() -> void:
 	if not cart:
 		return
-	print("cart!")
 	var newCart: Node2D = cart.instantiate()
 	var spawn_x: float = get_viewport_rect().size.x
 	var spawn_y: float = global_position.y + 15
+	newCart.top_level = true
+	newCart.scale = Vector2(0.4,0.4)
 	#newCart.speedMultiplier = location.cartSpeedMultiplier
 	#newCart.feedWorkersMultiplier = location.feedWorkersMultiplier
 	#newCart.fruitMultiplier = location.betterFruitMultiplier

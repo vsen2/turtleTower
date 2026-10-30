@@ -2,12 +2,45 @@
 
 [ext_resource type="Script" uid="uid://dhb54f11mafo2" path="res://cart.gd" id="1_esel8"]
 [ext_resource type="Texture2D" uid="uid://crb4pf204rwct" path="res://assets/cart20.png" id="1_jplhf"]
+[ext_resource type="Texture2D" uid="uid://s8oko58l5jr6" path="res://assets/cartEmpty1.png" id="2_73stm"]
 [ext_resource type="Texture2D" uid="uid://b7aatflf8vg0m" path="res://assets/cart21.png" id="2_esel8"]
+[ext_resource type="Texture2D" uid="uid://cljfc3q06q5kb" path="res://assets/cartEmpty2.png" id="3_u6efw"]
 [ext_resource type="Texture2D" uid="uid://bvxorn63o5kr3" path="res://assets/cart22.png" id="3_vrp51"]
 [ext_resource type="Texture2D" uid="uid://b0qi4yxfx4eej" path="res://assets/cart23.png" id="4_oxgae"]
+[ext_resource type="Texture2D" uid="uid://dehyguhek5331" path="res://assets/cartEmpty3.png" id="4_rsqm5"]
+[ext_resource type="Texture2D" uid="uid://cj0qa2umg7p2e" path="res://assets/fallingOre1.png" id="9_rsqm5"]
+[ext_resource type="Texture2D" uid="uid://b4cnlspsfcs4a" path="res://assets/fallingOre2.png" id="10_vr010"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_73stm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u6efw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rsqm5")
+}],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_73stm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u6efw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rsqm5")
+}],
+"loop": 1,
+"name": &"fill",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_jplhf")
@@ -22,15 +55,39 @@ animations = [{
 "texture": ExtResource("4_oxgae")
 }],
 "loop": 1,
+"name": &"full",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vr010"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_rsqm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vr010")
+}],
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
 [node name="Area2D" type="Area2D" unique_id=1522626134]
+position = Vector2(65, 33)
 script = ExtResource("1_esel8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1038432567]
-position = Vector2(261, 208.00003)
+z_index = 19
+position = Vector2(0, 2.0000153)
 scale = Vector2(0.30752453, 0.3314799)
 sprite_frames = SubResource("SpriteFrames_6snss")
-frame_progress = 0.47704786
+animation = &"fill"
+
+[node name="fallingOre" type="AnimatedSprite2D" parent="." unique_id=783214334]
+visible = false
+z_index = 19
+position = Vector2(-16, -272)
+scale = Vector2(0.29171208, 0.3085971)
+sprite_frames = SubResource("SpriteFrames_vr010")
+frame_progress = 0.81359875

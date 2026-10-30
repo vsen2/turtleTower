@@ -22,11 +22,15 @@
 [ext_resource type="Script" uid="uid://cx6bc568n7brl" path="res://trainTracks.gd" id="14_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://dsp76uocxbu2v" path="res://assets/backImage (2).png" id="15_lswn8"]
 [ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/buyTurtleWhite.png" id="16_82xsv"]
+[ext_resource type="Texture2D" uid="uid://dryjp60s56dq" path="res://assets/rock1.png" id="17_d2t1y"]
 [ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/BuyTurtleGrey.png" id="17_getpj"]
 [ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://assets/upgradePenWhite.png" id="18_getpj"]
+[ext_resource type="Texture2D" uid="uid://b2jy34fyrd45w" path="res://assets/rock2.png" id="18_gngh3"]
+[ext_resource type="Texture2D" uid="uid://dt22hjwkxwc5x" path="res://assets/rock4.png" id="19_0n3wm"]
 [ext_resource type="Texture2D" uid="uid://b4afpafq5udlr" path="res://assets/turtleBase.png" id="19_cegan"]
 [ext_resource type="Texture2D" uid="uid://b8onj4rhd0mia" path="res://assets/betterApplesWhite.png" id="19_kq58d"]
 [ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://assets/upgradePenGrey.png" id="19_ryguw"]
+[ext_resource type="Texture2D" uid="uid://bd4bkjlglpm3r" path="res://assets/rock3.png" id="20_qnost"]
 [ext_resource type="Texture2D" uid="uid://7vxplco8ch6u" path="res://assets/betterApplesGrey.png" id="20_seu75"]
 [ext_resource type="Texture2D" uid="uid://bxhr842gb1oe0" path="res://assets/feedWorkerWhite.png" id="21_htxhm"]
 [ext_resource type="Texture2D" uid="uid://c357puwdbyomg" path="res://assets/feedWorkerGrey.png" id="22_jq2sk"]
@@ -42,6 +46,34 @@
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
 load_path = "res://.godot/imported/newPen3.png-dae1b007042f6c68dde9c948977e2a0a.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_d2t1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gngh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0n3wm")
+}, {
+"duration": 2.0,
+"texture": ExtResource("20_qnost")
+}],
+"loop": 1,
+"name": &"mining",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_d2t1y")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="GDScript" id="GDScript_facbu"]
 script/source = "extends Label
@@ -233,6 +265,12 @@ position = Vector2(350, 3726)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("13_ok6jj")
 script = ExtResource("14_ok6jj")
+
+[node name="rock1" type="AnimatedSprite2D" parent="THE MINE" unique_id=201378433]
+position = Vector2(348, 2819)
+scale = Vector2(0.1088379, 0.11580979)
+sprite_frames = SubResource("SpriteFrames_6snss")
+animation = &"new_animation"
 
 [node name="upgradesMine" type="TextureButton" parent="THE MINE" unique_id=1498263359]
 layout_mode = 0

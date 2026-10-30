@@ -18,7 +18,8 @@ var unlock_button: TextureButton
 
 func _ready() -> void:
 	z_index = 10
-	create_unlock_button()
+	if not hasWorker:
+		create_unlock_button()
 		
 	customer_timer = Timer.new()
 	customer_timer.wait_time = wait_time/location.timerMultiplier

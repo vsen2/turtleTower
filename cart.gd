@@ -11,37 +11,48 @@ extends Area2D
 @export var cartMultiplier: int = 1
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var fallingOre: AnimatedSprite2D = $fallingOre
 
 @export var gems: Array[Sprite2D] = []
 
 var target_x: float = 0.0
 var earned_money: bool = false
 var baseSpeed: float = 300.0
+var fallingOreSpeed: float = 0
+
+@onready var parent: Sprite2D
 
 func _ready() -> void:
 	speed = baseSpeed * speedMultiplier
-
-	sprite.play("default")
-	target_x = get_viewport_rect().size.x * 0.25
+	sprite.play("empty")
+	target_x = get_viewport_rect().size.x * 0.5
+	
+	parent = get_parent()
+	parent.hasCart = true
 	
 func _physics_process(delta: float) -> void:
 	# Walk left toward the first quarter of the screen.
 	global_position.x -= speed * delta
+	fallingOre.global_position.y += fallingOreSpeed
 
 	if global_position.x <= target_x:
 		global_position.x = target_x
 		_on_target_reached()
 
-	if global_position.x < -100:
+	if global_position.x < -200:
 		await get_tree().create_timer(1.0).timeout
+		parent.hasCart = false
 		queue_free()
 
 func _on_target_reached() -> void:
-	await get_tree().create_timer(4.0 / feedWorkersMultiplier).timeout
-	if not earned_money:
+	fallingOreSpeed = 5
+	fallingOre.visible = true
+	if fallingOre.global_position.y > sprite.global_position.y - 30 and not earned_money:
+		fallingOre.visible = false
+		sprite.play("full")
 		earned_money = true
 		spawn_coin_label(coins_reward*oreMultiplier*gemMultiplier*cartMultiplier)
-	target_x = -1000
+		target_x = -1000
 
 func spawn_coin_label(amount: int) -> void:
 	var label: Label = Label.new()
