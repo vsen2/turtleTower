@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b51f6by0bwcna" path="res://assets/cart3.png" id="6_b7drp"]
 [ext_resource type="Texture2D" uid="uid://cj0qa2umg7p2e" path="res://assets/fallingOre1.png" id="7_jxs78"]
 [ext_resource type="Texture2D" uid="uid://b4cnlspsfcs4a" path="res://assets/fallingOre2.png" id="8_k44i6"]
+[ext_resource type="Texture2D" uid="uid://btof067j3jqkl" path="res://assets/seaTurtle2.png" id="9_cvery"]
+[ext_resource type="Texture2D" uid="uid://cc6pmh1carobw" path="res://assets/seaTurtle1.png" id="10_0v2ev"]
+[ext_resource type="Texture2D" uid="uid://clu41nolnpto3" path="res://assets/seaTurtle3.png" id="11_dey1l"]
+[ext_resource type="Texture2D" uid="uid://c6mjd7xl8ldjg" path="res://assets/seaTurtle4.png" id="12_b7drp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
 animations = [{
@@ -60,6 +64,26 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_fih1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_cvery")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0v2ev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dey1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b7drp")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 3.0
+}]
+
 [node name="Node2D" type="Node2D" unique_id=1257841167]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1224637940]
@@ -87,3 +111,9 @@ position = Vector2(4223, -955)
 sprite_frames = SubResource("SpriteFrames_dwrc3")
 animation = &"new_animation"
 frame_progress = 0.6860476
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="." unique_id=981103934]
+position = Vector2(1838, 1034)
+sprite_frames = SubResource("SpriteFrames_fih1l")
+animation = &"new_animation"
+frame_progress = 0.85813457

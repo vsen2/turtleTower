@@ -91,6 +91,7 @@ func spawn_customer_turtle() -> void:
 	var customer: Node2D = customer_turtle_scene.instantiate()
 	var spawn_x: float = get_viewport_rect().size.x
 	var spawn_y: float = global_position.y + 15
+	customer.speedMultiplier = get_parent().customerSpeedMultiplier
 	customer.global_position = Vector2(spawn_x, spawn_y)
 	get_parent().add_child(customer)
 

@@ -16,10 +16,10 @@ scale = Vector2(1.5840001, 2.7079997)
 texture = ExtResource("1_67p1w")
 
 [node name="Button" type="TextureButton" parent="." unique_id=1033818820]
-offset_left = 134.99998
-offset_top = 505.0
-offset_right = 988.0
-offset_bottom = 954.0
+offset_left = 134.0
+offset_top = 503.00003
+offset_right = 987.0
+offset_bottom = 952.0
 scale = Vector2(0.5344439, 0.5736455)
 texture_normal = ExtResource("2_k8oh1")
 texture_hover = ExtResource("3_8v67e")

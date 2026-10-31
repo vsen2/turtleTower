@@ -4,15 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://assets/Background.webp" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cjs8q137dnn3f" path="res://assets/newPen3.png" id="3_come4"]
 [ext_resource type="Script" uid="uid://c1bc1afd5al2h" path="res://turtlePenFloor.gd" id="3_jq2sk"]
+[ext_resource type="Script" uid="uid://bomlan7l2ae6u" path="res://theHatMachine.gd" id="4_abqjc"]
 [ext_resource type="Texture2D" uid="uid://8snly1qg6fkn" path="res://assets/rocks.png" id="4_efxa6"]
+[ext_resource type="Texture2D" uid="uid://c7qtmxrur1ixk" path="res://assets/hatMachineText.png" id="4_hrvbo"]
 [ext_resource type="Texture2D" uid="uid://b8t0t5p5iev1r" path="res://assets/THEMINEnoBG.png" id="5_efxa6"]
+[ext_resource type="Texture2D" uid="uid://nx1pvje7idgt" path="res://assets/hatMachineText2.png" id="5_uypp3"]
+[ext_resource type="Texture2D" uid="uid://dvawbeb512ub3" path="res://assets/hatMachine.png" id="6_blkrb"]
+[ext_resource type="Texture2D" uid="uid://dlwh0utkxpp6t" path="res://assets/hatMachineSpinner.png" id="7_abqjc"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://assets/cashRegister.png" id="8_2cqfq"]
 [ext_resource type="Script" uid="uid://b2m5mlvdo42qg" path="res://STORE.gd" id="8_jq2sk"]
+[ext_resource type="Texture2D" uid="uid://46tntgin6s8i" path="res://assets/hatMachineBall.png" id="9_6iyjs"]
 [ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://cashRegister.gd" id="9_074og"]
 [ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://assets/plusButtonWhite.png" id="9_vivmo"]
 [ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://assets/storeNoBG.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://assets/plusButtonGrey.png" id="10_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://jx1wykui2por" path="res://assets/hatMachinePrizeBall.png" id="10_4w656"]
 [ext_resource type="Script" uid="uid://c7dfifirs85k7" path="res://MINE.gd" id="10_facbu"]
 [ext_resource type="Texture2D" uid="uid://bh0b8jc0aq3gd" path="res://assets/upgradeButtonWhite.png" id="12_getpj"]
 [ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/CroppedWhiteTurtleButton.png" id="13_cegan"]
@@ -33,7 +40,10 @@
 [ext_resource type="Texture2D" uid="uid://bd4bkjlglpm3r" path="res://assets/rock3.png" id="20_qnost"]
 [ext_resource type="Texture2D" uid="uid://7vxplco8ch6u" path="res://assets/betterApplesGrey.png" id="20_seu75"]
 [ext_resource type="Texture2D" uid="uid://bxhr842gb1oe0" path="res://assets/feedWorkerWhite.png" id="21_htxhm"]
+[ext_resource type="Texture2D" uid="uid://cfluikwes0fpe" path="res://assets/pickaxe1.png" id="21_qnost"]
 [ext_resource type="Texture2D" uid="uid://c357puwdbyomg" path="res://assets/feedWorkerGrey.png" id="22_jq2sk"]
+[ext_resource type="Texture2D" uid="uid://dop4uaie1qgbp" path="res://assets/pickaxe2.png" id="22_wnkbs"]
+[ext_resource type="Texture2D" uid="uid://dq742xpeqyiwr" path="res://assets/pickaxe3.png" id="23_f6a44"]
 [ext_resource type="Texture2D" uid="uid://dade68shqm432" path="res://assets/timerWhite.png" id="24_4k2k6"]
 [ext_resource type="Texture2D" uid="uid://bkyy3ynlsnh3q" path="res://assets/UPGRADES.png" id="24_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://7ypx1qde2uj" path="res://assets/timerGrey.png" id="25_0rl1p"]
@@ -59,20 +69,40 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_0n3wm")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("20_qnost")
 }],
 "loop": 1,
 "name": &"mining",
-"speed": 2.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("17_d2t1y")
 }],
 "loop": 1,
-"name": &"new_animation",
+"name": &"notMining",
 "speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8oh1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_qnost")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_wnkbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_f6a44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_wnkbs")
+}],
+"loop": 1,
+"name": &"DEFAULT",
+"speed": 4.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_facbu"]
@@ -83,7 +113,7 @@ script/source = "extends Label
 script = ExtResource("1_0xm2m")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1554020935]
-position = Vector2(360, 116)
+position = Vector2(363.5, 21.99952)
 scale = Vector2(1.522, 20.519999)
 texture = ExtResource("1_ig7tw")
 
@@ -91,6 +121,92 @@ texture = ExtResource("1_ig7tw")
 position = Vector2(364.00003, 718)
 scale = Vector2(0.84944916, 0.85900265)
 texture = ExtResource("3_come4")
+
+[node name="THE HAT MACHINE" type="Control" parent="." unique_id=2083350201]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_abqjc")
+
+[node name="the hat" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1841397177]
+position = Vector2(184.25, -1146.2505)
+scale = Vector2(0.66627634, 0.6450382)
+texture = ExtResource("4_hrvbo")
+
+[node name="machine" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1494614255]
+position = Vector2(207.50002, -1087.0005)
+scale = Vector2(0.74126637, 0.5625001)
+texture = ExtResource("5_uypp3")
+
+[node name="HatMachine" type="Sprite2D" parent="THE HAT MACHINE" unique_id=656691218]
+position = Vector2(371, -560)
+scale = Vector2(0.86486477, 0.83037376)
+texture = ExtResource("6_blkrb")
+
+[node name="depth" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1470020017]
+position = Vector2(396.00006, -234.99998)
+scale = Vector2(0.07936508, 0.28640777)
+texture = ExtResource("7_vivmo")
+
+[node name="HatMachineBall" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1186832026]
+position = Vector2(353.00003, -573)
+scale = Vector2(0.9076433, 0.8766234)
+texture = ExtResource("9_6iyjs")
+
+[node name="HatMachineBall2" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1292962474]
+position = Vector2(490, -595)
+scale = Vector2(0.8248408, 0.83766234)
+texture = ExtResource("9_6iyjs")
+
+[node name="HatMachineBall3" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1959757875]
+position = Vector2(227.00002, -627)
+scale = Vector2(0.8248408, 0.83766234)
+texture = ExtResource("9_6iyjs")
+
+[node name="HatMachineBall4" type="Sprite2D" parent="THE HAT MACHINE" unique_id=604212880]
+position = Vector2(420, -706)
+scale = Vector2(0.8248408, 0.83766234)
+texture = ExtResource("9_6iyjs")
+
+[node name="HatMachineBall5" type="Sprite2D" parent="THE HAT MACHINE" unique_id=501132301]
+position = Vector2(549, -707)
+scale = Vector2(0.8248408, 0.83766234)
+texture = ExtResource("9_6iyjs")
+
+[node name="HatMachineBall6" type="Sprite2D" parent="THE HAT MACHINE" unique_id=92920792]
+position = Vector2(182.00002, -752)
+scale = Vector2(0.8248408, 0.83766234)
+texture = ExtResource("9_6iyjs")
+
+[node name="HatMachineBall7" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1378654942]
+position = Vector2(306, -764)
+scale = Vector2(0.8051493, 0.7988906)
+texture = ExtResource("9_6iyjs")
+
+[node name="HatMachinePrizeBall" type="TextureButton" parent="THE HAT MACHINE" unique_id=719491778]
+visible = false
+layout_mode = 0
+offset_left = 318.0
+offset_top = -330.0
+offset_right = 604.0
+offset_bottom = -49.0
+scale = Vector2(0.51398605, 0.48131672)
+texture_normal = ExtResource("10_4w656")
+
+[node name="HatPrize" type="Sprite2D" parent="THE HAT MACHINE/HatMachinePrizeBall" unique_id=1886209667]
+position = Vector2(136.19055, 147.51202)
+scale = Vector2(0.99999994, 0.9999999)
+
+[node name="spinner" type="TextureButton" parent="THE HAT MACHINE" unique_id=1990963365]
+layout_mode = 0
+offset_left = 308.0
+offset_top = -497.00003
+offset_right = 463.0
+offset_bottom = -343.00003
+scale = Vector2(0.90173924, 0.91428596)
+pivot_offset = Vector2(77, 77)
+texture_normal = ExtResource("7_abqjc")
 
 [node name="LEVEL_1" type="Control" parent="." unique_id=1306873373]
 layout_mode = 3
@@ -108,8 +224,10 @@ texture = SubResource("CompressedTexture2D_cegan")
 
 [node name="addNewPen2" type="Control" parent="LEVEL_1" unique_id=1975624727]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -218.0
+offset_top = -1402.0
+offset_right = -178.0
+offset_bottom = -1362.0
 
 [node name="addPenButton" type="TextureButton" parent="LEVEL_1/addNewPen2" unique_id=1934710609]
 z_index = 11
@@ -188,7 +306,7 @@ offset_bottom = 40.0
 script = ExtResource("10_facbu")
 
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
-position = Vector2(169, 2632.0002)
+position = Vector2(186.99998, 2627.0002)
 scale = Vector2(0.18038498, 0.15711285)
 texture = ExtResource("5_efxa6")
 
@@ -242,11 +360,28 @@ position = Vector2(364, 3820.0002)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("7_vivmo")
 
-[node name="TrainTracks" type="Sprite2D" parent="THE MINE" unique_id=1824153287]
+[node name="TrainTracks1" type="Sprite2D" parent="THE MINE" unique_id=1824153287]
 position = Vector2(350, 2836.9998)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("13_ok6jj")
 script = ExtResource("14_ok6jj")
+
+[node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks1" unique_id=201378433]
+z_index = 15
+position = Vector2(27.189348, -70.95902)
+scale = Vector2(0.23111151, 0.5368016)
+sprite_frames = SubResource("SpriteFrames_6snss")
+animation = &"mining"
+frame_progress = 0.48951423
+
+[node name="pickaxe" type="AnimatedSprite2D" parent="THE MINE/TrainTracks1" unique_id=985234724]
+visible = false
+z_index = 16
+position = Vector2(-21.649889, -89.50058)
+scale = Vector2(0.23111151, 0.5368016)
+sprite_frames = SubResource("SpriteFrames_k8oh1")
+animation = &"DEFAULT"
+frame_progress = 0.35203403
 
 [node name="TrainTracks2" type="Sprite2D" parent="THE MINE" unique_id=1131071358]
 position = Vector2(343, 3131)
@@ -254,11 +389,45 @@ scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("13_ok6jj")
 script = ExtResource("14_ok6jj")
 
+[node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks2" unique_id=1270267395]
+z_index = 15
+position = Vector2(27.604797, -69.52637)
+scale = Vector2(0.23111151, 0.5368016)
+sprite_frames = SubResource("SpriteFrames_6snss")
+animation = &"mining"
+frame_progress = 0.13946219
+
+[node name="pickaxe" type="AnimatedSprite2D" parent="THE MINE/TrainTracks2" unique_id=1496125498]
+visible = false
+z_index = 16
+position = Vector2(-21.23444, -88.067924)
+scale = Vector2(0.23111151, 0.5368016)
+sprite_frames = SubResource("SpriteFrames_k8oh1")
+animation = &"DEFAULT"
+frame_progress = 0.9038054
+
 [node name="TrainTracks3" type="Sprite2D" parent="THE MINE" unique_id=869645848]
 position = Vector2(357, 3438)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("13_ok6jj")
 script = ExtResource("14_ok6jj")
+
+[node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks3" unique_id=1923985065]
+z_index = 15
+position = Vector2(27.604797, -69.52637)
+scale = Vector2(0.23111151, 0.5368016)
+sprite_frames = SubResource("SpriteFrames_6snss")
+animation = &"mining"
+frame_progress = 0.13946219
+
+[node name="pickaxe" type="AnimatedSprite2D" parent="THE MINE/TrainTracks3" unique_id=1004682315]
+visible = false
+z_index = 16
+position = Vector2(-21.23444, -88.067924)
+scale = Vector2(0.23111151, 0.5368016)
+sprite_frames = SubResource("SpriteFrames_k8oh1")
+animation = &"DEFAULT"
+frame_progress = 0.9038054
 
 [node name="TrainTracks4" type="Sprite2D" parent="THE MINE" unique_id=969698093]
 position = Vector2(350, 3726)
@@ -266,11 +435,22 @@ scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("13_ok6jj")
 script = ExtResource("14_ok6jj")
 
-[node name="rock1" type="AnimatedSprite2D" parent="THE MINE" unique_id=201378433]
-position = Vector2(348, 2819)
-scale = Vector2(0.1088379, 0.11580979)
+[node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks4" unique_id=1512161757]
+z_index = 15
+position = Vector2(27.604797, -69.52637)
+scale = Vector2(0.23111151, 0.5368016)
 sprite_frames = SubResource("SpriteFrames_6snss")
-animation = &"new_animation"
+animation = &"mining"
+frame_progress = 0.13946219
+
+[node name="pickaxe" type="AnimatedSprite2D" parent="THE MINE/TrainTracks4" unique_id=1817639711]
+visible = false
+z_index = 16
+position = Vector2(-21.23444, -88.067924)
+scale = Vector2(0.23111151, 0.5368016)
+sprite_frames = SubResource("SpriteFrames_k8oh1")
+animation = &"DEFAULT"
+frame_progress = 0.9038054
 
 [node name="upgradesMine" type="TextureButton" parent="THE MINE" unique_id=1498263359]
 layout_mode = 0
@@ -325,7 +505,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("21_htxhm")
 texture_hover = ExtResource("22_jq2sk")
 
-[node name="betterApples" type="TextureButton" parent="THE MINE/mineUI" unique_id=194562622]
+[node name="gems" type="TextureButton" parent="THE MINE/mineUI" unique_id=194562622]
 z_index = 21
 layout_mode = 0
 offset_left = 18.250015
@@ -336,7 +516,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("19_kq58d")
 texture_hover = ExtResource("20_seu75")
 
-[node name="timer" type="TextureButton" parent="THE MINE/mineUI" unique_id=1650587670]
+[node name="jackpot" type="TextureButton" parent="THE MINE/mineUI" unique_id=1650587670]
 z_index = 21
 layout_mode = 0
 offset_left = 19.250015
@@ -347,7 +527,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("27_come4")
 texture_hover = ExtResource("28_h8e4i")
 
-[node name="extraApples" type="TextureButton" parent="THE MINE/mineUI" unique_id=933525678]
+[node name="extraCart" type="TextureButton" parent="THE MINE/mineUI" unique_id=933525678]
 z_index = 21
 layout_mode = 0
 offset_left = 19.250015
@@ -426,7 +606,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
 
-[node name="betterFruitCost" type="Label" parent="THE MINE/mineUI" unique_id=1104046606]
+[node name="gemsCost" type="Label" parent="THE MINE/mineUI" unique_id=1104046606]
 z_index = 22
 layout_mode = 0
 offset_left = 179.25002
@@ -438,7 +618,7 @@ theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
 "
 
-[node name="betterFruitDesc" type="Label" parent="THE MINE/mineUI" unique_id=1837741434]
+[node name="gemsDesc" type="Label" parent="THE MINE/mineUI" unique_id=1837741434]
 z_index = 22
 layout_mode = 0
 offset_left = 179.25002
@@ -447,10 +627,9 @@ offset_right = 531.25
 offset_bottom = 603.125
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "Increases amount of ore
-"
+text = "Increases value of ore"
 
-[node name="betterFruitValue" type="Label" parent="THE MINE/mineUI" unique_id=765560080]
+[node name="gemsValue" type="Label" parent="THE MINE/mineUI" unique_id=765560080]
 z_index = 22
 layout_mode = 0
 offset_left = 181.25002
@@ -459,9 +638,9 @@ offset_right = 533.25
 offset_bottom = 597.125
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "current multiplier: XXX"
+text = "current value: XXX"
 
-[node name="timerCost" type="Label" parent="THE MINE/mineUI" unique_id=1745665091]
+[node name="jackpotCost" type="Label" parent="THE MINE/mineUI" unique_id=1745665091]
 z_index = 22
 layout_mode = 0
 offset_left = 180.25002
@@ -473,7 +652,7 @@ theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
 "
 
-[node name="timerDesc" type="Label" parent="THE MINE/mineUI" unique_id=1559372416]
+[node name="jackpotDesc" type="Label" parent="THE MINE/mineUI" unique_id=1559372416]
 z_index = 22
 layout_mode = 0
 offset_left = 180.25002
@@ -484,7 +663,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increase chance of jackpot!"
 
-[node name="timerValue" type="Label" parent="THE MINE/mineUI" unique_id=1195340005]
+[node name="jackpotValue" type="Label" parent="THE MINE/mineUI" unique_id=1195340005]
 z_index = 22
 layout_mode = 0
 offset_left = 182.25002
@@ -495,7 +674,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
 
-[node name="extraAppleCost" type="Label" parent="THE MINE/mineUI" unique_id=1072506771]
+[node name="extraCartCost" type="Label" parent="THE MINE/mineUI" unique_id=1072506771]
 z_index = 22
 layout_mode = 0
 offset_left = 184.25002
@@ -507,7 +686,7 @@ theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
 "
 
-[node name="extraAppleDesc" type="Label" parent="THE MINE/mineUI" unique_id=1455066841]
+[node name="extraCartDesc" type="Label" parent="THE MINE/mineUI" unique_id=1455066841]
 z_index = 22
 layout_mode = 0
 offset_left = 184.25002
@@ -518,7 +697,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Adds another cart for extra ore"
 
-[node name="extraAppleValue" type="Label" parent="THE MINE/mineUI" unique_id=632107722]
+[node name="extraCartValue" type="Label" parent="THE MINE/mineUI" unique_id=632107722]
 z_index = 22
 layout_mode = 0
 offset_left = 186.25002
@@ -528,16 +707,6 @@ offset_bottom = 900.125
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
-
-[node name="Label" type="Label" parent="THE MINE" unique_id=1229191578]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 2675.0
-offset_right = 628.0
-offset_bottom = 2742.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "UNDER CONSTRUCTION"
 
 [node name="STORE" type="Control" parent="." unique_id=1154920962]
 layout_mode = 3
@@ -982,8 +1151,16 @@ columns = 5
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34444522]
 position = Vector2(361, 638)
 
+[connection signal="pressed" from="THE HAT MACHINE/HatMachinePrizeBall" to="THE HAT MACHINE" method="_on_hat_machine_prize_ball_pressed"]
+[connection signal="button_down" from="THE HAT MACHINE/spinner" to="THE HAT MACHINE" method="_on_spinner_button_down"]
+[connection signal="button_up" from="THE HAT MACHINE/spinner" to="THE HAT MACHINE" method="_on_spinner_button_up"]
 [connection signal="pressed" from="LEVEL_1/addNewPen2/addPenButton" to="LEVEL_1" method="_on_add_pen_button_pressed"]
 [connection signal="pressed" from="THE MINE/upgradesMine" to="THE MINE" method="_on_upgrades_mine_pressed"]
+[connection signal="pressed" from="THE MINE/mineUI/fasterCustomers" to="THE MINE" method="_on_faster_customers_pressed"]
+[connection signal="pressed" from="THE MINE/mineUI/feedWorkers" to="THE MINE" method="_on_feed_workers_pressed"]
+[connection signal="pressed" from="THE MINE/mineUI/gems" to="THE MINE" method="_on_gems_pressed"]
+[connection signal="pressed" from="THE MINE/mineUI/jackpot" to="THE MINE" method="_on_jackpot_pressed"]
+[connection signal="pressed" from="THE MINE/mineUI/extraCart" to="THE MINE" method="_on_extra_cart_pressed"]
 [connection signal="pressed" from="STORE/upgradesStore" to="STORE" method="_on_upgrades_store_pressed"]
 [connection signal="pressed" from="STORE/StoreUI/fasterCustomers" to="STORE" method="_on_faster_customers_pressed"]
 [connection signal="pressed" from="STORE/StoreUI/feedWorkers" to="STORE" method="_on_feed_workers_pressed"]

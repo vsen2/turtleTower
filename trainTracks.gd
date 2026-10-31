@@ -6,8 +6,10 @@ extends Sprite2D
 const BUTTON_NORMAL_TEXTURE = preload("res://assets/plusButtonWhite.png")
 const BUTTON_HOVER_TEXTURE = preload("res://assets/plusButtonGrey.png")
 
+@onready var pickaxe: AnimatedSprite2D = $pickaxe
+@onready var rock: AnimatedSprite2D = $rock
+
 @export var location = get_parent()
-@export var wait_time: float = 10.0
 
 @export var unlocked: bool = false
 var hasWorker: bool = false
@@ -16,12 +18,28 @@ var hasCart: bool = false
 var unlock_button: TextureButton
 
 func _ready() -> void:
+	
 	add_to_group("job_spots")
 	z_index = 10
 	if not unlocked:
 		create_unlock_button()
+	
+	var cartSpeedMultiplier = get_parent().cartSpeedMultiplier
+	var gemsMultiplier = get_parent().gemsMultiplier
+	var jacpotMultiplier = get_parent().jackpotMultiplier
+	var extraCartMultiplier = get_parent().extraCartMultiplier
 
 func _process(_delta: float) -> void:
+	pickaxe.speed_scale = get_parent().feedWorkersMultiplier
+	pickaxe.speed_scale = get_parent().feedWorkersMultiplier
+	if hasWorker:
+		pickaxe.visible = true
+		pickaxe.play("DEFAULT")
+		rock.play("mining")
+	else:
+		pickaxe.pause()
+		pickaxe.visible = false
+		rock.pause()
 	if not hasWorker:
 		return
 	if hasCart:
@@ -58,6 +76,9 @@ func spawn_new_cart() -> void:
 	var newCart: Node2D = cart.instantiate()
 	var spawn_x: float = get_viewport_rect().size.x
 	var spawn_y: float = global_position.y + 15
+	newCart.speedMultiplier = get_parent().cartSpeedMultiplier
+	newCart.gemMultiplier = get_parent().gemsMultiplier
+	newCart.z_index = 20
 	newCart.top_level = true
 	newCart.scale = Vector2(0.4, 0.4)
 	newCart.global_position = Vector2(spawn_x, spawn_y)

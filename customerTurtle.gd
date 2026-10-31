@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_target_reached() -> void:
-	await get_tree().create_timer(4.0 / feedWorkersMultiplier).timeout
+	await get_tree().create_timer(3.0 / feedWorkersMultiplier).timeout
 	if not earned_money:
 		earned_money = true
 		for apple in apples:

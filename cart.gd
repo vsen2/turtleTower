@@ -6,8 +6,8 @@ extends Area2D
 
 @export var speedMultiplier: float = 1.0
 @export var feedWorkersMultiplier: float = 1.0
-@export var oreMultiplier: float = 1.0
-@export var gemMultiplier: int = 1
+@export var jackpotMultiplier: float = 1.0
+@export var gemMultiplier: float = 1.0
 @export var cartMultiplier: int = 1
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,8 +17,10 @@ extends Area2D
 
 var target_x: float = 0.0
 var earned_money: bool = false
-var baseSpeed: float = 300.0
+var baseSpeed: float = 200.0
 var fallingOreSpeed: float = 0
+var jackpotMulti = 1
+var jackpot = false
 
 @onready var parent: Sprite2D
 
@@ -33,7 +35,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Walk left toward the first quarter of the screen.
 	global_position.x -= speed * delta
-	fallingOre.global_position.y += fallingOreSpeed
+	fallingOre.global_position.y += fallingOreSpeed*speedMultiplier
 
 	if global_position.x <= target_x:
 		global_position.x = target_x
@@ -45,20 +47,27 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_target_reached() -> void:
-	fallingOreSpeed = 5
+	fallingOreSpeed = 2
 	fallingOre.visible = true
 	if fallingOre.global_position.y > sprite.global_position.y - 30 and not earned_money:
 		fallingOre.visible = false
 		sprite.play("full")
 		earned_money = true
-		spawn_coin_label(coins_reward*oreMultiplier*gemMultiplier*cartMultiplier)
+		var jackpotRandom = randi_range(1, 100)
+		if jackpotRandom <= jackpotMultiplier:
+			jackpotMulti = 100
+			jackpot = true
+		spawn_coin_label(coins_reward*gemMultiplier*cartMultiplier*jackpotMulti)
 		target_x = -1000
 
 func spawn_coin_label(amount: int) -> void:
 	var label: Label = Label.new()
 	label.text = "+%d coins" % amount
+	if jackpot:
+		label.text = "+%d JACKPOT" % amount
 	GameManager.add_coins(amount)
-	label.global_position = global_position + Vector2(50, -75)
+	label.top_level = true
+	label.global_position = global_position + Vector2(40, -80)
 	label.z_index = 30
 	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
 	label.add_theme_color_override("font_outline_color", Color.BLACK)

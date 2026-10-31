@@ -1,6 +1,5 @@
 extends Node2D
 
-# Saved under user:// so it also works in an exported build (res:// is read-only).
 const SAVE_PATH: String = "user://savegame.json"
 
 @export var turtle_icon: Texture2D = preload("res://assets/turtleNoBG.png")
@@ -22,17 +21,22 @@ var turtleMax: int = 50
 var penSpaceCost: int = 1
 var floorLevel: int = 0
 
-# Set when a spot's plus button is pressed; the next turtle picked is sent there.
 var pending_spot: Node = null
 var floor_chooser: PopupMenu = null
 
 func _ready() -> void:
-	print("starting main game...")
+	print("mainGame _ready...")
 	load_game()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_APPLICATION_PAUSED:
 		save_game()
+
+func _process(_delta: float) -> void:
+	turtleCoinsLabel.text = "Turtle Coins: %d" % GameManager.turtle_coins
+	turtleCostLabel.text = "Cost: %d" % turtleCost
+	turtleCountLabel.text = "%d/%d" % [turtleCount, turtleMax]
+	penSpaceLabel.text = "Cost: %d" % penSpaceCost
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.is_pressed() and not turtleUI.visible):
@@ -45,18 +49,47 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif wheel.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 		floorLevel += 1
 		camera.position.y += screen_height
-	towerUI.visible = floorLevel <= 0
+	towerUI.visible = floorLevel ==0
+	
+
+func _on_addTurtle_pressed() -> void:
+	if turtle_scene == null:
+		# Attempt to load the turtle scene if not preloaded
+		turtle_scene = preload("res://turtle.tscn")
+		if turtle_scene == null:
+			print("WARNING: Could not load turtle.tscn - new turtles cannot be created.")
+			return
+	if turtleCount >= turtleMax:
+		print("Pen is full!")
+		return
+	if GameManager.spend_coins(turtleCost):
+		turtleCost += 1
+		turtleCount += 1
+		var bounds: Rect2 = get_pen_bounds()
+		var pad: float = 24.0
+		var min_x: float = bounds.position.x + pad
+		var max_x: float = max(min_x, bounds.end.x - pad)
+		var min_y: float = bounds.position.y + pad
+		var max_y: float = max(min_y, bounds.end.y - pad)
+		var spawn_pos := Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
+		_instantiate_turtle(spawn_pos, -1, "", -1)
+		save_game()
+
+func _on_addPenSpace_pressed() -> void:
+	if GameManager.spend_coins(penSpaceCost):
+		penSpaceCost += 1
+		turtleMax += 1
+		save_game()
 
 func get_pen_bounds() -> Rect2:
 	if not turtle_pen or not turtle_pen.texture:
-		return Rect2()
+		print("get_pen_bounds: turtle_pen missing or no texture!")
+		return Rect2(Vector2(), Vector2(100, 100))
 	var pen_size: Vector2 = turtle_pen.texture.get_size() * turtle_pen.global_scale
 	var top_left: Vector2 = turtle_pen.global_position
 	if turtle_pen.centered:
 		top_left -= pen_size / 2.0
 	return Rect2(top_left, pen_size)
-
-# --------------------------------------------------------------- floors
 
 func get_floors() -> Array[Node]:
 	var out: Array[Node] = []
@@ -84,43 +117,12 @@ func get_spot_index(spot: Node) -> int:
 		return -1
 	return floor_node.get_spots().find(spot)
 
-# --------------------------------------------------------------- turtles
-
-func _on_addTurtle_pressed() -> void:
-	if not turtle_scene:
-		return
-	if turtleCount >= turtleMax:
-		print("Pen is full!")
-		return
-	if GameManager.spend_coins(turtleCost):
-		turtleCost += 1
-		turtleCount += 1
-		var bounds: Rect2 = get_pen_bounds()
-		var pad: float = 24.0
-		var min_x: float = bounds.position.x + pad
-		var max_x: float = max(min_x, bounds.end.x - pad)
-		var min_y: float = bounds.position.y + pad
-		var max_y: float = max(min_y, bounds.end.y - pad)
-		var spawn_pos := Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
-		_instantiate_turtle(spawn_pos, -1, "", -1)
-		save_game()
-
-func _on_addPenSpace_pressed() -> void:
-	if GameManager.spend_coins(penSpaceCost):
-		penSpaceCost += 1
-		turtleMax += 1
-		save_game()
-
-func _process(_delta: float) -> void:
-	turtleCoinsLabel.text = "Turtle Coins: %d" % GameManager.turtle_coins
-	turtleCostLabel.text = "Cost: %d" % turtleCost
-	turtleCountLabel.text = "%d/%d" % [turtleCount, turtleMax]
-	penSpaceLabel.text = "Cost: %d" % penSpaceCost
-
-func _on_changeTurtles_pressed() -> void:
-	turtleUI.visible = not turtleUI.visible
-
 func _instantiate_turtle(pos: Vector2, hat_id: int, assigned_floor: String, assigned_spot: int) -> Node2D:
+	if turtle_scene == null:
+		turtle_scene = preload("res://turtle.tscn")
+		if turtle_scene == null:
+			print("_instantiate_turtle: turtle_scene is null after attempt to preload!")
+			return null
 	var new_turtle: Node2D = turtle_scene.instantiate()
 	new_turtle.bounds = get_pen_bounds()
 	new_turtle.global_position = pos
@@ -136,6 +138,7 @@ func _instantiate_turtle(pos: Vector2, hat_id: int, assigned_floor: String, assi
 			if assigned_spot < spots.size():
 				var spot: Node = spots[assigned_spot]
 				var target: Vector2 = spot.global_position + Vector2(-200, -60)
+				print("_instantiate_turtle: target=", target, "spot.global_position=", spot.global_position, "offset=(-200,-60)")
 				new_turtle.send_to_station(target, assigned_floor, assigned_spot, spot)
 				spot.hasWorker = true
 	return new_turtle
@@ -162,17 +165,16 @@ func add_turtle_icon_to_grid(turtle: Node) -> void:
 	item_container.add_child(status_label)
 	grid.add_child(item_container)
 
-# ------------------------------------------------------- job assignment
-
-## Called by a spot's plus button: remember the target and open the turtle list.
 func begin_spot_assignment(spot: Node) -> void:
 	pending_spot = spot
 	turtleUI.visible = true
+	
+
 
 func _on_turtle_icon_selected(turtle: Node) -> void:
 	if not is_instance_valid(turtle):
 		return
-	turtleUI.visible = false
+	# turtleUI.visible = false
 
 	if is_instance_valid(pending_spot) and not pending_spot.hasWorker:
 		assign_turtle_to_spot(turtle, pending_spot)
@@ -227,8 +229,6 @@ func _on_floor_chosen(id: int) -> void:
 		assign_turtle_to_floor(turtle, floor_node)
 		save_game()
 
-# --------------------------------------------------------------- save
-
 func save_game() -> void:
 	var turtles_data: Array = []
 	for turtle in get_tree().get_nodes_in_group("turtles"):
@@ -255,12 +255,15 @@ func save_game() -> void:
 
 func load_game() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
+		print("No save file found - starting fresh")
 		return
 	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if not file:
+		print("Could not open save file")
 		return
 	var json := JSON.new()
 	if json.parse(file.get_as_text()) != OK:
+		print("Failed to parse JSON")
 		file.close()
 		return
 	file.close()
@@ -293,5 +296,10 @@ func load_game() -> void:
 		var hat: int = int(t_data.get("random_hat", -1))
 		var assigned_floor: String = String(t_data.get("assigned_floor_id", ""))
 		var assigned_spot: int = int(t_data.get("assigned_spot_index", -1))
+		print("load_game: restoring turtle pos=", pos, "floor=", assigned_floor, "spot=", assigned_spot, "hat=", hat)
 		_instantiate_turtle(pos, hat, assigned_floor, assigned_spot)
 		turtleCount += 1
+
+
+func _on_changeTurtles_pressed() -> void:
+	turtleUI.visible = not turtleUI.visible

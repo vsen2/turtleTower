@@ -15,48 +15,27 @@ var assigned_floor_id: String = ""
 var assigned_spot_index: int = -1
 
 @onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
-var turtleHats: Array[Texture2D] = []
+@export var hats: Array[Texture2D] = []
 
-# Radius used to keep the turtle inside its pen; calculated in _ready().
 var turtle_radius: float = 16.0
 
 @onready var sprite: AnimatedSprite2D = $timmyTheTurtle
 @onready var collision_shape: CollisionShape2D = $turtleHitbox
 
-func _load_hat_textures() -> void:
-	turtleHats.clear()
-	_scan_dir_for_hats("res://")
-	_scan_dir_for_hats("res://assets/")
-
-func _scan_dir_for_hats(path: String) -> void:
-	var dir := DirAccess.open(path)
-	if not dir:
-		return
-	dir.list_dir_begin()
-	var file_name: String = dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir() and file_name.begins_with("hat") and file_name.ends_with(".png"):
-			var full_path: String = path + file_name
-			var tex: Texture2D = load(full_path) as Texture2D
-			if tex and not turtleHats.has(tex):
-				turtleHats.append(tex)
-		file_name = dir.get_next()
-	dir.list_dir_end()
-
 func _ready() -> void:
 	add_to_group("turtles")
-	_load_hat_textures()
-	# Only pick a random hat if one wasn't already set (e.g. when restoring a save).
-	if turtleHats.size() > 0:
-		if random_hat < 0 or random_hat >= turtleHats.size():
-			random_hat = randi_range(0, turtleHats.size() - 1)
-		turtleHat.texture = turtleHats[random_hat]
+	if hats.size() > 0:
+		if random_hat < 0 or random_hat >= hats.size():
+			random_hat = randi_range(0, hats.size() - 1)
+		turtleHat.texture = hats[random_hat]
 		turtleHat.visible = true
 	else:
 		turtleHat.visible = false
+	# Calculate turtle size BEFORE any positioning,
+	# so _process can clamp correctly on save/load.
+	_calculate_turtle_size()
 	_pick_random_direction()
 	input_event.connect(_on_input_event)
-	_calculate_turtle_size()
 	sprite.play("default")
 	z_index = 5
 
@@ -71,6 +50,9 @@ func _calculate_turtle_size() -> void:
 	if sprite.texture:
 		var scaled_size: Vector2 = sprite.texture.get_size() * sprite.global_scale
 		turtle_radius = max(scaled_size.x, scaled_size.y) / 2.0
+		print("_calculate_turtle_size: sprite.texture=", sprite.texture, "radius=", turtle_radius)
+	else:
+		print("_calculate_turtle_size: sprite.texture is NULL - radius stays", turtle_radius)
 
 func _process(delta: float) -> void:
 	if is_assigned_to_store or bounds == Rect2():
