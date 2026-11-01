@@ -31,6 +31,7 @@ var floor_chooser: PopupMenu = null
 func _ready() -> void:
 	print("mainGame _ready...")
 	load_game()
+	GameManager.hats_changed.connect(save_game)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_APPLICATION_PAUSED:
@@ -236,7 +237,7 @@ func save_game() -> void:
 	for turtle in get_tree().get_nodes_in_group("turtles"):
 		if is_instance_valid(turtle) and turtle.has_method("save_data"):
 			turtles_data.append(turtle.save_data())
-
+		
 	var floors_data: Dictionary = {}
 	for floor_node in get_floors():
 		floors_data[String(floor_node.floor_id)] = floor_node.get_save_data()
@@ -247,6 +248,7 @@ func save_game() -> void:
 		"turtleCount": turtleCount,
 		"turtleMax": turtleMax,
 		"penSpaceCost": penSpaceCost,
+		"owned_hats": GameManager.owned_hats,
 		"floors": floors_data,
 		"turtles": turtles_data,
 	}
@@ -279,6 +281,8 @@ func load_game() -> void:
 		turtleMax = int(data["turtleMax"])
 	if data.has("penSpaceCost"):
 		penSpaceCost = int(data["penSpaceCost"])
+		
+	GameManager.set_owned_hats(data.get("owned_hats", []))
 
 	# Restore each floor's own slice, then clear its spot staffing so the
 	# turtles we rebuild below are the single source of truth.
@@ -305,6 +309,10 @@ func load_game() -> void:
 
 func _on_changeTurtles_pressed() -> void:
 	turtleUI.visible = not turtleUI.visible
+	turtleFile1.z_index = 50
+	turtleFile2.z_index = 49
+	turtleFile3.z_index = 49
+	updatee_turtle_UI_pages()
 	
 func _on_file_button_1_pressed() -> void:
 	turtleFile1.z_index = 50

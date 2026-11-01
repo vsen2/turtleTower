@@ -7,6 +7,7 @@ var pressedAmount = 0
 var isHolding: bool = false
 var prize: bool = false
 var prizeNo: int = -1
+@export var hatCost = 20
 
 @onready var balls: Array[Sprite2D] = [
 	$HatMachineBall,
@@ -28,6 +29,8 @@ func _ready() -> void:
 	for ball in balls:
 		ball.rotation_degrees = randi_range(1, 360)
 	spinner.rotation_degrees = 0
+	GameManager.hats_changed.connect(_rebuild_hat_grid)
+	_rebuild_hat_grid()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,8 +44,6 @@ func _process(delta: float) -> void:
 			prizeNo = randi_range(0, numHats - 1)
 			$HatMachinePrizeBall/HatPrize.texture = hatsCentered[prizeNo]			
 			prize = true
-			
-		print(spinner.rotation_degrees)
 		
 func _on_spinner_button_down() -> void:
 	isHolding = true
@@ -52,7 +53,8 @@ func _on_spinner_button_up() -> void:
 func _on_hat_machine_prize_ball_pressed() -> void:
 	prizeBall.visible = false
 	prize = false
-	add_hat_icon_to_grid(hatsCentered[prizeNo])
+	if prizeNo >= 0:
+		GameManager.add_hat(prizeNo)
 	
 func add_hat_icon_to_grid(hatTexture) -> void:
 	var item_container: VBoxContainer = VBoxContainer.new()
@@ -72,4 +74,12 @@ func add_hat_icon_to_grid(hatTexture) -> void:
 	item_container.add_child(button)
 	item_container.add_child(status_label)
 	grid.add_child(item_container)
+	
+func _rebuild_hat_grid() -> void:
+	for child in grid.get_children():
+		grid.remove_child(child)
+		child.queue_free()
+	for hat_id in GameManager.owned_hats:
+		if hat_id >= 0 and hat_id < hatsCentered.size():
+			add_hat_icon_to_grid(hatsCentered[hat_id])
 	

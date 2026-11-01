@@ -1,8 +1,11 @@
 extends Node
 
+signal hats_changed
+
 var turtle_coins: int = 1000
 var customer_speed_multiplier: float = 1.0
 var spawn_timer_multiplier: float = 1.0
+var owned_hats: Array[int] = []
 
 @export var hats: Array[Texture2D] = [
 	preload("res://assets/hatChef.png"),
@@ -36,12 +39,11 @@ var spawn_timer_multiplier: float = 1.0
 	preload("res://assets/hatCenteredSombrero.png"),
 	preload("res://assets/hatCenteredTophat.png"),
 	preload("res://assets/hatCenteredTrafficCone.png"),
-]
-
-
+	]
+		
 @export var numHats = hats.size()
 signal coins_changed(new_amount: int)
-
+		
 func add_coins(amount: int) -> void:
 	turtle_coins += amount
 	coins_changed.emit(turtle_coins)
@@ -52,3 +54,13 @@ func spend_coins(amount: int) -> bool:
 		coins_changed.emit(turtle_coins)
 		return true
 	return false
+
+func add_hat(hat_id: int) -> void:
+	owned_hats.append(hat_id)
+	hats_changed.emit()
+
+func set_owned_hats(list: Array) -> void:
+	owned_hats.clear()
+	for h in list:
+		owned_hats.append(int(h))  # JSON loads numbers as floats
+	hats_changed.emit()

@@ -198,8 +198,8 @@ scale = Vector2(0.51398605, 0.48131672)
 texture_normal = ExtResource("10_4w656")
 
 [node name="HatPrize" type="Sprite2D" parent="THE HAT MACHINE/HatMachinePrizeBall" unique_id=1886209667]
-position = Vector2(147.8639, 137.12384)
-scale = Vector2(0.34862947, 0.4256984)
+position = Vector2(147.86392, 143.35675)
+scale = Vector2(0.28912553, 0.3436094)
 
 [node name="spinner" type="TextureButton" parent="THE HAT MACHINE" unique_id=1990963365]
 layout_mode = 0
@@ -210,6 +210,17 @@ offset_bottom = -343.00003
 scale = Vector2(0.90173924, 0.91428596)
 pivot_offset = Vector2(77, 77)
 texture_normal = ExtResource("7_abqjc")
+
+[node name="Label" type="Label" parent="THE HAT MACHINE" unique_id=655515606]
+layout_mode = 0
+offset_left = 59.0
+offset_top = -1053.0
+offset_right = 289.0
+offset_bottom = -966.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "SPIN FOR A HAT
+"
 
 [node name="LEVEL_1" type="Control" parent="." unique_id=1306873373]
 layout_mode = 3
@@ -1148,6 +1159,16 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 5
 
+[node name="Label" type="Label" parent="CanvasLayer/TurtleUI/File1" unique_id=837619009]
+z_index = 51
+offset_left = -268.46515
+offset_top = -470.13922
+offset_right = -160.46515
+offset_bottom = -425.13922
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Turtles"
+
 [node name="File2" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=1208346686]
 position = Vector2(359, 658)
 scale = Vector2(1.0607215, 1.0978576)
@@ -1177,10 +1198,30 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 5
 
+[node name="Label" type="Label" parent="CanvasLayer/TurtleUI/File2" unique_id=1410566812]
+z_index = 51
+offset_left = -36.767395
+offset_top = -471.82803
+offset_right = 38.652954
+offset_bottom = -426.82803
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Hats"
+
 [node name="File3" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=897265506]
 position = Vector2(358.76672, 658.14594)
 scale = Vector2(1.0607215, 1.0978576)
 texture = ExtResource("55_rnkwl")
+
+[node name="Label" type="Label" parent="CanvasLayer/TurtleUI/File3" unique_id=1984659739]
+z_index = 51
+offset_left = 182.17157
+offset_top = -471.82803
+offset_right = 274.56146
+offset_bottom = -420.9525
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "TBD"
 
 [node name="fileButton1" type="Button" parent="CanvasLayer/TurtleUI" unique_id=95537812]
 layout_mode = 0

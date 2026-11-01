@@ -31,7 +31,7 @@ var extraCartCost = 100
 @export var cartSpeedMultiplier: float = 1.0
 @export var feedWorkersMultiplier: float = 1.0
 @export var gemsMultiplier: float = 1.0
-@export var jackpotMultiplier: float = 1.0
+@export var jackpotMultiplier: int = 1
 @export var extraCartMultiplier: int = 1
 
 func _ready() -> void:
@@ -46,7 +46,7 @@ func update_labels() -> void:
 	gemsCostLabel.text = "Cost: $%d" % gemsCost
 	gemsValueLabel.text = "current multiplier: %.2fx" % gemsMultiplier
 	jackpotCostLabel.text = "Cost: $%d" % jackpotCost
-	jackpotValueLabel.text = "current value: %.2fx" % jackpotMultiplier
+	jackpotValueLabel.text = "chance of jackpot: %d%" % jackpotMultiplier
 	extraAppleCostLabel.text = "Cost: $%d" % extraCartCost
 	extraAppleValueLabel.text = "current multiplier: %dx" % extraCartMultiplier
 
@@ -77,7 +77,7 @@ func _on_gems_pressed() -> void:
 func _on_jackpot_pressed() -> void:
 	if GameManager.spend_coins(jackpotCost):
 		jackpotCost = jackpotCost * 2
-		jackpotMultiplier += 0.25
+		jackpotMultiplier += 1
 		update_labels()
 		_request_save()
 
