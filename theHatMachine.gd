@@ -2,12 +2,13 @@ extends Control
 
 @onready var spinner: TextureButton = $spinner
 @onready var prizeBall: TextureButton = $HatMachinePrizeBall
-
+@onready var hatCoinLabel: Label = $TheHatMachineCoins
 var pressedAmount = 0
 var isHolding: bool = false
 var prize: bool = false
 var prizeNo: int = -1
-@export var hatCost = 20
+@export var hatCost = 1
+
 
 @onready var balls: Array[Sprite2D] = [
 	$HatMachineBall,
@@ -34,11 +35,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	hatCoinLabel.text = "Hat Coins: %d" % GameManager.hat_coins
 	if isHolding and not prize:
 		spinner.rotation_degrees += 1
 		for ball in balls:
 			ball.rotation_degrees +=1
-		if spinner.rotation_degrees > 355:
+		if spinner.rotation_degrees > 355 and GameManager.spend_hat_coins(hatCost):
 			spinner.rotation_degrees = 0
 			prizeBall.visible = true
 			prizeNo = randi_range(0, numHats - 1)
@@ -46,7 +48,8 @@ func _process(delta: float) -> void:
 			prize = true
 		
 func _on_spinner_button_down() -> void:
-	isHolding = true
+	if GameManager.hat_coins > 0:
+		isHolding = true
 func _on_spinner_button_up() -> void:
 	isHolding = false
 		

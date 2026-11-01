@@ -3,6 +3,7 @@ extends Node
 signal hats_changed
 
 var turtle_coins: int = 1000
+var hat_coins: int = 0
 var customer_speed_multiplier: float = 1.0
 var spawn_timer_multiplier: float = 1.0
 var owned_hats: Array[int] = []
@@ -52,6 +53,12 @@ func spend_coins(amount: int) -> bool:
 	if turtle_coins >= amount:
 		turtle_coins -= amount
 		coins_changed.emit(turtle_coins)
+		return true
+	return false
+
+func spend_hat_coins(amount: int) -> bool:
+	if hat_coins >= amount:
+		hat_coins -= amount
 		return true
 	return false
 

@@ -53,10 +53,21 @@
 [ext_resource type="Texture2D" uid="uid://b0ae226bpkb6l" path="res://assets/moreApplesWhite.png" id="30_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://c26tfcuf3xgsb" path="res://assets/moreApplesGrey.png" id="31_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://dnafcu5mg104x" path="res://assets/file1.png" id="53_4w656"]
+[ext_resource type="Texture2D" uid="uid://b5vn6u86iv88b" path="res://assets/shopIcon.png" id="53_ruth0"]
 [ext_resource type="Texture2D" uid="uid://cahudswuitt16" path="res://assets/file2.png" id="54_e71vb"]
+[ext_resource type="Texture2D" uid="uid://ddiha7mtws15h" path="res://assets/shopIconHover.png" id="54_rm4vd"]
 [ext_resource type="Texture2D" uid="uid://b87j0jvsk2fif" path="res://assets/text_Turtles.png" id="54_rnkwl"]
 [ext_resource type="Texture2D" uid="uid://bxa1p7ley2oca" path="res://assets/file3.png" id="55_rnkwl"]
 [ext_resource type="Texture2D" uid="uid://dp1hx43excpn4" path="res://assets/text_Hats.png" id="56_vke2r"]
+[ext_resource type="Texture2D" uid="uid://bpete4h63n7n8" path="res://assets/TBDimage.png" id="58_vke2r"]
+[ext_resource type="Script" uid="uid://cdmt0somwrnfm" path="res://shopUI.gd" id="61_1vm84"]
+[ext_resource type="Texture2D" uid="uid://7wwy45ldta1b" path="res://assets/shopBackground2.png" id="61_rm4vd"]
+[ext_resource type="Texture2D" uid="uid://bca310olj3uhj" path="res://assets/xButton.png" id="62_rqtf5"]
+[ext_resource type="Texture2D" uid="uid://7wvs48okeejs" path="res://assets/xButtonHover.png" id="63_1vm84"]
+[ext_resource type="Texture2D" uid="uid://bss83turmerq7" path="res://assets/text_shop.png" id="64_wu3dr"]
+[ext_resource type="Texture2D" uid="uid://01lchbjs1mig" path="res://assets/hatCoinBasic.png" id="65_cyx1q"]
+[ext_resource type="Texture2D" uid="uid://cgkxrjxhh0tgp" path="res://assets/buyButton.png" id="66_0dhbp"]
+[ext_resource type="Texture2D" uid="uid://d2pchthksrixp" path="res://assets/buyButtonHover.png" id="67_jx0wj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
 
@@ -116,7 +127,7 @@ script/source = "extends Label
 script = ExtResource("1_0xm2m")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1554020935]
-position = Vector2(363.5, 21.99952)
+position = Vector2(361.5, 1.9995213)
 scale = Vector2(1.522, 20.519999)
 texture = ExtResource("1_ig7tw")
 
@@ -133,12 +144,12 @@ offset_bottom = 40.0
 script = ExtResource("4_abqjc")
 
 [node name="the hat" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1841397177]
-position = Vector2(184.25, -1146.2505)
+position = Vector2(182.25, -1166.2505)
 scale = Vector2(0.66627634, 0.6450382)
 texture = ExtResource("4_hrvbo")
 
 [node name="machine" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1494614255]
-position = Vector2(207.50002, -1087.0005)
+position = Vector2(205.50002, -1107.0005)
 scale = Vector2(0.74126637, 0.5625001)
 texture = ExtResource("5_uypp3")
 
@@ -213,14 +224,33 @@ texture_normal = ExtResource("7_abqjc")
 
 [node name="Label" type="Label" parent="THE HAT MACHINE" unique_id=655515606]
 layout_mode = 0
-offset_left = 59.0
-offset_top = -1053.0
-offset_right = 289.0
-offset_bottom = -966.0
+offset_left = 56.0
+offset_top = -1067.0
+offset_right = 288.0
+offset_bottom = -1025.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "SPIN FOR A HAT
-"
+text = "SPIN FOR A HAT"
+
+[node name="Label2" type="Label" parent="THE HAT MACHINE" unique_id=1847069186]
+layout_mode = 0
+offset_left = 56.0
+offset_top = -1030.0
+offset_right = 288.0
+offset_bottom = -988.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "costs a hat coin"
+
+[node name="TheHatMachineCoins" type="Label" parent="THE HAT MACHINE" unique_id=417275881]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -122.0
+offset_right = 277.0
+offset_bottom = -35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Hat Coins: XXX"
 
 [node name="LEVEL_1" type="Control" parent="." unique_id=1306873373]
 layout_mode = 3
@@ -1059,15 +1089,6 @@ text = "XX/XX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1540102641]
 
-[node name="ChangeTurtles" type="TextureButton" parent="CanvasLayer" unique_id=372462518]
-offset_left = 604.0
-offset_top = 46.0
-offset_right = 1466.0
-offset_bottom = 794.0
-scale = Vector2(0.10426618, 0.09999122)
-texture_normal = ExtResource("13_cegan")
-texture_hover = ExtResource("14_82xsv")
-
 [node name="turtleCoins" type="Label" parent="CanvasLayer" unique_id=1745811126]
 offset_left = 559.0
 offset_top = 11.0
@@ -1077,11 +1098,29 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "TURTLE COINS: XXX"
 script = SubResource("GDScript_facbu")
 
+[node name="ChangeTurtles" type="TextureButton" parent="CanvasLayer" unique_id=372462518]
+offset_left = 604.0
+offset_top = 46.0
+offset_right = 1466.0
+offset_bottom = 794.0
+scale = Vector2(0.10426618, 0.09999122)
+texture_normal = ExtResource("13_cegan")
+texture_hover = ExtResource("14_82xsv")
+
+[node name="shop" type="TextureButton" parent="CanvasLayer" unique_id=1431974678]
+offset_left = 607.0
+offset_top = 127.0
+offset_right = 1258.0
+offset_bottom = 760.0
+scale = Vector2(0.1397453, 0.13362148)
+texture_normal = ExtResource("53_ruth0")
+texture_hover = ExtResource("54_rm4vd")
+
 [node name="TowerUI" type="Control" parent="CanvasLayer" unique_id=1170629106]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 90.0
+offset_bottom = 81.0
 
 [node name="addTurtle" type="TextureButton" parent="CanvasLayer/TowerUI" unique_id=1403598825]
 layout_mode = 0
@@ -1223,6 +1262,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "TBD"
 
+[node name="TbDimage" type="Sprite2D" parent="CanvasLayer/TurtleUI/File3" unique_id=969631696]
+position = Vector2(86.010574, 17.173492)
+scale = Vector2(0.9427545, 0.91086495)
+texture = ExtResource("58_vke2r")
+
 [node name="fileButton1" type="Button" parent="CanvasLayer/TurtleUI" unique_id=95537812]
 layout_mode = 0
 offset_left = 16.0
@@ -1253,6 +1297,76 @@ position = Vector2(366.99997, 331)
 scale = Vector2(0.3439153, 0.31067982)
 texture = ExtResource("7_vivmo")
 
+[node name="ShopUI" type="Control" parent="CanvasLayer" unique_id=337924757]
+unique_name_in_owner = true
+visible = false
+z_index = 110
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("61_1vm84")
+
+[node name="background" type="Sprite2D" parent="CanvasLayer/ShopUI" unique_id=1534131056]
+position = Vector2(361.99997, 698)
+scale = Vector2(1.5179069, 1.8162432)
+texture = ExtResource("61_rm4vd")
+
+[node name="xButton" type="TextureButton" parent="CanvasLayer/ShopUI" unique_id=696881754]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 206.00002
+offset_right = 995.0
+offset_bottom = 547.0
+scale = Vector2(0.19441256, 0.17229211)
+texture_normal = ExtResource("62_rqtf5")
+texture_hover = ExtResource("63_1vm84")
+
+[node name="TextShop" type="Sprite2D" parent="CanvasLayer/ShopUI" unique_id=1455714080]
+position = Vector2(164.5, 307.875)
+scale = Vector2(0.34923664, 0.36191338)
+texture = ExtResource("64_wu3dr")
+
+[node name="Item1" type="Control" parent="CanvasLayer/ShopUI" unique_id=1004279770]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hatCoin" type="Label" parent="CanvasLayer/ShopUI/Item1" unique_id=1445403820]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 363.0
+offset_right = 281.0
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Hat coin"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ShopUI/Item1" unique_id=502660663]
+position = Vector2(140, 453)
+scale = Vector2(0.17802617, 0.17600513)
+texture = ExtResource("65_cyx1q")
+
+[node name="buy" type="TextureButton" parent="CanvasLayer/ShopUI/Item1" unique_id=1084045292]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 416.00003
+offset_right = 1028.0
+offset_bottom = 978.0
+scale = Vector2(0.21172564, 0.15579157)
+texture_normal = ExtResource("66_0dhbp")
+texture_hover = ExtResource("67_jx0wj")
+
+[node name="cost" type="Label" parent="CanvasLayer/ShopUI/Item1" unique_id=1656935380]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 364.0
+offset_right = 350.0
+offset_bottom = 398.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "COST: XXX"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34444522]
 position = Vector2(361, 638)
 
@@ -1273,8 +1387,11 @@ position = Vector2(361, 638)
 [connection signal="pressed" from="STORE/StoreUI/timer" to="STORE" method="_on_timer_pressed"]
 [connection signal="pressed" from="STORE/StoreUI/extraApples" to="STORE" method="_on_extra_apples_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChangeTurtles" to="." method="_on_changeTurtles_pressed"]
+[connection signal="pressed" from="CanvasLayer/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="CanvasLayer/TowerUI/addTurtle" to="." method="_on_addTurtle_pressed"]
 [connection signal="pressed" from="CanvasLayer/TowerUI/addPenSpace" to="." method="_on_addPenSpace_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton1" to="." method="_on_file_button_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton2" to="." method="_on_file_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton3" to="." method="_on_file_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopUI/xButton" to="CanvasLayer/ShopUI" method="_on_x_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopUI/Item1/buy" to="CanvasLayer/ShopUI" method="_on_buy_pressed"]

@@ -9,6 +9,7 @@ const SAVE_PATH: String = "user://savegame.json"
 @onready var camera: Camera2D = $Camera2D
 @onready var towerUI: Control = $CanvasLayer/TowerUI
 @onready var turtleUI: Control = $CanvasLayer/TurtleUI
+@onready var shopUI: Control = $CanvasLayer/ShopUI
 @onready var grid: GridContainer = $CanvasLayer/TurtleUI/File1/scrollContainer/turtleGrid
 @onready var turtleCoinsLabel: Label = $CanvasLayer/turtleCoins
 @onready var turtleCostLabel: Label = $CanvasLayer/TowerUI/addTurtle/turtleCost
@@ -244,6 +245,7 @@ func save_game() -> void:
 
 	var data: Dictionary = {
 		"turtle_coins": GameManager.turtle_coins,
+		"hat_coins": GameManager.hat_coins,
 		"turtleCost": turtleCost,
 		"turtleCount": turtleCount,
 		"turtleMax": turtleMax,
@@ -275,6 +277,8 @@ func load_game() -> void:
 
 	if data.has("turtle_coins"):
 		GameManager.turtle_coins = int(data["turtle_coins"])
+	if data.has("hat_coins"):
+		GameManager.hat_coins = int(data["hat_coins"])
 	if data.has("turtleCost"):
 		turtleCost = int(data["turtleCost"])
 	if data.has("turtleMax"):
@@ -309,10 +313,15 @@ func load_game() -> void:
 
 func _on_changeTurtles_pressed() -> void:
 	turtleUI.visible = not turtleUI.visible
+	shopUI.visible = false
 	turtleFile1.z_index = 50
 	turtleFile2.z_index = 49
 	turtleFile3.z_index = 49
 	updatee_turtle_UI_pages()
+	
+func _on_shop_pressed() -> void:
+	shopUI.visible = not shopUI.visible
+	turtleUI.visible = false
 	
 func _on_file_button_1_pressed() -> void:
 	turtleFile1.z_index = 50
