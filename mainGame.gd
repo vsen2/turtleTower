@@ -9,11 +9,15 @@ const SAVE_PATH: String = "user://savegame.json"
 @onready var camera: Camera2D = $Camera2D
 @onready var towerUI: Control = $CanvasLayer/TowerUI
 @onready var turtleUI: Control = $CanvasLayer/TurtleUI
-@onready var grid: GridContainer = $CanvasLayer/TurtleUI/scrollContainer/turtleGrid
+@onready var grid: GridContainer = $CanvasLayer/TurtleUI/File1/scrollContainer/turtleGrid
 @onready var turtleCoinsLabel: Label = $CanvasLayer/turtleCoins
 @onready var turtleCostLabel: Label = $CanvasLayer/TowerUI/addTurtle/turtleCost
 @onready var turtleCountLabel: Label = $turtleCount
 @onready var penSpaceLabel: Label = $CanvasLayer/TowerUI/addPenSpace/penSpaceLabel
+
+@onready var turtleFile1: Sprite2D = $CanvasLayer/TurtleUI/File1
+@onready var turtleFile2: Sprite2D = $CanvasLayer/TurtleUI/File2
+@onready var turtleFile3: Sprite2D = $CanvasLayer/TurtleUI/File3
 
 var turtleCost: int = 1
 var turtleCount: int = 0
@@ -169,8 +173,6 @@ func begin_spot_assignment(spot: Node) -> void:
 	pending_spot = spot
 	turtleUI.visible = true
 	
-
-
 func _on_turtle_icon_selected(turtle: Node) -> void:
 	if not is_instance_valid(turtle):
 		return
@@ -303,3 +305,30 @@ func load_game() -> void:
 
 func _on_changeTurtles_pressed() -> void:
 	turtleUI.visible = not turtleUI.visible
+	
+func _on_file_button_1_pressed() -> void:
+	turtleFile1.z_index = 50
+	turtleFile2.z_index = 49
+	turtleFile3.z_index = 49
+	updatee_turtle_UI_pages()
+
+
+func _on_file_button_2_pressed() -> void:
+	turtleFile1.z_index = 49
+	turtleFile2.z_index = 50
+	turtleFile3.z_index = 49
+	updatee_turtle_UI_pages()
+
+
+func _on_file_button_3_pressed() -> void:
+	turtleFile1.z_index = 49
+	turtleFile2.z_index = 49
+	turtleFile3.z_index = 49
+	updatee_turtle_UI_pages()
+	
+func updatee_turtle_UI_pages() -> void:
+	$CanvasLayer/TurtleUI/File1/scrollContainer.visible = (turtleFile1.z_index == 50)
+	$CanvasLayer/TurtleUI/File1/textTurtles.visible = (turtleFile1.z_index == 50)
+	
+	$CanvasLayer/TurtleUI/File2/TextHats.visible = (turtleFile2.z_index == 50)
+	$CanvasLayer/TurtleUI/File2/hatContainer.visible = (turtleFile2.z_index == 50)

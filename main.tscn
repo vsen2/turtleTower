@@ -34,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://assets/upgradePenWhite.png" id="18_getpj"]
 [ext_resource type="Texture2D" uid="uid://b2jy34fyrd45w" path="res://assets/rock2.png" id="18_gngh3"]
 [ext_resource type="Texture2D" uid="uid://dt22hjwkxwc5x" path="res://assets/rock4.png" id="19_0n3wm"]
-[ext_resource type="Texture2D" uid="uid://b4afpafq5udlr" path="res://assets/turtleBase.png" id="19_cegan"]
 [ext_resource type="Texture2D" uid="uid://b8onj4rhd0mia" path="res://assets/betterApplesWhite.png" id="19_kq58d"]
 [ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://assets/upgradePenGrey.png" id="19_ryguw"]
 [ext_resource type="Texture2D" uid="uid://bd4bkjlglpm3r" path="res://assets/rock3.png" id="20_qnost"]
@@ -53,9 +52,13 @@
 [ext_resource type="Texture2D" uid="uid://82wk4yu305vt" path="res://assets/jackpotGrey.png" id="28_h8e4i"]
 [ext_resource type="Texture2D" uid="uid://b0ae226bpkb6l" path="res://assets/moreApplesWhite.png" id="30_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://c26tfcuf3xgsb" path="res://assets/moreApplesGrey.png" id="31_ok6jj"]
+[ext_resource type="Texture2D" uid="uid://dnafcu5mg104x" path="res://assets/file1.png" id="53_4w656"]
+[ext_resource type="Texture2D" uid="uid://cahudswuitt16" path="res://assets/file2.png" id="54_e71vb"]
+[ext_resource type="Texture2D" uid="uid://b87j0jvsk2fif" path="res://assets/text_Turtles.png" id="54_rnkwl"]
+[ext_resource type="Texture2D" uid="uid://bxa1p7ley2oca" path="res://assets/file3.png" id="55_rnkwl"]
+[ext_resource type="Texture2D" uid="uid://dp1hx43excpn4" path="res://assets/text_Hats.png" id="56_vke2r"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
-load_path = "res://.godot/imported/newPen3.png-dae1b007042f6c68dde9c948977e2a0a.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
 animations = [{
@@ -195,8 +198,8 @@ scale = Vector2(0.51398605, 0.48131672)
 texture_normal = ExtResource("10_4w656")
 
 [node name="HatPrize" type="Sprite2D" parent="THE HAT MACHINE/HatMachinePrizeBall" unique_id=1886209667]
-position = Vector2(136.19055, 147.51202)
-scale = Vector2(0.99999994, 0.9999999)
+position = Vector2(147.8639, 137.12384)
+scale = Vector2(0.34862947, 0.4256984)
 
 [node name="spinner" type="TextureButton" parent="THE HAT MACHINE" unique_id=1990963365]
 layout_mode = 0
@@ -1118,35 +1121,96 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TurtleUIBG" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=2139334960]
-position = Vector2(361, 656.00006)
-scale = Vector2(0.7901949, 1.0082939)
-texture = ExtResource("19_cegan")
+[node name="File1" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=927709203]
+position = Vector2(358.76675, 658.14594)
+scale = Vector2(1.0607215, 1.0978576)
+texture = ExtResource("53_4w656")
 
-[node name="Label" type="Label" parent="CanvasLayer/TurtleUI" unique_id=49232749]
-layout_mode = 0
-offset_left = 89.0
-offset_top = 194.0
-offset_right = 244.0
-offset_bottom = 258.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 46
-text = "Turtles"
+[node name="textTurtles" type="Sprite2D" parent="CanvasLayer/TurtleUI/File1" unique_id=950649438]
+z_index = 53
+position = Vector2(-179.84622, -356.2812)
+scale = Vector2(0.3559482, 0.35658726)
+texture = ExtResource("54_rnkwl")
 
-[node name="scrollContainer" type="ScrollContainer" parent="CanvasLayer/TurtleUI" unique_id=910715122]
+[node name="scrollContainer" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File1" unique_id=910715122]
+visible = false
+z_index = 51
 custom_minimum_size = Vector2(200, 200)
-layout_mode = 0
-offset_left = 77.0
-offset_top = 266.0
-offset_right = 647.0
-offset_bottom = 1151.0
+offset_left = -282.60648
+offset_top = -297.98575
+offset_right = 287.76004
+offset_bottom = 427.9736
 horizontal_scroll_mode = 0
 
-[node name="turtleGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/scrollContainer" unique_id=1406594791]
+[node name="turtleGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/File1/scrollContainer" unique_id=1406594791]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 5
+
+[node name="File2" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=1208346686]
+position = Vector2(359, 658)
+scale = Vector2(1.0607215, 1.0978576)
+texture = ExtResource("54_e71vb")
+
+[node name="TextHats" type="Sprite2D" parent="CanvasLayer/TurtleUI/File2" unique_id=2123903927]
+visible = false
+z_index = 51
+position = Vector2(-201.52957, -358.10272)
+scale = Vector2(0.3993327, 0.3411134)
+texture = ExtResource("56_vke2r")
+
+[node name="hatContainer" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File2" unique_id=515555799]
+visible = false
+z_index = 51
+custom_minimum_size = Vector2(200, 200)
+offset_left = -282.8264
+offset_top = -297.85278
+offset_right = 287.54013
+offset_bottom = 428.10657
+horizontal_scroll_mode = 0
+
+[node name="hatGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/File2/hatContainer" unique_id=2098254594]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="File3" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=897265506]
+position = Vector2(358.76672, 658.14594)
+scale = Vector2(1.0607215, 1.0978576)
+texture = ExtResource("55_rnkwl")
+
+[node name="fileButton1" type="Button" parent="CanvasLayer/TurtleUI" unique_id=95537812]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 124.0
+offset_right = 238.0
+offset_bottom = 197.0
+flat = true
+
+[node name="fileButton2" type="Button" parent="CanvasLayer/TurtleUI" unique_id=365582612]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 124.0
+offset_right = 478.0
+offset_bottom = 194.0
+flat = true
+
+[node name="fileButton3" type="Button" parent="CanvasLayer/TurtleUI" unique_id=190172858]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 125.0
+offset_right = 703.0
+offset_bottom = 197.0
+flat = true
+
+[node name="Line" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=404695884]
+z_index = 52
+position = Vector2(366.99997, 331)
+scale = Vector2(0.3439153, 0.31067982)
+texture = ExtResource("7_vivmo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34444522]
 position = Vector2(361, 638)
@@ -1170,3 +1234,6 @@ position = Vector2(361, 638)
 [connection signal="pressed" from="CanvasLayer/ChangeTurtles" to="." method="_on_changeTurtles_pressed"]
 [connection signal="pressed" from="CanvasLayer/TowerUI/addTurtle" to="." method="_on_addTurtle_pressed"]
 [connection signal="pressed" from="CanvasLayer/TowerUI/addPenSpace" to="." method="_on_addPenSpace_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton1" to="." method="_on_file_button_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton2" to="." method="_on_file_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton3" to="." method="_on_file_button_3_pressed"]

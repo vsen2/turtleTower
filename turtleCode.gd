@@ -15,8 +15,7 @@ var assigned_floor_id: String = ""
 var assigned_spot_index: int = -1
 
 @onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
-@export var hats: Array[Texture2D] = []
-
+var hats = GameManager.hats
 var turtle_radius: float = 16.0
 
 @onready var sprite: AnimatedSprite2D = $timmyTheTurtle
