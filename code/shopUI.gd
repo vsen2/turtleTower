@@ -1,10 +1,11 @@
-extends Control
+extends CanvasLayer
 
 var hatCoinCost: int = 100
 
-@onready var shopUI: Control = %ShopUI
-@onready var hatCoin: Label = $Item1/hatCoin
-@onready var hatCost: Label = $Item1/cost
+@onready var shopUI: Control = $ShopUI
+@onready var turtleUI: Control = $TurtleUI
+@onready var hatCoin: Label = $ShopUI/Item1/hatCoin
+@onready var hatCost: Label = $ShopUI/Item1/cost
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _process(delta: float) -> void:
 
 func _on_x_button_pressed() -> void:
 	shopUI.visible = false
+	turtleUI.visible = false
 	
 func _on_buy_pressed() -> void:
 	if GameManager.spend_coins(hatCoinCost):

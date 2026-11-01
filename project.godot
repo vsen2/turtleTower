@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.7", "Mobile")
 
 [autoload]
 
-GameManager="*res://gameManager.gd"
+GameManager="*res://code/gameManager.gd"
 
 [display]
 

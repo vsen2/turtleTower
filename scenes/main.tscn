@@ -1,73 +1,73 @@
 [gd_scene format=3 uid="uid://8x74inh2eu35"]
 
-[ext_resource type="Script" uid="uid://bmknanxfs4vu8" path="res://mainGame.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://assets/Background.webp" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://cjs8q137dnn3f" path="res://assets/newPen3.png" id="3_come4"]
-[ext_resource type="Script" uid="uid://c1bc1afd5al2h" path="res://turtlePenFloor.gd" id="3_jq2sk"]
-[ext_resource type="Script" uid="uid://bomlan7l2ae6u" path="res://theHatMachine.gd" id="4_abqjc"]
-[ext_resource type="Texture2D" uid="uid://8snly1qg6fkn" path="res://assets/rocks.png" id="4_efxa6"]
-[ext_resource type="Texture2D" uid="uid://c7qtmxrur1ixk" path="res://assets/hatMachineText.png" id="4_hrvbo"]
-[ext_resource type="Texture2D" uid="uid://b8t0t5p5iev1r" path="res://assets/THEMINEnoBG.png" id="5_efxa6"]
-[ext_resource type="Texture2D" uid="uid://nx1pvje7idgt" path="res://assets/hatMachineText2.png" id="5_uypp3"]
-[ext_resource type="Texture2D" uid="uid://dvawbeb512ub3" path="res://assets/hatMachine.png" id="6_blkrb"]
-[ext_resource type="Texture2D" uid="uid://dlwh0utkxpp6t" path="res://assets/hatMachineSpinner.png" id="7_abqjc"]
-[ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="7_vivmo"]
-[ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://assets/cashRegister.png" id="8_2cqfq"]
-[ext_resource type="Script" uid="uid://b2m5mlvdo42qg" path="res://STORE.gd" id="8_jq2sk"]
-[ext_resource type="Texture2D" uid="uid://46tntgin6s8i" path="res://assets/hatMachineBall.png" id="9_6iyjs"]
-[ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://cashRegister.gd" id="9_074og"]
-[ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://assets/plusButtonWhite.png" id="9_vivmo"]
-[ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://assets/storeNoBG.png" id="9_yaehf"]
-[ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://assets/plusButtonGrey.png" id="10_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://jx1wykui2por" path="res://assets/hatMachinePrizeBall.png" id="10_4w656"]
-[ext_resource type="Script" uid="uid://c7dfifirs85k7" path="res://MINE.gd" id="10_facbu"]
-[ext_resource type="Texture2D" uid="uid://bh0b8jc0aq3gd" path="res://assets/upgradeButtonWhite.png" id="12_getpj"]
-[ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/CroppedWhiteTurtleButton.png" id="13_cegan"]
-[ext_resource type="Texture2D" uid="uid://vyqe1wm4urll" path="res://assets/trainTracks.png" id="13_ok6jj"]
-[ext_resource type="Texture2D" uid="uid://bcp82eb14g1jl" path="res://assets/upgradeButtonGrey.png" id="13_ryguw"]
-[ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://assets/croppedGreyTurtleButton.png" id="14_82xsv"]
-[ext_resource type="Script" uid="uid://cx6bc568n7brl" path="res://trainTracks.gd" id="14_ok6jj"]
-[ext_resource type="Texture2D" uid="uid://dsp76uocxbu2v" path="res://assets/backImage (2).png" id="15_lswn8"]
-[ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/buyTurtleWhite.png" id="16_82xsv"]
-[ext_resource type="Texture2D" uid="uid://dryjp60s56dq" path="res://assets/rock1.png" id="17_d2t1y"]
-[ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/BuyTurtleGrey.png" id="17_getpj"]
-[ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://assets/upgradePenWhite.png" id="18_getpj"]
-[ext_resource type="Texture2D" uid="uid://b2jy34fyrd45w" path="res://assets/rock2.png" id="18_gngh3"]
-[ext_resource type="Texture2D" uid="uid://dt22hjwkxwc5x" path="res://assets/rock4.png" id="19_0n3wm"]
-[ext_resource type="Texture2D" uid="uid://b8onj4rhd0mia" path="res://assets/betterApplesWhite.png" id="19_kq58d"]
-[ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://assets/upgradePenGrey.png" id="19_ryguw"]
-[ext_resource type="Texture2D" uid="uid://bd4bkjlglpm3r" path="res://assets/rock3.png" id="20_qnost"]
-[ext_resource type="Texture2D" uid="uid://7vxplco8ch6u" path="res://assets/betterApplesGrey.png" id="20_seu75"]
-[ext_resource type="Texture2D" uid="uid://bxhr842gb1oe0" path="res://assets/feedWorkerWhite.png" id="21_htxhm"]
-[ext_resource type="Texture2D" uid="uid://cfluikwes0fpe" path="res://assets/pickaxe1.png" id="21_qnost"]
-[ext_resource type="Texture2D" uid="uid://c357puwdbyomg" path="res://assets/feedWorkerGrey.png" id="22_jq2sk"]
-[ext_resource type="Texture2D" uid="uid://dop4uaie1qgbp" path="res://assets/pickaxe2.png" id="22_wnkbs"]
-[ext_resource type="Texture2D" uid="uid://dq742xpeqyiwr" path="res://assets/pickaxe3.png" id="23_f6a44"]
-[ext_resource type="Texture2D" uid="uid://dade68shqm432" path="res://assets/timerWhite.png" id="24_4k2k6"]
-[ext_resource type="Texture2D" uid="uid://bkyy3ynlsnh3q" path="res://assets/UPGRADES.png" id="24_xuqvo"]
-[ext_resource type="Texture2D" uid="uid://7ypx1qde2uj" path="res://assets/timerGrey.png" id="25_0rl1p"]
-[ext_resource type="Texture2D" uid="uid://d4a07son86dqf" path="res://assets/speedyTurtleWhite.png" id="25_qsp4k"]
-[ext_resource type="Texture2D" uid="uid://bnjwv8r8p11qm" path="res://assets/speedyTurtleGrey.png" id="26_kq58d"]
-[ext_resource type="Texture2D" uid="uid://cqnxglyi6bl8y" path="res://assets/jackpotWhite.png" id="27_come4"]
-[ext_resource type="Texture2D" uid="uid://82wk4yu305vt" path="res://assets/jackpotGrey.png" id="28_h8e4i"]
-[ext_resource type="Texture2D" uid="uid://b0ae226bpkb6l" path="res://assets/moreApplesWhite.png" id="30_0rl1p"]
-[ext_resource type="Texture2D" uid="uid://c26tfcuf3xgsb" path="res://assets/moreApplesGrey.png" id="31_ok6jj"]
-[ext_resource type="Texture2D" uid="uid://dnafcu5mg104x" path="res://assets/file1.png" id="53_4w656"]
-[ext_resource type="Texture2D" uid="uid://b5vn6u86iv88b" path="res://assets/shopIcon.png" id="53_ruth0"]
-[ext_resource type="Texture2D" uid="uid://cahudswuitt16" path="res://assets/file2.png" id="54_e71vb"]
-[ext_resource type="Texture2D" uid="uid://ddiha7mtws15h" path="res://assets/shopIconHover.png" id="54_rm4vd"]
-[ext_resource type="Texture2D" uid="uid://b87j0jvsk2fif" path="res://assets/text_Turtles.png" id="54_rnkwl"]
-[ext_resource type="Texture2D" uid="uid://bxa1p7ley2oca" path="res://assets/file3.png" id="55_rnkwl"]
-[ext_resource type="Texture2D" uid="uid://dp1hx43excpn4" path="res://assets/text_Hats.png" id="56_vke2r"]
-[ext_resource type="Texture2D" uid="uid://bpete4h63n7n8" path="res://assets/TBDimage.png" id="58_vke2r"]
-[ext_resource type="Script" uid="uid://cdmt0somwrnfm" path="res://shopUI.gd" id="61_1vm84"]
-[ext_resource type="Texture2D" uid="uid://7wwy45ldta1b" path="res://assets/shopBackground2.png" id="61_rm4vd"]
-[ext_resource type="Texture2D" uid="uid://bca310olj3uhj" path="res://assets/xButton.png" id="62_rqtf5"]
-[ext_resource type="Texture2D" uid="uid://7wvs48okeejs" path="res://assets/xButtonHover.png" id="63_1vm84"]
-[ext_resource type="Texture2D" uid="uid://bss83turmerq7" path="res://assets/text_shop.png" id="64_wu3dr"]
-[ext_resource type="Texture2D" uid="uid://01lchbjs1mig" path="res://assets/hatCoinBasic.png" id="65_cyx1q"]
-[ext_resource type="Texture2D" uid="uid://cgkxrjxhh0tgp" path="res://assets/buyButton.png" id="66_0dhbp"]
-[ext_resource type="Texture2D" uid="uid://d2pchthksrixp" path="res://assets/buyButtonHover.png" id="67_jx0wj"]
+[ext_resource type="Script" uid="uid://bmknanxfs4vu8" path="res://code/mainGame.gd" id="1_r4e17"]
+[ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://assets/Background.webp" id="2_y57op"]
+[ext_resource type="Texture2D" uid="uid://cjs8q137dnn3f" path="res://assets/newPen3.png" id="3_mlv25"]
+[ext_resource type="Script" uid="uid://bomlan7l2ae6u" path="res://code/theHatMachine.gd" id="4_r4e17"]
+[ext_resource type="Texture2D" uid="uid://c7qtmxrur1ixk" path="res://assets/hatMachineText.png" id="5_gdvew"]
+[ext_resource type="Texture2D" uid="uid://nx1pvje7idgt" path="res://assets/hatMachineText2.png" id="6_kjtvk"]
+[ext_resource type="Texture2D" uid="uid://dvawbeb512ub3" path="res://assets/hatMachine.png" id="7_xrs0c"]
+[ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="8_xljpf"]
+[ext_resource type="Texture2D" uid="uid://46tntgin6s8i" path="res://assets/hatMachineBall.png" id="9_j4bwh"]
+[ext_resource type="Texture2D" uid="uid://jx1wykui2por" path="res://assets/hatMachinePrizeBall.png" id="10_ksmap"]
+[ext_resource type="Texture2D" uid="uid://dlwh0utkxpp6t" path="res://assets/hatMachineSpinner.png" id="11_ygd8o"]
+[ext_resource type="Script" uid="uid://c1bc1afd5al2h" path="res://code/turtlePenFloor.gd" id="12_r4e17"]
+[ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://assets/plusButtonWhite.png" id="13_xaipn"]
+[ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://assets/plusButtonGrey.png" id="14_ndrjj"]
+[ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/buyTurtleWhite.png" id="15_ih3m7"]
+[ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/BuyTurtleGrey.png" id="16_11yus"]
+[ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://assets/upgradePenWhite.png" id="17_b6ruc"]
+[ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://assets/upgradePenGrey.png" id="18_155or"]
+[ext_resource type="Script" uid="uid://c7dfifirs85k7" path="res://code/MINE.gd" id="19_y57op"]
+[ext_resource type="Texture2D" uid="uid://b8t0t5p5iev1r" path="res://assets/THEMINEnoBG.png" id="20_63lxy"]
+[ext_resource type="Texture2D" uid="uid://8snly1qg6fkn" path="res://assets/rocks.png" id="21_fjhjs"]
+[ext_resource type="Texture2D" uid="uid://vyqe1wm4urll" path="res://assets/trainTracks.png" id="22_bfu41"]
+[ext_resource type="Script" uid="uid://cx6bc568n7brl" path="res://code/trainTracks.gd" id="23_y57op"]
+[ext_resource type="Texture2D" uid="uid://dryjp60s56dq" path="res://assets/rock1.png" id="24_v0wtd"]
+[ext_resource type="Texture2D" uid="uid://b2jy34fyrd45w" path="res://assets/rock2.png" id="25_sgvw8"]
+[ext_resource type="Texture2D" uid="uid://dt22hjwkxwc5x" path="res://assets/rock4.png" id="26_6nfnn"]
+[ext_resource type="Texture2D" uid="uid://bd4bkjlglpm3r" path="res://assets/rock3.png" id="27_4ue30"]
+[ext_resource type="Texture2D" uid="uid://cfluikwes0fpe" path="res://assets/pickaxe1.png" id="28_k42av"]
+[ext_resource type="Texture2D" uid="uid://dop4uaie1qgbp" path="res://assets/pickaxe2.png" id="29_gr8w0"]
+[ext_resource type="Texture2D" uid="uid://dq742xpeqyiwr" path="res://assets/pickaxe3.png" id="30_673bd"]
+[ext_resource type="Texture2D" uid="uid://bh0b8jc0aq3gd" path="res://assets/upgradeButtonWhite.png" id="31_akjxb"]
+[ext_resource type="Texture2D" uid="uid://bcp82eb14g1jl" path="res://assets/upgradeButtonGrey.png" id="32_vrx01"]
+[ext_resource type="Texture2D" uid="uid://dsp76uocxbu2v" path="res://assets/backImage (2).png" id="33_1uevf"]
+[ext_resource type="Texture2D" uid="uid://bkyy3ynlsnh3q" path="res://assets/UPGRADES.png" id="34_tc087"]
+[ext_resource type="Texture2D" uid="uid://d4a07son86dqf" path="res://assets/speedyTurtleWhite.png" id="35_73205"]
+[ext_resource type="Texture2D" uid="uid://bnjwv8r8p11qm" path="res://assets/speedyTurtleGrey.png" id="36_0tljd"]
+[ext_resource type="Texture2D" uid="uid://bxhr842gb1oe0" path="res://assets/feedWorkerWhite.png" id="37_mgpkq"]
+[ext_resource type="Texture2D" uid="uid://c357puwdbyomg" path="res://assets/feedWorkerGrey.png" id="38_xmrkg"]
+[ext_resource type="Texture2D" uid="uid://b8onj4rhd0mia" path="res://assets/betterApplesWhite.png" id="39_wvlrk"]
+[ext_resource type="Texture2D" uid="uid://7vxplco8ch6u" path="res://assets/betterApplesGrey.png" id="40_engxj"]
+[ext_resource type="Texture2D" uid="uid://cqnxglyi6bl8y" path="res://assets/jackpotWhite.png" id="41_raiwf"]
+[ext_resource type="Texture2D" uid="uid://82wk4yu305vt" path="res://assets/jackpotGrey.png" id="42_roort"]
+[ext_resource type="Texture2D" uid="uid://b0ae226bpkb6l" path="res://assets/moreApplesWhite.png" id="43_gm02q"]
+[ext_resource type="Texture2D" uid="uid://c26tfcuf3xgsb" path="res://assets/moreApplesGrey.png" id="44_07pt3"]
+[ext_resource type="Script" uid="uid://b2m5mlvdo42qg" path="res://code/STORE.gd" id="45_mlv25"]
+[ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://assets/storeNoBG.png" id="46_83607"]
+[ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://assets/cashRegister.png" id="47_vny5k"]
+[ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://code/cashRegister.gd" id="48_8lcmr"]
+[ext_resource type="Texture2D" uid="uid://dade68shqm432" path="res://assets/timerWhite.png" id="49_ga3rw"]
+[ext_resource type="Texture2D" uid="uid://7ypx1qde2uj" path="res://assets/timerGrey.png" id="50_f5chs"]
+[ext_resource type="Script" uid="uid://cdmt0somwrnfm" path="res://code/shopUI.gd" id="51_r4e17"]
+[ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/CroppedWhiteTurtleButton.png" id="52_joh2r"]
+[ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://assets/croppedGreyTurtleButton.png" id="53_yton5"]
+[ext_resource type="Texture2D" uid="uid://b5vn6u86iv88b" path="res://assets/shopIcon.png" id="54_4ahvx"]
+[ext_resource type="Texture2D" uid="uid://ddiha7mtws15h" path="res://assets/shopIconHover.png" id="55_2cr71"]
+[ext_resource type="Texture2D" uid="uid://dnafcu5mg104x" path="res://assets/file1.png" id="56_1hbcg"]
+[ext_resource type="Texture2D" uid="uid://b87j0jvsk2fif" path="res://assets/text_Turtles.png" id="57_m4o51"]
+[ext_resource type="Texture2D" uid="uid://cahudswuitt16" path="res://assets/file2.png" id="58_jp61a"]
+[ext_resource type="Texture2D" uid="uid://dp1hx43excpn4" path="res://assets/text_Hats.png" id="59_esrwe"]
+[ext_resource type="Texture2D" uid="uid://bxa1p7ley2oca" path="res://assets/file3.png" id="60_4b36k"]
+[ext_resource type="Texture2D" uid="uid://bpete4h63n7n8" path="res://assets/TBDimage.png" id="61_1v8b0"]
+[ext_resource type="Texture2D" uid="uid://bca310olj3uhj" path="res://assets/xButton.png" id="62_683hg"]
+[ext_resource type="Texture2D" uid="uid://7wvs48okeejs" path="res://assets/xButtonHover.png" id="63_ow8of"]
+[ext_resource type="Texture2D" uid="uid://7wwy45ldta1b" path="res://assets/shopBackground2.png" id="64_hj4tt"]
+[ext_resource type="Texture2D" uid="uid://bss83turmerq7" path="res://assets/text_shop.png" id="65_kqx4a"]
+[ext_resource type="Texture2D" uid="uid://01lchbjs1mig" path="res://assets/hatCoinBasic.png" id="66_pfcs8"]
+[ext_resource type="Texture2D" uid="uid://cgkxrjxhh0tgp" path="res://assets/buyButton.png" id="67_50d7c"]
+[ext_resource type="Texture2D" uid="uid://d2pchthksrixp" path="res://assets/buyButtonHover.png" id="68_ruytr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
 
@@ -75,16 +75,16 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_d2t1y")
+"texture": ExtResource("24_v0wtd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_gngh3")
+"texture": ExtResource("25_sgvw8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_0n3wm")
+"texture": ExtResource("26_6nfnn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_qnost")
+"texture": ExtResource("27_4ue30")
 }],
 "loop": 1,
 "name": &"mining",
@@ -92,7 +92,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_d2t1y")
+"texture": ExtResource("24_v0wtd")
 }],
 "loop": 1,
 "name": &"notMining",
@@ -103,100 +103,96 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_qnost")
+"texture": ExtResource("28_k42av")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_wnkbs")
+"texture": ExtResource("29_gr8w0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_f6a44")
+"texture": ExtResource("30_673bd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_wnkbs")
+"texture": ExtResource("29_gr8w0")
 }],
 "loop": 1,
 "name": &"DEFAULT",
 "speed": 4.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_facbu"]
-script/source = "extends Label
-"
-
 [node name="Node2D" type="Node2D" unique_id=1208055871]
-script = ExtResource("1_0xm2m")
+script = ExtResource("1_r4e17")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1554020935]
 position = Vector2(361.5, 1.9995213)
 scale = Vector2(1.522, 20.519999)
-texture = ExtResource("1_ig7tw")
+texture = ExtResource("2_y57op")
 
 [node name="TurtlePen" type="Sprite2D" parent="." unique_id=910034301]
 position = Vector2(364.00003, 718)
 scale = Vector2(0.84944916, 0.85900265)
-texture = ExtResource("3_come4")
+texture = ExtResource("3_mlv25")
 
 [node name="THE HAT MACHINE" type="Control" parent="." unique_id=2083350201]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("4_abqjc")
+script = ExtResource("4_r4e17")
 
 [node name="the hat" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1841397177]
 position = Vector2(182.25, -1166.2505)
 scale = Vector2(0.66627634, 0.6450382)
-texture = ExtResource("4_hrvbo")
+texture = ExtResource("5_gdvew")
 
 [node name="machine" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1494614255]
 position = Vector2(205.50002, -1107.0005)
 scale = Vector2(0.74126637, 0.5625001)
-texture = ExtResource("5_uypp3")
+texture = ExtResource("6_kjtvk")
 
 [node name="HatMachine" type="Sprite2D" parent="THE HAT MACHINE" unique_id=656691218]
 position = Vector2(371, -560)
 scale = Vector2(0.86486477, 0.83037376)
-texture = ExtResource("6_blkrb")
+texture = ExtResource("7_xrs0c")
 
 [node name="depth" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1470020017]
 position = Vector2(396.00006, -234.99998)
 scale = Vector2(0.07936508, 0.28640777)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="HatMachineBall" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1186832026]
 position = Vector2(353.00003, -573)
 scale = Vector2(0.9076433, 0.8766234)
-texture = ExtResource("9_6iyjs")
+texture = ExtResource("9_j4bwh")
 
 [node name="HatMachineBall2" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1292962474]
 position = Vector2(490, -595)
 scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_6iyjs")
+texture = ExtResource("9_j4bwh")
 
 [node name="HatMachineBall3" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1959757875]
 position = Vector2(227.00002, -627)
 scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_6iyjs")
+texture = ExtResource("9_j4bwh")
 
 [node name="HatMachineBall4" type="Sprite2D" parent="THE HAT MACHINE" unique_id=604212880]
 position = Vector2(420, -706)
 scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_6iyjs")
+texture = ExtResource("9_j4bwh")
 
 [node name="HatMachineBall5" type="Sprite2D" parent="THE HAT MACHINE" unique_id=501132301]
 position = Vector2(549, -707)
 scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_6iyjs")
+texture = ExtResource("9_j4bwh")
 
 [node name="HatMachineBall6" type="Sprite2D" parent="THE HAT MACHINE" unique_id=92920792]
 position = Vector2(182.00002, -752)
 scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_6iyjs")
+texture = ExtResource("9_j4bwh")
 
 [node name="HatMachineBall7" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1378654942]
 position = Vector2(306, -764)
 scale = Vector2(0.8051493, 0.7988906)
-texture = ExtResource("9_6iyjs")
+texture = ExtResource("9_j4bwh")
 
 [node name="HatMachinePrizeBall" type="TextureButton" parent="THE HAT MACHINE" unique_id=719491778]
 visible = false
@@ -206,7 +202,7 @@ offset_top = -330.0
 offset_right = 604.0
 offset_bottom = -49.0
 scale = Vector2(0.51398605, 0.48131672)
-texture_normal = ExtResource("10_4w656")
+texture_normal = ExtResource("10_ksmap")
 
 [node name="HatPrize" type="Sprite2D" parent="THE HAT MACHINE/HatMachinePrizeBall" unique_id=1886209667]
 position = Vector2(147.86392, 143.35675)
@@ -220,7 +216,7 @@ offset_right = 463.0
 offset_bottom = -343.00003
 scale = Vector2(0.90173924, 0.91428596)
 pivot_offset = Vector2(77, 77)
-texture_normal = ExtResource("7_abqjc")
+texture_normal = ExtResource("11_ygd8o")
 
 [node name="Label" type="Label" parent="THE HAT MACHINE" unique_id=655515606]
 layout_mode = 0
@@ -258,7 +254,7 @@ anchors_preset = 0
 offset_left = 225.0
 offset_right = 265.0
 offset_bottom = 40.0
-script = ExtResource("3_jq2sk")
+script = ExtResource("12_r4e17")
 
 [node name="TurtlePen" type="Sprite2D" parent="LEVEL_1" unique_id=417850940]
 visible = false
@@ -281,8 +277,8 @@ offset_top = -625.0
 offset_right = 1312.0
 offset_bottom = 364.0
 scale = Vector2(0.09648591, 0.08774316)
-texture_normal = ExtResource("9_vivmo")
-texture_hover = ExtResource("10_2cqfq")
+texture_normal = ExtResource("13_xaipn")
+texture_hover = ExtResource("14_ndrjj")
 
 [node name="Label" type="Label" parent="LEVEL_1/addNewPen2" unique_id=1803477713]
 layout_mode = 0
@@ -308,8 +304,8 @@ offset_top = 34.0
 offset_right = 1772.0
 offset_bottom = 910.0
 scale = Vector2(0.20036061, 0.18369158)
-texture_normal = ExtResource("16_82xsv")
-texture_hover = ExtResource("17_getpj")
+texture_normal = ExtResource("15_ih3m7")
+texture_hover = ExtResource("16_11yus")
 
 [node name="turtleCost" type="Label" parent="LEVEL_1/addNewPen2/TowerUI/addTurtle" unique_id=897388438]
 layout_mode = 0
@@ -328,8 +324,8 @@ offset_top = 1132.0
 offset_right = 1589.6143
 offset_bottom = 1779.0
 scale = Vector2(0.23073152, 0.19869651)
-texture_normal = ExtResource("18_getpj")
-texture_hover = ExtResource("19_ryguw")
+texture_normal = ExtResource("17_b6ruc")
+texture_hover = ExtResource("18_155or")
 
 [node name="penSpaceLabel" type="Label" parent="LEVEL_1/addNewPen2/TowerUI/addPenSpace" unique_id=491070474]
 layout_mode = 0
@@ -347,68 +343,68 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("10_facbu")
+script = ExtResource("19_y57op")
 
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
 position = Vector2(186.99998, 2627.0002)
 scale = Vector2(0.18038498, 0.15711285)
-texture = ExtResource("5_efxa6")
+texture = ExtResource("20_63lxy")
 
 [node name="Rocks" type="Sprite2D" parent="THE MINE" unique_id=42756874]
 visible = false
 position = Vector2(354.125, 2986.3127)
 scale = Vector2(0.37261903, 0.15412623)
-texture = ExtResource("4_efxa6")
+texture = ExtResource("21_fjhjs")
 
 [node name="Rocks3" type="Sprite2D" parent="THE MINE" unique_id=1812265107]
 visible = false
 position = Vector2(354.125, 3476.3127)
 scale = Vector2(0.37261903, 0.15412623)
-texture = ExtResource("4_efxa6")
+texture = ExtResource("21_fjhjs")
 
 [node name="Rocks2" type="Sprite2D" parent="THE MINE" unique_id=327818512]
 visible = false
 position = Vector2(353.12497, 3705.3127)
 scale = Vector2(0.37261903, 0.15412623)
-texture = ExtResource("4_efxa6")
+texture = ExtResource("21_fjhjs")
 
 [node name="Rocks4" type="Sprite2D" parent="THE MINE" unique_id=580728311]
 visible = false
 position = Vector2(352.125, 3229.3125)
 scale = Vector2(0.37261903, 0.15412623)
-texture = ExtResource("4_efxa6")
+texture = ExtResource("21_fjhjs")
 
 [node name="Rocks5" type="Sprite2D" parent="THE MINE" unique_id=1475961898]
 visible = false
 position = Vector2(355.12497, 2745.3125)
 scale = Vector2(0.37261903, 0.15412623)
-texture = ExtResource("4_efxa6")
+texture = ExtResource("21_fjhjs")
 
 [node name="LineNoBg" type="Sprite2D" parent="THE MINE" unique_id=966892866]
 position = Vector2(357, 2932)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg2" type="Sprite2D" parent="THE MINE" unique_id=1960956491]
 position = Vector2(366, 3229.0002)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg3" type="Sprite2D" parent="THE MINE" unique_id=620346352]
 position = Vector2(366, 3531)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg4" type="Sprite2D" parent="THE MINE" unique_id=924993338]
 position = Vector2(364, 3820.0002)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="TrainTracks1" type="Sprite2D" parent="THE MINE" unique_id=1824153287]
 position = Vector2(350, 2836.9998)
 scale = Vector2(0.47093242, 0.21574041)
-texture = ExtResource("13_ok6jj")
-script = ExtResource("14_ok6jj")
+texture = ExtResource("22_bfu41")
+script = ExtResource("23_y57op")
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks1" unique_id=201378433]
 z_index = 15
@@ -430,8 +426,8 @@ frame_progress = 0.35203403
 [node name="TrainTracks2" type="Sprite2D" parent="THE MINE" unique_id=1131071358]
 position = Vector2(343, 3131)
 scale = Vector2(0.47093242, 0.21574041)
-texture = ExtResource("13_ok6jj")
-script = ExtResource("14_ok6jj")
+texture = ExtResource("22_bfu41")
+script = ExtResource("23_y57op")
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks2" unique_id=1270267395]
 z_index = 15
@@ -453,8 +449,8 @@ frame_progress = 0.9038054
 [node name="TrainTracks3" type="Sprite2D" parent="THE MINE" unique_id=869645848]
 position = Vector2(357, 3438)
 scale = Vector2(0.47093242, 0.21574041)
-texture = ExtResource("13_ok6jj")
-script = ExtResource("14_ok6jj")
+texture = ExtResource("22_bfu41")
+script = ExtResource("23_y57op")
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks3" unique_id=1923985065]
 z_index = 15
@@ -476,8 +472,8 @@ frame_progress = 0.9038054
 [node name="TrainTracks4" type="Sprite2D" parent="THE MINE" unique_id=969698093]
 position = Vector2(350, 3726)
 scale = Vector2(0.47093242, 0.21574041)
-texture = ExtResource("13_ok6jj")
-script = ExtResource("14_ok6jj")
+texture = ExtResource("22_bfu41")
+script = ExtResource("23_y57op")
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks4" unique_id=1512161757]
 z_index = 15
@@ -503,8 +499,8 @@ offset_top = 2601.0
 offset_right = 1566.0
 offset_bottom = 3115.331
 scale = Vector2(0.14273988, 0.16455439)
-texture_normal = ExtResource("12_getpj")
-texture_hover = ExtResource("13_ryguw")
+texture_normal = ExtResource("31_akjxb")
+texture_hover = ExtResource("32_vrx01")
 
 [node name="mineUI" type="Control" parent="THE MINE" unique_id=1603693312]
 visible = false
@@ -519,13 +515,13 @@ offset_bottom = 3720.0
 z_index = 20
 position = Vector2(320, 502)
 scale = Vector2(1.5503967, 1.6441398)
-texture = ExtResource("15_lswn8")
+texture = ExtResource("33_1uevf")
 
 [node name="Upgrades" type="Sprite2D" parent="THE MINE/mineUI" unique_id=1106351048]
 z_index = 21
 position = Vector2(162.25002, 106.125)
 scale = Vector2(0.2630435, 0.28794006)
-texture = ExtResource("24_xuqvo")
+texture = ExtResource("34_tc087")
 
 [node name="fasterCustomers" type="TextureButton" parent="THE MINE/mineUI" unique_id=1896765284]
 z_index = 21
@@ -535,8 +531,8 @@ offset_top = 185.74878
 offset_right = 1322.7881
 offset_bottom = 1354.7488
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("25_qsp4k")
-texture_hover = ExtResource("26_kq58d")
+texture_normal = ExtResource("35_73205")
+texture_hover = ExtResource("36_0tljd")
 
 [node name="feedWorkers" type="TextureButton" parent="THE MINE/mineUI" unique_id=336581085]
 z_index = 21
@@ -546,8 +542,8 @@ offset_top = 327.125
 offset_right = 1323.25
 offset_bottom = 1496.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("21_htxhm")
-texture_hover = ExtResource("22_jq2sk")
+texture_normal = ExtResource("37_mgpkq")
+texture_hover = ExtResource("38_xmrkg")
 
 [node name="gems" type="TextureButton" parent="THE MINE/mineUI" unique_id=194562622]
 z_index = 21
@@ -557,8 +553,8 @@ offset_top = 474.125
 offset_right = 1324.25
 offset_bottom = 1643.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("19_kq58d")
-texture_hover = ExtResource("20_seu75")
+texture_normal = ExtResource("39_wvlrk")
+texture_hover = ExtResource("40_engxj")
 
 [node name="jackpot" type="TextureButton" parent="THE MINE/mineUI" unique_id=1650587670]
 z_index = 21
@@ -568,8 +564,8 @@ offset_top = 619.125
 offset_right = 1325.25
 offset_bottom = 1788.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("27_come4")
-texture_hover = ExtResource("28_h8e4i")
+texture_normal = ExtResource("41_raiwf")
+texture_hover = ExtResource("42_roort")
 
 [node name="extraCart" type="TextureButton" parent="THE MINE/mineUI" unique_id=933525678]
 z_index = 21
@@ -579,8 +575,8 @@ offset_top = 776.125
 offset_right = 1325.25
 offset_bottom = 1945.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("30_0rl1p")
-texture_hover = ExtResource("31_ok6jj")
+texture_normal = ExtResource("43_gm02q")
+texture_hover = ExtResource("44_07pt3")
 
 [node name="cartSpeedCost" type="Label" parent="THE MINE/mineUI" unique_id=2084582507]
 z_index = 22
@@ -757,69 +753,69 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("8_jq2sk")
+script = ExtResource("45_mlv25")
 
 [node name="StoreNoBg" type="Sprite2D" parent="STORE" unique_id=1229957735]
 position = Vector2(168, 1377)
 scale = Vector2(0.1708995, 0.14011475)
-texture = ExtResource("9_yaehf")
+texture = ExtResource("46_83607")
 
 [node name="CashRegister1" type="Sprite2D" parent="STORE" unique_id=599831646 node_paths=PackedStringArray("location")]
 modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
 position = Vector2(361, 1600.0001)
 scale = Vector2(0.45450792, 0.25138354)
-texture = ExtResource("8_2cqfq")
-script = ExtResource("9_074og")
+texture = ExtResource("47_vny5k")
+script = ExtResource("48_8lcmr")
 location = NodePath("..")
 
 [node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349 node_paths=PackedStringArray("location")]
 modulate = Color(0.5294118, 0.5294118, 0.5294118, 1)
 position = Vector2(361, 1859.0001)
 scale = Vector2(0.45450792, 0.25138354)
-texture = ExtResource("8_2cqfq")
-script = ExtResource("9_074og")
+texture = ExtResource("47_vny5k")
+script = ExtResource("48_8lcmr")
 location = NodePath("..")
 
 [node name="CashRegister3" type="Sprite2D" parent="STORE" unique_id=174330305 node_paths=PackedStringArray("location")]
 modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
 position = Vector2(368.99997, 2126)
 scale = Vector2(0.45450792, 0.25138354)
-texture = ExtResource("8_2cqfq")
-script = ExtResource("9_074og")
+texture = ExtResource("47_vny5k")
+script = ExtResource("48_8lcmr")
 location = NodePath("..")
 
 [node name="CashRegister4" type="Sprite2D" parent="STORE" unique_id=1601957721 node_paths=PackedStringArray("location")]
 modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
 position = Vector2(363, 2400)
 scale = Vector2(0.45450792, 0.25138354)
-texture = ExtResource("8_2cqfq")
-script = ExtResource("9_074og")
+texture = ExtResource("47_vny5k")
+script = ExtResource("48_8lcmr")
 location = NodePath("..")
 
 [node name="LineNoBg" type="Sprite2D" parent="STORE" unique_id=2120682538]
 position = Vector2(366, 2211.0005)
 scale = Vector2(0.38928586, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg3" type="Sprite2D" parent="STORE" unique_id=519897394]
 position = Vector2(370, 1946.0004)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg4" type="Sprite2D" parent="STORE" unique_id=12210971]
 position = Vector2(365, 1685.0002)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg5" type="Sprite2D" parent="STORE" unique_id=310251075]
 position = Vector2(370, 1421)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg2" type="Sprite2D" parent="STORE" unique_id=1199954359]
 position = Vector2(371, 2485.0002)
 scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
 
 [node name="upgradesStore" type="TextureButton" parent="STORE" unique_id=1873753868]
 layout_mode = 0
@@ -828,8 +824,8 @@ offset_top = 1319.0
 offset_right = 1557.0
 offset_bottom = 1833.331
 scale = Vector2(0.14273988, 0.16455439)
-texture_normal = ExtResource("12_getpj")
-texture_hover = ExtResource("13_ryguw")
+texture_normal = ExtResource("31_akjxb")
+texture_hover = ExtResource("32_vrx01")
 
 [node name="StoreUI" type="Control" parent="STORE" unique_id=227781087]
 visible = false
@@ -844,13 +840,13 @@ offset_bottom = 2455.0
 z_index = 20
 position = Vector2(320, 502)
 scale = Vector2(1.5503967, 1.6441398)
-texture = ExtResource("15_lswn8")
+texture = ExtResource("33_1uevf")
 
 [node name="Upgrades" type="Sprite2D" parent="STORE/StoreUI" unique_id=117387151]
 z_index = 21
 position = Vector2(162.25002, 106.125)
 scale = Vector2(0.2630435, 0.28794006)
-texture = ExtResource("24_xuqvo")
+texture = ExtResource("34_tc087")
 
 [node name="fasterCustomers" type="TextureButton" parent="STORE/StoreUI" unique_id=1772774168]
 z_index = 21
@@ -860,8 +856,8 @@ offset_top = 185.74878
 offset_right = 1322.7881
 offset_bottom = 1354.7488
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("25_qsp4k")
-texture_hover = ExtResource("26_kq58d")
+texture_normal = ExtResource("35_73205")
+texture_hover = ExtResource("36_0tljd")
 
 [node name="feedWorkers" type="TextureButton" parent="STORE/StoreUI" unique_id=366704706]
 z_index = 21
@@ -871,8 +867,8 @@ offset_top = 327.125
 offset_right = 1323.25
 offset_bottom = 1496.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("21_htxhm")
-texture_hover = ExtResource("22_jq2sk")
+texture_normal = ExtResource("37_mgpkq")
+texture_hover = ExtResource("38_xmrkg")
 
 [node name="betterApples" type="TextureButton" parent="STORE/StoreUI" unique_id=615860551]
 z_index = 21
@@ -882,8 +878,8 @@ offset_top = 474.125
 offset_right = 1324.25
 offset_bottom = 1643.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("19_kq58d")
-texture_hover = ExtResource("20_seu75")
+texture_normal = ExtResource("39_wvlrk")
+texture_hover = ExtResource("40_engxj")
 
 [node name="timer" type="TextureButton" parent="STORE/StoreUI" unique_id=456524947]
 z_index = 21
@@ -893,8 +889,8 @@ offset_top = 619.125
 offset_right = 1325.25
 offset_bottom = 1788.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("24_4k2k6")
-texture_hover = ExtResource("25_0rl1p")
+texture_normal = ExtResource("49_ga3rw")
+texture_hover = ExtResource("50_f5chs")
 
 [node name="extraApples" type="TextureButton" parent="STORE/StoreUI" unique_id=254566192]
 z_index = 21
@@ -904,8 +900,8 @@ offset_top = 776.125
 offset_right = 1325.25
 offset_bottom = 1945.125
 scale = Vector2(0.10253414, 0.109256834)
-texture_normal = ExtResource("30_0rl1p")
-texture_hover = ExtResource("31_ok6jj")
+texture_normal = ExtResource("43_gm02q")
+texture_hover = ExtResource("44_07pt3")
 
 [node name="customerSpeedCost" type="Label" parent="STORE/StoreUI" unique_id=2116158718]
 z_index = 22
@@ -1088,6 +1084,7 @@ theme_override_font_sizes/font_size = 40
 text = "XX/XX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1540102641]
+script = ExtResource("51_r4e17")
 
 [node name="turtleCoins" type="Label" parent="CanvasLayer" unique_id=1745811126]
 offset_left = 559.0
@@ -1096,7 +1093,6 @@ offset_right = 709.0
 offset_bottom = 75.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "TURTLE COINS: XXX"
-script = SubResource("GDScript_facbu")
 
 [node name="ChangeTurtles" type="TextureButton" parent="CanvasLayer" unique_id=372462518]
 offset_left = 604.0
@@ -1104,8 +1100,8 @@ offset_top = 46.0
 offset_right = 1466.0
 offset_bottom = 794.0
 scale = Vector2(0.10426618, 0.09999122)
-texture_normal = ExtResource("13_cegan")
-texture_hover = ExtResource("14_82xsv")
+texture_normal = ExtResource("52_joh2r")
+texture_hover = ExtResource("53_yton5")
 
 [node name="shop" type="TextureButton" parent="CanvasLayer" unique_id=1431974678]
 offset_left = 607.0
@@ -1113,8 +1109,8 @@ offset_top = 127.0
 offset_right = 1258.0
 offset_bottom = 760.0
 scale = Vector2(0.1397453, 0.13362148)
-texture_normal = ExtResource("53_ruth0")
-texture_hover = ExtResource("54_rm4vd")
+texture_normal = ExtResource("54_4ahvx")
+texture_hover = ExtResource("55_2cr71")
 
 [node name="TowerUI" type="Control" parent="CanvasLayer" unique_id=1170629106]
 layout_mode = 3
@@ -1129,8 +1125,8 @@ offset_top = 34.0
 offset_right = 1772.0
 offset_bottom = 910.0
 scale = Vector2(0.20036061, 0.18369158)
-texture_normal = ExtResource("16_82xsv")
-texture_hover = ExtResource("17_getpj")
+texture_normal = ExtResource("15_ih3m7")
+texture_hover = ExtResource("16_11yus")
 
 [node name="turtleCost" type="Label" parent="CanvasLayer/TowerUI/addTurtle" unique_id=1541145669]
 layout_mode = 0
@@ -1149,8 +1145,8 @@ offset_top = 1132.0
 offset_right = 1589.6143
 offset_bottom = 1779.0
 scale = Vector2(0.23073152, 0.19869651)
-texture_normal = ExtResource("18_getpj")
-texture_hover = ExtResource("19_ryguw")
+texture_normal = ExtResource("17_b6ruc")
+texture_hover = ExtResource("18_155or")
 
 [node name="penSpaceLabel" type="Label" parent="CanvasLayer/TowerUI/addPenSpace" unique_id=712537936]
 layout_mode = 0
@@ -1174,13 +1170,13 @@ offset_bottom = 40.0
 [node name="File1" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=927709203]
 position = Vector2(358.76675, 658.14594)
 scale = Vector2(1.0607215, 1.0978576)
-texture = ExtResource("53_4w656")
+texture = ExtResource("56_1hbcg")
 
 [node name="textTurtles" type="Sprite2D" parent="CanvasLayer/TurtleUI/File1" unique_id=950649438]
 z_index = 53
 position = Vector2(-179.84622, -356.2812)
 scale = Vector2(0.3559482, 0.35658726)
-texture = ExtResource("54_rnkwl")
+texture = ExtResource("57_m4o51")
 
 [node name="scrollContainer" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File1" unique_id=910715122]
 visible = false
@@ -1211,14 +1207,14 @@ text = "Turtles"
 [node name="File2" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=1208346686]
 position = Vector2(359, 658)
 scale = Vector2(1.0607215, 1.0978576)
-texture = ExtResource("54_e71vb")
+texture = ExtResource("58_jp61a")
 
 [node name="TextHats" type="Sprite2D" parent="CanvasLayer/TurtleUI/File2" unique_id=2123903927]
 visible = false
 z_index = 51
 position = Vector2(-201.52957, -358.10272)
 scale = Vector2(0.3993327, 0.3411134)
-texture = ExtResource("56_vke2r")
+texture = ExtResource("59_esrwe")
 
 [node name="hatContainer" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File2" unique_id=515555799]
 visible = false
@@ -1226,7 +1222,7 @@ z_index = 51
 custom_minimum_size = Vector2(200, 200)
 offset_left = -282.8264
 offset_top = -297.85278
-offset_right = 287.54013
+offset_right = 284.71182
 offset_bottom = 428.10657
 horizontal_scroll_mode = 0
 
@@ -1250,7 +1246,7 @@ text = "Hats"
 [node name="File3" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=897265506]
 position = Vector2(358.76672, 658.14594)
 scale = Vector2(1.0607215, 1.0978576)
-texture = ExtResource("55_rnkwl")
+texture = ExtResource("60_4b36k")
 
 [node name="Label" type="Label" parent="CanvasLayer/TurtleUI/File3" unique_id=1984659739]
 z_index = 51
@@ -1265,7 +1261,7 @@ text = "TBD"
 [node name="TbDimage" type="Sprite2D" parent="CanvasLayer/TurtleUI/File3" unique_id=969631696]
 position = Vector2(86.010574, 17.173492)
 scale = Vector2(0.9427545, 0.91086495)
-texture = ExtResource("58_vke2r")
+texture = ExtResource("61_1v8b0")
 
 [node name="fileButton1" type="Button" parent="CanvasLayer/TurtleUI" unique_id=95537812]
 layout_mode = 0
@@ -1292,10 +1288,21 @@ offset_bottom = 197.0
 flat = true
 
 [node name="Line" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=404695884]
-z_index = 52
+z_index = 99
 position = Vector2(366.99997, 331)
 scale = Vector2(0.3439153, 0.31067982)
-texture = ExtResource("7_vivmo")
+texture = ExtResource("8_xljpf")
+
+[node name="xButton2" type="TextureButton" parent="CanvasLayer/TurtleUI" unique_id=1453153705]
+z_index = 120
+layout_mode = 0
+offset_left = 655.0
+offset_top = 171.0
+offset_right = 1010.0
+offset_bottom = 512.0
+scale = Vector2(0.19441256, 0.17229211)
+texture_normal = ExtResource("62_683hg")
+texture_hover = ExtResource("63_ow8of")
 
 [node name="ShopUI" type="Control" parent="CanvasLayer" unique_id=337924757]
 unique_name_in_owner = true
@@ -1305,27 +1312,27 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("61_1vm84")
 
 [node name="background" type="Sprite2D" parent="CanvasLayer/ShopUI" unique_id=1534131056]
 position = Vector2(361.99997, 698)
 scale = Vector2(1.5179069, 1.8162432)
-texture = ExtResource("61_rm4vd")
+texture = ExtResource("64_hj4tt")
 
 [node name="xButton" type="TextureButton" parent="CanvasLayer/ShopUI" unique_id=696881754]
+z_index = 120
 layout_mode = 0
 offset_left = 640.0
 offset_top = 206.00002
 offset_right = 995.0
 offset_bottom = 547.0
 scale = Vector2(0.19441256, 0.17229211)
-texture_normal = ExtResource("62_rqtf5")
-texture_hover = ExtResource("63_1vm84")
+texture_normal = ExtResource("62_683hg")
+texture_hover = ExtResource("63_ow8of")
 
 [node name="TextShop" type="Sprite2D" parent="CanvasLayer/ShopUI" unique_id=1455714080]
 position = Vector2(164.5, 307.875)
 scale = Vector2(0.34923664, 0.36191338)
-texture = ExtResource("64_wu3dr")
+texture = ExtResource("65_kqx4a")
 
 [node name="Item1" type="Control" parent="CanvasLayer/ShopUI" unique_id=1004279770]
 anchors_preset = 0
@@ -1345,7 +1352,7 @@ text = "Hat coin"
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ShopUI/Item1" unique_id=502660663]
 position = Vector2(140, 453)
 scale = Vector2(0.17802617, 0.17600513)
-texture = ExtResource("65_cyx1q")
+texture = ExtResource("66_pfcs8")
 
 [node name="buy" type="TextureButton" parent="CanvasLayer/ShopUI/Item1" unique_id=1084045292]
 layout_mode = 0
@@ -1354,8 +1361,8 @@ offset_top = 416.00003
 offset_right = 1028.0
 offset_bottom = 978.0
 scale = Vector2(0.21172564, 0.15579157)
-texture_normal = ExtResource("66_0dhbp")
-texture_hover = ExtResource("67_jx0wj")
+texture_normal = ExtResource("67_50d7c")
+texture_hover = ExtResource("68_ruytr")
 
 [node name="cost" type="Label" parent="CanvasLayer/ShopUI/Item1" unique_id=1656935380]
 layout_mode = 0
@@ -1393,5 +1400,6 @@ position = Vector2(361, 638)
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton1" to="." method="_on_file_button_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton2" to="." method="_on_file_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton3" to="." method="_on_file_button_3_pressed"]
-[connection signal="pressed" from="CanvasLayer/ShopUI/xButton" to="CanvasLayer/ShopUI" method="_on_x_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/ShopUI/Item1/buy" to="CanvasLayer/ShopUI" method="_on_buy_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurtleUI/xButton2" to="CanvasLayer" method="_on_x_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopUI/xButton" to="CanvasLayer" method="_on_x_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopUI/Item1/buy" to="CanvasLayer" method="_on_buy_pressed"]

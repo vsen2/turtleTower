@@ -3,7 +3,7 @@ extends Node2D
 const SAVE_PATH: String = "user://savegame.json"
 
 @export var turtle_icon: Texture2D = preload("res://assets/turtleNoBG.png")
-@export var turtle_scene: PackedScene = preload("res://turtle.tscn")
+@export var turtle_scene: PackedScene = preload("res://scenes/turtle.tscn")
 
 @onready var turtle_pen: Sprite2D = $TurtlePen
 @onready var camera: Camera2D = $Camera2D
@@ -61,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_addTurtle_pressed() -> void:
 	if turtle_scene == null:
 		# Attempt to load the turtle scene if not preloaded
-		turtle_scene = preload("res://turtle.tscn")
+		turtle_scene = preload("res://scenes/turtle.tscn")
 		if turtle_scene == null:
 			print("WARNING: Could not load turtle.tscn - new turtles cannot be created.")
 			return
@@ -125,7 +125,7 @@ func get_spot_index(spot: Node) -> int:
 
 func _instantiate_turtle(pos: Vector2, hat_id: int, assigned_floor: String, assigned_spot: int) -> Node2D:
 	if turtle_scene == null:
-		turtle_scene = preload("res://turtle.tscn")
+		turtle_scene = preload("res://scenes/turtle.tscn")
 		if turtle_scene == null:
 			print("_instantiate_turtle: turtle_scene is null after attempt to preload!")
 			return null

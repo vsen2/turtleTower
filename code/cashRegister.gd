@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var customer_turtle_scene: PackedScene = preload("res://customerTurtle.tscn")
+@export var customer_turtle_scene: PackedScene = preload("res://scenes/customerTurtle.tscn")
 @export var spot_id: String = ""
 
 const BUTTON_NORMAL_TEXTURE = preload("res://assets/plusButtonWhite.png")
@@ -93,6 +93,9 @@ func spawn_customer_turtle() -> void:
 	var spawn_y: float = global_position.y + 15
 	customer.speedMultiplier = get_parent().customerSpeedMultiplier
 	customer.global_position = Vector2(spawn_x, spawn_y)
+	customer.feedWorkersMultiplier = get_parent().feedWorkersMultiplier
+	customer.fruitMultiplier = get_parent().betterFruitMultiplier
+	customer.appleMultiplier = get_parent().appleMultiplier
 	get_parent().add_child(customer)
 
 func get_spot_save_data() -> Dictionary:

@@ -41,6 +41,23 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatCenteredTophat.png"),
 	preload("res://assets/hatCenteredTrafficCone.png"),
 	]
+
+@export var hatNames: Array[String] = [
+	"Chef Hat",
+	"Dunce Hat",
+	"Nest Hat",
+	"Fishbowl Hat",
+	"Fishing Rod Hat",
+	"Joyful Hat",
+	"Eyes Hat",
+	"King Crown",
+	"Leaf Hat",
+	"Plunger Hat",
+	"Queen Crown",
+	"Sombrero Hat",
+	"Top Hat",
+	"Traffic Cone Hat",
+	]
 		
 @export var numHats = hats.size()
 signal coins_changed(new_amount: int)

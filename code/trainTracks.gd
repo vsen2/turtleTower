@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var cart: PackedScene = preload("res://cart.tscn")
+@export var cart: PackedScene = preload("res://scenes/cart.tscn")
 @export var spot_id: String = ""
 
 const BUTTON_NORMAL_TEXTURE = preload("res://assets/plusButtonWhite.png")
@@ -78,6 +78,7 @@ func spawn_new_cart() -> void:
 	var spawn_y: float = global_position.y + 15
 	newCart.speedMultiplier = get_parent().cartSpeedMultiplier
 	newCart.gemMultiplier = get_parent().gemsMultiplier
+	newCart.cartMultiplier = get_parent().extraCartMultiplier
 	newCart.z_index = 20
 	newCart.top_level = true
 	newCart.scale = Vector2(0.4, 0.4)

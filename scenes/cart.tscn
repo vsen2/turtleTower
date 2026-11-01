@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jpg8knd4fdbd"]
 
-[ext_resource type="Script" uid="uid://dhb54f11mafo2" path="res://cart.gd" id="1_esel8"]
+[ext_resource type="Script" uid="uid://dhb54f11mafo2" path="res://code/cart.gd" id="1_esel8"]
 [ext_resource type="Texture2D" uid="uid://crb4pf204rwct" path="res://assets/cart20.png" id="1_jplhf"]
 [ext_resource type="Texture2D" uid="uid://s8oko58l5jr6" path="res://assets/cartEmpty1.png" id="2_73stm"]
 [ext_resource type="Texture2D" uid="uid://b7aatflf8vg0m" path="res://assets/cart21.png" id="2_esel8"]

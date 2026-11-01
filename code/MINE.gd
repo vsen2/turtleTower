@@ -1,4 +1,4 @@
-extends "res://floor.gd"
+extends "res://code/floor.gd"
 
 @onready var mineUI: Control = $mineUI
 
