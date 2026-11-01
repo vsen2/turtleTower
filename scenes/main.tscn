@@ -344,6 +344,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("19_y57op")
+worker_offset = Vector2(-135, -45)
+worker_flip = true
 
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
 position = Vector2(186.99998, 2627.0002)
@@ -1168,6 +1170,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="File1" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=927709203]
+z_index = 49
 position = Vector2(358.76675, 658.14594)
 scale = Vector2(1.0607215, 1.0978576)
 texture = ExtResource("56_1hbcg")
@@ -1258,7 +1261,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "TBD"
 
-[node name="TbDimage" type="Sprite2D" parent="CanvasLayer/TurtleUI/File3" unique_id=969631696]
+[node name="TBDimage" type="Sprite2D" parent="CanvasLayer/TurtleUI/File3" unique_id=969631696]
+visible = false
 position = Vector2(86.010574, 17.173492)
 scale = Vector2(0.9427545, 0.91086495)
 texture = ExtResource("61_1v8b0")

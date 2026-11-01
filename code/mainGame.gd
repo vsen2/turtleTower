@@ -143,9 +143,9 @@ func _instantiate_turtle(pos: Vector2, hat_id: int, assigned_floor: String, assi
 			var spots: Array = floor_node.get_spots()
 			if assigned_spot < spots.size():
 				var spot: Node = spots[assigned_spot]
-				var target: Vector2 = spot.global_position + Vector2(-200, -60)
+				var target: Vector2 = get_worker_position(spot)
 				print("_instantiate_turtle: target=", target, "spot.global_position=", spot.global_position, "offset=(-200,-60)")
-				new_turtle.send_to_station(target, assigned_floor, assigned_spot, spot)
+				new_turtle.send_to_station(target, assigned_floor, assigned_spot, spot, get_worker_flip(spot))
 				spot.hasWorker = true
 	return new_turtle
 
@@ -194,8 +194,8 @@ func assign_turtle_to_spot(turtle: Node, spot: Node) -> void:
 	if floor_node == null:
 		return
 	var index: int = get_spot_index(spot)
-	var target: Vector2 = spot.global_position + Vector2(-200, -60)
-	turtle.send_to_station(target, String(floor_node.floor_id), index, spot)
+	var target: Vector2 = get_worker_position(spot)
+	turtle.send_to_station(target, String(floor_node.floor_id), index, spot, get_worker_flip(spot))
 	spot.hasWorker = true
 
 func assign_turtle_to_floor(turtle: Node, floor_node: Node) -> void:
@@ -232,6 +232,19 @@ func _on_floor_chosen(id: int) -> void:
 	if is_instance_valid(turtle) and floor_node != null:
 		assign_turtle_to_floor(turtle, floor_node)
 		save_game()
+		
+func get_worker_position(spot: Node) -> Vector2:
+	var floor_node: Node = get_floor_of(spot)
+	var offset: Vector2 = Vector2(-200, -60)
+	if floor_node != null and "worker_offset" in floor_node:
+		offset = floor_node.worker_offset
+	return spot.global_position + offset
+	
+func get_worker_flip(spot: Node) -> bool:
+	var floor_node: Node = get_floor_of(spot)
+	if floor_node != null and "worker_flip" in floor_node:
+		return floor_node.worker_flip
+	return false
 
 func save_game() -> void:
 	var turtles_data: Array = []

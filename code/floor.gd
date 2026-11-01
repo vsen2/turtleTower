@@ -11,6 +11,8 @@ extends Control
 ## Stable id used as this floor's key in the save file. Defaults to the node
 ## name (snake_cased) if left blank, so it still works out of the box.
 @export var floor_id: String = ""
+@export var worker_offset: Vector2 = Vector2(-200, -60)
+@export var worker_flip: bool = false
 
 func _ready() -> void:
 	add_to_group("floors")

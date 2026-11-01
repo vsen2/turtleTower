@@ -91,12 +91,11 @@ func _process(delta: float) -> void:
 		turtleHat.flip_h = false
 		turtleHat.global_position.x = sprite.global_position.x - 59
 
-func send_to_station(target_pos: Vector2, floor_id: String, spot_index: int, spot_node: Node2D = null) -> void:
+func send_to_station(target_pos: Vector2, floor_id: String, spot_index: int, spot_node: Node2D = null, flip: bool = false) -> void:
 	if is_instance_valid(assigned_station):
 		assigned_station.hasWorker = false
-	sprite.flip_h = false
-	turtleHat.flip_h = false
-	turtleHat.global_position.x = sprite.global_position.x - 59
+	_set_facing(flip)
+	sprite.stop()
 	assigned_station = spot_node
 	assigned_floor_id = floor_id
 	assigned_spot_index = spot_index
@@ -115,10 +114,19 @@ func return_to_pen(new_bounds: Rect2) -> void:
 	assigned_spot_index = -1
 	is_assigned_to_store = false
 	bounds = new_bounds
+	sprite.play("default")
 	_pick_random_direction()
 	if status_label:
 		status_label.text = "Idle"
 
+func _set_facing(flip: bool) -> void:
+	sprite.flip_h = flip
+	turtleHat.flip_h = flip
+	if flip:
+		turtleHat.global_position.x = sprite.global_position.x + 57
+	else:
+		turtleHat.global_position.x = sprite.global_position.x - 59
+		
 func _pick_random_direction() -> void:
 	direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU)).normalized()
 
