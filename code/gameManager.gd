@@ -88,3 +88,11 @@ func set_owned_hats(list: Array) -> void:
 	for h in list:
 		owned_hats.append(int(h))  # JSON loads numbers as floats
 	hats_changed.emit()
+	
+func remove_hat(hat_id: int) -> bool:
+	var idx: int = owned_hats.find(hat_id)
+	if idx == -1:
+		return false
+	owned_hats.remove_at(idx)
+	hats_changed.emit()
+	return true

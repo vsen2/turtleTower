@@ -9,20 +9,21 @@ const BUTTON_HOVER_TEXTURE = preload("res://assets/plusButtonGrey.png")
 @onready var pickaxe: AnimatedSprite2D = $pickaxe
 @onready var rock: AnimatedSprite2D = $rock
 
-@export var location = get_parent()
-
 @export var unlocked: bool = false
 var hasWorker: bool = false
 var hasCart: bool = false
 
 var unlock_button: TextureButton
+@export var baseCost:int 
+@onready var unlockCostMultiplier = get_parent().getDifficulty()
+var unlockCost
+var unlockCostLabel: Label
 
 func _ready() -> void:
-	
+	unlockCost = (baseCost*unlockCostMultiplier)
+	print(unlockCost)
 	add_to_group("job_spots")
 	z_index = 10
-	if not unlocked:
-		create_unlock_button()
 	
 	var cartSpeedMultiplier = get_parent().cartSpeedMultiplier
 	var gemsMultiplier = get_parent().gemsMultiplier
@@ -59,17 +60,50 @@ func create_unlock_button() -> void:
 	add_child(unlock_button)
 	unlock_button.global_position = global_position - Vector2(310, 50)
 	unlock_button.pressed.connect(_on_spot_plus_pressed)
+	
+func createUnlockCostLabel() -> void:
+	unlockCostLabel = Label.new()
+	unlockCostLabel.name = "unlockCostLabel"
+	unlockCostLabel.text = "Cost: %d" % unlockCost
+	unlockCostLabel.top_level = true
+	unlockCostLabel.global_position = global_position + Vector2(-305, -100)
+	unlockCostLabel.z_index = 100
+	unlockCostLabel.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
+	unlockCostLabel.add_theme_font_size_override("font_size", 25)
+
+	add_child(unlockCostLabel)
 
 func _on_spot_plus_pressed() -> void:
 	unlocked = true
 	modulate = Color.WHITE
-	if is_instance_valid(unlock_button):
+	if is_instance_valid(unlock_button) and GameManager.spend_coins(unlockCost):
 		unlock_button.queue_free()
 		unlock_button = null
+		unlockCostLabel.queue_free()
+		unlockCostLabel = null
 	var main: Node = get_tree().current_scene
 	if main and main.has_method("begin_spot_assignment"):
 		main.begin_spot_assignment(self)
+		
+func initialize_from_save(data: Dictionary) -> void:
+	load_spot_save_data(data)
+	update_ui_state()
 
+func update_ui_state() -> void:
+	if unlocked:
+		modulate = Color.WHITE
+		if is_instance_valid(unlock_button):
+			unlock_button.queue_free()
+			unlock_button = null
+		if is_instance_valid(unlockCostLabel):
+			unlockCostLabel.queue_free()
+			unlockCostLabel = null
+	else:
+		if not is_instance_valid(unlock_button):
+			create_unlock_button()
+		if not is_instance_valid(unlockCostLabel):
+			createUnlockCostLabel()
+			
 func spawn_new_cart() -> void:
 	if not cart:
 		return
@@ -91,10 +125,3 @@ func get_spot_save_data() -> Dictionary:
 func load_spot_save_data(data: Dictionary) -> void:
 	unlocked = bool(data.get("unlocked", false))
 	hasWorker = bool(data.get("has_worker", false))
-	if unlocked:
-		modulate = Color.WHITE
-		if is_instance_valid(unlock_button):
-			unlock_button.queue_free()
-			unlock_button = null
-	elif not is_instance_valid(unlock_button):
-		create_unlock_button()

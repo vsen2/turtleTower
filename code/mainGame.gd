@@ -20,6 +20,8 @@ const SAVE_PATH: String = "user://savegame.json"
 @onready var turtleFile2: Sprite2D = $CanvasLayer/TurtleUI/File2
 @onready var turtleFile3: Sprite2D = $CanvasLayer/TurtleUI/File3
 
+var floorLimits = Vector2(4,-2)
+
 var turtleCost: int = 1
 var turtleCount: int = 0
 var turtleMax: int = 50
@@ -27,10 +29,18 @@ var penSpaceCost: int = 1
 var floorLevel: int = 0
 
 var pending_spot: Node = null
+var turtle_menu: PopupMenu = null
+var hat_menu: PopupMenu = null
 var floor_chooser: PopupMenu = null
+var menu_turtle: Node = null
+enum TurtleAction { JOB, PEN, HAT }
+
+var screen_height: float = get_viewport_rect().size.y
+var cameraStartY: float = 0.0
 
 func _ready() -> void:
 	print("mainGame _ready...")
+	cameraStartY = camera.position.y
 	load_game()
 	GameManager.hats_changed.connect(save_game)
 
@@ -47,15 +57,18 @@ func _process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.is_pressed() and not turtleUI.visible):
 		return
-	var screen_height: float = get_viewport_rect().size.y
 	var wheel: InputEventMouseButton = event
 	if wheel.button_index == MOUSE_BUTTON_WHEEL_UP:
 		floorLevel -= 1
-		camera.position.y -= screen_height
 	elif wheel.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 		floorLevel += 1
-		camera.position.y += screen_height
-	towerUI.visible = floorLevel ==0
+	else:
+		return
+	floorLevel = clampi(floorLevel, int(floorLimits.y), int(floorLimits.x))
+	var screen_height: float = get_viewport_rect().size.y
+	camera.position.y = cameraStartY + floorLevel * screen_height * -1
+	towerUI.visible = floorLevel == 0
+	print(floorLevel)
 	
 
 func _on_addTurtle_pressed() -> void:
@@ -144,7 +157,7 @@ func _instantiate_turtle(pos: Vector2, hat_id: int, assigned_floor: String, assi
 			if assigned_spot < spots.size():
 				var spot: Node = spots[assigned_spot]
 				var target: Vector2 = get_worker_position(spot)
-				print("_instantiate_turtle: target=", target, "spot.global_position=", spot.global_position, "offset=(-200,-60)")
+				#print("_instantiate_turtle: target=", target, "spot.global_position=", spot.global_position, "offset=(-200,-60)")
 				new_turtle.send_to_station(target, assigned_floor, assigned_spot, spot, get_worker_flip(spot))
 				spot.hasWorker = true
 	return new_turtle
@@ -178,16 +191,90 @@ func begin_spot_assignment(spot: Node) -> void:
 func _on_turtle_icon_selected(turtle: Node) -> void:
 	if not is_instance_valid(turtle):
 		return
-	# turtleUI.visible = false
-
+	# Came here from a spot's + button: send this turtle straight there.
 	if is_instance_valid(pending_spot) and not pending_spot.hasWorker:
 		assign_turtle_to_spot(turtle, pending_spot)
 		pending_spot = null
-	elif turtle.is_assigned_to_store:
-		turtle.return_to_pen(get_pen_bounds())
+		save_game()
+		return
+	_show_turtle_menu(turtle)
+
+func _show_turtle_menu(turtle: Node) -> void:
+	if turtle_menu == null:
+		turtle_menu = PopupMenu.new()
+		add_child(turtle_menu)
+		turtle_menu.id_pressed.connect(_on_turtle_menu_chosen)
+	turtle_menu.clear()
+	menu_turtle = turtle
+	if turtle.is_assigned_to_store:
+		turtle_menu.add_item("Switch job", TurtleAction.JOB)
+		turtle_menu.add_item("Send back to pen", TurtleAction.PEN)
 	else:
-		_show_floor_chooser(turtle)
+		turtle_menu.add_item("Give a job", TurtleAction.JOB)
+	turtle_menu.add_item("Give a hat", TurtleAction.HAT)
+	_popup_at_mouse(turtle_menu)
+
+func _on_turtle_menu_chosen(id: int) -> void:
+	var turtle: Node = menu_turtle
+	if not is_instance_valid(turtle):
+		return
+	match id:
+		TurtleAction.JOB:
+			_show_floor_chooser.call_deferred(turtle)
+		TurtleAction.PEN:
+			turtle.return_to_pen(get_pen_bounds())
+			save_game()
+		TurtleAction.HAT:
+			_show_hat_menu.call_deferred(turtle)
+
+func _show_hat_menu(turtle: Node) -> void:
+	if hat_menu == null:
+		hat_menu = PopupMenu.new()
+		hat_menu.add_theme_constant_override("icon_max_width", 40)
+		add_child(hat_menu)
+		hat_menu.id_pressed.connect(_on_hat_chosen)
+	hat_menu.clear()
+	menu_turtle = turtle
+
+	# Count how many of each hat you own.
+	var counts: Dictionary = {}
+	for hat_id in GameManager.owned_hats:
+		counts[hat_id] = counts.get(hat_id, 0) + 1
+
+	if counts.is_empty():
+		hat_menu.add_item("No hats yet - try the Hat Machine!", 9999)
+		hat_menu.set_item_disabled(0, true)
+	else:
+		var ids: Array = counts.keys()
+		ids.sort()
+		for hat_id in ids:
+			var label: String = "Hat %d" % hat_id
+			if hat_id < GameManager.hatNames.size():
+				label = GameManager.hatNames[hat_id]
+			if counts[hat_id] > 1:
+				label += " (x%d)" % counts[hat_id]
+			hat_menu.add_icon_item(GameManager.hatsCentered[hat_id], label, hat_id)
+	_popup_at_mouse(hat_menu)
+
+func _on_hat_chosen(hat_id: int) -> void:
+	var turtle: Node = menu_turtle
+	if not is_instance_valid(turtle):
+		return
+	if hat_id == turtle.random_hat and turtle.hat_from_inventory:
+		return  # already wearing that exact hat
+	var old_hat: int = turtle.random_hat
+	var old_was_owned: bool = turtle.hat_from_inventory
+	if not GameManager.remove_hat(hat_id):
+		return
+	turtle.set_hat(hat_id, true)
+	if old_was_owned:
+		GameManager.add_hat(old_hat)  # give the old one back
 	save_game()
+
+func _popup_at_mouse(menu: PopupMenu) -> void:
+	menu.reset_size()
+	menu.position = Vector2i(get_viewport().get_mouse_position())
+	menu.popup()
 
 func assign_turtle_to_spot(turtle: Node, spot: Node) -> void:
 	var floor_node: Node = get_floor_of(spot)
@@ -219,12 +306,11 @@ func _show_floor_chooser(turtle: Node) -> void:
 		floor_chooser.add_item("%s (%d free)" % [String(floor_node.floor_id).capitalize(), free.size()], idx)
 		floor_chooser.set_item_metadata(idx, floor_node)
 		idx += 1
-	if idx == 0:
-		print("No floors have free spots")
-		return
-	floor_chooser.set_meta("turtle", turtle)
-	floor_chooser.position = Vector2i(get_viewport().get_mouse_position())
-	floor_chooser.popup()
+		if idx == 0:
+			floor_chooser.add_item("No free spots - unlock one first!", 9999)
+			floor_chooser.set_item_disabled(0, true)
+		floor_chooser.set_meta("turtle", turtle)
+		_popup_at_mouse(floor_chooser)
 
 func _on_floor_chosen(id: int) -> void:
 	var turtle = floor_chooser.get_meta("turtle")
@@ -310,6 +396,9 @@ func load_game() -> void:
 			floor_node.load_save_data(floors_data[key])
 		for spot in floor_node.get_spots():
 			spot.hasWorker = false
+			# Update the spot's visuals/UI based on the newly loaded data:
+			if spot.has_method("update_ui_state"):
+				spot.update_ui_state()
 
 	# Restore turtles (and re-staff the spots they were working).
 	turtleCount = 0
@@ -319,8 +408,10 @@ func load_game() -> void:
 		var hat: int = int(t_data.get("random_hat", -1))
 		var assigned_floor: String = String(t_data.get("assigned_floor_id", ""))
 		var assigned_spot: int = int(t_data.get("assigned_spot_index", -1))
-		print("load_game: restoring turtle pos=", pos, "floor=", assigned_floor, "spot=", assigned_spot, "hat=", hat)
-		_instantiate_turtle(pos, hat, assigned_floor, assigned_spot)
+		#print("load_game: restoring turtle pos=", pos, "floor=", assigned_floor, "spot=", assigned_spot, "hat=", hat)
+		var t: Node2D = _instantiate_turtle(pos, hat, assigned_floor, assigned_spot)
+		if t != null:
+			t.hat_from_inventory = bool(t_data.get("hat_from_inventory", false))
 		turtleCount += 1
 
 

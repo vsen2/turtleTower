@@ -79,7 +79,7 @@ func _process(_delta: float) -> void:
 	timer_label.text = "%.1fs" % customer_timer.time_left
 	timer_label.add_theme_font_size_override("font_size", 25)
 	timer_label.global_position = global_position + Vector2(250, -166)
-	if customer_timer.is_stopped():
+	if customer_timer.is_stopped() and hasWorker:
 		customer_timer.start()
 
 func _on_customer_timer_timeout() -> void:

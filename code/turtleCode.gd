@@ -17,6 +17,7 @@ var assigned_spot_index: int = -1
 @onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
 var hats = GameManager.hats
 var turtle_radius: float = 16.0
+var hat_from_inventory: bool = false
 
 @onready var sprite: AnimatedSprite2D = $timmyTheTurtle
 @onready var collision_shape: CollisionShape2D = $turtleHitbox
@@ -127,6 +128,14 @@ func _set_facing(flip: bool) -> void:
 	else:
 		turtleHat.global_position.x = sprite.global_position.x - 59
 		
+func set_hat(hat_id: int, from_inventory: bool) -> void:
+	if hat_id < 0 or hat_id >= hats.size():
+		return
+	random_hat = hat_id
+	hat_from_inventory = from_inventory
+	turtleHat.texture = hats[hat_id]
+	turtleHat.visible = true
+	
 func _pick_random_direction() -> void:
 	direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU)).normalized()
 
@@ -146,6 +155,7 @@ func save_data() -> Dictionary:
 		"pos_x": global_position.x,
 		"pos_y": global_position.y,
 		"random_hat": random_hat,
+		"hat_from_inventory": hat_from_inventory,
 		"is_assigned_to_store": is_assigned_to_store,
 		"assigned_floor_id": assigned_floor_id,
 		"assigned_spot_index": assigned_spot_index

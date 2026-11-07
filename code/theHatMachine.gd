@@ -96,7 +96,6 @@ func _get_cell_width() -> float:
 	return floor((available - sep * (grid.columns - 1)) / grid.columns)
 	
 func spawn_notEnoughCoins_label() -> void:
-	print("happening")
 	var label: Label = Label.new()
 	label.name = "NotEnoughCoinsLabel"
 	label.text = "Not Enough Hat Coins"

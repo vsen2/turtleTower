@@ -34,6 +34,10 @@ var extraCartCost = 100
 @export var jackpotMultiplier: int = 1
 @export var extraCartMultiplier: int = 1
 
+##TEMPORARY
+
+var floorDifficulty: int = 1 ## priceChanging 
+
 func _ready() -> void:
 	super()
 	update_labels()
@@ -87,6 +91,9 @@ func _on_extra_cart_pressed() -> void:
 		extraCartMultiplier += 1
 		update_labels()
 		_request_save()
+		
+func getDifficulty() -> int:
+	return floorDifficulty
 
 func _request_save() -> void:
 	var main_node = get_tree().current_scene

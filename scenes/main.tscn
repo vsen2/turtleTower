@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://nx1pvje7idgt" path="res://assets/hatMachineText2.png" id="6_kjtvk"]
 [ext_resource type="Texture2D" uid="uid://dvawbeb512ub3" path="res://assets/hatMachine.png" id="7_xrs0c"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="8_xljpf"]
-[ext_resource type="Texture2D" uid="uid://46tntgin6s8i" path="res://assets/hatMachineBall.png" id="9_j4bwh"]
+[ext_resource type="Texture2D" uid="uid://5j3u43h7g3l8" path="res://assets/betterBall.png" id="9_r4e17"]
 [ext_resource type="Texture2D" uid="uid://jx1wykui2por" path="res://assets/hatMachinePrizeBall.png" id="10_ksmap"]
 [ext_resource type="Texture2D" uid="uid://dlwh0utkxpp6t" path="res://assets/hatMachineSpinner.png" id="11_ygd8o"]
 [ext_resource type="Script" uid="uid://c1bc1afd5al2h" path="res://code/turtlePenFloor.gd" id="12_r4e17"]
@@ -160,39 +160,39 @@ scale = Vector2(0.07936508, 0.28640777)
 texture = ExtResource("8_xljpf")
 
 [node name="HatMachineBall" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1186832026]
-position = Vector2(353.00003, -573)
-scale = Vector2(0.9076433, 0.8766234)
-texture = ExtResource("9_j4bwh")
+position = Vector2(479.63644, -576.8845)
+scale = Vector2(0.33939433, 0.35393426)
+texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall2" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1292962474]
-position = Vector2(490, -595)
-scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_j4bwh")
+position = Vector2(554, -686)
+scale = Vector2(0.3062102, 0.34331876)
+texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall3" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1959757875]
-position = Vector2(227.00002, -627)
-scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_j4bwh")
+position = Vector2(329, -581)
+scale = Vector2(0.3571051, 0.37180176)
+texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall4" type="Sprite2D" parent="THE HAT MACHINE" unique_id=604212880]
-position = Vector2(420, -706)
-scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_j4bwh")
+position = Vector2(327, -754)
+scale = Vector2(0.33508706, 0.34190813)
+texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall5" type="Sprite2D" parent="THE HAT MACHINE" unique_id=501132301]
-position = Vector2(549, -707)
-scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_j4bwh")
+position = Vector2(428.00003, -683)
+scale = Vector2(0.3182103, 0.32622486)
+texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall6" type="Sprite2D" parent="THE HAT MACHINE" unique_id=92920792]
-position = Vector2(182.00002, -752)
-scale = Vector2(0.8248408, 0.83766234)
-texture = ExtResource("9_j4bwh")
+position = Vector2(209, -656)
+scale = Vector2(0.36354357, 0.36468628)
+texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall7" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1378654942]
-position = Vector2(306, -764)
-scale = Vector2(0.8051493, 0.7988906)
-texture = ExtResource("9_j4bwh")
+position = Vector2(208.99998, -785)
+scale = Vector2(0.32524136, 0.33106917)
+texture = ExtResource("9_r4e17")
 
 [node name="HatMachinePrizeBall" type="TextureButton" parent="THE HAT MACHINE" unique_id=719491778]
 visible = false
@@ -407,6 +407,7 @@ position = Vector2(350, 2836.9998)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
+baseCost = 20
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks1" unique_id=201378433]
 z_index = 15
@@ -430,6 +431,7 @@ position = Vector2(343, 3131)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
+baseCost = 40
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks2" unique_id=1270267395]
 z_index = 15
@@ -453,6 +455,7 @@ position = Vector2(357, 3438)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
+baseCost = 60
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks3" unique_id=1923985065]
 z_index = 15
@@ -476,6 +479,7 @@ position = Vector2(350, 3726)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
+baseCost = 80
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks4" unique_id=1512161757]
 z_index = 15
