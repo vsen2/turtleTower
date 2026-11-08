@@ -19,25 +19,19 @@ extends "res://code/floor.gd"
 @onready var gemsValueLabel: Label = $mineUI/gemsValue
 @onready var jackpotValueLabel: Label = $mineUI/jackpotValue
 @onready var extraAppleValueLabel: Label = $mineUI/extraCartValue
-
-
-
+	
 var cartSpeedCost = 5
 var feedWorkersCost = 5
 var gemsCost = 5
 var jackpotCost = 5
 var extraCartCost = 100
-
+	
 @export var cartSpeedMultiplier: float = 1.0
 @export var feedWorkersMultiplier: float = 1.0
 @export var gemsMultiplier: float = 1.0
 @export var jackpotMultiplier: int = 1
 @export var extraCartMultiplier: int = 1
-
-##TEMPORARY
-
-var floorDifficulty: int = 1 ## priceChanging 
-
+	
 func _ready() -> void:
 	super()
 	update_labels()
@@ -91,9 +85,6 @@ func _on_extra_cart_pressed() -> void:
 		extraCartMultiplier += 1
 		update_labels()
 		_request_save()
-		
-func getDifficulty() -> int:
-	return floorDifficulty
 
 func _request_save() -> void:
 	var main_node = get_tree().current_scene

@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://c36xiuwba7i07"]
 
-[ext_resource type="Texture2D" uid="uid://btof067j3jqkl" path="res://assets/seaTurtle2.png" id="1_rjpux"]
-[ext_resource type="Texture2D" uid="uid://cc6pmh1carobw" path="res://assets/seaTurtle1.png" id="2_2thx7"]
-[ext_resource type="Texture2D" uid="uid://clu41nolnpto3" path="res://assets/seaTurtle3.png" id="3_hcwxe"]
+[ext_resource type="Script" uid="uid://bakcqsmturq37" path="res://seaTurtleCode.gd" id="1_371yd"]
+[ext_resource type="Texture2D" uid="uid://i1jaa7qldvgw" path="res://assets/seaTurtle2.png" id="1_rjpux"]
+[ext_resource type="Texture2D" uid="uid://b8h3ugs1yg6sn" path="res://assets/seaTurtle1.png" id="2_2thx7"]
+[ext_resource type="Texture2D" uid="uid://buekfpqh027j5" path="res://assets/seaTurtle3.png" id="3_hcwxe"]
 [ext_resource type="Texture2D" uid="uid://c6mjd7xl8ldjg" path="res://assets/seaTurtle4.png" id="4_bu082"]
+[ext_resource type="Texture2D" uid="uid://bicnqyy8x7d17" path="res://assets/hatFishingRod.png" id="6_kfvet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
+size = Vector2(213, 118)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
 animations = [{
@@ -26,8 +31,23 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D" unique_id=808056081]
+script = ExtResource("1_371yd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=24665708]
-position = Vector2(3, 0)
+[node name="turtleHitbox" type="CollisionShape2D" parent="." unique_id=446655446]
+position = Vector2(-22, -9)
+shape = SubResource("RectangleShape2D_6snss")
+
+[node name="body" type="Node2D" parent="." unique_id=2087957822]
+position = Vector2(0, -0.5)
+
+[node name="seaTurtle" type="AnimatedSprite2D" parent="body" unique_id=24665708]
+position = Vector2(0, -0.4999981)
+scale = Vector2(0.19820069, 0.20166808)
 sprite_frames = SubResource("SpriteFrames_6snss")
 frame_progress = 0.97223496
+
+[node name="turtleHat" type="Sprite2D" parent="body" unique_id=196744373]
+position = Vector2(-76.999985, -45.500004)
+rotation = 0.23387411
+scale = Vector2(0.12328042, 0.13157895)
+texture = ExtResource("6_kfvet")

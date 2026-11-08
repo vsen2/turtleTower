@@ -7,19 +7,28 @@ extends Control
 # loads itself as one self-contained unit, so a floor can later become its own
 # .tscn scene without changing the save format: on instantiation it just calls
 # load_save_data() with its slice of the save file.
-
+	
 ## Stable id used as this floor's key in the save file. Defaults to the node
 ## name (snake_cased) if left blank, so it still works out of the box.
 @export var floor_id: String = ""
 @export var worker_offset: Vector2 = Vector2(-200, -60)
 @export var worker_flip: bool = false
 
+@export var buttonOffset: Vector2
+
+##TEMPORARY
+@export var floorDifficulty: int = 1 ## priceChanging 
+
 func _ready() -> void:
 	add_to_group("floors")
 	if floor_id.is_empty():
 		floor_id = String(name).to_snake_case()
-
-# ------------------------------------------------------------------ spots
+		
+func getDifficulty() -> int:
+	return floorDifficulty
+	
+func getButtonOffset() -> Vector2:
+	return buttonOffset
 
 ## Every descendant node that belongs to the "job_spots" group, in scene order.
 func get_spots() -> Array[Node]:

@@ -2,18 +2,29 @@
 
 [ext_resource type="Script" uid="uid://bmknanxfs4vu8" path="res://code/mainGame.gd" id="1_r4e17"]
 [ext_resource type="Texture2D" uid="uid://c485tyocvel8h" path="res://assets/Background.webp" id="2_y57op"]
+[ext_resource type="Script" uid="uid://byrve8gr2y7pj" path="res://code/turtlePenFloor.gd" id="3_11yus"]
 [ext_resource type="Texture2D" uid="uid://cjs8q137dnn3f" path="res://assets/newPen3.png" id="3_mlv25"]
+[ext_resource type="Texture2D" uid="uid://ci4t6q8l0p7ej" path="res://assets/turtleNoBG.png" id="4_155or"]
+[ext_resource type="Script" uid="uid://d3ugol80ugtbq" path="res://code/turtlePenPool.gd" id="4_kjtvk"]
 [ext_resource type="Script" uid="uid://bomlan7l2ae6u" path="res://code/theHatMachine.gd" id="4_r4e17"]
+[ext_resource type="Texture2D" uid="uid://msrnjkvfrupf" path="res://assets/seaTurtleIcon.png" id="5_155or"]
 [ext_resource type="Texture2D" uid="uid://c7qtmxrur1ixk" path="res://assets/hatMachineText.png" id="5_gdvew"]
+[ext_resource type="Texture2D" uid="uid://cdwjnnsf1eysj" path="res://assets/kelp4.png" id="5_ksmap"]
+[ext_resource type="PackedScene" uid="uid://dqbtfsg04rb4m" path="res://scenes/turtle.tscn" id="5_vtx2l"]
+[ext_resource type="Texture2D" uid="uid://cve5eu58bmf8a" path="res://assets/squigglyLine1.png" id="5_xrs0c"]
 [ext_resource type="Texture2D" uid="uid://nx1pvje7idgt" path="res://assets/hatMachineText2.png" id="6_kjtvk"]
+[ext_resource type="PackedScene" uid="uid://c36xiuwba7i07" path="res://scenes/seaTurtle.tscn" id="6_xaipn"]
+[ext_resource type="Texture2D" uid="uid://do362u85g6suc" path="res://assets/squigglyLine3.png" id="6_xljpf"]
+[ext_resource type="Texture2D" uid="uid://c6qxvbnij2ued" path="res://assets/kelp3.png" id="6_ygd8o"]
+[ext_resource type="Texture2D" uid="uid://cuokb6cyw42y8" path="res://assets/kelp2.png" id="7_2s0kr"]
+[ext_resource type="Texture2D" uid="uid://btdfcs7rpp6ja" path="res://assets/squigglyLine4.png" id="7_j4bwh"]
 [ext_resource type="Texture2D" uid="uid://dvawbeb512ub3" path="res://assets/hatMachine.png" id="7_xrs0c"]
+[ext_resource type="Texture2D" uid="uid://bv5ut0nqe03no" path="res://assets/squigglyLine2.png" id="8_ksmap"]
+[ext_resource type="Texture2D" uid="uid://s3g1jykfckmv" path="res://assets/kelp1.png" id="8_xaipn"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="8_xljpf"]
 [ext_resource type="Texture2D" uid="uid://5j3u43h7g3l8" path="res://assets/betterBall.png" id="9_r4e17"]
 [ext_resource type="Texture2D" uid="uid://jx1wykui2por" path="res://assets/hatMachinePrizeBall.png" id="10_ksmap"]
 [ext_resource type="Texture2D" uid="uid://dlwh0utkxpp6t" path="res://assets/hatMachineSpinner.png" id="11_ygd8o"]
-[ext_resource type="Script" uid="uid://c1bc1afd5al2h" path="res://code/turtlePenFloor.gd" id="12_r4e17"]
-[ext_resource type="Texture2D" uid="uid://cqiywbvxb1r7s" path="res://assets/plusButtonWhite.png" id="13_xaipn"]
-[ext_resource type="Texture2D" uid="uid://bqkbkoft65dgs" path="res://assets/plusButtonGrey.png" id="14_ndrjj"]
 [ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/buyTurtleWhite.png" id="15_ih3m7"]
 [ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/BuyTurtleGrey.png" id="16_11yus"]
 [ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://assets/upgradePenWhite.png" id="17_b6ruc"]
@@ -68,8 +79,124 @@
 [ext_resource type="Texture2D" uid="uid://01lchbjs1mig" path="res://assets/hatCoinBasic.png" id="66_pfcs8"]
 [ext_resource type="Texture2D" uid="uid://cgkxrjxhh0tgp" path="res://assets/buyButton.png" id="67_50d7c"]
 [ext_resource type="Texture2D" uid="uid://d2pchthksrixp" path="res://assets/buyButtonHover.png" id="68_ruytr"]
+[ext_resource type="Texture2D" uid="uid://dfhqkk8r35ad3" path="res://assets/UITurtle.png" id="69_155or"]
+[ext_resource type="Texture2D" uid="uid://c85s8u1wgej7e" path="res://assets/UITurtleHover.png" id="70_155or"]
+[ext_resource type="Texture2D" uid="uid://w52pbfc6m6b2" path="res://assets/UISeaTurtle.png" id="71_63lxy"]
+[ext_resource type="Texture2D" uid="uid://dkevsjnl1key4" path="res://assets/UISeaTurtleHover.png" id="72_fjhjs"]
+[ext_resource type="Texture2D" uid="uid://qekjvtrfkxfy" path="res://assets/UISpaceTurtle.png" id="73_bfu41"]
+[ext_resource type="Texture2D" uid="uid://nx27w4l1pep2" path="res://assets/UISpaceTurtleHover.png" id="74_vtx2l"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cegan"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwrc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ksmap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ygd8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2s0kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xaipn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqt0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2s0kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ksmap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ygd8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xaipn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sowbf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2s0kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ygd8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ksmap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xaipn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fih1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xaipn")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_2s0kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ksmap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xaipn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xaipn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ygd8o")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_xrs0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xljpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xrs0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j4bwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ksmap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j4bwh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
 animations = [{
@@ -127,10 +254,195 @@ position = Vector2(361.5, 1.9995213)
 scale = Vector2(1.522, 20.519999)
 texture = ExtResource("2_y57op")
 
-[node name="TurtlePen" type="Sprite2D" parent="." unique_id=910034301]
+[node name="TURTLE PEN" type="Control" parent="." unique_id=1170629106 node_paths=PackedStringArray("grid")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 721.0
+offset_bottom = 1278.0
+script = ExtResource("3_11yus")
+turtle_icon = ExtResource("4_155or")
+turtle_scene = ExtResource("5_vtx2l")
+grid = NodePath("../CanvasLayer/TurtleUI/File1/scrollTurtles/turtleGrid")
+penID = 2
+
+[node name="TurtlePen" type="Sprite2D" parent="TURTLE PEN" unique_id=910034301]
 position = Vector2(364.00003, 718)
 scale = Vector2(0.84944916, 0.85900265)
 texture = ExtResource("3_mlv25")
+
+[node name="addTurtle" type="TextureButton" parent="TURTLE PEN" unique_id=1403598825]
+layout_mode = 0
+offset_left = 212.00002
+offset_top = 34.0
+offset_right = 1772.0
+offset_bottom = 910.0
+scale = Vector2(0.20036061, 0.18369158)
+texture_normal = ExtResource("15_ih3m7")
+texture_hover = ExtResource("16_11yus")
+
+[node name="turtleCost" type="Label" parent="TURTLE PEN/addTurtle" unique_id=1541145669]
+layout_mode = 0
+offset_left = 499.1001
+offset_top = 495.39575
+offset_right = 1880.1001
+offset_bottom = 773.03503
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 160
+text = "Cost: XXX"
+
+[node name="addPenSpace" type="TextureButton" parent="TURTLE PEN" unique_id=611735595]
+z_index = 50
+layout_mode = 0
+offset_left = 19.0
+offset_top = 1132.0
+offset_right = 1589.6143
+offset_bottom = 1779.0
+scale = Vector2(0.23073152, 0.19869651)
+texture_normal = ExtResource("17_b6ruc")
+texture_hover = ExtResource("18_155or")
+
+[node name="penSpaceLabel" type="Label" parent="TURTLE PEN/addPenSpace" unique_id=712537936]
+layout_mode = 0
+offset_left = 589.4296
+offset_top = 412.68958
+offset_right = 2424.1711
+offset_bottom = 1424.3116
+scale = Vector2(0.5066718, 0.6269463)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "Cost: XXX"
+
+[node name="turtleCount" type="Label" parent="TURTLE PEN" unique_id=1950608965]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 1214.0
+offset_right = 691.0
+offset_bottom = 1276.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "XX/XX"
+
+[node name="TURTLE PEN POOL" type="Control" parent="." unique_id=1560913267 node_paths=PackedStringArray("grid")]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2542.0
+offset_right = 727.0
+offset_bottom = -1292.0
+script = ExtResource("4_kjtvk")
+turtle_icon = ExtResource("5_155or")
+turtle_scene = ExtResource("6_xaipn")
+grid = NodePath("../CanvasLayer/TurtleUI/File1/scrollSeaTurtles/turtleGrid")
+
+[node name="TurtlePen" type="Sprite2D" parent="TURTLE PEN POOL" unique_id=1889584099]
+position = Vector2(371.00003, 696)
+scale = Vector2(0.84944916, 0.85900265)
+texture = ExtResource("3_mlv25")
+
+[node name="decor" type="Control" parent="TURTLE PEN POOL" unique_id=262976706]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Kelp1" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=1386970451]
+position = Vector2(567, 783)
+scale = Vector2(0.67424244, 0.7624037)
+sprite_frames = SubResource("SpriteFrames_dwrc3")
+frame_progress = 0.40882087
+
+[node name="Kelp2" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=1290282858]
+position = Vector2(413.00003, 866)
+scale = Vector2(0.48430765, 0.5719632)
+sprite_frames = SubResource("SpriteFrames_sqt0q")
+
+[node name="Kelp3" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=684366440]
+position = Vector2(271.06247, 802.8125)
+scale = Vector2(0.5275974, 0.70284414)
+sprite_frames = SubResource("SpriteFrames_sowbf")
+
+[node name="Kelp4" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=184836118]
+position = Vector2(150.06244, 879.3124)
+scale = Vector2(0.53625596, 0.6130239)
+sprite_frames = SubResource("SpriteFrames_fih1l")
+
+[node name="waterLine1" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=754102845]
+z_index = 70
+position = Vector2(280, 350)
+scale = Vector2(0.203108, 0.13916706)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.21306169
+
+[node name="waterLine2" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=238418649]
+z_index = 70
+position = Vector2(264.00003, 779.0001)
+scale = Vector2(0.203108, 0.1625006)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.7424565
+
+[node name="waterLine3" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=486454816]
+z_index = 70
+position = Vector2(585, 603)
+scale = Vector2(0.203108, 0.13916706)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.7424565
+
+[node name="waterLine4" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=1735238942]
+z_index = 70
+position = Vector2(476, 1008)
+scale = Vector2(0.203108, 0.13916706)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.7424565
+
+[node name="addTurtle" type="TextureButton" parent="TURTLE PEN POOL" unique_id=707129797]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 29.0
+offset_right = 1765.0
+offset_bottom = 905.0
+scale = Vector2(0.20036061, 0.18369158)
+texture_normal = ExtResource("15_ih3m7")
+texture_hover = ExtResource("16_11yus")
+
+[node name="turtleCost" type="Label" parent="TURTLE PEN POOL/addTurtle" unique_id=175174080]
+layout_mode = 0
+offset_left = 419.24408
+offset_top = 522.61523
+offset_right = 1800.2441
+offset_bottom = 800.2544
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 160
+text = "Cost: XXX"
+
+[node name="addPenSpace" type="TextureButton" parent="TURTLE PEN POOL" unique_id=742952190]
+z_index = 60
+layout_mode = 0
+offset_left = 11.0
+offset_top = 1089.0
+offset_right = 1581.6143
+offset_bottom = 1736.0
+scale = Vector2(0.23073152, 0.19869651)
+texture_normal = ExtResource("17_b6ruc")
+texture_hover = ExtResource("18_155or")
+
+[node name="penSpaceLabel" type="Label" parent="TURTLE PEN POOL/addPenSpace" unique_id=1480902777]
+layout_mode = 0
+offset_left = 589.4296
+offset_top = 412.68958
+offset_right = 2424.1711
+offset_bottom = 1424.3116
+scale = Vector2(0.5066718, 0.6269463)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "Cost: XXX"
+
+[node name="turtleCount" type="Label" parent="TURTLE PEN POOL" unique_id=1888479434]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 1197.0
+offset_right = 688.0
+offset_bottom = 1259.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "XX/XX"
 
 [node name="THE HAT MACHINE" type="Control" parent="." unique_id=2083350201]
 layout_mode = 3
@@ -248,96 +560,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Hat Coins: XXX"
 
-[node name="LEVEL_1" type="Control" parent="." unique_id=1306873373]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 225.0
-offset_right = 265.0
-offset_bottom = 40.0
-script = ExtResource("12_r4e17")
-
-[node name="TurtlePen" type="Sprite2D" parent="LEVEL_1" unique_id=417850940]
-visible = false
-position = Vector2(368.00003, -565.99994)
-scale = Vector2(0.83813816, 0.856008)
-texture = SubResource("CompressedTexture2D_cegan")
-
-[node name="addNewPen2" type="Control" parent="LEVEL_1" unique_id=1975624727]
-anchors_preset = 0
-offset_left = -218.0
-offset_top = -1402.0
-offset_right = -178.0
-offset_bottom = -1362.0
-
-[node name="addPenButton" type="TextureButton" parent="LEVEL_1/addNewPen2" unique_id=1934710609]
-z_index = 11
-layout_mode = 0
-offset_left = 326.0
-offset_top = -625.0
-offset_right = 1312.0
-offset_bottom = 364.0
-scale = Vector2(0.09648591, 0.08774316)
-texture_normal = ExtResource("13_xaipn")
-texture_hover = ExtResource("14_ndrjj")
-
-[node name="Label" type="Label" parent="LEVEL_1/addNewPen2" unique_id=1803477713]
-layout_mode = 0
-offset_left = 150.0
-offset_top = -699.0
-offset_right = 596.0
-offset_bottom = -483.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "ADD NEW PEN: XXX"
-
-[node name="TowerUI" type="Control" parent="LEVEL_1/addNewPen2" unique_id=1338588010]
-anchors_preset = 0
-offset_left = -5.0
-offset_top = -1273.0
-offset_right = 35.0
-offset_bottom = -1136.0
-
-[node name="addTurtle" type="TextureButton" parent="LEVEL_1/addNewPen2/TowerUI" unique_id=630409829]
-layout_mode = 0
-offset_left = 212.00002
-offset_top = 34.0
-offset_right = 1772.0
-offset_bottom = 910.0
-scale = Vector2(0.20036061, 0.18369158)
-texture_normal = ExtResource("15_ih3m7")
-texture_hover = ExtResource("16_11yus")
-
-[node name="turtleCost" type="Label" parent="LEVEL_1/addNewPen2/TowerUI/addTurtle" unique_id=897388438]
-layout_mode = 0
-offset_left = 499.1001
-offset_top = 495.39575
-offset_right = 1880.1001
-offset_bottom = 773.03503
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 160
-text = "Cost: XXX"
-
-[node name="addPenSpace" type="TextureButton" parent="LEVEL_1/addNewPen2/TowerUI" unique_id=2040454572]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 1132.0
-offset_right = 1589.6143
-offset_bottom = 1779.0
-scale = Vector2(0.23073152, 0.19869651)
-texture_normal = ExtResource("17_b6ruc")
-texture_hover = ExtResource("18_155or")
-
-[node name="penSpaceLabel" type="Label" parent="LEVEL_1/addNewPen2/TowerUI/addPenSpace" unique_id=491070474]
-layout_mode = 0
-offset_left = 589.4296
-offset_top = 412.68958
-offset_right = 2424.1711
-offset_bottom = 1424.3116
-scale = Vector2(0.5066718, 0.6269463)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 200
-text = "Cost: XXX"
-
 [node name="THE MINE" type="Control" parent="." unique_id=561868939]
 layout_mode = 3
 anchors_preset = 0
@@ -346,6 +568,7 @@ offset_bottom = 40.0
 script = ExtResource("19_y57op")
 worker_offset = Vector2(-135, -45)
 worker_flip = true
+buttonOffset = Vector2(-250, -99)
 
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
 position = Vector2(186.99998, 2627.0002)
@@ -407,7 +630,6 @@ position = Vector2(350, 2836.9998)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
-baseCost = 20
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks1" unique_id=201378433]
 z_index = 15
@@ -455,7 +677,7 @@ position = Vector2(357, 3438)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
-baseCost = 60
+baseCost = 80
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks3" unique_id=1923985065]
 z_index = 15
@@ -479,7 +701,7 @@ position = Vector2(350, 3726)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
-baseCost = 80
+baseCost = 160
 
 [node name="rock" type="AnimatedSprite2D" parent="THE MINE/TrainTracks4" unique_id=1512161757]
 z_index = 15
@@ -510,7 +732,7 @@ texture_hover = ExtResource("32_vrx01")
 
 [node name="mineUI" type="Control" parent="THE MINE" unique_id=1603693312]
 visible = false
-z_index = 22
+z_index = 50
 anchors_preset = 0
 offset_left = 44.0
 offset_top = 2686.0
@@ -760,43 +982,44 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("45_mlv25")
+buttonOffset = Vector2(-300, -60)
 
 [node name="StoreNoBg" type="Sprite2D" parent="STORE" unique_id=1229957735]
 position = Vector2(168, 1377)
 scale = Vector2(0.1708995, 0.14011475)
 texture = ExtResource("46_83607")
 
-[node name="CashRegister1" type="Sprite2D" parent="STORE" unique_id=599831646 node_paths=PackedStringArray("location")]
+[node name="CashRegister1" type="Sprite2D" parent="STORE" unique_id=599831646]
 modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
 position = Vector2(361, 1600.0001)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
-location = NodePath("..")
+baseCost = 20
 
-[node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349 node_paths=PackedStringArray("location")]
+[node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349]
 modulate = Color(0.5294118, 0.5294118, 0.5294118, 1)
 position = Vector2(361, 1859.0001)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
-location = NodePath("..")
+baseCost = 40
 
-[node name="CashRegister3" type="Sprite2D" parent="STORE" unique_id=174330305 node_paths=PackedStringArray("location")]
+[node name="CashRegister3" type="Sprite2D" parent="STORE" unique_id=174330305]
 modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
 position = Vector2(368.99997, 2126)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
-location = NodePath("..")
+baseCost = 80
 
-[node name="CashRegister4" type="Sprite2D" parent="STORE" unique_id=1601957721 node_paths=PackedStringArray("location")]
+[node name="CashRegister4" type="Sprite2D" parent="STORE" unique_id=1601957721]
 modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
 position = Vector2(363, 2400)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
-location = NodePath("..")
+baseCost = 160
 
 [node name="LineNoBg" type="Sprite2D" parent="STORE" unique_id=2120682538]
 position = Vector2(366, 2211.0005)
@@ -825,10 +1048,10 @@ texture = ExtResource("8_xljpf")
 
 [node name="upgradesStore" type="TextureButton" parent="STORE" unique_id=1873753868]
 layout_mode = 0
-offset_left = 427.0
-offset_top = 1319.0
-offset_right = 1557.0
-offset_bottom = 1833.331
+offset_left = 437.0
+offset_top = 1321.0
+offset_right = 1567.0
+offset_bottom = 1835.331
 scale = Vector2(0.14273988, 0.16455439)
 texture_normal = ExtResource("31_akjxb")
 texture_hover = ExtResource("32_vrx01")
@@ -1080,25 +1303,17 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
 
-[node name="turtleCount" type="Label" parent="." unique_id=1950608965]
-offset_left = 589.0
-offset_top = 1208.0
-offset_right = 704.0
-offset_bottom = 1270.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "XX/XX"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1540102641]
 script = ExtResource("51_r4e17")
 
 [node name="turtleCoins" type="Label" parent="CanvasLayer" unique_id=1745811126]
-offset_left = 559.0
-offset_top = 11.0
-offset_right = 709.0
-offset_bottom = 75.0
+unique_name_in_owner = true
+offset_left = 476.0
+offset_top = 9.0
+offset_right = 626.0
+offset_bottom = 73.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "TURTLE COINS: XXX"
+text = "Turtle Coins: XXX"
 
 [node name="ChangeTurtles" type="TextureButton" parent="CanvasLayer" unique_id=372462518]
 offset_left = 604.0
@@ -1117,53 +1332,6 @@ offset_bottom = 760.0
 scale = Vector2(0.1397453, 0.13362148)
 texture_normal = ExtResource("54_4ahvx")
 texture_hover = ExtResource("55_2cr71")
-
-[node name="TowerUI" type="Control" parent="CanvasLayer" unique_id=1170629106]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 90.0
-offset_bottom = 81.0
-
-[node name="addTurtle" type="TextureButton" parent="CanvasLayer/TowerUI" unique_id=1403598825]
-layout_mode = 0
-offset_left = 212.00002
-offset_top = 34.0
-offset_right = 1772.0
-offset_bottom = 910.0
-scale = Vector2(0.20036061, 0.18369158)
-texture_normal = ExtResource("15_ih3m7")
-texture_hover = ExtResource("16_11yus")
-
-[node name="turtleCost" type="Label" parent="CanvasLayer/TowerUI/addTurtle" unique_id=1541145669]
-layout_mode = 0
-offset_left = 499.1001
-offset_top = 495.39575
-offset_right = 1880.1001
-offset_bottom = 773.03503
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 160
-text = "Cost: XXX"
-
-[node name="addPenSpace" type="TextureButton" parent="CanvasLayer/TowerUI" unique_id=611735595]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 1132.0
-offset_right = 1589.6143
-offset_bottom = 1779.0
-scale = Vector2(0.23073152, 0.19869651)
-texture_normal = ExtResource("17_b6ruc")
-texture_hover = ExtResource("18_155or")
-
-[node name="penSpaceLabel" type="Label" parent="CanvasLayer/TowerUI/addPenSpace" unique_id=712537936]
-layout_mode = 0
-offset_left = 589.4296
-offset_top = 412.68958
-offset_right = 2424.1711
-offset_bottom = 1424.3116
-scale = Vector2(0.5066718, 0.6269463)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 200
-text = "Cost: XXX"
 
 [node name="TurtleUI" type="Control" parent="CanvasLayer" unique_id=815006092]
 unique_name_in_owner = true
@@ -1185,7 +1353,7 @@ position = Vector2(-179.84622, -356.2812)
 scale = Vector2(0.3559482, 0.35658726)
 texture = ExtResource("57_m4o51")
 
-[node name="scrollContainer" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File1" unique_id=910715122]
+[node name="scrollTurtles" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File1" unique_id=910715122]
 visible = false
 z_index = 51
 custom_minimum_size = Vector2(200, 200)
@@ -1195,7 +1363,39 @@ offset_right = 287.76004
 offset_bottom = 427.9736
 horizontal_scroll_mode = 0
 
-[node name="turtleGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/File1/scrollContainer" unique_id=1406594791]
+[node name="turtleGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/File1/scrollTurtles" unique_id=1406594791]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="scrollSeaTurtles" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File1" unique_id=339819395]
+visible = false
+z_index = 51
+custom_minimum_size = Vector2(200, 200)
+offset_left = -282.60648
+offset_top = -297.98575
+offset_right = 287.76004
+offset_bottom = 427.9736
+horizontal_scroll_mode = 0
+
+[node name="turtleGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/File1/scrollSeaTurtles" unique_id=85686074]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="scrollSpaceTurtles" type="ScrollContainer" parent="CanvasLayer/TurtleUI/File1" unique_id=2136846237]
+visible = false
+z_index = 51
+custom_minimum_size = Vector2(200, 200)
+offset_left = -282.60648
+offset_top = -297.98575
+offset_right = 287.76004
+offset_bottom = 427.9736
+horizontal_scroll_mode = 0
+
+[node name="turtleGrid" type="GridContainer" parent="CanvasLayer/TurtleUI/File1/scrollSpaceTurtles" unique_id=1314258645]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
@@ -1210,6 +1410,33 @@ offset_bottom = -425.13922
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Turtles"
+
+[node name="turtleScroll" type="TextureButton" parent="CanvasLayer/TurtleUI/File1" unique_id=1098159392]
+offset_left = -0.7229004
+offset_top = -391.80518
+offset_right = 361.2771
+offset_bottom = -41.805176
+scale = Vector2(0.2369473, 0.22211008)
+texture_normal = ExtResource("69_155or")
+texture_hover = ExtResource("70_155or")
+
+[node name="seaTurtleScroll" type="TextureButton" parent="CanvasLayer/TurtleUI/File1" unique_id=1978040564]
+offset_left = 92.60986
+offset_top = -391.80518
+offset_right = 454.60986
+offset_bottom = -41.805176
+scale = Vector2(0.2369473, 0.22211008)
+texture_normal = ExtResource("71_63lxy")
+texture_hover = ExtResource("72_fjhjs")
+
+[node name="spaceTurtleScroll" type="TextureButton" parent="CanvasLayer/TurtleUI/File1" unique_id=771758787]
+offset_left = 186.88531
+offset_top = -391.80518
+offset_right = 548.8853
+offset_bottom = -41.805176
+scale = Vector2(0.2369473, 0.22211008)
+texture_normal = ExtResource("73_bfu41")
+texture_hover = ExtResource("74_vtx2l")
 
 [node name="File2" type="Sprite2D" parent="CanvasLayer/TurtleUI" unique_id=1208346686]
 position = Vector2(359, 658)
@@ -1385,10 +1612,11 @@ text = "COST: XXX"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34444522]
 position = Vector2(361, 638)
 
+[connection signal="pressed" from="TURTLE PEN/addTurtle" to="." method="_on_addTurtle_pressed"]
+[connection signal="pressed" from="TURTLE PEN/addPenSpace" to="." method="_on_addPenSpace_pressed"]
 [connection signal="pressed" from="THE HAT MACHINE/HatMachinePrizeBall" to="THE HAT MACHINE" method="_on_hat_machine_prize_ball_pressed"]
 [connection signal="button_down" from="THE HAT MACHINE/spinner" to="THE HAT MACHINE" method="_on_spinner_button_down"]
 [connection signal="button_up" from="THE HAT MACHINE/spinner" to="THE HAT MACHINE" method="_on_spinner_button_up"]
-[connection signal="pressed" from="LEVEL_1/addNewPen2/addPenButton" to="LEVEL_1" method="_on_add_pen_button_pressed"]
 [connection signal="pressed" from="THE MINE/upgradesMine" to="THE MINE" method="_on_upgrades_mine_pressed"]
 [connection signal="pressed" from="THE MINE/mineUI/fasterCustomers" to="THE MINE" method="_on_faster_customers_pressed"]
 [connection signal="pressed" from="THE MINE/mineUI/feedWorkers" to="THE MINE" method="_on_feed_workers_pressed"]
@@ -1403,8 +1631,9 @@ position = Vector2(361, 638)
 [connection signal="pressed" from="STORE/StoreUI/extraApples" to="STORE" method="_on_extra_apples_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChangeTurtles" to="." method="_on_changeTurtles_pressed"]
 [connection signal="pressed" from="CanvasLayer/shop" to="." method="_on_shop_pressed"]
-[connection signal="pressed" from="CanvasLayer/TowerUI/addTurtle" to="." method="_on_addTurtle_pressed"]
-[connection signal="pressed" from="CanvasLayer/TowerUI/addPenSpace" to="." method="_on_addPenSpace_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurtleUI/File1/turtleScroll" to="." method="_on_turtle_scroll_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurtleUI/File1/seaTurtleScroll" to="." method="_on_sea_turtle_scroll_pressed"]
+[connection signal="pressed" from="CanvasLayer/TurtleUI/File1/spaceTurtleScroll" to="." method="_on_space_turtle_scroll_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton1" to="." method="_on_file_button_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton2" to="." method="_on_file_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/fileButton3" to="." method="_on_file_button_3_pressed"]

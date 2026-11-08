@@ -22,9 +22,7 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatQueenCrown.png"),
 	preload("res://assets/hatSombrero.png"),
 	preload("res://assets/hatTophat.png"),
-	preload("res://assets/hatTrafficCone.png"),
-]
-
+	preload("res://assets/hatTrafficCone.png")]
 @export var hatsCentered: Array[Texture2D] = [
 	preload("res://assets/hatCenteredChef.png"),
 	preload("res://assets/hatCenteredDunce.png"),
@@ -41,7 +39,6 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatCenteredTophat.png"),
 	preload("res://assets/hatCenteredTrafficCone.png"),
 	]
-
 @export var hatNames: Array[String] = [
 	"Chef Hat",
 	"Dunce Hat",
@@ -56,11 +53,11 @@ var owned_hats: Array[int] = []
 	"Queen Crown",
 	"Sombrero Hat",
 	"Top Hat",
-	"Traffic Cone Hat",
-	]
+	"Traffic Cone Hat",]
 		
 @export var numHats = hats.size()
 signal coins_changed(new_amount: int)
+signal coins_spent(amount: int)
 		
 func add_coins(amount: int) -> void:
 	turtle_coins += amount
@@ -69,7 +66,9 @@ func add_coins(amount: int) -> void:
 func spend_coins(amount: int) -> bool:
 	if turtle_coins >= amount:
 		turtle_coins -= amount
+		coins_spent.emit(amount)
 		coins_changed.emit(turtle_coins)
+		
 		return true
 	return false
 
@@ -78,6 +77,7 @@ func spend_hat_coins(amount: int) -> bool:
 		hat_coins -= amount
 		return true
 	return false
+	
 
 func add_hat(hat_id: int) -> void:
 	owned_hats.append(hat_id)

@@ -1,27 +1,14 @@
-extends Sprite2D
+extends "res://code/workstation.gd"
 
 @export var cart: PackedScene = preload("res://scenes/cart.tscn")
-@export var spot_id: String = ""
-
-const BUTTON_NORMAL_TEXTURE = preload("res://assets/plusButtonWhite.png")
-const BUTTON_HOVER_TEXTURE = preload("res://assets/plusButtonGrey.png")
 
 @onready var pickaxe: AnimatedSprite2D = $pickaxe
 @onready var rock: AnimatedSprite2D = $rock
 
-@export var unlocked: bool = false
-var hasWorker: bool = false
 var hasCart: bool = false
 
-var unlock_button: TextureButton
-@export var baseCost:int 
-@onready var unlockCostMultiplier = get_parent().getDifficulty()
-var unlockCost
-var unlockCostLabel: Label
-
 func _ready() -> void:
-	unlockCost = (baseCost*unlockCostMultiplier)
-	print(unlockCost)
+	startingStuff()
 	add_to_group("job_spots")
 	z_index = 10
 	
@@ -46,63 +33,6 @@ func _process(_delta: float) -> void:
 	if hasCart:
 		return
 	spawn_new_cart()
-
-func create_unlock_button() -> void:
-	unlock_button = TextureButton.new()
-	unlock_button.texture_normal = BUTTON_NORMAL_TEXTURE
-	unlock_button.texture_hover = BUTTON_HOVER_TEXTURE
-	unlock_button.z_index = 19
-	unlock_button.top_level = true
-	unlock_button.ignore_texture_size = true
-	unlock_button.stretch_mode = TextureButton.STRETCH_SCALE
-	unlock_button.custom_minimum_size = Vector2(100, 100)
-	unlock_button.size = Vector2(100, 100)
-	add_child(unlock_button)
-	unlock_button.global_position = global_position - Vector2(310, 50)
-	unlock_button.pressed.connect(_on_spot_plus_pressed)
-	
-func createUnlockCostLabel() -> void:
-	unlockCostLabel = Label.new()
-	unlockCostLabel.name = "unlockCostLabel"
-	unlockCostLabel.text = "Cost: %d" % unlockCost
-	unlockCostLabel.top_level = true
-	unlockCostLabel.global_position = global_position + Vector2(-305, -100)
-	unlockCostLabel.z_index = 100
-	unlockCostLabel.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
-	unlockCostLabel.add_theme_font_size_override("font_size", 25)
-
-	add_child(unlockCostLabel)
-
-func _on_spot_plus_pressed() -> void:
-	unlocked = true
-	modulate = Color.WHITE
-	if is_instance_valid(unlock_button) and GameManager.spend_coins(unlockCost):
-		unlock_button.queue_free()
-		unlock_button = null
-		unlockCostLabel.queue_free()
-		unlockCostLabel = null
-	var main: Node = get_tree().current_scene
-	if main and main.has_method("begin_spot_assignment"):
-		main.begin_spot_assignment(self)
-		
-func initialize_from_save(data: Dictionary) -> void:
-	load_spot_save_data(data)
-	update_ui_state()
-
-func update_ui_state() -> void:
-	if unlocked:
-		modulate = Color.WHITE
-		if is_instance_valid(unlock_button):
-			unlock_button.queue_free()
-			unlock_button = null
-		if is_instance_valid(unlockCostLabel):
-			unlockCostLabel.queue_free()
-			unlockCostLabel = null
-	else:
-		if not is_instance_valid(unlock_button):
-			create_unlock_button()
-		if not is_instance_valid(unlockCostLabel):
-			createUnlockCostLabel()
 			
 func spawn_new_cart() -> void:
 	if not cart:
@@ -118,10 +48,3 @@ func spawn_new_cart() -> void:
 	newCart.scale = Vector2(0.4, 0.4)
 	newCart.global_position = Vector2(spawn_x, spawn_y)
 	add_child(newCart)
-
-func get_spot_save_data() -> Dictionary:
-	return {"spot_id": spot_id, "unlocked": unlocked, "has_worker": hasWorker}
-
-func load_spot_save_data(data: Dictionary) -> void:
-	unlocked = bool(data.get("unlocked", false))
-	hasWorker = bool(data.get("has_worker", false))

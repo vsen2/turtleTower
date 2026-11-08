@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bkej2qh1yulky" path="res://assets/startButtonGrey.png" id="3_8v67e"]
 [ext_resource type="Texture2D" uid="uid://ci4t6q8l0p7ej" path="res://assets/turtleNoBG.png" id="5_67p1w"]
 [ext_resource type="Texture2D" uid="uid://dmb6alalsw8sm" path="res://assets/turtleTower.png" id="6_bfwpr"]
-[ext_resource type="Script" uid="uid://b6su2vlbr73pb" path="res://code/button.gd" id="6_g252b"]
+[ext_resource type="Script" uid="uid://b6su2vlbr73pb" path="res://code/startButton.gd" id="6_g252b"]
 [ext_resource type="Texture2D" uid="uid://bxpwc4jve7j2w" path="res://assets/madeByVictor.png" id="7_8g068"]
 
 [node name="Node2D" type="Node2D" unique_id=681850459]

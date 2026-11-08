@@ -6,3 +6,4 @@ func _on_button_pressed() -> void:
 		print("Failed to load scene: ", error)
 	
 	
+#what is coding really?...

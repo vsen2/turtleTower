@@ -13,6 +13,7 @@ var status_label: Label = null
 var random_hat: int = -1
 var assigned_floor_id: String = ""
 var assigned_spot_index: int = -1
+var home_pen_id: String = ""
 
 @onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
 var hats = GameManager.hats
