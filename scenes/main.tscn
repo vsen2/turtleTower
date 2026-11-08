@@ -257,8 +257,10 @@ texture = ExtResource("2_y57op")
 [node name="TURTLE PEN" type="Control" parent="." unique_id=1170629106 node_paths=PackedStringArray("grid")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 721.0
-offset_bottom = 1278.0
+offset_left = -2.0
+offset_top = 4.0
+offset_right = 719.0
+offset_bottom = 1282.0
 script = ExtResource("3_11yus")
 turtle_icon = ExtResource("4_155or")
 turtle_scene = ExtResource("5_vtx2l")
@@ -325,9 +327,10 @@ text = "XX/XX"
 [node name="TURTLE PEN POOL" type="Control" parent="." unique_id=1560913267 node_paths=PackedStringArray("grid")]
 layout_mode = 3
 anchors_preset = 0
-offset_top = -2542.0
-offset_right = 727.0
-offset_bottom = -1292.0
+offset_left = 2.0
+offset_top = -2553.0
+offset_right = 721.0
+offset_bottom = -1276.0
 script = ExtResource("4_kjtvk")
 turtle_icon = ExtResource("5_155or")
 turtle_scene = ExtResource("6_xaipn")
@@ -365,28 +368,28 @@ scale = Vector2(0.53625596, 0.6130239)
 sprite_frames = SubResource("SpriteFrames_fih1l")
 
 [node name="waterLine1" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=754102845]
-z_index = 70
+z_index = 30
 position = Vector2(280, 350)
 scale = Vector2(0.203108, 0.13916706)
 sprite_frames = SubResource("SpriteFrames_ccrme")
 frame_progress = 0.21306169
 
 [node name="waterLine2" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=238418649]
-z_index = 70
+z_index = 30
 position = Vector2(264.00003, 779.0001)
 scale = Vector2(0.203108, 0.1625006)
 sprite_frames = SubResource("SpriteFrames_ccrme")
 frame_progress = 0.7424565
 
 [node name="waterLine3" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=486454816]
-z_index = 70
+z_index = 30
 position = Vector2(585, 603)
 scale = Vector2(0.203108, 0.13916706)
 sprite_frames = SubResource("SpriteFrames_ccrme")
 frame_progress = 0.7424565
 
 [node name="waterLine4" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=1735238942]
-z_index = 70
+z_index = 30
 position = Vector2(476, 1008)
 scale = Vector2(0.203108, 0.13916706)
 sprite_frames = SubResource("SpriteFrames_ccrme")
@@ -447,72 +450,73 @@ text = "XX/XX"
 [node name="THE HAT MACHINE" type="Control" parent="." unique_id=2083350201]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = -1284.0
+offset_right = 721.0
+offset_bottom = -1.0
 script = ExtResource("4_r4e17")
 
 [node name="the hat" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1841397177]
-position = Vector2(182.25, -1166.2505)
+position = Vector2(184.49998, 120.25)
 scale = Vector2(0.66627634, 0.6450382)
 texture = ExtResource("5_gdvew")
 
 [node name="machine" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1494614255]
-position = Vector2(205.50002, -1107.0005)
+position = Vector2(207.75, 179.50012)
 scale = Vector2(0.74126637, 0.5625001)
 texture = ExtResource("6_kjtvk")
 
 [node name="HatMachine" type="Sprite2D" parent="THE HAT MACHINE" unique_id=656691218]
-position = Vector2(371, -560)
+position = Vector2(373.25, 726.5005)
 scale = Vector2(0.86486477, 0.83037376)
 texture = ExtResource("7_xrs0c")
 
 [node name="depth" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1470020017]
-position = Vector2(396.00006, -234.99998)
+position = Vector2(398.25006, 1051.5006)
 scale = Vector2(0.07936508, 0.28640777)
 texture = ExtResource("8_xljpf")
 
 [node name="HatMachineBall" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1186832026]
-position = Vector2(479.63644, -576.8845)
+position = Vector2(481.8864, 709.61584)
 scale = Vector2(0.33939433, 0.35393426)
 texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall2" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1292962474]
-position = Vector2(554, -686)
+position = Vector2(556.25, 600.5005)
 scale = Vector2(0.3062102, 0.34331876)
 texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall3" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1959757875]
-position = Vector2(329, -581)
+position = Vector2(331.24997, 705.5005)
 scale = Vector2(0.3571051, 0.37180176)
 texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall4" type="Sprite2D" parent="THE HAT MACHINE" unique_id=604212880]
-position = Vector2(327, -754)
+position = Vector2(329.25, 532.5006)
 scale = Vector2(0.33508706, 0.34190813)
 texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall5" type="Sprite2D" parent="THE HAT MACHINE" unique_id=501132301]
-position = Vector2(428.00003, -683)
+position = Vector2(430.25, 603.5005)
 scale = Vector2(0.3182103, 0.32622486)
 texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall6" type="Sprite2D" parent="THE HAT MACHINE" unique_id=92920792]
-position = Vector2(209, -656)
+position = Vector2(211.24998, 630.5005)
 scale = Vector2(0.36354357, 0.36468628)
 texture = ExtResource("9_r4e17")
 
 [node name="HatMachineBall7" type="Sprite2D" parent="THE HAT MACHINE" unique_id=1378654942]
-position = Vector2(208.99998, -785)
+position = Vector2(211.24997, 501.5006)
 scale = Vector2(0.32524136, 0.33106917)
 texture = ExtResource("9_r4e17")
 
 [node name="HatMachinePrizeBall" type="TextureButton" parent="THE HAT MACHINE" unique_id=719491778]
 visible = false
 layout_mode = 0
-offset_left = 318.0
-offset_top = -330.0
-offset_right = 604.0
-offset_bottom = -49.0
+offset_left = 320.0
+offset_top = 954.0001
+offset_right = 606.0
+offset_bottom = 1235.0001
 scale = Vector2(0.51398605, 0.48131672)
 texture_normal = ExtResource("10_ksmap")
 
@@ -522,40 +526,40 @@ scale = Vector2(0.28912553, 0.3436094)
 
 [node name="spinner" type="TextureButton" parent="THE HAT MACHINE" unique_id=1990963365]
 layout_mode = 0
-offset_left = 308.0
-offset_top = -497.00003
-offset_right = 463.0
-offset_bottom = -343.00003
+offset_left = 310.25
+offset_top = 789.5005
+offset_right = 465.25
+offset_bottom = 943.5005
 scale = Vector2(0.90173924, 0.91428596)
 pivot_offset = Vector2(77, 77)
 texture_normal = ExtResource("11_ygd8o")
 
 [node name="Label" type="Label" parent="THE HAT MACHINE" unique_id=655515606]
 layout_mode = 0
-offset_left = 56.0
-offset_top = -1067.0
-offset_right = 288.0
-offset_bottom = -1025.0
+offset_left = 58.249985
+offset_top = 219.50049
+offset_right = 290.25
+offset_bottom = 261.5005
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "SPIN FOR A HAT"
 
 [node name="Label2" type="Label" parent="THE HAT MACHINE" unique_id=1847069186]
 layout_mode = 0
-offset_left = 56.0
-offset_top = -1030.0
-offset_right = 288.0
-offset_bottom = -988.0
+offset_left = 58.249985
+offset_top = 256.5005
+offset_right = 290.25
+offset_bottom = 298.5005
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "costs a hat coin"
 
 [node name="TheHatMachineCoins" type="Label" parent="THE HAT MACHINE" unique_id=417275881]
 layout_mode = 0
-offset_left = 45.0
-offset_top = -122.0
-offset_right = 277.0
-offset_bottom = -35.0
+offset_left = 47.249985
+offset_top = 1164.5005
+offset_right = 279.25
+offset_bottom = 1251.5005
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Hat Coins: XXX"
@@ -563,15 +567,17 @@ text = "Hat Coins: XXX"
 [node name="THE MINE" type="Control" parent="." unique_id=561868939]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 4.0
+offset_top = 2569.0
+offset_right = 725.0
+offset_bottom = 3848.0
 script = ExtResource("19_y57op")
 worker_offset = Vector2(-135, -45)
 worker_flip = true
 buttonOffset = Vector2(-250, -99)
 
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
-position = Vector2(186.99998, 2627.0002)
+position = Vector2(179.84502, 58.454346)
 scale = Vector2(0.18038498, 0.15711285)
 texture = ExtResource("20_63lxy")
 
@@ -606,27 +612,27 @@ scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("21_fjhjs")
 
 [node name="LineNoBg" type="Sprite2D" parent="THE MINE" unique_id=966892866]
-position = Vector2(357, 2932)
+position = Vector2(349.84503, 363.4541)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg2" type="Sprite2D" parent="THE MINE" unique_id=1960956491]
-position = Vector2(366, 3229.0002)
+position = Vector2(358.84503, 660.45435)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg3" type="Sprite2D" parent="THE MINE" unique_id=620346352]
-position = Vector2(366, 3531)
+position = Vector2(358.84503, 962.4541)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg4" type="Sprite2D" parent="THE MINE" unique_id=924993338]
-position = Vector2(364, 3820.0002)
+position = Vector2(356.84503, 1251.4543)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="TrainTracks1" type="Sprite2D" parent="THE MINE" unique_id=1824153287]
-position = Vector2(350, 2836.9998)
+position = Vector2(342.84503, 268.45337)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
@@ -649,7 +655,7 @@ animation = &"DEFAULT"
 frame_progress = 0.35203403
 
 [node name="TrainTracks2" type="Sprite2D" parent="THE MINE" unique_id=1131071358]
-position = Vector2(343, 3131)
+position = Vector2(335.84503, 562.4536)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
@@ -673,7 +679,7 @@ animation = &"DEFAULT"
 frame_progress = 0.9038054
 
 [node name="TrainTracks3" type="Sprite2D" parent="THE MINE" unique_id=869645848]
-position = Vector2(357, 3438)
+position = Vector2(349.84503, 869.4536)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
@@ -697,7 +703,7 @@ animation = &"DEFAULT"
 frame_progress = 0.9038054
 
 [node name="TrainTracks4" type="Sprite2D" parent="THE MINE" unique_id=969698093]
-position = Vector2(350, 3726)
+position = Vector2(342.84503, 1157.4536)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
@@ -722,10 +728,10 @@ frame_progress = 0.9038054
 
 [node name="upgradesMine" type="TextureButton" parent="THE MINE" unique_id=1498263359]
 layout_mode = 0
-offset_left = 436.0
-offset_top = 2601.0
-offset_right = 1566.0
-offset_bottom = 3115.331
+offset_left = 428.84503
+offset_top = 32.453857
+offset_right = 1558.845
+offset_bottom = 546.7849
 scale = Vector2(0.14273988, 0.16455439)
 texture_normal = ExtResource("31_akjxb")
 texture_hover = ExtResource("32_vrx01")
@@ -734,30 +740,30 @@ texture_hover = ExtResource("32_vrx01")
 visible = false
 z_index = 50
 anchors_preset = 0
-offset_left = 44.0
-offset_top = 2686.0
-offset_right = 657.0
-offset_bottom = 3720.0
+offset_left = -3.0
+offset_top = 233.0
+offset_right = 695.0
+offset_bottom = 1157.0
 
 [node name="BackImage" type="Sprite2D" parent="THE MINE/mineUI" unique_id=2063979471]
 z_index = 20
-position = Vector2(320, 502)
+position = Vector2(363.69202, 443.5976)
 scale = Vector2(1.5503967, 1.6441398)
 texture = ExtResource("33_1uevf")
 
 [node name="Upgrades" type="Sprite2D" parent="THE MINE/mineUI" unique_id=1106351048]
 z_index = 21
-position = Vector2(162.25002, 106.125)
+position = Vector2(205.94205, 47.722534)
 scale = Vector2(0.2630435, 0.28794006)
 texture = ExtResource("34_tc087")
 
 [node name="fasterCustomers" type="TextureButton" parent="THE MINE/mineUI" unique_id=1896765284]
 z_index = 21
 layout_mode = 0
-offset_left = 16.788029
-offset_top = 185.74878
-offset_right = 1322.7881
-offset_bottom = 1354.7488
+offset_left = 60.48004
+offset_top = 127.34637
+offset_right = 1366.48
+offset_bottom = 1296.3463
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("35_73205")
 texture_hover = ExtResource("36_0tljd")
@@ -765,10 +771,10 @@ texture_hover = ExtResource("36_0tljd")
 [node name="feedWorkers" type="TextureButton" parent="THE MINE/mineUI" unique_id=336581085]
 z_index = 21
 layout_mode = 0
-offset_left = 17.250015
-offset_top = 327.125
-offset_right = 1323.25
-offset_bottom = 1496.125
+offset_left = 60.94203
+offset_top = 268.7226
+offset_right = 1366.942
+offset_bottom = 1437.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("37_mgpkq")
 texture_hover = ExtResource("38_xmrkg")
@@ -776,10 +782,10 @@ texture_hover = ExtResource("38_xmrkg")
 [node name="gems" type="TextureButton" parent="THE MINE/mineUI" unique_id=194562622]
 z_index = 21
 layout_mode = 0
-offset_left = 18.250015
-offset_top = 474.125
-offset_right = 1324.25
-offset_bottom = 1643.125
+offset_left = 61.94203
+offset_top = 415.7226
+offset_right = 1367.942
+offset_bottom = 1584.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("39_wvlrk")
 texture_hover = ExtResource("40_engxj")
@@ -787,10 +793,10 @@ texture_hover = ExtResource("40_engxj")
 [node name="jackpot" type="TextureButton" parent="THE MINE/mineUI" unique_id=1650587670]
 z_index = 21
 layout_mode = 0
-offset_left = 19.250015
-offset_top = 619.125
-offset_right = 1325.25
-offset_bottom = 1788.125
+offset_left = 62.94203
+offset_top = 560.7226
+offset_right = 1368.942
+offset_bottom = 1729.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("41_raiwf")
 texture_hover = ExtResource("42_roort")
@@ -798,10 +804,10 @@ texture_hover = ExtResource("42_roort")
 [node name="extraCart" type="TextureButton" parent="THE MINE/mineUI" unique_id=933525678]
 z_index = 21
 layout_mode = 0
-offset_left = 19.250015
-offset_top = 776.125
-offset_right = 1325.25
-offset_bottom = 1945.125
+offset_left = 62.94203
+offset_top = 717.7226
+offset_right = 1368.942
+offset_bottom = 1886.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("43_gm02q")
 texture_hover = ExtResource("44_07pt3")
@@ -809,10 +815,10 @@ texture_hover = ExtResource("44_07pt3")
 [node name="cartSpeedCost" type="Label" parent="THE MINE/mineUI" unique_id=2084582507]
 z_index = 22
 layout_mode = 0
-offset_left = 176.25002
-offset_top = 197.125
-offset_right = 303.25
-offset_bottom = 278.125
+offset_left = 219.94203
+offset_top = 138.72253
+offset_right = 346.94202
+offset_bottom = 219.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -821,10 +827,10 @@ text = "Cost: XXX
 [node name="cartSpeedDesc" type="Label" parent="THE MINE/mineUI" unique_id=890456557]
 z_index = 22
 layout_mode = 0
-offset_left = 178.25002
-offset_top = 232.125
-offset_right = 530.25
-offset_bottom = 271.125
+offset_left = 221.94203
+offset_top = 173.72253
+offset_right = 573.942
+offset_bottom = 212.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increases cart speed"
@@ -832,10 +838,10 @@ text = "Increases cart speed"
 [node name="cartSpeedValue" type="Label" parent="THE MINE/mineUI" unique_id=123786058]
 z_index = 22
 layout_mode = 0
-offset_left = 177.25002
-offset_top = 266.125
-offset_right = 529.25
-offset_bottom = 305.125
+offset_left = 220.94203
+offset_top = 207.72253
+offset_right = 572.942
+offset_bottom = 246.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -843,10 +849,10 @@ text = "current speed: XXX"
 [node name="feedWorkersCost" type="Label" parent="THE MINE/mineUI" unique_id=1778059965]
 z_index = 22
 layout_mode = 0
-offset_left = 178.25002
-offset_top = 331.125
-offset_right = 305.25
-offset_bottom = 412.125
+offset_left = 221.94203
+offset_top = 272.72253
+offset_right = 348.94202
+offset_bottom = 353.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -855,10 +861,10 @@ text = "Cost: XXX
 [node name="feedWorkersDesc" type="Label" parent="THE MINE/mineUI" unique_id=1811323883]
 z_index = 22
 layout_mode = 0
-offset_left = 178.25002
-offset_top = 370.125
-offset_right = 530.25
-offset_bottom = 409.125
+offset_left = 221.94203
+offset_top = 311.72253
+offset_right = 573.942
+offset_bottom = 350.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increases mining speed"
@@ -866,10 +872,10 @@ text = "Increases mining speed"
 [node name="feedWorkersValue" type="Label" parent="THE MINE/mineUI" unique_id=2094505442]
 z_index = 22
 layout_mode = 0
-offset_left = 180.25002
-offset_top = 406.125
-offset_right = 532.25
-offset_bottom = 445.125
+offset_left = 223.94203
+offset_top = 347.72253
+offset_right = 575.942
+offset_bottom = 386.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -877,10 +883,10 @@ text = "current speed: XXX"
 [node name="gemsCost" type="Label" parent="THE MINE/mineUI" unique_id=1104046606]
 z_index = 22
 layout_mode = 0
-offset_left = 179.25002
-offset_top = 483.125
-offset_right = 306.25
-offset_bottom = 564.125
+offset_left = 222.94203
+offset_top = 424.72253
+offset_right = 349.94202
+offset_bottom = 505.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -889,10 +895,10 @@ text = "Cost: XXX
 [node name="gemsDesc" type="Label" parent="THE MINE/mineUI" unique_id=1837741434]
 z_index = 22
 layout_mode = 0
-offset_left = 179.25002
-offset_top = 522.125
-offset_right = 531.25
-offset_bottom = 603.125
+offset_left = 222.94203
+offset_top = 463.72253
+offset_right = 574.942
+offset_bottom = 544.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increases value of ore"
@@ -900,10 +906,10 @@ text = "Increases value of ore"
 [node name="gemsValue" type="Label" parent="THE MINE/mineUI" unique_id=765560080]
 z_index = 22
 layout_mode = 0
-offset_left = 181.25002
-offset_top = 558.125
-offset_right = 533.25
-offset_bottom = 597.125
+offset_left = 224.94203
+offset_top = 499.72253
+offset_right = 576.942
+offset_bottom = 538.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current value: XXX"
@@ -911,10 +917,10 @@ text = "current value: XXX"
 [node name="jackpotCost" type="Label" parent="THE MINE/mineUI" unique_id=1745665091]
 z_index = 22
 layout_mode = 0
-offset_left = 180.25002
-offset_top = 626.125
-offset_right = 307.25
-offset_bottom = 707.125
+offset_left = 223.94203
+offset_top = 567.72253
+offset_right = 350.94202
+offset_bottom = 648.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -923,10 +929,10 @@ text = "Cost: XXX
 [node name="jackpotDesc" type="Label" parent="THE MINE/mineUI" unique_id=1559372416]
 z_index = 22
 layout_mode = 0
-offset_left = 180.25002
-offset_top = 665.125
-offset_right = 535.25
-offset_bottom = 704.125
+offset_left = 223.94203
+offset_top = 606.72253
+offset_right = 590.942
+offset_bottom = 645.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increase chance of jackpot!"
@@ -934,10 +940,10 @@ text = "Increase chance of jackpot!"
 [node name="jackpotValue" type="Label" parent="THE MINE/mineUI" unique_id=1195340005]
 z_index = 22
 layout_mode = 0
-offset_left = 182.25002
-offset_top = 701.125
-offset_right = 534.25
-offset_bottom = 740.125
+offset_left = 225.94203
+offset_top = 642.72253
+offset_right = 577.942
+offset_bottom = 681.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -945,10 +951,10 @@ text = "current speed: XXX"
 [node name="extraCartCost" type="Label" parent="THE MINE/mineUI" unique_id=1072506771]
 z_index = 22
 layout_mode = 0
-offset_left = 184.25002
-offset_top = 786.125
-offset_right = 311.25
-offset_bottom = 867.125
+offset_left = 227.94203
+offset_top = 727.72253
+offset_right = 354.94202
+offset_bottom = 808.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -957,10 +963,10 @@ text = "Cost: XXX
 [node name="extraCartDesc" type="Label" parent="THE MINE/mineUI" unique_id=1455066841]
 z_index = 22
 layout_mode = 0
-offset_left = 184.25002
-offset_top = 825.125
-offset_right = 539.25
-offset_bottom = 864.125
+offset_left = 227.94203
+offset_top = 766.72253
+offset_right = 649.942
+offset_bottom = 805.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Adds another cart for extra ore"
@@ -968,10 +974,10 @@ text = "Adds another cart for extra ore"
 [node name="extraCartValue" type="Label" parent="THE MINE/mineUI" unique_id=632107722]
 z_index = 22
 layout_mode = 0
-offset_left = 186.25002
-offset_top = 861.125
-offset_right = 538.25
-offset_bottom = 900.125
+offset_left = 229.94203
+offset_top = 802.72253
+offset_right = 581.942
+offset_bottom = 841.72253
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -979,19 +985,21 @@ text = "current speed: XXX"
 [node name="STORE" type="Control" parent="." unique_id=1154920962]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -4.0
+offset_top = 1277.0
+offset_right = 718.0
+offset_bottom = 2558.0
 script = ExtResource("45_mlv25")
 buttonOffset = Vector2(-300, -60)
 
 [node name="StoreNoBg" type="Sprite2D" parent="STORE" unique_id=1229957735]
-position = Vector2(168, 1377)
+position = Vector2(171.87503, 103.375)
 scale = Vector2(0.1708995, 0.14011475)
 texture = ExtResource("46_83607")
 
 [node name="CashRegister1" type="Sprite2D" parent="STORE" unique_id=599831646]
 modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
-position = Vector2(361, 1600.0001)
+position = Vector2(364.87503, 326.37512)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
@@ -999,7 +1007,7 @@ baseCost = 20
 
 [node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349]
 modulate = Color(0.5294118, 0.5294118, 0.5294118, 1)
-position = Vector2(361, 1859.0001)
+position = Vector2(364.87503, 585.3751)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
@@ -1007,7 +1015,7 @@ baseCost = 40
 
 [node name="CashRegister3" type="Sprite2D" parent="STORE" unique_id=174330305]
 modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
-position = Vector2(368.99997, 2126)
+position = Vector2(372.875, 852.375)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
@@ -1015,43 +1023,43 @@ baseCost = 80
 
 [node name="CashRegister4" type="Sprite2D" parent="STORE" unique_id=1601957721]
 modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
-position = Vector2(363, 2400)
+position = Vector2(366.87503, 1126.375)
 scale = Vector2(0.45450792, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
 baseCost = 160
 
 [node name="LineNoBg" type="Sprite2D" parent="STORE" unique_id=2120682538]
-position = Vector2(366, 2211.0005)
+position = Vector2(369.87503, 937.3756)
 scale = Vector2(0.38928586, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg3" type="Sprite2D" parent="STORE" unique_id=519897394]
-position = Vector2(370, 1946.0004)
+position = Vector2(373.87503, 672.3755)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg4" type="Sprite2D" parent="STORE" unique_id=12210971]
-position = Vector2(365, 1685.0002)
+position = Vector2(368.87503, 411.37537)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg5" type="Sprite2D" parent="STORE" unique_id=310251075]
-position = Vector2(370, 1421)
+position = Vector2(373.87503, 147.37512)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg2" type="Sprite2D" parent="STORE" unique_id=1199954359]
-position = Vector2(371, 2485.0002)
+position = Vector2(374.87503, 1211.3754)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="upgradesStore" type="TextureButton" parent="STORE" unique_id=1873753868]
 layout_mode = 0
-offset_left = 437.0
-offset_top = 1321.0
-offset_right = 1567.0
-offset_bottom = 1835.331
+offset_left = 440.87503
+offset_top = 47.375
+offset_right = 1570.875
+offset_bottom = 561.70605
 scale = Vector2(0.14273988, 0.16455439)
 texture_normal = ExtResource("31_akjxb")
 texture_hover = ExtResource("32_vrx01")
@@ -1060,30 +1068,30 @@ texture_hover = ExtResource("32_vrx01")
 visible = false
 z_index = 22
 anchors_preset = 0
-offset_left = 44.0
-offset_top = 1421.0
-offset_right = 657.0
-offset_bottom = 2455.0
+offset_left = 27.0
+offset_top = 197.0
+offset_right = 723.0
+offset_bottom = 1180.0
 
 [node name="BackImage" type="Sprite2D" parent="STORE/StoreUI" unique_id=1776418527]
 z_index = 20
-position = Vector2(320, 502)
+position = Vector2(339.69202, 490.59766)
 scale = Vector2(1.5503967, 1.6441398)
 texture = ExtResource("33_1uevf")
 
 [node name="Upgrades" type="Sprite2D" parent="STORE/StoreUI" unique_id=117387151]
 z_index = 21
-position = Vector2(162.25002, 106.125)
+position = Vector2(181.94205, 94.72266)
 scale = Vector2(0.2630435, 0.28794006)
 texture = ExtResource("34_tc087")
 
 [node name="fasterCustomers" type="TextureButton" parent="STORE/StoreUI" unique_id=1772774168]
 z_index = 21
 layout_mode = 0
-offset_left = 16.788029
-offset_top = 185.74878
-offset_right = 1322.7881
-offset_bottom = 1354.7488
+offset_left = 36.48004
+offset_top = 174.34644
+offset_right = 1342.48
+offset_bottom = 1343.3464
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("35_73205")
 texture_hover = ExtResource("36_0tljd")
@@ -1091,10 +1099,10 @@ texture_hover = ExtResource("36_0tljd")
 [node name="feedWorkers" type="TextureButton" parent="STORE/StoreUI" unique_id=366704706]
 z_index = 21
 layout_mode = 0
-offset_left = 17.250015
-offset_top = 327.125
-offset_right = 1323.25
-offset_bottom = 1496.125
+offset_left = 36.94203
+offset_top = 315.72266
+offset_right = 1342.942
+offset_bottom = 1484.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("37_mgpkq")
 texture_hover = ExtResource("38_xmrkg")
@@ -1102,10 +1110,10 @@ texture_hover = ExtResource("38_xmrkg")
 [node name="betterApples" type="TextureButton" parent="STORE/StoreUI" unique_id=615860551]
 z_index = 21
 layout_mode = 0
-offset_left = 18.250015
-offset_top = 474.125
-offset_right = 1324.25
-offset_bottom = 1643.125
+offset_left = 37.94203
+offset_top = 462.72266
+offset_right = 1343.942
+offset_bottom = 1631.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("39_wvlrk")
 texture_hover = ExtResource("40_engxj")
@@ -1113,10 +1121,10 @@ texture_hover = ExtResource("40_engxj")
 [node name="timer" type="TextureButton" parent="STORE/StoreUI" unique_id=456524947]
 z_index = 21
 layout_mode = 0
-offset_left = 19.250015
-offset_top = 619.125
-offset_right = 1325.25
-offset_bottom = 1788.125
+offset_left = 38.94203
+offset_top = 607.72266
+offset_right = 1344.942
+offset_bottom = 1776.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("49_ga3rw")
 texture_hover = ExtResource("50_f5chs")
@@ -1124,10 +1132,10 @@ texture_hover = ExtResource("50_f5chs")
 [node name="extraApples" type="TextureButton" parent="STORE/StoreUI" unique_id=254566192]
 z_index = 21
 layout_mode = 0
-offset_left = 19.250015
-offset_top = 776.125
-offset_right = 1325.25
-offset_bottom = 1945.125
+offset_left = 38.94203
+offset_top = 764.72266
+offset_right = 1344.942
+offset_bottom = 1933.7227
 scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("43_gm02q")
 texture_hover = ExtResource("44_07pt3")
@@ -1135,10 +1143,10 @@ texture_hover = ExtResource("44_07pt3")
 [node name="customerSpeedCost" type="Label" parent="STORE/StoreUI" unique_id=2116158718]
 z_index = 22
 layout_mode = 0
-offset_left = 176.25002
-offset_top = 197.125
-offset_right = 303.25
-offset_bottom = 278.125
+offset_left = 195.94202
+offset_top = 185.72266
+offset_right = 322.94202
+offset_bottom = 266.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -1147,10 +1155,10 @@ text = "Cost: XXX
 [node name="customerSpeedDesc" type="Label" parent="STORE/StoreUI" unique_id=375198911]
 z_index = 22
 layout_mode = 0
-offset_left = 178.25002
-offset_top = 232.125
-offset_right = 530.25
-offset_bottom = 271.125
+offset_left = 197.94202
+offset_top = 220.72266
+offset_right = 549.942
+offset_bottom = 259.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increases customer speed"
@@ -1158,10 +1166,10 @@ text = "Increases customer speed"
 [node name="customerSpeedValue" type="Label" parent="STORE/StoreUI" unique_id=932721829]
 z_index = 22
 layout_mode = 0
-offset_left = 177.25002
-offset_top = 266.125
-offset_right = 529.25
-offset_bottom = 305.125
+offset_left = 196.94202
+offset_top = 254.72266
+offset_right = 548.942
+offset_bottom = 293.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -1169,10 +1177,10 @@ text = "current speed: XXX"
 [node name="feedWorkersCost" type="Label" parent="STORE/StoreUI" unique_id=1350284315]
 z_index = 22
 layout_mode = 0
-offset_left = 178.25002
-offset_top = 331.125
-offset_right = 305.25
-offset_bottom = 412.125
+offset_left = 197.94202
+offset_top = 319.72266
+offset_right = 324.94202
+offset_bottom = 400.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -1181,10 +1189,10 @@ text = "Cost: XXX
 [node name="feedWorkersDesc" type="Label" parent="STORE/StoreUI" unique_id=513093476]
 z_index = 22
 layout_mode = 0
-offset_left = 178.25002
-offset_top = 370.125
-offset_right = 530.25
-offset_bottom = 409.125
+offset_left = 197.94202
+offset_top = 358.72266
+offset_right = 549.942
+offset_bottom = 397.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increases sale speed"
@@ -1192,10 +1200,10 @@ text = "Increases sale speed"
 [node name="feedWorkersValue" type="Label" parent="STORE/StoreUI" unique_id=154587580]
 z_index = 22
 layout_mode = 0
-offset_left = 180.25002
-offset_top = 406.125
-offset_right = 532.25
-offset_bottom = 445.125
+offset_left = 199.94202
+offset_top = 394.72266
+offset_right = 551.942
+offset_bottom = 433.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -1203,10 +1211,10 @@ text = "current speed: XXX"
 [node name="betterFruitCost" type="Label" parent="STORE/StoreUI" unique_id=1448740127]
 z_index = 22
 layout_mode = 0
-offset_left = 179.25002
-offset_top = 483.125
-offset_right = 306.25
-offset_bottom = 564.125
+offset_left = 198.94202
+offset_top = 471.72266
+offset_right = 325.94202
+offset_bottom = 552.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -1215,10 +1223,10 @@ text = "Cost: XXX
 [node name="betterFruitDesc" type="Label" parent="STORE/StoreUI" unique_id=2103102444]
 z_index = 22
 layout_mode = 0
-offset_left = 179.25002
-offset_top = 522.125
-offset_right = 531.25
-offset_bottom = 603.125
+offset_left = 198.94202
+offset_top = 510.72266
+offset_right = 550.942
+offset_bottom = 591.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Increases apple value
@@ -1227,10 +1235,10 @@ text = "Increases apple value
 [node name="betterFruitValue" type="Label" parent="STORE/StoreUI" unique_id=859409353]
 z_index = 22
 layout_mode = 0
-offset_left = 181.25002
-offset_top = 558.125
-offset_right = 533.25
-offset_bottom = 597.125
+offset_left = 200.94202
+offset_top = 546.72266
+offset_right = 552.942
+offset_bottom = 585.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current multiplier: XXX"
@@ -1238,10 +1246,10 @@ text = "current multiplier: XXX"
 [node name="timerCost" type="Label" parent="STORE/StoreUI" unique_id=1972316916]
 z_index = 22
 layout_mode = 0
-offset_left = 180.25002
-offset_top = 626.125
-offset_right = 307.25
-offset_bottom = 707.125
+offset_left = 199.94202
+offset_top = 614.72266
+offset_right = 326.94202
+offset_bottom = 695.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -1250,10 +1258,10 @@ text = "Cost: XXX
 [node name="timerDesc" type="Label" parent="STORE/StoreUI" unique_id=933106510]
 z_index = 22
 layout_mode = 0
-offset_left = 180.25002
-offset_top = 665.125
-offset_right = 535.25
-offset_bottom = 704.125
+offset_left = 199.94202
+offset_top = 653.72266
+offset_right = 554.942
+offset_bottom = 692.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Decreases customer timer"
@@ -1261,10 +1269,10 @@ text = "Decreases customer timer"
 [node name="timerValue" type="Label" parent="STORE/StoreUI" unique_id=735997440]
 z_index = 22
 layout_mode = 0
-offset_left = 182.25002
-offset_top = 701.125
-offset_right = 534.25
-offset_bottom = 740.125
+offset_left = 201.94202
+offset_top = 689.72266
+offset_right = 553.942
+offset_bottom = 728.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -1272,10 +1280,10 @@ text = "current speed: XXX"
 [node name="extraAppleCost" type="Label" parent="STORE/StoreUI" unique_id=1839442395]
 z_index = 22
 layout_mode = 0
-offset_left = 184.25002
-offset_top = 786.125
-offset_right = 311.25
-offset_bottom = 867.125
+offset_left = 203.94202
+offset_top = 774.72266
+offset_right = 330.94202
+offset_bottom = 855.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
@@ -1284,10 +1292,10 @@ text = "Cost: XXX
 [node name="extraAppleDesc" type="Label" parent="STORE/StoreUI" unique_id=818860415]
 z_index = 22
 layout_mode = 0
-offset_left = 184.25002
-offset_top = 825.125
-offset_right = 539.25
-offset_bottom = 864.125
+offset_left = 203.94202
+offset_top = 813.72266
+offset_right = 558.942
+offset_bottom = 852.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Doubles Apples"
@@ -1295,10 +1303,10 @@ text = "Doubles Apples"
 [node name="extraAppleValue" type="Label" parent="STORE/StoreUI" unique_id=252085316]
 z_index = 22
 layout_mode = 0
-offset_left = 186.25002
-offset_top = 861.125
-offset_right = 538.25
-offset_bottom = 900.125
+offset_left = 205.94202
+offset_top = 849.72266
+offset_right = 557.942
+offset_bottom = 888.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
@@ -1608,6 +1616,20 @@ offset_bottom = 398.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "COST: XXX"
+
+[node name="floorSlider" type="VSlider" parent="CanvasLayer" unique_id=950049280]
+custom_minimum_size = Vector2(40, 600)
+offset_left = 659.0
+offset_top = 371.0
+offset_right = 712.0
+offset_bottom = 1130.0
+
+[node name="floorLabel" type="Label" parent="CanvasLayer" unique_id=223557582]
+offset_left = 615.0
+offset_top = 1130.0
+offset_right = 655.0
+offset_bottom = 1153.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34444522]
 position = Vector2(361, 638)

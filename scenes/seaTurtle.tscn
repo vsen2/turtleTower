@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c36xiuwba7i07"]
 
-[ext_resource type="Script" uid="uid://bakcqsmturq37" path="res://seaTurtleCode.gd" id="1_371yd"]
+[ext_resource type="Script" uid="uid://bakcqsmturq37" path="res://code/seaTurtleCode.gd" id="1_371yd"]
 [ext_resource type="Texture2D" uid="uid://i1jaa7qldvgw" path="res://assets/seaTurtle2.png" id="1_rjpux"]
 [ext_resource type="Texture2D" uid="uid://b8h3ugs1yg6sn" path="res://assets/seaTurtle1.png" id="2_2thx7"]
 [ext_resource type="Texture2D" uid="uid://buekfpqh027j5" path="res://assets/seaTurtle3.png" id="3_hcwxe"]
@@ -31,6 +31,7 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D" unique_id=808056081]
+scale = Vector2(0.756968, 0.80858576)
 script = ExtResource("1_371yd")
 
 [node name="turtleHitbox" type="CollisionShape2D" parent="." unique_id=446655446]

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dqbtfsg04rb4m"]
+[gd_scene format=3 uid="uid://dcb22h11blrgx"]
 
 [ext_resource type="Script" uid="uid://cpo80gpshj0sy" path="res://code/turtleCode.gd" id="1_xrtyu"]
 [ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://assets/turtlewalk1.png" id="2_f2r5w"]

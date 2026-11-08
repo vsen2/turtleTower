@@ -11,8 +11,10 @@ const SAVE_PATH: String = "user://savegame.json"
 @onready var turtleFile2: Sprite2D = $CanvasLayer/TurtleUI/File2
 @onready var turtleFile3: Sprite2D = $CanvasLayer/TurtleUI/File3
 
-var floorLimits = Vector2(4,-2)
+@onready var floorSlider: VSlider = $CanvasLayer/floorSlider
+@onready var floorLabel: Label = $CanvasLayer/floorLabel
 
+var floorLimits = Vector2(2,-2)
 var floorLevel: int = 0
 
 # menu for changing turtles
@@ -24,6 +26,7 @@ var menu_turtle: Node = null
 enum TurtleAction { JOB, PEN, HAT }
 
 var cameraStartY: float = 0.0
+var _camera_tween: Tween
 
 func _ready() -> void:
 	print("mainGame _ready...")
@@ -31,6 +34,7 @@ func _ready() -> void:
 	load_game()
 	GameManager.hats_changed.connect(save_game)
 	GameManager.coins_spent.connect(spawnSpentCoinsLabel)
+	setup_floor_slider()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_APPLICATION_PAUSED:
@@ -44,15 +48,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	var wheel: InputEventMouseButton = event
 	if wheel.button_index == MOUSE_BUTTON_WHEEL_UP:
-		floorLevel += 1
+		go_to_floor(floorLevel + 1)
 	elif wheel.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-		floorLevel -= 1
-	else:
-		return
-	floorLevel = clampi(floorLevel, int(floorLimits.y), int(floorLimits.x))
-	var screen_height: float = get_viewport_rect().size.y
-	camera.position.y = cameraStartY + floorLevel * screen_height * -1
-	print(floorLevel)
+		go_to_floor(floorLevel - 1)
 	
 func spawnSpentCoinsLabel(coins: int) -> void:
 	var label: Label = Label.new()
@@ -71,6 +69,89 @@ func spawnSpentCoinsLabel(coins: int) -> void:
 	tween.tween_property(label, "position:y", label.position.y - 20.0, 0.5)
 	tween.tween_property(label, "modulate:a", 0.0, 0.8)
 	tween.chain().tween_callback(label.queue_free)
+	
+func setup_floor_slider() -> void:
+	floorSlider.min_value = floorLimits.y      # lowest floor (-2)
+	floorSlider.max_value = floorLimits.x      # highest floor (4)
+	floorSlider.step = 1
+	floorSlider.value_changed.connect(func(v: float) -> void: go_to_floor(int(v)))
+
+	var track := StyleBoxFlat.new()
+	track.bg_color = Color(0.96, 0.95, 0.9)   
+	track.border_color = Color.BLACK
+	track.set_border_width_all(4)
+	track.set_corner_radius_all(14)
+	track.content_margin_left = 14
+	track.content_margin_right = 14
+	floorSlider.add_theme_stylebox_override("slider", track)
+
+	var empty := StyleBoxEmpty.new()
+	floorSlider.add_theme_stylebox_override("grabber_area", empty)
+	floorSlider.add_theme_stylebox_override("grabber_area_highlight", empty)
+
+	# White circle with a black outline
+	floorSlider.add_theme_icon_override("grabber", _make_circle(44, Color.WHITE))
+	floorSlider.add_theme_icon_override("grabber_highlight", _make_circle(44, Color(1.0, 1.0, 1.0, 1.0)))
+	floorSlider.tick_count = 0
+
+	# Place the label once the slider has its real size
+	_update_floor_label.call_deferred()
+
+func _make_circle(diameter: int, fill: Color) -> Texture2D:
+	var grad := Gradient.new()
+	grad.set_offset(0, 0.0)
+	grad.set_color(0, fill)
+	grad.set_offset(1, 1.0)
+	grad.set_color(1, Color(0, 0, 0, 0))
+	grad.add_point(0.74, fill)
+	grad.add_point(0.78, Color.BLACK)
+	grad.add_point(0.94, Color.BLACK)
+	var tex := GradientTexture2D.new()
+	tex.gradient = grad
+	tex.width = diameter
+	tex.height = diameter
+	tex.fill = GradientTexture2D.FILL_RADIAL
+	tex.fill_from = Vector2(0.5, 0.5)
+	tex.fill_to = Vector2(0.5, 0.0)
+	return tex
+
+func go_to_floor(level: int, instant: bool = false) -> void:
+	var old_level: int = floorLevel
+	floorLevel = clampi(level, int(floorLimits.y), int(floorLimits.x))
+	var screen_height: float = get_viewport_rect().size.y
+	var target_y: float = cameraStartY + floorLevel * screen_height * -1
+
+	# Stop any slide already in progress so fast scrolling doesn't stack tweens
+	if _camera_tween and _camera_tween.is_valid():
+		_camera_tween.kill()
+
+	if instant:
+		camera.position.y = target_y
+	else:
+		# Longer slides take a bit longer, so crossing 4 floors isn't a blur
+		var duration: float = 0.25 + 0.08 * abs(floorLevel - old_level)
+		_camera_tween = create_tween()
+		_camera_tween.tween_property(camera, "position:y", target_y, duration) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+
+	floorSlider.set_value_no_signal(floorLevel)
+
+	_update_floor_label()
+	
+func _update_floor_label() -> void:
+	var i: int = floorLevel - int(floorLimits.y)
+	floorLabel.text = "Floor %d" % floorLevel
+
+	# Where the circle is: 0 = lowest floor, 1 = highest floor
+	var ratio: float = inverse_lerp(floorLimits.y, floorLimits.x, float(floorLevel))
+	var grab_h: float = floorSlider.get_theme_icon("grabber").get_height()
+	var travel: float = floorSlider.size.y - grab_h
+	var handle_y: float = floorSlider.position.y + grab_h / 2.0 + travel * (1.0 - ratio)
+
+	floorLabel.reset_size()
+	floorLabel.position = Vector2(
+		floorSlider.position.x - floorLabel.size.x - 10,  # just left of the slider
+		handle_y - floorLabel.size.y / 2.0)
 
 func get_floors() -> Array[Node]:
 	var out: Array[Node] = []
@@ -260,7 +341,11 @@ func save_game() -> void:
 			if is_instance_valid(turtle) and turtle.has_method("save_data"):
 				turtleData.append(turtle.save_data())
 		allTurtlesData[turtlePen.floor_id] = turtleData
-			
+		
+	var penData: Dictionary = {}
+	for turtlePen in getTurtlePens():
+		penData[String(turtlePen.floor_id)] = turtlePen.get_save_data()
+		
 	var floors_data: Dictionary = {}
 	for floor_node in get_floors():
 		floors_data[String(floor_node.floor_id)] = floor_node.get_save_data()
@@ -269,6 +354,7 @@ func save_game() -> void:
 		"turtle_coins": GameManager.turtle_coins,
 		"hat_coins": GameManager.hat_coins,
 		"owned_hats": GameManager.owned_hats,
+		"pens": penData,
 		"floors": floors_data,
 		"allTurtleData": allTurtlesData,
 	}
@@ -301,6 +387,12 @@ func load_game() -> void:
 			spot.hasWorker = false
 			if spot.has_method("update_ui_state"):
 				spot.update_ui_state()
+				
+	var penData: Dictionary = data.get("floors", {})
+	for turtlePen in getTurtlePens():
+		var key := String(turtlePen.floor_id)
+		if penData.has(key):
+			turtlePen.load_save_data(penData[key])
 
 	# Restore each floor's own slice, then clear its spot staffing so the
 	# turtles we rebuild below are the single source of truth.

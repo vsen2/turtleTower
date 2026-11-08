@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://byp8t7t4p0xwu"]
+
+[ext_resource type="Script" uid="uid://cpo80gpshj0sy" path="res://code/turtleCode.gd" id="1_jwpi0"]
+[ext_resource type="Shader" uid="uid://dqe228biw4tfs" path="res://spaceturtle.gdshader" id="2_11133"]
+[ext_resource type="Texture2D" uid="uid://b530p1hetxtw2" path="res://assets/mask_constellations.png" id="3_mfi3b"]
+[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://assets/turtlewalk1.png" id="4_5yhlb"]
+[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://assets/turtleWalk2.png" id="5_d7bt2"]
+[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://assets/turtlewalk3.png" id="6_3ldgw"]
+[ext_resource type="Texture2D" uid="uid://vkktea23nv5n" path="res://assets/hatKingCrown.png" id="7_q7lft"]
+[ext_resource type="Texture2D" uid="uid://c837np1ojvi0u" path="res://assets/whiteFace.png" id="8_vbqi8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
+size = Vector2(168, 117)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rsix"]
+shader = ExtResource("2_11133")
+shader_parameter/space_tex = ExtResource("3_mfi3b")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5yhlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d7bt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3ldgw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Turtle" type="Area2D" unique_id=330427929]
+position = Vector2(88, 82)
+script = ExtResource("1_jwpi0")
+
+[node name="turtleHitbox" type="CollisionShape2D" parent="." unique_id=1328151684]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_6snss")
+
+[node name="timmyTheTurtle" type="AnimatedSprite2D" parent="." unique_id=669674736]
+material = SubResource("ShaderMaterial_0rsix")
+position = Vector2(13, -1)
+rotation = -0.005483886
+scale = Vector2(0.10383152, 0.10350519)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.23228993
+
+[node name="turtleHat" type="Sprite2D" parent="timmyTheTurtle" unique_id=316693269]
+position = Vector2(-546.89813, -379.807)
+rotation = 0.005501176
+scale = Vector2(1.2140648, 1.0891639)
+skew = -3.4570694e-05
+texture = ExtResource("7_q7lft")
+
+[node name="whiteFace" type="Sprite2D" parent="." unique_id=1620627259]
+position = Vector2(-45.000004, -20)
+scale = Vector2(0.08350038, 0.07317281)
+texture = ExtResource("8_vbqi8")

@@ -57,7 +57,6 @@ func spawn_coin_label(amount: int) -> void:
 	var label: Label = Label.new()
 	label.text = "+%d coins" % amount
 	GameManager.add_coins(amount)
-	label.global_position = global_position + Vector2(50, -75)
 	label.z_index = 30
 	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
 	label.add_theme_color_override("font_outline_color", Color.BLACK)
@@ -66,6 +65,7 @@ func spawn_coin_label(amount: int) -> void:
 
 	# Add to the parent so the label stays put when the turtle walks away.
 	get_parent().add_child(label)
+	label.global_position = global_position + Vector2(50, -75)
 
 	# Float upward and fade out, then delete itself.
 	var tween: Tween = create_tween().set_parallel(true)

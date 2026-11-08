@@ -22,7 +22,13 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatQueenCrown.png"),
 	preload("res://assets/hatSombrero.png"),
 	preload("res://assets/hatTophat.png"),
-	preload("res://assets/hatTrafficCone.png")]
+	preload("res://assets/hatTrafficCone.png"),
+	preload("res://assets/hatCowboy.png"),
+	preload("res://assets/hatBeard.png"),
+	preload("res://assets/hatChristmas.png"),
+	preload("res://assets/hatMagicChristmas.png"),
+	preload("res://assets/hatSandBucket.png"),
+	preload("res://assets/hatJackOlantern.png"),]
 @export var hatsCentered: Array[Texture2D] = [
 	preload("res://assets/hatCenteredChef.png"),
 	preload("res://assets/hatCenteredDunce.png"),
@@ -38,7 +44,12 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatCenteredSombrero.png"),
 	preload("res://assets/hatCenteredTophat.png"),
 	preload("res://assets/hatCenteredTrafficCone.png"),
-	]
+	preload("res://assets/hatCenteredCowboy.png"),
+	preload("res://assets/hatCenteredBeard.png"),
+	preload("res://assets/hatCenteredChristmas.png"),
+	preload("res://assets/hatCenteredMagicChristmas.png"),
+	preload("res://assets/hatCenteredSandBucket.png"),
+	preload("res://assets/hatCenteredJackOlantern.png"),]
 @export var hatNames: Array[String] = [
 	"Chef Hat",
 	"Dunce Hat",
@@ -53,7 +64,13 @@ var owned_hats: Array[int] = []
 	"Queen Crown",
 	"Sombrero Hat",
 	"Top Hat",
-	"Traffic Cone Hat",]
+	"Traffic Cone Hat",
+	"Cowboy Hat",
+	"Beard Hat",
+	"Christmas Tree Hat",
+	"Special Christmas Hat",
+	"Sand Bucket Hat",
+	"Jack O Lantern",]
 		
 @export var numHats = hats.size()
 signal coins_changed(new_amount: int)

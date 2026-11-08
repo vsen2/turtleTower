@@ -24,6 +24,7 @@ var penSpaceCost: int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_to_group("turtlePens")
 	addTurtle.pressed.connect(_on_addTurtle_pressed)
 	addPenSpace.pressed.connect(_on_addPenSpace_pressed)
@@ -100,19 +101,43 @@ func _instantiate_turtle(pos: Vector2, hat_id: int, assigned_floor: String, assi
 	return new_turtle
 	
 func _on_addTurtle_pressed() -> void:
-	if GameManager.spend_coins(turtleCost) and turtleCount > turtleMax:
-		turtleCost += 1
-		turtleCount += 1
-		var bounds: Rect2 = get_pen_bounds()
-		var pad: float = 24.0
-		var min_x: float = bounds.position.x + pad
-		var max_x: float = max(min_x, bounds.end.x - pad)
-		var min_y: float = bounds.position.y + pad
-		var max_y: float = max(min_y, bounds.end.y - pad)
-		var spawn_pos := Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
-		_instantiate_turtle(spawn_pos, -1, "", -1)
-		_request_save()
-	updateLabelSignal.emit()
+	if turtleCount < turtleMax:
+		if GameManager.spend_coins(turtleCost):
+			turtleCost += 1
+			turtleCount += 1
+			var bounds: Rect2 = get_pen_bounds()
+			var pad: float = 24.0
+			var min_x: float = bounds.position.x + pad
+			var max_x: float = max(min_x, bounds.end.x - pad)
+			var min_y: float = bounds.position.y + pad
+			var max_y: float = max(min_y, bounds.end.y - pad)
+			var spawn_pos := Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
+			_instantiate_turtle(spawn_pos, -1, "", -1)
+			_request_save()
+		else:
+			spawnNopeLabel("Not enough coins! (brokie haha)")
+			
+		updateLabelSignal.emit()
+	else:
+		spawnNopeLabel("Not enough pen space!")
+		
+	
+func spawnNopeLabel(words: String) -> void:
+	if not has_node("cantBuyLabel"):
+		var label: Label = Label.new()
+		label.name = "cantBuyLabel"
+		label.text = words
+		label.top_level = true
+		label.global_position = get_viewport().get_mouse_position()
+		label.z_index = 30
+		label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
+		label.add_theme_font_size_override("font_size", 25)
+		add_child(label)
+		# Float upward and fade out, then delete itself.
+		var tween: Tween = create_tween().set_parallel(true)
+		tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
+		tween.tween_property(label, "modulate:a", 0.0, 0.8)
+		tween.chain().tween_callback(label.queue_free)
 	
 func _on_addPenSpace_pressed() -> void:
 	if GameManager.spend_coins(penSpaceCost):
@@ -130,4 +155,17 @@ func get_pen_bounds() -> Rect2:
 	if turtlePen.centered:
 		top_left -= pen_size / 2.0
 	return Rect2(top_left, pen_size)
+
+func get_upgrades_data() -> Dictionary:
+	return {
+		"turtleCost": turtleCost,
+		"turtleMax": turtleMax,
+		"penSpaceCost": penSpaceCost,
+	}
+
+func load_upgrades_data(data: Dictionary) -> void:
+	if data.has("turtleCost"): turtleCost = int(data["turtleCost"])
+	if data.has("turtleMax"): turtleMax = int(data["turtleMax"])
+	if data.has("penSpaceCost"): penSpaceCost = int(data["penSpaceCost"])
+	updateLabels()
 	
