@@ -44,7 +44,7 @@ func update_labels() -> void:
 	gemsCostLabel.text = "Cost: $%d" % gemsCost
 	gemsValueLabel.text = "current multiplier: %.2fx" % gemsMultiplier
 	jackpotCostLabel.text = "Cost: $%d" % jackpotCost
-	jackpotValueLabel.text = "chance of jackpot: %d%" % jackpotMultiplier
+	jackpotValueLabel.text = "chance of jackpot: %d%%" % jackpotMultiplier
 	extraAppleCostLabel.text = "Cost: $%d" % extraCartCost
 	extraAppleValueLabel.text = "current multiplier: %dx" % extraCartMultiplier
 

@@ -49,7 +49,7 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatCenteredChristmas.png"),
 	preload("res://assets/hatCenteredMagicChristmas.png"),
 	preload("res://assets/hatCenteredSandBucket.png"),
-	preload("res://assets/hatCenteredJackOlantern.png"),]
+	preload("res://assets/hatCenteredJackOLantern.png"),]
 @export var hatNames: Array[String] = [
 	"Chef Hat",
 	"Dunce Hat",

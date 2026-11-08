@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://msrnjkvfrupf" path="res://assets/seaTurtleIcon.png" id="5_155or"]
 [ext_resource type="Texture2D" uid="uid://c7qtmxrur1ixk" path="res://assets/hatMachineText.png" id="5_gdvew"]
 [ext_resource type="Texture2D" uid="uid://cdwjnnsf1eysj" path="res://assets/kelp4.png" id="5_ksmap"]
-[ext_resource type="PackedScene" uid="uid://dqbtfsg04rb4m" path="res://scenes/turtle.tscn" id="5_vtx2l"]
+[ext_resource type="PackedScene" uid="uid://dcb22h11blrgx" path="res://scenes/turtle.tscn" id="5_vtx2l"]
 [ext_resource type="Texture2D" uid="uid://cve5eu58bmf8a" path="res://assets/squigglyLine1.png" id="5_xrs0c"]
 [ext_resource type="Texture2D" uid="uid://nx1pvje7idgt" path="res://assets/hatMachineText2.png" id="6_kjtvk"]
 [ext_resource type="PackedScene" uid="uid://c36xiuwba7i07" path="res://scenes/seaTurtle.tscn" id="6_xaipn"]
@@ -172,7 +172,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ccrme"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_tc087"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -371,28 +371,28 @@ sprite_frames = SubResource("SpriteFrames_fih1l")
 z_index = 30
 position = Vector2(280, 350)
 scale = Vector2(0.203108, 0.13916706)
-sprite_frames = SubResource("SpriteFrames_ccrme")
+sprite_frames = SubResource("SpriteFrames_tc087")
 frame_progress = 0.21306169
 
 [node name="waterLine2" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=238418649]
 z_index = 30
 position = Vector2(264.00003, 779.0001)
 scale = Vector2(0.203108, 0.1625006)
-sprite_frames = SubResource("SpriteFrames_ccrme")
+sprite_frames = SubResource("SpriteFrames_tc087")
 frame_progress = 0.7424565
 
 [node name="waterLine3" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=486454816]
 z_index = 30
 position = Vector2(585, 603)
 scale = Vector2(0.203108, 0.13916706)
-sprite_frames = SubResource("SpriteFrames_ccrme")
+sprite_frames = SubResource("SpriteFrames_tc087")
 frame_progress = 0.7424565
 
 [node name="waterLine4" type="AnimatedSprite2D" parent="TURTLE PEN POOL/decor" unique_id=1735238942]
 z_index = 30
 position = Vector2(476, 1008)
 scale = Vector2(0.203108, 0.13916706)
-sprite_frames = SubResource("SpriteFrames_ccrme")
+sprite_frames = SubResource("SpriteFrames_tc087")
 frame_progress = 0.7424565
 
 [node name="addTurtle" type="TextureButton" parent="TURTLE PEN POOL" unique_id=707129797]
