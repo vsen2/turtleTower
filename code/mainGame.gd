@@ -14,7 +14,7 @@ const SAVE_PATH: String = "user://savegame.json"
 @onready var floorSlider: VSlider = $CanvasLayer/floorSlider
 @onready var floorLabel: Label = $CanvasLayer/floorLabel
 
-var floorLimits = Vector2(2,-2)
+var floorLimits = Vector2(3,-2)
 var floorLevel: int = 0
 
 # menu for changing turtles

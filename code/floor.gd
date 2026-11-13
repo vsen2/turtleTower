@@ -29,6 +29,27 @@ func getDifficulty() -> int:
 	
 func getButtonOffset() -> Vector2:
 	return buttonOffset
+	
+func new()-> void:
+	return
+	
+	
+func spawn_notEnoughCoins_label() -> void:
+	var label: Label = Label.new()
+	label.name = "NotEnoughCoinsLabel"
+	label.text = "Not Enough Hat Coins"
+	label.top_level = true
+	label.global_position = Vector2(450, -450)
+	label.z_index = 30
+	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
+	label.add_theme_font_size_override("font_size", 25)
+
+	add_child(label)
+	# Float upward and fade out, then delete itself.
+	var tween: Tween = create_tween().set_parallel(true)
+	tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
+	tween.tween_property(label, "modulate:a", 0.0, 0.8)
+	tween.chain().tween_callback(label.queue_free)
 
 ## Every descendant node that belongs to the "job_spots" group, in scene order.
 func get_spots() -> Array[Node]:
