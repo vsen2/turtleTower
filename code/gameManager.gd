@@ -4,8 +4,6 @@ signal hats_changed
 
 var turtle_coins: int = 1000
 var hat_coins: int = 0
-var customer_speed_multiplier: float = 1.0
-var spawn_timer_multiplier: float = 1.0
 var owned_hats: Array[int] = []
 
 @export var hats: Array[Texture2D] = [
@@ -28,7 +26,19 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatChristmas.png"),
 	preload("res://assets/hatMagicChristmas.png"),
 	preload("res://assets/hatSandBucket.png"),
-	preload("res://assets/hatJackOlantern.png"),]
+	preload("res://assets/hatJackOlantern.png"),
+	preload("res://assets/hatHalo.png"),
+	preload("res://assets/hatDino.png"),
+	preload("res://assets/hatIceCream.png"),
+	preload("res://assets/hatBeanie.png"),
+	preload("res://assets/hatBanana.png"),
+	preload("res://assets/hatBatman.png"),
+	preload("res://assets/hatDrinks.png"),
+	preload("res://assets/hatSkull.png"),
+	preload("res://assets/hatSteampunk.png"),
+	preload("res://assets/hatMagicSteampunk.png")]
+	
+	
 @export var hatsCentered: Array[Texture2D] = [
 	preload("res://assets/hatCenteredChef.png"),
 	preload("res://assets/hatCenteredDunce.png"),
@@ -49,28 +59,22 @@ var owned_hats: Array[int] = []
 	preload("res://assets/hatCenteredChristmas.png"),
 	preload("res://assets/hatCenteredMagicChristmas.png"),
 	preload("res://assets/hatCenteredSandBucket.png"),
-	preload("res://assets/hatCenteredJackOLantern.png"),]
+	preload("res://assets/hatCenteredJackOLantern.png"),
+	preload("res://assets/hatCenteredHalo.png"),
+	preload("res://assets/hatCenteredDino.png"),
+	preload("res://assets/hatCenteredIceCream.png"),
+	preload("res://assets/hatCenteredBeanie.png"),
+	preload("res://assets/hatCenteredBanana.png"),
+	preload("res://assets/hatCenteredBatman.png"),
+	preload("res://assets/hatCenteredDrinks.png"),
+	preload("res://assets/hatCenteredSkull.png"),
+	preload("res://assets/hatCenteredSteampunk.png"),
+	preload("res://assets/hatCenteredMagicSteampunk.png")]
 @export var hatNames: Array[String] = [
-	"Chef Hat",
-	"Dunce Hat",
-	"Nest Hat",
-	"Fishbowl Hat",
-	"Fishing Rod Hat",
-	"Joyful Hat",
-	"Eyes Hat",
-	"King Crown",
-	"Leaf Hat",
-	"Plunger Hat",
-	"Queen Crown",
-	"Sombrero Hat",
-	"Top Hat",
-	"Traffic Cone Hat",
-	"Cowboy Hat",
-	"Beard Hat",
-	"Christmas Tree Hat",
-	"Special Christmas Hat",
-	"Sand Bucket Hat",
-	"Jack O Lantern",]
+	"Chef Hat","Dunce Hat","Nest Hat","Fishbowl Hat","Fishing Rod Hat","Joyful Hat","Eyes Hat","King Crown","Leaf Hat","Plunger Hat",
+	"Queen Crown","Sombrero Hat","Top Hat","Traffic Cone Hat","Cowboy Hat","Beard Hat","Christmas Tree Hat","Special Christmas Hat",
+	"Sand Bucket Hat","Jack O Lantern","Halo","Dino", "Ice Cream", "Beanie", "Banana", "Bat", "Drink Hat", "Steampunk", "Steampunk rare"
+	]
 		
 @export var numHats = hats.size()
 signal coins_changed(new_amount: int)
@@ -113,3 +117,19 @@ func remove_hat(hat_id: int) -> bool:
 	owned_hats.remove_at(idx)
 	hats_changed.emit()
 	return true
+
+func spawnNopeLabel(words: String) -> void:
+	var label: Label = Label.new()
+	label.name = "cantBuyLabel"
+	label.text = words
+	label.top_level = true
+	label.global_position = get_viewport().get_mouse_position()
+	label.z_index = 30
+	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
+	label.add_theme_font_size_override("font_size", 25)
+	add_child(label)
+	# Float upward and fade out, then delete itself.
+	var tween: Tween = create_tween().set_parallel(true)
+	tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
+	tween.tween_property(label, "modulate:a", 0.0, 0.8)
+	tween.chain().tween_callback(label.queue_free)

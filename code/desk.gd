@@ -1,15 +1,18 @@
 extends "res://code/workstation.gd"
 
-@export var customer_turtle_scene: PackedScene = preload("res://scenes/customerTurtle.tscn")
-
-@export var wait_time: float = 10.0
+@export var wait_time: float = 2
 
 var customer_timer: Timer
 var timer_label: Label
 
+@onready var officeLaptop: Sprite2D = $OfficeLaptop
+# Filled in _ready() from the coffee1..coffee6 child nodes
+var coffees: Array[Sprite2D] = []
 
+var coffeesUnlocked = 0
+	
 func _ready() -> void:
-	startingStuff()
+	super()
 	add_to_group("job_spots")
 	z_index = 10
 
@@ -20,34 +23,69 @@ func _ready() -> void:
 	customer_timer.timeout.connect(_on_customer_timer_timeout)
 	add_child(customer_timer)
 
+	# Countdown label shown above the desk while a turtle works here
+	timer_label = Label.new()
+	timer_label.top_level = true
+	timer_label.z_index = 13
+	timer_label.visible = false
+	timer_label.add_theme_font_size_override("font_size", 25)
+	add_child(timer_label)
+
+	coffees.clear()
+	for i in range(1, 7):
+		var c := get_node_or_null("coffee%d" % i) as Sprite2D
+		if c:
+			coffees.append(c)
+	refresh()
+
+## Updates the desk's look. Call it whenever unlocked or the coffee upgrade changes.
+## Locked: grey desk, no laptop, no coffees. Unlocked: white desk + laptop.
+func refresh() -> void:
+	if not is_node_ready():
+		return  # _ready() calls this once the child nodes exist
+	if unlocked:
+		self_modulate = Color.WHITE
+		officeLaptop.visible = true
+	else:
+		self_modulate = Color.GRAY
+		officeLaptop.visible = false
+
+	coffeesUnlocked = int(get_parent().upgrade5Multiplier)
+	for i in coffees.size():
+		coffees[i].visible = unlocked and i < coffeesUnlocked
+
+func _on_spot_plus_pressed() -> void:
+	var was_unlocked: bool = unlocked
+	super()
+	refresh()
+	# Save right away so the unlock isn't lost if no turtle gets assigned
+	if unlocked and not was_unlocked:
+		var main: Node = get_tree().current_scene
+		if main and main.has_method("save_game"):
+			main.save_game()
+
+func update_ui_state() -> void:
+	super()
+	refresh()
+		
+
 func _process(_delta: float) -> void:
 	if not (unlocked and hasWorker):
 		customer_timer.wait_time = wait_time
+		timer_label.visible = false
 		return
 	var timer_mult: float = 1.0
 	customer_timer.wait_time = wait_time / timer_mult
-	timer_label.z_index = 13
-	timer_label.top_level = true
 	timer_label.visible = true
 	timer_label.text = "%.1fs" % customer_timer.time_left
-	timer_label.add_theme_font_size_override("font_size", 25)
 	timer_label.global_position = global_position + Vector2(250, -166)
 	if customer_timer.is_stopped() and hasWorker:
 		customer_timer.start()
+		
+	
 
 func _on_customer_timer_timeout() -> void:
-	spawn_customer_turtle()
-
-func spawn_customer_turtle() -> void:
-	if not customer_turtle_scene:
-		return
-	var customer: Node2D = customer_turtle_scene.instantiate()
-	customer.speedMultiplier = get_parent().customerSpeedMultiplier
-	customer.feedWorkersMultiplier = get_parent().feedWorkersMultiplier
-	customer.fruitMultiplier = get_parent().betterFruitMultiplier
-	customer.appleMultiplier = get_parent().appleMultiplier
-	get_parent().add_child(customer)
-	customer.global_position = Vector2(get_viewport_rect().size.x, global_position.y)
+	spawn_code()
 	
 func spawn_code() -> void:
 	var label: Label = Label.new()

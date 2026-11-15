@@ -16,7 +16,7 @@ const BUTTON_NORMAL_TEXTURE = preload("res://assets/plusButtonWhite.png")
 const BUTTON_HOVER_TEXTURE = preload("res://assets/plusButtonGrey.png")
 
 # Called when the node enters the scene tree for the first time.
-func startingStuff() -> void:
+func _ready() -> void:
 	unlockCost = (baseCost*unlockCostMultiplier)
 	print("unlock cost multi" + str(unlockCostMultiplier))
 
@@ -35,7 +35,6 @@ func create_unlock_button() -> void:
 	unlock_button.custom_minimum_size = Vector2(100, 100)
 	unlock_button.size = Vector2(100, 100)
 	add_child(unlock_button)
-	print(buttonOffset)
 	unlock_button.global_position = (global_position + buttonOffset)
 	#print("globalpos" + str(global_position) + " " + str(buttonOffset))
 	

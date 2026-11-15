@@ -9,7 +9,7 @@ var timer_label: Label
 
 
 func _ready() -> void:
-	startingStuff()
+	super()
 	add_to_group("job_spots")
 	z_index = 10
 

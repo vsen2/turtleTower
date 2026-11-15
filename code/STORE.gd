@@ -55,7 +55,6 @@ func _on_faster_customers_pressed() -> void:
 	if GameManager.spend_coins(customerSpeedCost):
 		customerSpeedCost = customerSpeedCost * 2
 		customerSpeedMultiplier += 0.25
-		GameManager.customer_speed_multiplier = customerSpeedMultiplier
 		update_labels()
 		_request_save()
 

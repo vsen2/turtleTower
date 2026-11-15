@@ -73,23 +73,37 @@
 [ext_resource type="Texture2D" uid="uid://bxa1p7ley2oca" path="res://assets/file3.png" id="60_4b36k"]
 [ext_resource type="Texture2D" uid="uid://bpete4h63n7n8" path="res://assets/TBDimage.png" id="61_1v8b0"]
 [ext_resource type="Texture2D" uid="uid://bca310olj3uhj" path="res://assets/xButton.png" id="62_683hg"]
+[ext_resource type="Script" uid="uid://cnhubnjhanlxn" path="res://code/OFFICE.gd" id="62_v0wtd"]
+[ext_resource type="Texture2D" uid="uid://b22ptnk3ajvam" path="res://assets/server1.png" id="63_73205"]
 [ext_resource type="Texture2D" uid="uid://7wvs48okeejs" path="res://assets/xButtonHover.png" id="63_ow8of"]
+[ext_resource type="Texture2D" uid="uid://dn7nst278un3p" path="res://assets/office_fishtank.png" id="63_v0wtd"]
+[ext_resource type="Texture2D" uid="uid://dgiyyermbo0t7" path="res://assets/server2.png" id="64_0tljd"]
 [ext_resource type="Texture2D" uid="uid://7wwy45ldta1b" path="res://assets/shopBackground2.png" id="64_hj4tt"]
+[ext_resource type="Script" uid="uid://ccf8gucabv0u1" path="res://code/desk.gd" id="64_r4ag1"]
 [ext_resource type="Texture2D" uid="uid://d4mk80ycc3t1a" path="res://assets/office_laptop.png" id="65_4ue30"]
 [ext_resource type="Texture2D" uid="uid://bss83turmerq7" path="res://assets/text_shop.png" id="65_kqx4a"]
-[ext_resource type="Texture2D" uid="uid://bu3nravxvby4w" path="res://assets/office_newMouse.png" id="66_k42av"]
+[ext_resource type="Texture2D" uid="uid://cykk7pixy5vir" path="res://assets/server3.png" id="65_mgpkq"]
 [ext_resource type="Texture2D" uid="uid://01lchbjs1mig" path="res://assets/hatCoinBasic.png" id="66_pfcs8"]
 [ext_resource type="Texture2D" uid="uid://cgkxrjxhh0tgp" path="res://assets/buyButton.png" id="67_50d7c"]
-[ext_resource type="Texture2D" uid="uid://b0j54u2osujmj" path="res://assets/2026_11_12_0vh_Kleki.png" id="67_gr8w0"]
+[ext_resource type="Texture2D" uid="uid://b0j54u2osujmj" path="res://assets/office_coffee.png" id="67_gr8w0"]
+[ext_resource type="Texture2D" uid="uid://c7cnbiueo7nou" path="res://assets/water1.png" id="67_xmrkg"]
 [ext_resource type="Texture2D" uid="uid://d2pchthksrixp" path="res://assets/buyButtonHover.png" id="68_ruytr"]
+[ext_resource type="Texture2D" uid="uid://d1284hjwj0txl" path="res://assets/water3.png" id="68_wvlrk"]
 [ext_resource type="Texture2D" uid="uid://dfhqkk8r35ad3" path="res://assets/UITurtle.png" id="69_155or"]
+[ext_resource type="Texture2D" uid="uid://ccdlvimk6rafv" path="res://assets/water5.png" id="69_engxj"]
 [ext_resource type="Texture2D" uid="uid://c85s8u1wgej7e" path="res://assets/UITurtleHover.png" id="70_155or"]
+[ext_resource type="Texture2D" uid="uid://cw28tnjwju0en" path="res://assets/water4.png" id="70_raiwf"]
 [ext_resource type="Texture2D" uid="uid://w52pbfc6m6b2" path="res://assets/UISeaTurtle.png" id="71_63lxy"]
+[ext_resource type="Texture2D" uid="uid://bkg8y06g62ddh" path="res://assets/water2.png" id="71_roort"]
 [ext_resource type="Texture2D" uid="uid://dkevsjnl1key4" path="res://assets/UISeaTurtleHover.png" id="72_fjhjs"]
+[ext_resource type="Texture2D" uid="uid://cmquap3wetlql" path="res://assets/water6.png" id="72_gm02q"]
 [ext_resource type="Texture2D" uid="uid://qekjvtrfkxfy" path="res://assets/UISpaceTurtle.png" id="73_bfu41"]
 [ext_resource type="Texture2D" uid="uid://nx27w4l1pep2" path="res://assets/UISpaceTurtleHover.png" id="74_vtx2l"]
+[ext_resource type="Texture2D" uid="uid://dt4hwykm5esxr" path="res://assets/barBorder.png" id="77_0tljd"]
 [ext_resource type="Texture2D" uid="uid://dxhvnbdrvb3cb" path="res://assets/office_table.png" id="86_63lxy"]
 [ext_resource type="Texture2D" uid="uid://c3ttsmga7kyh5" path="res://assets/text_office.png" id="87_fjhjs"]
+[ext_resource type="Texture2D" uid="uid://c6ugmy2goshor" path="res://assets/button_clearData.png" id="92_6nfnn"]
+[ext_resource type="Texture2D" uid="uid://b64ocwd3y6fov" path="res://assets/button_clearDataHover.png" id="93_4ue30"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dwrc3"]
 animations = [{
@@ -249,6 +263,58 @@ animations = [{
 "loop": 1,
 "name": &"DEFAULT",
 "speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lkluq"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": ExtResource("63_73205")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_0tljd")
+}, {
+"duration": 10.0,
+"texture": ExtResource("63_73205")
+}, {
+"duration": 3.0,
+"texture": ExtResource("65_mgpkq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_xmrkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_wvlrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_engxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_raiwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_roort")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_gm02q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_raiwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_engxj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
 }]
 
 [node name="Node2D" type="Node2D" unique_id=1208055871]
@@ -1323,6 +1389,13 @@ offset_left = -14.0
 offset_top = -3854.0
 offset_right = 708.0
 offset_bottom = -2573.0
+script = ExtResource("62_v0wtd")
+buttonOffset = Vector2(-70, -50)
+
+[node name="TextOffice" type="Sprite2D" parent="OFFICE" unique_id=321437871]
+position = Vector2(311.00003, 101)
+scale = Vector2(0.36827794, 0.30570903)
+texture = ExtResource("87_fjhjs")
 
 [node name="LineNoBg" type="Sprite2D" parent="OFFICE" unique_id=1380881888]
 position = Vector2(369.87503, 937.3756)
@@ -1344,61 +1417,91 @@ position = Vector2(373.87503, 147.37512)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
-[node name="LineNoBg2" type="Sprite2D" parent="OFFICE" unique_id=1856570949]
-position = Vector2(374.87503, 1211.3754)
-scale = Vector2(0.38928574, 0.26820475)
-texture = ExtResource("8_xljpf")
+[node name="server" type="AnimatedSprite2D" parent="OFFICE" unique_id=632750702]
+position = Vector2(445, 1225)
+scale = Vector2(0.3445936, 0.34052244)
+sprite_frames = SubResource("SpriteFrames_lkluq")
+frame_progress = 0.23061855
 
-[node name="StoreTable" type="Sprite2D" parent="OFFICE" unique_id=696766248]
-position = Vector2(214.06248, 309.28113)
-scale = Vector2(0.18640949, 0.14419347)
+[node name="tank" type="Sprite2D" parent="OFFICE" unique_id=1094041960]
+position = Vector2(299.85934, 1104.2909)
+scale = Vector2(0.30628064, 0.3246435)
+texture = ExtResource("63_v0wtd")
+
+[node name="water" type="AnimatedSprite2D" parent="OFFICE/tank" unique_id=712935507]
+position = Vector2(-9.335689, -219.59805)
+scale = Vector2(0.99312943, 1.0191817)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.93706596
+
+[node name="tankLabel" type="Label" parent="OFFICE" unique_id=381967830]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 955.0
+offset_right = 352.0
+offset_bottom = 990.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Electric Eel powered server"
+
+[node name="power" type="ProgressBar" parent="OFFICE" unique_id=167967323]
+layout_mode = 0
+offset_left = 587.0
+offset_top = 1011.0
+offset_right = 697.0
+offset_bottom = 1038.0
+
+[node name="BarBorder" type="Sprite2D" parent="OFFICE" unique_id=954404363]
+position = Vector2(644.125, 1025.5)
+scale = Vector2(0.18145743, 0.11744923)
+texture = ExtResource("77_0tljd")
+
+[node name="officeDesk" type="Sprite2D" parent="OFFICE" unique_id=696766248]
+position = Vector2(220.5625, 309.28113)
+scale = Vector2(0.19349784, 0.14419347)
 texture = ExtResource("86_63lxy")
+script = ExtResource("64_r4ag1")
 
-[node name="laptop" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=1645529137]
-position = Vector2(-209.2143, -49.003906)
-scale = Vector2(0.7764489, 1.0515292)
+[node name="OfficeLaptop" type="Sprite2D" parent="OFFICE/officeDesk" unique_id=1627757478]
+visible = false
+position = Vector2(-188.9556, -50.49585)
+scale = Vector2(0.7087001, 0.8794975)
 texture = ExtResource("65_4ue30")
 
-[node name="OfficeNewMouse" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=1639601411]
-visible = false
-position = Vector2(-155.22351, -65.33984)
-scale = Vector2(0.47354096, 0.424931)
-texture = ExtResource("66_k42av")
-
-[node name="coffee" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=228288427]
+[node name="coffee1" type="Sprite2D" parent="OFFICE/officeDesk" unique_id=228288427]
 visible = false
 position = Vector2(-94.48377, 81.67922)
 scale = Vector2(0.2968953, 0.4192212)
 texture = ExtResource("67_gr8w0")
 
-[node name="coffee2" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=1745004912]
+[node name="coffee2" type="Sprite2D" parent="OFFICE/officeDesk" unique_id=1745004912]
 visible = false
 position = Vector2(13.497835, 81.67923)
 scale = Vector2(0.2968953, 0.4192212)
 texture = ExtResource("67_gr8w0")
 
-[node name="coffee3" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=846925341]
+[node name="coffee3" type="Sprite2D" parent="OFFICE/officeDesk" unique_id=846925341]
 visible = false
 z_index = 23
 position = Vector2(128.2283, 81.679214)
 scale = Vector2(0.2968953, 0.4192212)
 texture = ExtResource("67_gr8w0")
 
-[node name="coffee4" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=992329434]
+[node name="coffee4" type="Sprite2D" parent="OFFICE/officeDesk" unique_id=992329434]
 visible = false
 z_index = 22
 position = Vector2(182.21909, 16.337711)
 scale = Vector2(0.2968953, 0.4192212)
 texture = ExtResource("67_gr8w0")
 
-[node name="coffee5" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=1605866247]
+[node name="coffee5" type="Sprite2D" parent="OFFICE/officeDesk" unique_id=1605866247]
 visible = false
 z_index = 21
 position = Vector2(236.2099, -57.17151)
 scale = Vector2(0.2968953, 0.4192212)
 texture = ExtResource("67_gr8w0")
 
-[node name="coffee6" type="Sprite2D" parent="OFFICE/StoreTable" unique_id=453366639]
+[node name="coffee6" type="Sprite2D" parent="OFFICE/officeDesk" unique_id=453366639]
 visible = false
 z_index = 20
 position = Vector2(290.2005, -130.68073)
@@ -1417,7 +1520,7 @@ texture_hover = ExtResource("32_vrx01")
 
 [node name="OfficeUI" type="Control" parent="OFFICE" unique_id=1841313357]
 visible = false
-z_index = 22
+z_index = 200
 anchors_preset = 0
 offset_left = 27.0
 offset_top = 197.0
@@ -1436,7 +1539,7 @@ position = Vector2(181.94205, 94.72266)
 scale = Vector2(0.2630435, 0.28794006)
 texture = ExtResource("34_tc087")
 
-[node name="fasterCustomers" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=99061680]
+[node name="upgrade1" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=99061680]
 z_index = 21
 layout_mode = 0
 offset_left = 36.48004
@@ -1447,7 +1550,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("35_73205")
 texture_hover = ExtResource("36_0tljd")
 
-[node name="feedWorkers" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=1916751476]
+[node name="upgrade2" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=1916751476]
 z_index = 21
 layout_mode = 0
 offset_left = 36.94203
@@ -1458,7 +1561,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("37_mgpkq")
 texture_hover = ExtResource("38_xmrkg")
 
-[node name="betterApples" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=794012866]
+[node name="upgrade3" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=794012866]
 z_index = 21
 layout_mode = 0
 offset_left = 37.94203
@@ -1469,7 +1572,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("39_wvlrk")
 texture_hover = ExtResource("40_engxj")
 
-[node name="timer" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=1302140032]
+[node name="upgrade4" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=1302140032]
 z_index = 21
 layout_mode = 0
 offset_left = 38.94203
@@ -1480,7 +1583,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("49_ga3rw")
 texture_hover = ExtResource("50_f5chs")
 
-[node name="extraApples" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=442418658]
+[node name="upgrade5" type="TextureButton" parent="OFFICE/OfficeUI" unique_id=442418658]
 z_index = 21
 layout_mode = 0
 offset_left = 38.94203
@@ -1491,7 +1594,7 @@ scale = Vector2(0.10253414, 0.109256834)
 texture_normal = ExtResource("43_gm02q")
 texture_hover = ExtResource("44_07pt3")
 
-[node name="customerSpeedCost" type="Label" parent="OFFICE/OfficeUI" unique_id=599060491]
+[node name="upgrade1Cost" type="Label" parent="OFFICE/OfficeUI" unique_id=599060491]
 z_index = 22
 layout_mode = 0
 offset_left = 195.94202
@@ -1503,7 +1606,7 @@ theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
 "
 
-[node name="customerSpeedDesc" type="Label" parent="OFFICE/OfficeUI" unique_id=320129421]
+[node name="upgrade1Desc" type="Label" parent="OFFICE/OfficeUI" unique_id=320129421]
 z_index = 22
 layout_mode = 0
 offset_left = 197.94202
@@ -1512,9 +1615,9 @@ offset_right = 549.942
 offset_bottom = 259.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "Increases customer speed"
+text = "More eels for faster Servers"
 
-[node name="customerSpeedValue" type="Label" parent="OFFICE/OfficeUI" unique_id=1452024814]
+[node name="upgrade1Value" type="Label" parent="OFFICE/OfficeUI" unique_id=1452024814]
 z_index = 22
 layout_mode = 0
 offset_left = 196.94202
@@ -1525,7 +1628,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
 
-[node name="feedWorkersCost" type="Label" parent="OFFICE/OfficeUI" unique_id=2027856229]
+[node name="upgrade2Cost" type="Label" parent="OFFICE/OfficeUI" unique_id=2027856229]
 z_index = 22
 layout_mode = 0
 offset_left = 197.94202
@@ -1537,7 +1640,7 @@ theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
 "
 
-[node name="feedWorkersDesc" type="Label" parent="OFFICE/OfficeUI" unique_id=352318940]
+[node name="upgrade2Desc" type="Label" parent="OFFICE/OfficeUI" unique_id=352318940]
 z_index = 22
 layout_mode = 0
 offset_left = 197.94202
@@ -1546,9 +1649,9 @@ offset_right = 549.942
 offset_bottom = 397.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "Increases sale speed"
+text = "CLawde tokens"
 
-[node name="feedWorkersValue" type="Label" parent="OFFICE/OfficeUI" unique_id=1185618866]
+[node name="upgrade2Value" type="Label" parent="OFFICE/OfficeUI" unique_id=1185618866]
 z_index = 22
 layout_mode = 0
 offset_left = 199.94202
@@ -1559,7 +1662,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
 
-[node name="betterFruitCost" type="Label" parent="OFFICE/OfficeUI" unique_id=1552373343]
+[node name="upgrade3Cost" type="Label" parent="OFFICE/OfficeUI" unique_id=1552373343]
 z_index = 22
 layout_mode = 0
 offset_left = 198.94202
@@ -1571,7 +1674,7 @@ theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
 "
 
-[node name="betterFruitDesc" type="Label" parent="OFFICE/OfficeUI" unique_id=915043297]
+[node name="upgrade3Desc" type="Label" parent="OFFICE/OfficeUI" unique_id=915043297]
 z_index = 22
 layout_mode = 0
 offset_left = 198.94202
@@ -1580,10 +1683,9 @@ offset_right = 550.942
 offset_bottom = 591.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "Increases apple value
-"
+text = "Mouse"
 
-[node name="betterFruitValue" type="Label" parent="OFFICE/OfficeUI" unique_id=893807905]
+[node name="upgrade3Value" type="Label" parent="OFFICE/OfficeUI" unique_id=893807905]
 z_index = 22
 layout_mode = 0
 offset_left = 200.94202
@@ -1594,7 +1696,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current multiplier: XXX"
 
-[node name="timerCost" type="Label" parent="OFFICE/OfficeUI" unique_id=1861047498]
+[node name="upgrade4Cost" type="Label" parent="OFFICE/OfficeUI" unique_id=1861047498]
 z_index = 22
 layout_mode = 0
 offset_left = 199.94202
@@ -1603,10 +1705,9 @@ offset_right = 326.94202
 offset_bottom = 695.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "Cost: XXX
-"
+text = "Cost: XXX"
 
-[node name="timerDesc" type="Label" parent="OFFICE/OfficeUI" unique_id=180403145]
+[node name="upgrade4Desc" type="Label" parent="OFFICE/OfficeUI" unique_id=180403145]
 z_index = 22
 layout_mode = 0
 offset_left = 199.94202
@@ -1615,9 +1716,9 @@ offset_right = 554.942
 offset_bottom = 692.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "Decreases customer timer"
+text = "web app UI upgrade"
 
-[node name="timerValue" type="Label" parent="OFFICE/OfficeUI" unique_id=1788260690]
+[node name="upgrade4Value" type="Label" parent="OFFICE/OfficeUI" unique_id=1788260690]
 z_index = 22
 layout_mode = 0
 offset_left = 201.94202
@@ -1628,7 +1729,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "current speed: XXX"
 
-[node name="extraAppleCost" type="Label" parent="OFFICE/OfficeUI" unique_id=687797663]
+[node name="upgrade5Cost" type="Label" parent="OFFICE/OfficeUI" unique_id=687797663]
 z_index = 22
 layout_mode = 0
 offset_left = 203.94202
@@ -1640,7 +1741,7 @@ theme_override_font_sizes/font_size = 28
 text = "Cost: XXX
 "
 
-[node name="extraAppleDesc" type="Label" parent="OFFICE/OfficeUI" unique_id=1753967194]
+[node name="upgrade5Desc" type="Label" parent="OFFICE/OfficeUI" unique_id=1753967194]
 z_index = 22
 layout_mode = 0
 offset_left = 203.94202
@@ -1649,9 +1750,9 @@ offset_right = 558.942
 offset_bottom = 852.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
-text = "Doubles Apples"
+text = "Extra Coffee Speed"
 
-[node name="extraAppleValue" type="Label" parent="OFFICE/OfficeUI" unique_id=34571347]
+[node name="upgrade5Value" type="Label" parent="OFFICE/OfficeUI" unique_id=34571347]
 z_index = 22
 layout_mode = 0
 offset_left = 205.94202
@@ -1970,10 +2071,10 @@ text = "COST: XXX"
 
 [node name="floorSlider" type="VSlider" parent="CanvasLayer" unique_id=950049280]
 custom_minimum_size = Vector2(40, 600)
-offset_left = 659.0
-offset_top = 371.0
-offset_right = 712.0
-offset_bottom = 1130.0
+offset_left = 681.0
+offset_top = 368.0
+offset_right = 721.0
+offset_bottom = 1127.0
 
 [node name="floorLabel" type="Label" parent="CanvasLayer" unique_id=223557582]
 offset_left = 615.0
@@ -1985,10 +2086,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34444522]
 position = Vector2(361, 638)
 
-[node name="TextOffice" type="Sprite2D" parent="." unique_id=321437871]
-position = Vector2(297, -3742)
-scale = Vector2(0.36827794, 0.30570903)
-texture = ExtResource("87_fjhjs")
+[node name="clearDataButton" type="TextureButton" parent="." unique_id=850471365]
+offset_left = 216.0
+offset_top = 4199.0
+offset_right = 1121.0
+offset_bottom = 4524.0
+scale = Vector2(0.3231552, 0.35503286)
+texture_normal = ExtResource("92_6nfnn")
+texture_hover = ExtResource("93_4ue30")
 
 [connection signal="pressed" from="TURTLE PEN/addTurtle" to="." method="_on_addTurtle_pressed"]
 [connection signal="pressed" from="TURTLE PEN/addPenSpace" to="." method="_on_addPenSpace_pressed"]
@@ -2007,12 +2112,12 @@ texture = ExtResource("87_fjhjs")
 [connection signal="pressed" from="STORE/StoreUI/betterApples" to="STORE" method="_on_better_apples_pressed"]
 [connection signal="pressed" from="STORE/StoreUI/timer" to="STORE" method="_on_timer_pressed"]
 [connection signal="pressed" from="STORE/StoreUI/extraApples" to="STORE" method="_on_extra_apples_pressed"]
-[connection signal="pressed" from="OFFICE/upgradesOffice" to="OFFICE" method="_on_upgrades_store_pressed"]
-[connection signal="pressed" from="OFFICE/OfficeUI/fasterCustomers" to="OFFICE" method="_on_faster_customers_pressed"]
-[connection signal="pressed" from="OFFICE/OfficeUI/feedWorkers" to="OFFICE" method="_on_feed_workers_pressed"]
-[connection signal="pressed" from="OFFICE/OfficeUI/betterApples" to="OFFICE" method="_on_better_apples_pressed"]
-[connection signal="pressed" from="OFFICE/OfficeUI/timer" to="OFFICE" method="_on_timer_pressed"]
-[connection signal="pressed" from="OFFICE/OfficeUI/extraApples" to="OFFICE" method="_on_extra_apples_pressed"]
+[connection signal="pressed" from="OFFICE/upgradesOffice" to="OFFICE" method="_on_upgrades_office_pressed"]
+[connection signal="pressed" from="OFFICE/OfficeUI/upgrade1" to="OFFICE" method="_on_upgrade1_pressed"]
+[connection signal="pressed" from="OFFICE/OfficeUI/upgrade2" to="OFFICE" method="_on_upgrade2_pressed"]
+[connection signal="pressed" from="OFFICE/OfficeUI/upgrade3" to="OFFICE" method="_on_upgrade3_pressed"]
+[connection signal="pressed" from="OFFICE/OfficeUI/upgrade4" to="OFFICE" method="_on_upgrade4_pressed"]
+[connection signal="pressed" from="OFFICE/OfficeUI/upgrade5" to="OFFICE" method="_on_upgrade5_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChangeTurtles" to="." method="_on_changeTurtles_pressed"]
 [connection signal="pressed" from="CanvasLayer/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/File1/turtleScroll" to="." method="_on_turtle_scroll_pressed"]
@@ -2024,3 +2129,4 @@ texture = ExtResource("87_fjhjs")
 [connection signal="pressed" from="CanvasLayer/TurtleUI/xButton2" to="CanvasLayer" method="_on_x_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ShopUI/xButton" to="CanvasLayer" method="_on_x_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ShopUI/Item1/buy" to="CanvasLayer" method="_on_buy_pressed"]
+[connection signal="pressed" from="clearDataButton" to="." method="_on_clear_data_button_pressed"]

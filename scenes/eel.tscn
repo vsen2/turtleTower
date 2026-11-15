@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://3x3bwbv24h37"]
+
+[ext_resource type="Script" uid="uid://b6oo62c32ax7r" path="res://scenes/eel.gd" id="1_qh1vq"]
+[ext_resource type="Texture2D" uid="uid://c0cdcmpc4e6ls" path="res://assets/eel4.png" id="2_s5ywd"]
+[ext_resource type="Texture2D" uid="uid://c7k5oyy2xtti5" path="res://assets/eel2.png" id="3_8su3r"]
+[ext_resource type="Texture2D" uid="uid://6cunx162lj1u" path="res://assets/eel1.png" id="4_d34e6"]
+[ext_resource type="Texture2D" uid="uid://cos6p3rvski6p" path="res://assets/eel3.png" id="5_rjb7d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
+size = Vector2(123, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s5ywd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8su3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d34e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rjb7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d34e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8su3r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="eel" type="Area2D" unique_id=330427929]
+position = Vector2(88, 82)
+script = ExtResource("1_qh1vq")
+
+[node name="eelHitbox" type="CollisionShape2D" parent="." unique_id=1328151684]
+position = Vector2(8, -6)
+shape = SubResource("RectangleShape2D_6snss")
+
+[node name="electricEel" type="AnimatedSprite2D" parent="." unique_id=669674736]
+rotation = -0.005483886
+scale = Vector2(0.17613386, 0.18266562)
+sprite_frames = SubResource("SpriteFrames_ccrme")
+frame_progress = 0.13751522

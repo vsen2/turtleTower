@@ -8,7 +8,7 @@ extends "res://code/workstation.gd"
 var hasCart: bool = false
 
 func _ready() -> void:
-	startingStuff()
+	super()
 	add_to_group("job_spots")
 	z_index = 10
 	

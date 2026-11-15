@@ -14,7 +14,7 @@ const SAVE_PATH: String = "user://savegame.json"
 @onready var floorSlider: VSlider = $CanvasLayer/floorSlider
 @onready var floorLabel: Label = $CanvasLayer/floorLabel
 
-var floorLimits = Vector2(3,-2)
+var floorLimits = Vector2(4,-4)
 var floorLevel: int = 0
 
 # menu for changing turtles
@@ -93,6 +93,7 @@ func setup_floor_slider() -> void:
 	floorSlider.add_theme_icon_override("grabber", _make_circle(44, Color.WHITE))
 	floorSlider.add_theme_icon_override("grabber_highlight", _make_circle(44, Color(1.0, 1.0, 1.0, 1.0)))
 	floorSlider.tick_count = 0
+	floorLabel.add_theme_font_size_override("font_size", 22)
 
 	# Place the label once the slider has its real size
 	_update_floor_label.call_deferred()
@@ -140,7 +141,7 @@ func go_to_floor(level: int, instant: bool = false) -> void:
 	
 func _update_floor_label() -> void:
 	var i: int = floorLevel - int(floorLimits.y)
-	floorLabel.text = "Floor %d" % floorLevel
+	floorLabel.text = "%d" % floorLevel
 
 	# Where the circle is: 0 = lowest floor, 1 = highest floor
 	var ratio: float = inverse_lerp(floorLimits.y, floorLimits.x, float(floorLevel))
@@ -148,10 +149,15 @@ func _update_floor_label() -> void:
 	var travel: float = floorSlider.size.y - grab_h
 	var handle_y: float = floorSlider.position.y + grab_h / 2.0 + travel * (1.0 - ratio)
 
-	floorLabel.reset_size()
+	# Center the number inside the circle
+	var grab_w: float = floorSlider.get_theme_icon("grabber").get_width()
+	floorLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	floorLabel.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	floorLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # let clicks reach the slider
+	floorLabel.size = Vector2(grab_w, grab_h)
 	floorLabel.position = Vector2(
-		floorSlider.position.x - floorLabel.size.x - 10,  # just left of the slider
-		handle_y - floorLabel.size.y / 2.0)
+		floorSlider.position.x + floorSlider.size.x / 2.0 - grab_w / 2.0,
+		handle_y - grab_h / 2.0)
 
 func get_floors() -> Array[Node]:
 	var out: Array[Node] = []
@@ -364,12 +370,13 @@ func save_game() -> void:
 		file.close()
 
 func load_game() -> void:
-	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
-	var text := file.get_as_text()
-	file.close()
-	var json := JSON.new()
-	json.parse(text)
-	var data: Dictionary = json.data
+	var data: Dictionary = {}
+	if FileAccess.file_exists(SAVE_PATH):
+		var text := FileAccess.get_file_as_string(SAVE_PATH)
+		if text.strip_edges() != "":
+			var json := JSON.new()
+			if json.parse(text) == OK and json.data is Dictionary:
+				data = json.data
 	
 	if data.has("turtle_coins"):
 		GameManager.turtle_coins = int(data["turtle_coins"])
@@ -470,3 +477,14 @@ func updatee_turtle_UI_pages() -> void:
 	
 	$CanvasLayer/TurtleUI/File2/TextHats.visible = (turtleFile2.z_index == 50)
 	$CanvasLayer/TurtleUI/File2/hatContainer.visible = (turtleFile2.z_index == 50)
+
+
+func _on_clear_data_button_pressed() -> void:
+	GameManager.set_owned_hats([])
+	
+	GameManager.hat_coins = 0
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+	
+	get_tree().reload_current_scene()
+	GameManager.turtle_coins = 999

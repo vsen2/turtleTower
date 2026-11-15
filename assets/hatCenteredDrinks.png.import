@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0j54u2osujmj"
-path="res://.godot/imported/2026_11_12_0vh_Kleki.png-84ab93d44c896ccce90adc541dbd5546.ctex"
+uid="uid://bkco4gw2qor4l"
+path="res://.godot/imported/hatCenteredDrinks.png-d719bcdd6966e7b04f168b5984565211.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2026_11_12_0vh_Kleki.png"
-dest_files=["res://.godot/imported/2026_11_12_0vh_Kleki.png-84ab93d44c896ccce90adc541dbd5546.ctex"]
+source_file="res://assets/hatCenteredDrinks.png"
+dest_files=["res://.godot/imported/hatCenteredDrinks.png-d719bcdd6966e7b04f168b5984565211.ctex"]
 
 [params]
 
