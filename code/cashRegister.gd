@@ -17,7 +17,7 @@ func _ready() -> void:
 	customer_timer.wait_time = wait_time
 	customer_timer.one_shot = false
 	customer_timer.autostart = false
-	customer_timer.timeout.connect(_on_customer_timer_timeout)
+	customer_timer.timeout.connect(spawn_customer_turtle)
 	add_child(customer_timer)
 
 	timer_label = Label.new()
@@ -25,7 +25,7 @@ func _ready() -> void:
 	timer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	timer_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	timer_label.size = Vector2(120, 24)
-	timer_label.position = Vector2(-timer_label.size.x / 2.0, -45)
+	timer_label.position = Vector2(-40, -45)
 	timer_label.add_theme_color_override("font_color", Color.BLACK)
 	timer_label.add_theme_constant_override("outline_size", 4)
 	timer_label.visible = false
@@ -42,12 +42,9 @@ func _process(_delta: float) -> void:
 	timer_label.visible = true
 	timer_label.text = "%.1fs" % customer_timer.time_left
 	timer_label.add_theme_font_size_override("font_size", 25)
-	timer_label.global_position = global_position + Vector2(250, -166)
+	timer_label.global_position = global_position + Vector2(230, -166)
 	if customer_timer.is_stopped() and hasWorker:
 		customer_timer.start()
-
-func _on_customer_timer_timeout() -> void:
-	spawn_customer_turtle()
 
 func spawn_customer_turtle() -> void:
 	if not customer_turtle_scene:

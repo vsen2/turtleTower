@@ -52,29 +52,6 @@ func _process(delta: float) -> void:
 			line.global_position.x = min_x
 			directions[i] = 1
 
-
-	
-func add_turtle_icon_to_grid(turtle: Node) -> void:
-	var item_container: VBoxContainer = VBoxContainer.new()
-	item_container.alignment = BoxContainer.ALIGNMENT_CENTER
-
-	var button: TextureButton = TextureButton.new()
-	button.texture_normal = turtle_icon
-	button.custom_minimum_size = Vector2(96, 96)
-	button.ignore_texture_size = true
-	button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-
-	var status_label: Label = Label.new()
-	status_label.text = "Idle"
-	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	status_label.add_theme_color_override("font_color", Color.BLACK)
-
-	turtle.status_label = status_label
-	#button.pressed.connect(get_parent()._on_turtle_icon_selected.bind(turtle))
-
-	item_container.add_child(button)
-	item_container.add_child(status_label)
-	grid.add_child(item_container)
 	
 #func assign_turtle_to_spot(turtle: Node, spot: Node) -> void:
 	#var floor_node: Node = get_floor_of(spot)

@@ -14,12 +14,14 @@ extends "res://code/floor.gd"
 @onready var penSpaceLabel: Label = $addPenSpace/penSpaceLabel
 @export var penID: int = 0 
 
+
 signal updateLabelSignal(amount: int)
 
 var turtleCost: int = 1
 var turtleCount: int = 0
 var turtleMax: int = 20
 var penSpaceCost: int = 1
+var hats = GameManager.hats
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,7 +57,7 @@ func _get_pen_rect() -> Rect2:
 		top_left -= pen_size / 2.0
 	return Rect2(top_left, pen_size)
 	
-func add_turtle_icon_to_grid(turtle: Node) -> void:
+func add_turtle_icon_to_grid(turtle: Node, hatID: int) -> void:
 	var item_container: VBoxContainer = VBoxContainer.new()
 	item_container.alignment = BoxContainer.ALIGNMENT_CENTER
 
@@ -64,7 +66,16 @@ func add_turtle_icon_to_grid(turtle: Node) -> void:
 	button.custom_minimum_size = Vector2(96, 96)
 	button.ignore_texture_size = true
 	button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-
+	
+	var hat := TextureRect.new()
+	hat.texture = hats[hatID]
+	hat.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	hat.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	hat.size = Vector2(120, 120)
+	hat.position = Vector2(-40, -36)
+	hat.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	button.add_child(hat)
+	
 	var status_label: Label = Label.new()
 	status_label.text = "Idle"
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -73,6 +84,7 @@ func add_turtle_icon_to_grid(turtle: Node) -> void:
 	turtle.status_label = status_label
 	button.pressed.connect(get_parent()._on_turtle_icon_selected.bind(turtle))
 
+	item_container.add_child(hat)
 	item_container.add_child(button)
 	item_container.add_child(status_label)
 	grid.add_child(item_container)
@@ -82,11 +94,11 @@ func _instantiate_turtle(pos: Vector2, hat_id: int, assigned_floor: String, assi
 	new_turtle.bounds = get_pen_bounds()
 	new_turtle.home_pen_id = floor_id
 	new_turtle.add_to_group(floor_id)
-	if hat_id != -1:
+	if hat_id > 0:
 		new_turtle.random_hat = hat_id
 	add_child(new_turtle)
 	new_turtle.global_position = pos
-	add_turtle_icon_to_grid(new_turtle)
+	add_turtle_icon_to_grid(new_turtle, hat_id)
 
 	if assigned_floor != "" and assigned_spot >= 0:
 		var main = get_tree().current_scene

@@ -28,11 +28,22 @@ enum TurtleAction { JOB, PEN, HAT }
 var cameraStartY: float = 0.0
 var _camera_tween: Tween
 
+# Stays false until load_game() finishes, so nothing can overwrite the save
+# file with a blank game while the scene is still starting up.
+var _save_loaded: bool = false
+
 func _ready() -> void:
 	print("mainGame _ready...")
 	cameraStartY = camera.position.y
 	load_game()
+	_save_loaded = true
 	GameManager.hats_changed.connect(save_game)
+	# Autosave every 5 seconds so earned coins aren't lost.
+	var autosave := Timer.new()
+	autosave.wait_time = 5.0
+	autosave.autostart = true
+	autosave.timeout.connect(save_game)
+	add_child(autosave)
 	GameManager.coins_spent.connect(spawnSpentCoinsLabel)
 	setup_floor_slider()
 
@@ -194,6 +205,7 @@ func get_spot_index(spot: Node) -> int:
 
 func begin_spot_assignment(spot: Node) -> void:
 	pending_spot = spot
+	show_turtle_ui()
 	
 func _on_turtle_icon_selected(turtle: Node) -> void:
 	if not is_instance_valid(turtle):
@@ -202,6 +214,7 @@ func _on_turtle_icon_selected(turtle: Node) -> void:
 	if is_instance_valid(pending_spot) and not pending_spot.hasWorker:
 		assign_turtle_to_spot(turtle, pending_spot)
 		pending_spot = null
+		turtleUI.visible = false
 		save_game()
 		return
 	_show_turtle_menu(turtle)
@@ -340,6 +353,8 @@ func get_worker_flip(spot: Node) -> bool:
 	return false
 
 func save_game() -> void:
+	if not _save_loaded:
+		return
 	var allTurtlesData: Dictionary = {}
 	for turtlePen in getTurtlePens():
 		var turtleData: Array = []
@@ -364,6 +379,7 @@ func save_game() -> void:
 		"floors": floors_data,
 		"allTurtleData": allTurtlesData,
 	}
+	print("has dictionary")
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(data, "	"))
@@ -379,6 +395,7 @@ func load_game() -> void:
 				data = json.data
 	
 	if data.has("turtle_coins"):
+		print("has tiurtlew coins")
 		GameManager.turtle_coins = int(data["turtle_coins"])
 	if data.has("hat_coins"):
 		GameManager.hat_coins = int(data["hat_coins"])
@@ -395,7 +412,7 @@ func load_game() -> void:
 			if spot.has_method("update_ui_state"):
 				spot.update_ui_state()
 				
-	var penData: Dictionary = data.get("floors", {})
+	var penData: Dictionary = data.get("pens", {})
 	for turtlePen in getTurtlePens():
 		var key := String(turtlePen.floor_id)
 		if penData.has(key):
@@ -418,7 +435,13 @@ func load_game() -> void:
 		pen.updateLabels()
 
 func _on_changeTurtles_pressed() -> void:
-	turtleUI.visible = not turtleUI.visible
+	if turtleUI.visible:
+		turtleUI.visible = false
+	else:
+		show_turtle_ui()
+		
+func show_turtle_ui() -> void:
+	turtleUI.visible = true
 	shopUI.visible = false
 	turtleFile1.z_index = 50
 	turtleFile2.z_index = 49

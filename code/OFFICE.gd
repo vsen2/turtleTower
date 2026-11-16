@@ -39,11 +39,13 @@ var upgrade5Cost = 100
 @export var tank_wall: float = 45.0
 @onready var water: AnimatedSprite2D = $tank/water
 @onready var power: ProgressBar = $power
+@onready var server: AnimatedSprite2D = $server
 
 func _ready() -> void:
 	super()
 	update_labels()
 	water.play("default")
+	server.play("default")
 	var bounds: Rect2 = get_pen_bounds()
 	var pad: float = 24.0
 	var min_x: float = bounds.position.x + pad

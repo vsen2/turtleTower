@@ -12,6 +12,7 @@ var coffees: Array[Sprite2D] = []
 var coffeesUnlocked = 0
 	
 func _ready() -> void:
+	timer_label = Label.new()
 	super()
 	add_to_group("job_spots")
 	z_index = 10
@@ -20,16 +21,15 @@ func _ready() -> void:
 	customer_timer.wait_time = wait_time
 	customer_timer.one_shot = false
 	customer_timer.autostart = false
-	customer_timer.timeout.connect(_on_customer_timer_timeout)
+	customer_timer.timeout.connect(spawnCode)
 	add_child(customer_timer)
 
-	# Countdown label shown above the desk while a turtle works here
-	timer_label = Label.new()
-	timer_label.top_level = true
-	timer_label.z_index = 13
-	timer_label.visible = false
-	timer_label.add_theme_font_size_override("font_size", 25)
-	add_child(timer_label)
+	#timer_label = Label.new()
+	#timer_label.top_level = true
+	#timer_label.z_index = 13
+	#timer_label.visible = false
+	#timer_label.add_theme_font_size_override("font_size", 25)
+	#add_child(timer_label)
 
 	coffees.clear()
 	for i in range(1, 7):
@@ -63,12 +63,7 @@ func _on_spot_plus_pressed() -> void:
 		var main: Node = get_tree().current_scene
 		if main and main.has_method("save_game"):
 			main.save_game()
-
-func update_ui_state() -> void:
-	super()
-	refresh()
 		
-
 func _process(_delta: float) -> void:
 	if not (unlocked and hasWorker):
 		customer_timer.wait_time = wait_time
@@ -78,24 +73,18 @@ func _process(_delta: float) -> void:
 	customer_timer.wait_time = wait_time / timer_mult
 	timer_label.visible = true
 	timer_label.text = "%.1fs" % customer_timer.time_left
-	timer_label.global_position = global_position + Vector2(250, -166)
 	if customer_timer.is_stopped() and hasWorker:
 		customer_timer.start()
-		
 	
-
-func _on_customer_timer_timeout() -> void:
-	spawn_code()
-	
-func spawn_code() -> void:
+func spawnCode() -> void:
 	var label: Label = Label.new()
 	label.name = "code"
 	label.text = "code code code!"
 	label.top_level = true
-	label.global_position = Vector2(450, -450)
+	label.global_position = global_position + Vector2(-130, -120)
 	label.z_index = 30
 	label.add_theme_color_override("font_color", Color(0.0, 0.439, 0.0, 1.0)) # color
-	label.add_theme_font_size_override("font_size", 25)
+	label.add_theme_font_size_override("font_size", 15)
 
 	add_child(label)
 	# Float upward and fade out, then delete itself.

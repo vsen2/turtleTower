@@ -268,21 +268,21 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_lkluq"]
 animations = [{
 "frames": [{
-"duration": 10.0,
+"duration": 1.0,
 "texture": ExtResource("63_73205")
 }, {
 "duration": 1.0,
 "texture": ExtResource("64_0tljd")
 }, {
-"duration": 10.0,
+"duration": 1.0,
 "texture": ExtResource("63_73205")
 }, {
-"duration": 3.0,
+"duration": 1.0,
 "texture": ExtResource("65_mgpkq")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 1.0
+"speed": 3.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ccrme"]
@@ -345,10 +345,10 @@ texture = ExtResource("3_mlv25")
 
 [node name="addTurtle" type="TextureButton" parent="TURTLE PEN" unique_id=1403598825]
 layout_mode = 0
-offset_left = 212.00002
-offset_top = 34.0
-offset_right = 1772.0
-offset_bottom = 910.0
+offset_left = 186.0
+offset_top = 36.0
+offset_right = 1746.0
+offset_bottom = 912.0
 scale = Vector2(0.20036061, 0.18369158)
 texture_normal = ExtResource("15_ih3m7")
 texture_hover = ExtResource("16_11yus")
@@ -468,9 +468,9 @@ frame_progress = 0.7424565
 
 [node name="addTurtle" type="TextureButton" parent="TURTLE PEN POOL" unique_id=707129797]
 layout_mode = 0
-offset_left = 205.0
+offset_left = 183.0
 offset_top = 29.0
-offset_right = 1765.0
+offset_right = 1743.0
 offset_bottom = 905.0
 scale = Vector2(0.20036061, 0.18369158)
 texture_normal = ExtResource("15_ih3m7")
@@ -648,7 +648,7 @@ worker_flip = true
 buttonOffset = Vector2(-250, -99)
 
 [node name="TheMine" type="Sprite2D" parent="THE MINE" unique_id=1775904572]
-position = Vector2(179.84502, 58.454346)
+position = Vector2(169, 60)
 scale = Vector2(0.18038498, 0.15711285)
 texture = ExtResource("20_63lxy")
 
@@ -683,17 +683,22 @@ scale = Vector2(0.37261903, 0.15412623)
 texture = ExtResource("21_fjhjs")
 
 [node name="LineNoBg" type="Sprite2D" parent="THE MINE" unique_id=966892866]
-position = Vector2(349.84503, 363.4541)
+position = Vector2(346.84503, 378.10107)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("8_xljpf")
+
+[node name="LineNoBg5" type="Sprite2D" parent="THE MINE" unique_id=1174345645]
+position = Vector2(363, 124.000015)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg2" type="Sprite2D" parent="THE MINE" unique_id=1960956491]
-position = Vector2(358.84503, 660.45435)
+position = Vector2(360.84503, 671.1011)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="LineNoBg3" type="Sprite2D" parent="THE MINE" unique_id=620346352]
-position = Vector2(358.84503, 962.4541)
+position = Vector2(357.84503, 971.1008)
 scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
@@ -703,7 +708,7 @@ scale = Vector2(0.38928574, 0.26820475)
 texture = ExtResource("8_xljpf")
 
 [node name="TrainTracks1" type="Sprite2D" parent="THE MINE" unique_id=1824153287]
-position = Vector2(342.84503, 268.45337)
+position = Vector2(339.84503, 283.10034)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
@@ -726,7 +731,7 @@ animation = &"DEFAULT"
 frame_progress = 0.35203403
 
 [node name="TrainTracks2" type="Sprite2D" parent="THE MINE" unique_id=1131071358]
-position = Vector2(335.84503, 562.4536)
+position = Vector2(337.84503, 573.10034)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
@@ -750,7 +755,7 @@ animation = &"DEFAULT"
 frame_progress = 0.9038054
 
 [node name="TrainTracks3" type="Sprite2D" parent="THE MINE" unique_id=869645848]
-position = Vector2(349.84503, 869.4536)
+position = Vector2(348.84503, 878.10034)
 scale = Vector2(0.47093242, 0.21574041)
 texture = ExtResource("22_bfu41")
 script = ExtResource("23_y57op")
@@ -799,10 +804,10 @@ frame_progress = 0.9038054
 
 [node name="upgradesMine" type="TextureButton" parent="THE MINE" unique_id=1498263359]
 layout_mode = 0
-offset_left = 428.84503
-offset_top = 32.453857
-offset_right = 1558.845
-offset_bottom = 546.7849
+offset_left = 339.0
+offset_top = 28.0
+offset_right = 1469.0
+offset_bottom = 542.33105
 scale = Vector2(0.14273988, 0.16455439)
 texture_normal = ExtResource("31_akjxb")
 texture_hover = ExtResource("32_vrx01")
@@ -1070,32 +1075,32 @@ texture = ExtResource("46_83607")
 
 [node name="CashRegister1" type="Sprite2D" parent="STORE" unique_id=599831646]
 modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
-position = Vector2(364.87503, 326.37512)
-scale = Vector2(0.45450792, 0.25138354)
+position = Vector2(355.40628, 326.37512)
+scale = Vector2(0.44199967, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
 baseCost = 20
 
 [node name="CashRegister2" type="Sprite2D" parent="STORE" unique_id=167163349]
 modulate = Color(0.5294118, 0.5294118, 0.5294118, 1)
-position = Vector2(364.87503, 585.3751)
-scale = Vector2(0.45450792, 0.25138354)
+position = Vector2(356.9063, 585.3751)
+scale = Vector2(0.4439812, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
 baseCost = 40
 
 [node name="CashRegister3" type="Sprite2D" parent="STORE" unique_id=174330305]
 modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
-position = Vector2(372.875, 852.375)
-scale = Vector2(0.45450792, 0.25138354)
+position = Vector2(363.90628, 852.375)
+scale = Vector2(0.4426602, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
 baseCost = 80
 
 [node name="CashRegister4" type="Sprite2D" parent="STORE" unique_id=1601957721]
 modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
-position = Vector2(366.87503, 1126.375)
-scale = Vector2(0.45450792, 0.25138354)
+position = Vector2(360.90628, 1126.375)
+scale = Vector2(0.44662318, 0.25138354)
 texture = ExtResource("47_vny5k")
 script = ExtResource("48_8lcmr")
 baseCost = 160
@@ -1127,10 +1132,10 @@ texture = ExtResource("8_xljpf")
 
 [node name="upgradesStore" type="TextureButton" parent="STORE" unique_id=1873753868]
 layout_mode = 0
-offset_left = 440.87503
-offset_top = 47.375
-offset_right = 1570.875
-offset_bottom = 561.70605
+offset_left = 346.0
+offset_top = 45.0
+offset_right = 1476.0
+offset_bottom = 559.33105
 scale = Vector2(0.14273988, 0.16455439)
 texture_normal = ExtResource("31_akjxb")
 texture_hover = ExtResource("32_vrx01")
@@ -1390,6 +1395,7 @@ offset_top = -3854.0
 offset_right = 708.0
 offset_bottom = -2573.0
 script = ExtResource("62_v0wtd")
+worker_offset = Vector2(0, -40)
 buttonOffset = Vector2(-70, -50)
 
 [node name="TextOffice" type="Sprite2D" parent="OFFICE" unique_id=321437871]
@@ -1508,12 +1514,277 @@ position = Vector2(290.2005, -130.68073)
 scale = Vector2(0.2968953, 0.4192212)
 texture = ExtResource("67_gr8w0")
 
+[node name="officeDesk2" type="Sprite2D" parent="OFFICE" unique_id=1258954358]
+position = Vector2(561, 305.99988)
+scale = Vector2(0.19349784, 0.14419347)
+texture = ExtResource("86_63lxy")
+script = ExtResource("64_r4ag1")
+baseCost = 20
+
+[node name="OfficeLaptop" type="Sprite2D" parent="OFFICE/officeDesk2" unique_id=2083111222]
+visible = false
+position = Vector2(-188.9556, -50.49585)
+scale = Vector2(0.7087001, 0.8794975)
+texture = ExtResource("65_4ue30")
+
+[node name="coffee1" type="Sprite2D" parent="OFFICE/officeDesk2" unique_id=867367175]
+visible = false
+position = Vector2(-94.48377, 81.67922)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee2" type="Sprite2D" parent="OFFICE/officeDesk2" unique_id=744897561]
+visible = false
+position = Vector2(13.497835, 81.67923)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee3" type="Sprite2D" parent="OFFICE/officeDesk2" unique_id=62596773]
+visible = false
+z_index = 23
+position = Vector2(128.2283, 81.679214)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee4" type="Sprite2D" parent="OFFICE/officeDesk2" unique_id=250587312]
+visible = false
+z_index = 22
+position = Vector2(182.21909, 16.337711)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee5" type="Sprite2D" parent="OFFICE/officeDesk2" unique_id=2064497906]
+visible = false
+z_index = 21
+position = Vector2(236.2099, -57.17151)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee6" type="Sprite2D" parent="OFFICE/officeDesk2" unique_id=415644213]
+visible = false
+z_index = 20
+position = Vector2(290.2005, -130.68073)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="officeDesk3" type="Sprite2D" parent="OFFICE" unique_id=1399611069]
+position = Vector2(218, 567.9999)
+scale = Vector2(0.19349784, 0.14419347)
+texture = ExtResource("86_63lxy")
+script = ExtResource("64_r4ag1")
+baseCost = 40
+
+[node name="OfficeLaptop" type="Sprite2D" parent="OFFICE/officeDesk3" unique_id=1990807232]
+visible = false
+position = Vector2(-188.9556, -50.49585)
+scale = Vector2(0.7087001, 0.8794975)
+texture = ExtResource("65_4ue30")
+
+[node name="coffee1" type="Sprite2D" parent="OFFICE/officeDesk3" unique_id=1334906721]
+visible = false
+position = Vector2(-94.48377, 81.67922)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee2" type="Sprite2D" parent="OFFICE/officeDesk3" unique_id=1929705476]
+visible = false
+position = Vector2(13.497835, 81.67923)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee3" type="Sprite2D" parent="OFFICE/officeDesk3" unique_id=2107225292]
+visible = false
+z_index = 23
+position = Vector2(128.2283, 81.679214)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee4" type="Sprite2D" parent="OFFICE/officeDesk3" unique_id=668331414]
+visible = false
+z_index = 22
+position = Vector2(182.21909, 16.337711)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee5" type="Sprite2D" parent="OFFICE/officeDesk3" unique_id=479570414]
+visible = false
+z_index = 21
+position = Vector2(236.2099, -57.17151)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee6" type="Sprite2D" parent="OFFICE/officeDesk3" unique_id=1372029491]
+visible = false
+z_index = 20
+position = Vector2(290.2005, -130.68073)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="officeDesk4" type="Sprite2D" parent="OFFICE" unique_id=1314895924]
+position = Vector2(547, 572.9999)
+scale = Vector2(0.19349784, 0.14419347)
+texture = ExtResource("86_63lxy")
+script = ExtResource("64_r4ag1")
+baseCost = 80
+
+[node name="OfficeLaptop" type="Sprite2D" parent="OFFICE/officeDesk4" unique_id=772650593]
+visible = false
+position = Vector2(-188.9556, -50.49585)
+scale = Vector2(0.7087001, 0.8794975)
+texture = ExtResource("65_4ue30")
+
+[node name="coffee1" type="Sprite2D" parent="OFFICE/officeDesk4" unique_id=1795529664]
+visible = false
+position = Vector2(-94.48377, 81.67922)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee2" type="Sprite2D" parent="OFFICE/officeDesk4" unique_id=1371283594]
+visible = false
+position = Vector2(13.497835, 81.67923)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee3" type="Sprite2D" parent="OFFICE/officeDesk4" unique_id=962609263]
+visible = false
+z_index = 23
+position = Vector2(128.2283, 81.679214)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee4" type="Sprite2D" parent="OFFICE/officeDesk4" unique_id=1083909068]
+visible = false
+z_index = 22
+position = Vector2(182.21909, 16.337711)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee5" type="Sprite2D" parent="OFFICE/officeDesk4" unique_id=416701055]
+visible = false
+z_index = 21
+position = Vector2(236.2099, -57.17151)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee6" type="Sprite2D" parent="OFFICE/officeDesk4" unique_id=1227072274]
+visible = false
+z_index = 20
+position = Vector2(290.2005, -130.68073)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="officeDesk5" type="Sprite2D" parent="OFFICE" unique_id=1239901296]
+position = Vector2(204.43752, 838.2809)
+scale = Vector2(0.19349784, 0.14419347)
+texture = ExtResource("86_63lxy")
+script = ExtResource("64_r4ag1")
+baseCost = 160
+
+[node name="OfficeLaptop" type="Sprite2D" parent="OFFICE/officeDesk5" unique_id=1303563670]
+visible = false
+position = Vector2(-188.9556, -50.49585)
+scale = Vector2(0.7087001, 0.8794975)
+texture = ExtResource("65_4ue30")
+
+[node name="coffee1" type="Sprite2D" parent="OFFICE/officeDesk5" unique_id=861289668]
+visible = false
+position = Vector2(-94.48377, 81.67922)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee2" type="Sprite2D" parent="OFFICE/officeDesk5" unique_id=774061759]
+visible = false
+position = Vector2(13.497835, 81.67923)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee3" type="Sprite2D" parent="OFFICE/officeDesk5" unique_id=1228099528]
+visible = false
+z_index = 23
+position = Vector2(128.2283, 81.679214)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee4" type="Sprite2D" parent="OFFICE/officeDesk5" unique_id=341010486]
+visible = false
+z_index = 22
+position = Vector2(182.21909, 16.337711)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee5" type="Sprite2D" parent="OFFICE/officeDesk5" unique_id=1289381613]
+visible = false
+z_index = 21
+position = Vector2(236.2099, -57.17151)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee6" type="Sprite2D" parent="OFFICE/officeDesk5" unique_id=123924918]
+visible = false
+z_index = 20
+position = Vector2(290.2005, -130.68073)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="officeDesk6" type="Sprite2D" parent="OFFICE" unique_id=483563458]
+position = Vector2(533.4375, 843.2809)
+scale = Vector2(0.19349784, 0.14419347)
+texture = ExtResource("86_63lxy")
+script = ExtResource("64_r4ag1")
+baseCost = 320
+
+[node name="OfficeLaptop" type="Sprite2D" parent="OFFICE/officeDesk6" unique_id=357406506]
+visible = false
+position = Vector2(-188.9556, -50.49585)
+scale = Vector2(0.7087001, 0.8794975)
+texture = ExtResource("65_4ue30")
+
+[node name="coffee1" type="Sprite2D" parent="OFFICE/officeDesk6" unique_id=700094651]
+visible = false
+position = Vector2(-94.48377, 81.67922)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee2" type="Sprite2D" parent="OFFICE/officeDesk6" unique_id=1772613696]
+visible = false
+position = Vector2(13.497835, 81.67923)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee3" type="Sprite2D" parent="OFFICE/officeDesk6" unique_id=2052874063]
+visible = false
+z_index = 23
+position = Vector2(128.2283, 81.679214)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee4" type="Sprite2D" parent="OFFICE/officeDesk6" unique_id=1102011571]
+visible = false
+z_index = 22
+position = Vector2(182.21909, 16.337711)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee5" type="Sprite2D" parent="OFFICE/officeDesk6" unique_id=1736927965]
+visible = false
+z_index = 21
+position = Vector2(236.2099, -57.17151)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
+[node name="coffee6" type="Sprite2D" parent="OFFICE/officeDesk6" unique_id=199013036]
+visible = false
+z_index = 20
+position = Vector2(290.2005, -130.68073)
+scale = Vector2(0.2968953, 0.4192212)
+texture = ExtResource("67_gr8w0")
+
 [node name="upgradesOffice" type="TextureButton" parent="OFFICE" unique_id=1534130102]
 layout_mode = 0
-offset_left = 440.87503
-offset_top = 47.375
-offset_right = 1570.875
-offset_bottom = 561.70605
+offset_left = 350.99997
+offset_top = 54.0
+offset_right = 1481.0
+offset_bottom = 568.33105
 scale = Vector2(0.14273988, 0.16455439)
 texture_normal = ExtResource("31_akjxb")
 texture_hover = ExtResource("32_vrx01")
@@ -1785,11 +2056,11 @@ texture_normal = ExtResource("52_joh2r")
 texture_hover = ExtResource("53_yton5")
 
 [node name="shop" type="TextureButton" parent="CanvasLayer" unique_id=1431974678]
-offset_left = 607.0
-offset_top = 127.0
-offset_right = 1258.0
-offset_bottom = 760.0
-scale = Vector2(0.1397453, 0.13362148)
+offset_left = 511.00003
+offset_top = 45.0
+offset_right = 1162.0
+offset_bottom = 678.0
+scale = Vector2(0.12998438, 0.12108254)
 texture_normal = ExtResource("54_4ahvx")
 texture_hover = ExtResource("55_2cr71")
 
