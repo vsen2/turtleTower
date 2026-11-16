@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://assets/turtlewalk1.png" id="2_f2r5w"]
 [ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://assets/turtleWalk2.png" id="3_4lu78"]
 [ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://assets/turtlewalk3.png" id="4_bc3fs"]
-[ext_resource type="Texture2D" uid="uid://vkktea23nv5n" path="res://assets/hatKingCrown.png" id="5_86a57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
 size = Vector2(168, 117)
@@ -46,4 +45,3 @@ position = Vector2(-546.89813, -379.807)
 rotation = 0.005501176
 scale = Vector2(1.2140648, 1.0891639)
 skew = -3.4570694e-05
-texture = ExtResource("5_86a57")

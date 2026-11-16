@@ -2,7 +2,7 @@ extends Node
 
 signal hats_changed
 
-var turtle_coins: int = 1000
+var turtle_coins: int = 100000
 var hat_coins: int = 0
 var owned_hats: Array[int] = []
 

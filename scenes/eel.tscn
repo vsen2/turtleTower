@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://3x3bwbv24h37"]
 
 [ext_resource type="Script" uid="uid://b6oo62c32ax7r" path="res://scenes/eel.gd" id="1_qh1vq"]
+[ext_resource type="Texture2D" uid="uid://c2gln7j07fug8" path="res://assets/eel_electric1.png" id="2_d34e6"]
 [ext_resource type="Texture2D" uid="uid://c0cdcmpc4e6ls" path="res://assets/eel4.png" id="2_s5ywd"]
 [ext_resource type="Texture2D" uid="uid://c7k5oyy2xtti5" path="res://assets/eel2.png" id="3_8su3r"]
+[ext_resource type="Texture2D" uid="uid://pxhn7kh3o6b8" path="res://assets/eel_electric2.png" id="3_rjb7d"]
 [ext_resource type="Texture2D" uid="uid://6cunx162lj1u" path="res://assets/eel1.png" id="4_d34e6"]
+[ext_resource type="Texture2D" uid="uid://sq8bwsphl0pm" path="res://assets/eel_electric3.png" id="4_datix"]
 [ext_resource type="Texture2D" uid="uid://cos6p3rvski6p" path="res://assets/eel3.png" id="5_rjb7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
@@ -35,6 +38,23 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d34e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rjb7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_datix")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="eel" type="Area2D" unique_id=330427929]
 position = Vector2(88, 82)
 script = ExtResource("1_qh1vq")
@@ -48,3 +68,11 @@ rotation = -0.005483886
 scale = Vector2(0.17613386, 0.18266562)
 sprite_frames = SubResource("SpriteFrames_ccrme")
 frame_progress = 0.13751522
+
+[node name="electricity" type="AnimatedSprite2D" parent="electricEel" unique_id=885815761]
+position = Vector2(37.02782, -70.09795)
+rotation = -0.11170107
+scale = Vector2(0.577, 0.61435616)
+skew = 0.00039935112
+sprite_frames = SubResource("SpriteFrames_6snss")
+frame_progress = 0.12288804

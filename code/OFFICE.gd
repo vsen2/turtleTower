@@ -27,7 +27,7 @@ var upgrade4Cost = 5
 var upgrade5Cost = 100
 
 @export var upgrade1Multiplier: int = 1
-@export var upgrade2Multiplier: float = 1.0
+@export var upgrade2Multiplier: int = 1
 @export var upgrade3Multiplier: float = 1.0
 @export var upgrade4Multiplier: float = 1.0
 @export var upgrade5Multiplier: int = 0
@@ -40,6 +40,9 @@ var upgrade5Cost = 100
 @onready var water: AnimatedSprite2D = $tank/water
 @onready var power: ProgressBar = $power
 @onready var server: AnimatedSprite2D = $server
+@onready var codeCooldownLabel: Label = $codeCDDisplay
+@export var codeCooldown: float = 10
+@export var amountEarned: int = 0
 
 func _ready() -> void:
 	super()
@@ -65,10 +68,14 @@ func update_labels() -> void:
 	upgrade1ValueLabel.text = "current power: %d/10" % upgrade1Multiplier
 	upgrade2ValueLabel.text = "current multiplier: %.2fx" % upgrade2Multiplier
 	upgrade3ValueLabel.text = "current multiplier: %.2fx" % upgrade3Multiplier
-	upgrade4ValueLabel.text = "current multiplier: %.2fx" % upgrade4Multiplier
+	upgrade4ValueLabel.text = "current multiplier: %dx" % upgrade4Multiplier
 	upgrade5ValueLabel.text = "current multiplier: %dx" % upgrade5Multiplier
 	power.max_value = 100
 	power.value = upgrade1Multiplier*10  
+	codeCooldown = 10 / ((upgrade1Multiplier + upgrade3Multiplier)/2)
+	amountEarned = 2 * upgrade4Multiplier * (upgrade5Multiplier+1)
+	codeCooldownLabel.text = "coding cooldown: %.2fx" % codeCooldown
+	
 
 func _on_upgrades_office_pressed() -> void:
 	officeUI.visible = not officeUI.visible
@@ -95,7 +102,7 @@ func _on_upgrade1_pressed() -> void:
 func _on_upgrade2_pressed() -> void:
 	if GameManager.spend_coins(upgrade2Cost):
 		upgrade2Cost = upgrade2Cost * 2
-		upgrade2Multiplier += 0.25
+		upgrade2Multiplier += 1
 		update_labels()
 		_request_save()
 		
@@ -196,5 +203,10 @@ func load_upgrades_data(data: Dictionary) -> void:
 	if data.has("upgrade4Multiplier"): upgrade4Multiplier = float(data["upgrade4Multiplier"])
 	if data.has("upgrade5Multiplier"): upgrade5Multiplier = int(data["upgrade5Multiplier"])
 	$officeDesk.refresh()
+	$officeDesk2.refresh()
+	$officeDesk3.refresh()
+	$officeDesk4.refresh()
+	$officeDesk5.refresh()
+	$officeDesk6.refresh()
 	if data.has("eels"): load_eels_data(data["eels"])
 	update_labels()

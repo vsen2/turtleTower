@@ -27,9 +27,10 @@ func _ready() -> void:
 	add_to_group("turtles")
 	if hats.size() > 0:
 		if random_hat < 0 or random_hat >= hats.size():
-			random_hat = randi_range(0, hats.size() - 1)
-		turtleHat.texture = hats[random_hat]
-		turtleHat.visible = true
+			random_hat = randi_range(-10, hats.size() - 1)
+		if random_hat > 0:
+			turtleHat.texture = hats[random_hat]
+			turtleHat.visible = true
 	else:
 		turtleHat.visible = false
 	# Calculate turtle size BEFORE any positioning,

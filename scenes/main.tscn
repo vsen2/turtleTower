@@ -100,6 +100,12 @@
 [ext_resource type="Texture2D" uid="uid://qekjvtrfkxfy" path="res://assets/UISpaceTurtle.png" id="73_bfu41"]
 [ext_resource type="Texture2D" uid="uid://nx27w4l1pep2" path="res://assets/UISpaceTurtleHover.png" id="74_vtx2l"]
 [ext_resource type="Texture2D" uid="uid://dt4hwykm5esxr" path="res://assets/barBorder.png" id="77_0tljd"]
+[ext_resource type="Texture2D" uid="uid://cdv1suuekworc" path="res://assets/beach-sand.png" id="79_raiwf"]
+[ext_resource type="Script" uid="uid://ddg3j7fub7k7w" path="res://scenes/BEACH.gd" id="79_roort"]
+[ext_resource type="Texture2D" uid="uid://cr1sgwmdpdy51" path="res://assets/beach-tree.png" id="80_roort"]
+[ext_resource type="Script" uid="uid://cqb118cgmirgp" path="res://scenes/beachTree.gd" id="81_gm02q"]
+[ext_resource type="Texture2D" uid="uid://kxeyodrxuhsj" path="res://assets/beach-garbage.png" id="82_07pt3"]
+[ext_resource type="Texture2D" uid="uid://b8h3ugs1yg6sn" path="res://assets/seaTurtle1.png" id="83_gm02q"]
 [ext_resource type="Texture2D" uid="uid://dxhvnbdrvb3cb" path="res://assets/office_table.png" id="86_63lxy"]
 [ext_resource type="Texture2D" uid="uid://c3ttsmga7kyh5" path="res://assets/text_office.png" id="87_fjhjs"]
 [ext_resource type="Texture2D" uid="uid://c6ugmy2goshor" path="res://assets/button_clearData.png" id="92_6nfnn"]
@@ -1450,6 +1456,16 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "Electric Eel powered server"
 
+[node name="codeCDDisplay" type="Label" parent="OFFICE" unique_id=471790237]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 1235.0
+offset_right = 677.0
+offset_bottom = 1270.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "code cooldown: xx"
+
 [node name="power" type="ProgressBar" parent="OFFICE" unique_id=167967323]
 layout_mode = 0
 offset_left = 587.0
@@ -1951,7 +1967,7 @@ layout_mode = 0
 offset_left = 198.94202
 offset_top = 510.72266
 offset_right = 550.942
-offset_bottom = 591.72266
+offset_bottom = 549.72266
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Mouse"
@@ -2024,6 +2040,323 @@ theme_override_font_sizes/font_size = 28
 text = "Extra Coffee Speed"
 
 [node name="upgrade5Value" type="Label" parent="OFFICE/OfficeUI" unique_id=34571347]
+z_index = 22
+layout_mode = 0
+offset_left = 205.94202
+offset_top = 849.72266
+offset_right = 557.942
+offset_bottom = 888.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="BEACH" type="Control" parent="." unique_id=1520530814]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -8.0
+offset_top = -5133.0
+offset_right = 714.0
+offset_bottom = -3852.0
+script = ExtResource("79_roort")
+buttonOffset = Vector2(-300, 0)
+
+[node name="TextOffice" type="Sprite2D" parent="BEACH" unique_id=1562842857]
+position = Vector2(311.00003, 101)
+scale = Vector2(0.36827794, 0.30570903)
+texture = ExtResource("87_fjhjs")
+
+[node name="BeachSand" type="Sprite2D" parent="BEACH" unique_id=1826777215]
+position = Vector2(359.49997, 378.93753)
+scale = Vector2(0.38331515, 0.17072257)
+texture = ExtResource("79_raiwf")
+
+[node name="LineNoBg" type="Sprite2D" parent="BEACH" unique_id=1911869545]
+position = Vector2(369.87503, 937.3756)
+scale = Vector2(0.38928586, 0.26820475)
+texture = ExtResource("8_xljpf")
+
+[node name="LineNoBg3" type="Sprite2D" parent="BEACH" unique_id=581158330]
+position = Vector2(373.87503, 672.3755)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("8_xljpf")
+
+[node name="LineNoBg4" type="Sprite2D" parent="BEACH" unique_id=358375546]
+position = Vector2(368.87503, 411.37537)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("8_xljpf")
+
+[node name="LineNoBg5" type="Sprite2D" parent="BEACH" unique_id=372317960]
+position = Vector2(373.87503, 147.37512)
+scale = Vector2(0.38928574, 0.26820475)
+texture = ExtResource("8_xljpf")
+
+[node name="BeachTree" type="Sprite2D" parent="BEACH" unique_id=281744597]
+position = Vector2(598.75, 290.625)
+scale = Vector2(0.24943693, 0.25653198)
+texture = ExtResource("80_roort")
+script = ExtResource("81_gm02q")
+
+[node name="testerTurtle" type="Sprite2D" parent="BEACH/BeachTree" unique_id=74299162]
+z_index = 1
+position = Vector2(29.065437, 219.75728)
+scale = Vector2(0.49511725, 0.44767022)
+texture = ExtResource("83_gm02q")
+
+[node name="garbage" type="Sprite2D" parent="BEACH/BeachTree/testerTurtle" unique_id=589133509]
+visible = false
+position = Vector2(-518.21643, 165.44083)
+texture = ExtResource("82_07pt3")
+
+[node name="BeachGarbage" type="Sprite2D" parent="BEACH" unique_id=110284991]
+position = Vector2(248, 358)
+scale = Vector2(0.16865672, 0.21193415)
+texture = ExtResource("82_07pt3")
+
+[node name="upgradesOffice" type="TextureButton" parent="BEACH" unique_id=1928441287]
+layout_mode = 0
+offset_left = 350.99997
+offset_top = 54.0
+offset_right = 1481.0
+offset_bottom = 568.33105
+scale = Vector2(0.14273988, 0.16455439)
+texture_normal = ExtResource("31_akjxb")
+texture_hover = ExtResource("32_vrx01")
+
+[node name="BeachUI" type="Control" parent="BEACH" unique_id=554658104]
+visible = false
+z_index = 200
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 197.0
+offset_right = 723.0
+offset_bottom = 1180.0
+
+[node name="BackImage" type="Sprite2D" parent="BEACH/BeachUI" unique_id=1995962796]
+z_index = 20
+position = Vector2(339.69202, 490.59766)
+scale = Vector2(1.5503967, 1.6441398)
+texture = ExtResource("33_1uevf")
+
+[node name="Upgrades" type="Sprite2D" parent="BEACH/BeachUI" unique_id=2107426147]
+z_index = 21
+position = Vector2(181.94205, 94.72266)
+scale = Vector2(0.2630435, 0.28794006)
+texture = ExtResource("34_tc087")
+
+[node name="upgrade1" type="TextureButton" parent="BEACH/BeachUI" unique_id=284652721]
+z_index = 21
+layout_mode = 0
+offset_left = 36.48004
+offset_top = 174.34644
+offset_right = 1342.48
+offset_bottom = 1343.3464
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("35_73205")
+texture_hover = ExtResource("36_0tljd")
+
+[node name="upgrade2" type="TextureButton" parent="BEACH/BeachUI" unique_id=170162363]
+z_index = 21
+layout_mode = 0
+offset_left = 36.94203
+offset_top = 315.72266
+offset_right = 1342.942
+offset_bottom = 1484.7227
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("37_mgpkq")
+texture_hover = ExtResource("38_xmrkg")
+
+[node name="upgrade3" type="TextureButton" parent="BEACH/BeachUI" unique_id=784462260]
+z_index = 21
+layout_mode = 0
+offset_left = 37.94203
+offset_top = 462.72266
+offset_right = 1343.942
+offset_bottom = 1631.7227
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("39_wvlrk")
+texture_hover = ExtResource("40_engxj")
+
+[node name="upgrade4" type="TextureButton" parent="BEACH/BeachUI" unique_id=1700639222]
+z_index = 21
+layout_mode = 0
+offset_left = 38.94203
+offset_top = 607.72266
+offset_right = 1344.942
+offset_bottom = 1776.7227
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("49_ga3rw")
+texture_hover = ExtResource("50_f5chs")
+
+[node name="upgrade5" type="TextureButton" parent="BEACH/BeachUI" unique_id=1468395788]
+z_index = 21
+layout_mode = 0
+offset_left = 38.94203
+offset_top = 764.72266
+offset_right = 1344.942
+offset_bottom = 1933.7227
+scale = Vector2(0.10253414, 0.109256834)
+texture_normal = ExtResource("43_gm02q")
+texture_hover = ExtResource("44_07pt3")
+
+[node name="upgrade1Cost" type="Label" parent="BEACH/BeachUI" unique_id=1574109508]
+z_index = 22
+layout_mode = 0
+offset_left = 195.94202
+offset_top = 185.72266
+offset_right = 322.94202
+offset_bottom = 266.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="upgrade1Desc" type="Label" parent="BEACH/BeachUI" unique_id=791176616]
+z_index = 22
+layout_mode = 0
+offset_left = 197.94202
+offset_top = 220.72266
+offset_right = 549.942
+offset_bottom = 259.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "More eels for faster Servers"
+
+[node name="upgrade1Value" type="Label" parent="BEACH/BeachUI" unique_id=2139735218]
+z_index = 22
+layout_mode = 0
+offset_left = 196.94202
+offset_top = 254.72266
+offset_right = 548.942
+offset_bottom = 293.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="upgrade2Cost" type="Label" parent="BEACH/BeachUI" unique_id=424820017]
+z_index = 22
+layout_mode = 0
+offset_left = 197.94202
+offset_top = 319.72266
+offset_right = 324.94202
+offset_bottom = 400.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="upgrade2Desc" type="Label" parent="BEACH/BeachUI" unique_id=664556731]
+z_index = 22
+layout_mode = 0
+offset_left = 197.94202
+offset_top = 358.72266
+offset_right = 549.942
+offset_bottom = 397.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "CLawde tokens"
+
+[node name="upgrade2Value" type="Label" parent="BEACH/BeachUI" unique_id=804281456]
+z_index = 22
+layout_mode = 0
+offset_left = 199.94202
+offset_top = 394.72266
+offset_right = 551.942
+offset_bottom = 433.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="upgrade3Cost" type="Label" parent="BEACH/BeachUI" unique_id=851830940]
+z_index = 22
+layout_mode = 0
+offset_left = 198.94202
+offset_top = 471.72266
+offset_right = 325.94202
+offset_bottom = 552.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="upgrade3Desc" type="Label" parent="BEACH/BeachUI" unique_id=1931581418]
+z_index = 22
+layout_mode = 0
+offset_left = 198.94202
+offset_top = 510.72266
+offset_right = 550.942
+offset_bottom = 549.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Mouse"
+
+[node name="upgrade3Value" type="Label" parent="BEACH/BeachUI" unique_id=125604631]
+z_index = 22
+layout_mode = 0
+offset_left = 200.94202
+offset_top = 546.72266
+offset_right = 552.942
+offset_bottom = 585.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current multiplier: XXX"
+
+[node name="upgrade4Cost" type="Label" parent="BEACH/BeachUI" unique_id=812556592]
+z_index = 22
+layout_mode = 0
+offset_left = 199.94202
+offset_top = 614.72266
+offset_right = 326.94202
+offset_bottom = 695.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX"
+
+[node name="upgrade4Desc" type="Label" parent="BEACH/BeachUI" unique_id=1060955553]
+z_index = 22
+layout_mode = 0
+offset_left = 199.94202
+offset_top = 653.72266
+offset_right = 554.942
+offset_bottom = 692.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "web app UI upgrade"
+
+[node name="upgrade4Value" type="Label" parent="BEACH/BeachUI" unique_id=1649934734]
+z_index = 22
+layout_mode = 0
+offset_left = 201.94202
+offset_top = 689.72266
+offset_right = 553.942
+offset_bottom = 728.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "current speed: XXX"
+
+[node name="upgrade5Cost" type="Label" parent="BEACH/BeachUI" unique_id=1382511628]
+z_index = 22
+layout_mode = 0
+offset_left = 203.94202
+offset_top = 774.72266
+offset_right = 330.94202
+offset_bottom = 855.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Cost: XXX
+"
+
+[node name="upgrade5Desc" type="Label" parent="BEACH/BeachUI" unique_id=1400798957]
+z_index = 22
+layout_mode = 0
+offset_left = 203.94202
+offset_top = 813.72266
+offset_right = 558.942
+offset_bottom = 852.72266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Extra Coffee Speed"
+
+[node name="upgrade5Value" type="Label" parent="BEACH/BeachUI" unique_id=2036157341]
 z_index = 22
 layout_mode = 0
 offset_left = 205.94202
@@ -2389,6 +2722,12 @@ texture_hover = ExtResource("93_4ue30")
 [connection signal="pressed" from="OFFICE/OfficeUI/upgrade3" to="OFFICE" method="_on_upgrade3_pressed"]
 [connection signal="pressed" from="OFFICE/OfficeUI/upgrade4" to="OFFICE" method="_on_upgrade4_pressed"]
 [connection signal="pressed" from="OFFICE/OfficeUI/upgrade5" to="OFFICE" method="_on_upgrade5_pressed"]
+[connection signal="pressed" from="BEACH/upgradesOffice" to="BEACH" method="_on_upgrades_office_pressed"]
+[connection signal="pressed" from="BEACH/BeachUI/upgrade1" to="BEACH" method="_on_upgrade1_pressed"]
+[connection signal="pressed" from="BEACH/BeachUI/upgrade2" to="BEACH" method="_on_upgrade2_pressed"]
+[connection signal="pressed" from="BEACH/BeachUI/upgrade3" to="BEACH" method="_on_upgrade3_pressed"]
+[connection signal="pressed" from="BEACH/BeachUI/upgrade4" to="BEACH" method="_on_upgrade4_pressed"]
+[connection signal="pressed" from="BEACH/BeachUI/upgrade5" to="BEACH" method="_on_upgrade5_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChangeTurtles" to="." method="_on_changeTurtles_pressed"]
 [connection signal="pressed" from="CanvasLayer/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="CanvasLayer/TurtleUI/File1/turtleScroll" to="." method="_on_turtle_scroll_pressed"]

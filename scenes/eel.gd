@@ -12,11 +12,13 @@ var direction: Vector2 = Vector2.ZERO
 var facing_right: bool = false
 
 @onready var sprite: AnimatedSprite2D = $electricEel
+@onready var electricity: AnimatedSprite2D = $electricEel/electricity
 @onready var collision_shape: CollisionShape2D = $eelHitbox
 
 func _ready() -> void:
 	_pick_random_direction()
 	sprite.play("default")
+	electricity.play("default")
 	z_index = 5
 
 func _process(delta: float) -> void:

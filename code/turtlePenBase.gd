@@ -58,6 +58,7 @@ func _get_pen_rect() -> Rect2:
 	return Rect2(top_left, pen_size)
 	
 func add_turtle_icon_to_grid(turtle: Node, hatID: int) -> void:
+	print("hatID: " + str(hatID))
 	var item_container: VBoxContainer = VBoxContainer.new()
 	item_container.alignment = BoxContainer.ALIGNMENT_CENTER
 
@@ -67,14 +68,15 @@ func add_turtle_icon_to_grid(turtle: Node, hatID: int) -> void:
 	button.ignore_texture_size = true
 	button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 	
-	var hat := TextureRect.new()
-	hat.texture = hats[hatID]
-	hat.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	hat.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	hat.size = Vector2(120, 120)
-	hat.position = Vector2(-40, -36)
-	hat.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	button.add_child(hat)
+	if hatID > 0:
+		var hat := TextureRect.new()
+		hat.texture = hats[hatID]
+		hat.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		hat.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		hat.size = Vector2(120, 120)
+		hat.position = Vector2(-40, -36)
+		hat.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		button.add_child(hat)
 	
 	var status_label: Label = Label.new()
 	status_label.text = "Idle"
@@ -84,7 +86,7 @@ func add_turtle_icon_to_grid(turtle: Node, hatID: int) -> void:
 	turtle.status_label = status_label
 	button.pressed.connect(get_parent()._on_turtle_icon_selected.bind(turtle))
 
-	item_container.add_child(hat)
+	
 	item_container.add_child(button)
 	item_container.add_child(status_label)
 	grid.add_child(item_container)

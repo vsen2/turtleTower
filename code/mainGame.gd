@@ -355,6 +355,7 @@ func get_worker_flip(spot: Node) -> bool:
 func save_game() -> void:
 	if not _save_loaded:
 		return
+	print("saved game")
 	var allTurtlesData: Dictionary = {}
 	for turtlePen in getTurtlePens():
 		var turtleData: Array = []
@@ -379,7 +380,6 @@ func save_game() -> void:
 		"floors": floors_data,
 		"allTurtleData": allTurtlesData,
 	}
-	print("has dictionary")
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(data, "	"))

@@ -10,6 +10,7 @@ var timer_label: Label
 var coffees: Array[Sprite2D] = []
 
 var coffeesUnlocked = 0
+var codedTimes = 0
 	
 func _ready() -> void:
 	timer_label = Label.new()
@@ -24,13 +25,6 @@ func _ready() -> void:
 	customer_timer.timeout.connect(spawnCode)
 	add_child(customer_timer)
 
-	#timer_label = Label.new()
-	#timer_label.top_level = true
-	#timer_label.z_index = 13
-	#timer_label.visible = false
-	#timer_label.add_theme_font_size_override("font_size", 25)
-	#add_child(timer_label)
-
 	coffees.clear()
 	for i in range(1, 7):
 		var c := get_node_or_null("coffee%d" % i) as Sprite2D
@@ -38,8 +32,6 @@ func _ready() -> void:
 			coffees.append(c)
 	refresh()
 
-## Updates the desk's look. Call it whenever unlocked or the coffee upgrade changes.
-## Locked: grey desk, no laptop, no coffees. Unlocked: white desk + laptop.
 func refresh() -> void:
 	if not is_node_ready():
 		return  # _ready() calls this once the child nodes exist
@@ -50,10 +42,8 @@ func refresh() -> void:
 		self_modulate = Color.GRAY
 		officeLaptop.visible = false
 
-	coffeesUnlocked = int(get_parent().upgrade5Multiplier)
-	for i in coffees.size():
-		coffees[i].visible = unlocked and i < coffeesUnlocked
-
+	for i in get_parent().upgrade5Multiplier:
+		coffees[i].visible = unlocked
 func _on_spot_plus_pressed() -> void:
 	var was_unlocked: bool = unlocked
 	super()
@@ -65,25 +55,42 @@ func _on_spot_plus_pressed() -> void:
 			main.save_game()
 		
 func _process(_delta: float) -> void:
-	if not (unlocked and hasWorker):
-		customer_timer.wait_time = wait_time
-		timer_label.visible = false
-		return
-	var timer_mult: float = 1.0
-	customer_timer.wait_time = wait_time / timer_mult
-	timer_label.visible = true
-	timer_label.text = "%.1fs" % customer_timer.time_left
-	if customer_timer.is_stopped() and hasWorker:
-		customer_timer.start()
+	if (unlocked and hasWorker):
+		customer_timer.wait_time = get_parent().codeCooldown
+		if customer_timer.is_stopped() and hasWorker:
+			customer_timer.start()
 	
 func spawnCode() -> void:
+	GameManager.add_coins(get_parent().amountEarned)
 	var label: Label = Label.new()
 	label.name = "code"
-	label.text = "code code code!"
+	label.text = "code code code! +$" + str(get_parent().amountEarned)
 	label.top_level = true
 	label.global_position = global_position + Vector2(-130, -120)
 	label.z_index = 30
 	label.add_theme_color_override("font_color", Color(0.0, 0.439, 0.0, 1.0)) # color
+	label.add_theme_font_size_override("font_size", 15)
+
+	add_child(label)
+	# Float upward and fade out, then delete itself.
+	var tween: Tween = create_tween().set_parallel(true)
+	tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
+	tween.tween_property(label, "modulate:a", 0.0, 0.8)
+	tween.chain().tween_callback(label.queue_free)
+	codedTimes += 1
+	if codedTimes >= (24/get_parent().upgrade2Multiplier):
+		codedTimes = 0
+		spawnClawdeCode()
+
+func spawnClawdeCode() -> void:
+	GameManager.add_coins(get_parent().amountEarned)
+	var label: Label = Label.new()
+	label.name = "code"
+	label.text = "CLawde code! +$" + str(get_parent().amountEarned)
+	label.top_level = true
+	label.global_position = global_position + Vector2(-130, -108)
+	label.z_index = 30
+	label.add_theme_color_override("font_color", Color(1.0, 0.439, 0.0, 1.0)) # color
 	label.add_theme_font_size_override("font_size", 15)
 
 	add_child(label)
