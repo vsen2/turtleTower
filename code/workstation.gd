@@ -12,8 +12,8 @@ var unlock_button: TextureButton
 var unlockCost
 var unlockCostLabel: Label
 	
-const BUTTON_NORMAL_TEXTURE = preload("res://assets/plusButtonWhite.png")
-const BUTTON_HOVER_TEXTURE = preload("res://assets/plusButtonGrey.png")
+const BUTTON_NORMAL_TEXTURE = preload("res://assets/UI-plusButtonWhite.png")
+const BUTTON_HOVER_TEXTURE = preload("res://assets/UI-plusButtonGrey.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

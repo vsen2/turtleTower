@@ -1,6 +1,6 @@
 extends "res://code/turtleBase.gd"
 
-@export var turtle_icon: Texture2D = preload("res://assets/turtleNoBG.png")
+@export var turtle_icon: Texture2D = preload("res://assets/turtle-icon.png")
 @export var turtle_scene: PackedScene = preload("res://scenes/seaTurtle.tscn")
 
 @export var speed: float = 120

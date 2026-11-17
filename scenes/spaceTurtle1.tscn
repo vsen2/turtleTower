@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cpo80gpshj0sy" path="res://code/turtleCode.gd" id="1_jwpi0"]
 [ext_resource type="Shader" uid="uid://dqe228biw4tfs" path="res://spaceturtle.gdshader" id="2_11133"]
-[ext_resource type="Texture2D" uid="uid://b530p1hetxtw2" path="res://assets/mask_constellations.png" id="3_mfi3b"]
-[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://assets/turtlewalk1.png" id="4_5yhlb"]
-[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://assets/turtleWalk2.png" id="5_d7bt2"]
-[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://assets/turtlewalk3.png" id="6_3ldgw"]
-[ext_resource type="Texture2D" uid="uid://vkktea23nv5n" path="res://assets/hatKingCrown.png" id="7_q7lft"]
-[ext_resource type="Texture2D" uid="uid://c837np1ojvi0u" path="res://assets/whiteFace.png" id="8_vbqi8"]
+[ext_resource type="Texture2D" uid="uid://b530p1hetxtw2" path="res://assets/mask-constellations.png" id="3_mfi3b"]
+[ext_resource type="Texture2D" uid="uid://cf5oicbcdo18t" path="res://assets/turtle-turtlewalk1.png" id="4_5yhlb"]
+[ext_resource type="Texture2D" uid="uid://b6386yhdnph12" path="res://assets/turtle-turtleWalk2.png" id="5_d7bt2"]
+[ext_resource type="Texture2D" uid="uid://jq5geayp6ur3" path="res://assets/turtle-turtlewalk3.png" id="6_3ldgw"]
+[ext_resource type="Texture2D" uid="uid://vkktea23nv5n" path="res://assets/hat-KingCrown.png" id="7_q7lft"]
+[ext_resource type="Texture2D" uid="uid://c837np1ojvi0u" path="res://assets/turtle-faceWhite.png" id="8_vbqi8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
 size = Vector2(168, 117)
