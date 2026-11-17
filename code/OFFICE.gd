@@ -46,20 +46,13 @@ var upgrade5Cost = 100
 
 func _ready() -> void:
 	super()
-	update_labels()
+	updateLabels()
 	water.play("default")
 	server.play("default")
-	var bounds: Rect2 = get_pen_bounds()
-	var pad: float = 24.0
-	var min_x: float = bounds.position.x + pad
-	var max_x: float = max(min_x, bounds.end.x - pad)
-	var min_y: float = bounds.position.y + pad
-	var max_y: float = max(min_y, bounds.end.y - pad)
-	var spawn_pos := Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
-	_addEel(spawn_pos)
-	_request_save()
+	addEel(randomPointIn(getPenBounds()))
+	requestSave()
 
-func update_labels() -> void:
+func updateLabels() -> void:
 	upgrade1CostLabel.text = "Cost: $%d" % upgrade1Cost
 	upgrade2CostLabel.text = "Cost: $%d" % upgrade2Cost
 	upgrade3CostLabel.text = "Cost: $%d" % upgrade3Cost
@@ -77,71 +70,69 @@ func update_labels() -> void:
 	codeCooldownLabel.text = "coding cooldown: %.2fx" % codeCooldown
 	
 
-func _on_upgrades_office_pressed() -> void:
+func onUpgradesOfficePressed() -> void:
 	officeUI.visible = not officeUI.visible
 
-func _on_upgrade1_pressed() -> void:
-	if GameManager.spend_coins(upgrade1Cost):
+func onUpgrade1Pressed() -> void:
+	if GameManager.spendCoins(upgrade1Cost):
 		upgrade1Cost = upgrade1Cost * 10
 		upgrade1Multiplier += 1
-		var bounds: Rect2 = get_pen_bounds()
-		var pad: float = 24.0
-		var min_x: float = bounds.position.x + pad
-		var max_x: float = max(min_x, bounds.end.x - pad)
-		var min_y: float = bounds.position.y + pad
-		var max_y: float = max(min_y, bounds.end.y - pad)
-		var spawn_pos := Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
-		_addEel(spawn_pos)
-		_request_save()
+		addEel(randomPointIn(getPenBounds()))
 	else:
 		GameManager.spawnNopeLabel("Not enough coins! (brokie haha)")
 	#change label
-	update_labels()
-	_request_save()
+	updateLabels()
+	requestSave()
 		
-func _on_upgrade2_pressed() -> void:
-	if GameManager.spend_coins(upgrade2Cost):
+func onUpgrade2Pressed() -> void:
+	if GameManager.spendCoins(upgrade2Cost):
 		upgrade2Cost = upgrade2Cost * 2
 		upgrade2Multiplier += 1
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 		
-func _on_upgrade3_pressed() -> void:
-	if GameManager.spend_coins(upgrade3Cost):
+func onUpgrade3Pressed() -> void:
+	if GameManager.spendCoins(upgrade3Cost):
 		upgrade3Cost = upgrade3Cost * 2
 		upgrade3Multiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 		
-func _on_upgrade4_pressed() -> void:
-	if GameManager.spend_coins(upgrade4Cost):
+func onUpgrade4Pressed() -> void:
+	if GameManager.spendCoins(upgrade4Cost):
 		upgrade4Cost = upgrade4Cost * 2
 		upgrade4Multiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 		
-func _on_upgrade5_pressed() -> void:
+func onUpgrade5Pressed() -> void:
 	if upgrade5Multiplier >= 6:
 		GameManager.spawnNopeLabel("Desk is full of coffee!")
 		return
-	if GameManager.spend_coins(upgrade5Cost):
+	if GameManager.spendCoins(upgrade5Cost):
 		upgrade5Cost = upgrade5Cost * 2
 		upgrade5Multiplier += 1  # one more coffee on the desk
-		update_labels()
-		$officeDesk.refresh()
-		_request_save()
+		updateLabels()
+		refreshDesks()
+		requestSave()
 	
-func _addEel(pos: Vector2) -> Node2D:
+func addEel(pos: Vector2) -> Node2D:
 	var newEel: Node2D = eelScene.instantiate()
-	newEel.bounds = get_pen_bounds()
+	newEel.bounds = getPenBounds()
 	newEel.add_to_group(floor_id)
 	add_child(newEel)
 	newEel.global_position = pos
 	return newEel
 	
-func get_pen_bounds() -> Rect2:
+## Update the coffee cups / laptop on every desk on this floor.
+func refreshDesks() -> void:
+	for desk in getSpots():
+		if desk.has_method("refresh"):
+			desk.refresh()
+
+func getPenBounds() -> Rect2:
 	if not tank or not tank.texture:
-		print("get_pen_bounds: pen missing or no texture!")
+		print("getPenBounds: pen missing or no texture!")
 		return Rect2(Vector2(), Vector2(100, 100))
 	var pen_size: Vector2 = tank.texture.get_size() * tank.global_scale
 	var top_left: Vector2 = tank.global_position
@@ -153,7 +144,7 @@ func get_pen_bounds() -> Rect2:
 	
 
 	
-func get_eels_data() -> Array:
+func getEelsData() -> Array:
 	var eels: Array = []
 	for eel in get_tree().get_nodes_in_group(floor_id):
 		if eel.get_parent() == self:
@@ -163,20 +154,15 @@ func get_eels_data() -> Array:
 			})
 	return eels
 
-func load_eels_data(eels: Array) -> void:
+func loadEelsData(eels: Array) -> void:
 	# remove any eels that already exist so you don't get duplicates
 	for eel in get_tree().get_nodes_in_group(floor_id):
 		if eel.get_parent() == self:
 			eel.queue_free()
 	for e in eels:
-		_addEel(Vector2(float(e["x"]), float(e["y"])))
+		addEel(Vector2(float(e["x"]), float(e["y"])))
 	
-func _request_save() -> void:
-	var main_node = get_tree().current_scene
-	if main_node and main_node.has_method("save_game"):
-		main_node.save_game()
-
-func get_upgrades_data() -> Dictionary:
+func getUpgradesData() -> Dictionary:
 	return {
 		"upgrade1Cost": upgrade1Cost,
 		"upgrade2Cost": upgrade2Cost,
@@ -188,10 +174,10 @@ func get_upgrades_data() -> Dictionary:
 		"upgrade3Multiplier": upgrade3Multiplier,
 		"upgrade4Multiplier": upgrade4Multiplier,
 		"upgrade5Multiplier": upgrade5Multiplier,
-		"eels": get_eels_data(),
+		"eels": getEelsData(),
 	}
 
-func load_upgrades_data(data: Dictionary) -> void:
+func loadUpgradesData(data: Dictionary) -> void:
 	if data.has("upgrade1Cost"): upgrade1Cost = int(data["upgrade1Cost"])
 	if data.has("upgrade2Cost"): upgrade2Cost = int(data["upgrade2Cost"])
 	if data.has("upgrade3Cost"): upgrade3Cost = int(data["upgrade3Cost"])
@@ -202,11 +188,6 @@ func load_upgrades_data(data: Dictionary) -> void:
 	if data.has("upgrade3Multiplier"): upgrade3Multiplier = float(data["upgrade3Multiplier"])
 	if data.has("upgrade4Multiplier"): upgrade4Multiplier = float(data["upgrade4Multiplier"])
 	if data.has("upgrade5Multiplier"): upgrade5Multiplier = int(data["upgrade5Multiplier"])
-	$officeDesk.refresh()
-	$officeDesk2.refresh()
-	$officeDesk3.refresh()
-	$officeDesk4.refresh()
-	$officeDesk5.refresh()
-	$officeDesk6.refresh()
-	if data.has("eels"): load_eels_data(data["eels"])
-	update_labels()
+	refreshDesks()
+	if data.has("eels"): loadEelsData(data["eels"])
+	updateLabels()

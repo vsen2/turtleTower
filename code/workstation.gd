@@ -20,11 +20,7 @@ func _ready() -> void:
 	unlockCost = (baseCost*unlockCostMultiplier)
 	print("unlock cost multi" + str(unlockCostMultiplier))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func create_unlock_button() -> void:
+func createUnlockButton() -> void:
 	unlock_button = TextureButton.new()
 	unlock_button.texture_normal = BUTTON_NORMAL_TEXTURE
 	unlock_button.texture_hover = BUTTON_HOVER_TEXTURE
@@ -38,25 +34,29 @@ func create_unlock_button() -> void:
 	unlock_button.global_position = (global_position + buttonOffset)
 	#print("globalpos" + str(global_position) + " " + str(buttonOffset))
 	
-	unlock_button.pressed.connect(_on_spot_plus_pressed)
+	unlock_button.pressed.connect(onSpotPlusPressed)
 	
-func _on_spot_plus_pressed() -> void:
-	if is_instance_valid(unlock_button) and GameManager.spend_coins(unlockCost):
+func onSpotPlusPressed() -> void:
+	if is_instance_valid(unlock_button) and GameManager.spendCoins(unlockCost):
 		unlock_button.queue_free()
 		unlock_button = null
 		unlockCostLabel.queue_free()
 		unlockCostLabel = null
 		unlocked = true
 		modulate = Color.WHITE
+		refresh()
 		var main: Node = get_tree().current_scene
-		if main and main.has_method("begin_spot_assignment"):
-			main.begin_spot_assignment(self)
-		
-func initialize_from_save(data: Dictionary) -> void:
-	load_spot_save_data(data)
-	update_ui_state()
-		
-func update_ui_state() -> void:
+		# Save right away so the unlock isn't lost if no turtle gets assigned
+		if main and main.has_method("saveGame"):
+			main.saveGame()
+		if main and main.has_method("beginSpotAssignment"):
+			main.beginSpotAssignment(self)
+
+## Override in spots that change how they look when unlocked (desks, trees).
+func refresh() -> void:
+	pass
+
+func updateUiState() -> void:
 	if unlocked:
 		modulate = Color.WHITE
 		if is_instance_valid(unlock_button):
@@ -67,7 +67,7 @@ func update_ui_state() -> void:
 			unlockCostLabel = null
 	else:
 		if not is_instance_valid(unlock_button):
-			create_unlock_button()
+			createUnlockButton()
 		if not is_instance_valid(unlockCostLabel):
 			createUnlockCostLabel()
 			
@@ -84,9 +84,9 @@ func createUnlockCostLabel() -> void:
 
 	unlock_button.add_child(unlockCostLabel)
 	
-func get_spot_save_data() -> Dictionary:
+func getSpotSaveData() -> Dictionary:
 	return {"spot_id": spot_id, "unlocked": unlocked, "has_worker": hasWorker}
 
-func load_spot_save_data(data: Dictionary) -> void:
+func loadSpotSaveData(data: Dictionary) -> void:
 	unlocked = bool(data.get("unlocked", false))
 	hasWorker = bool(data.get("has_worker", false))

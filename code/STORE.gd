@@ -34,9 +34,9 @@ var extraAppleCost = 100
 
 func _ready() -> void:
 	super()
-	update_labels()
+	updateLabels()
 
-func update_labels() -> void:
+func updateLabels() -> void:
 	customerSpeedCostLabel.text = "Cost: $%d" % customerSpeedCost
 	customerSpeedValueLabel.text = "current multiplier: %.2fx" % customerSpeedMultiplier
 	feedWorkersCostLabel.text = "Cost: $%d" % feedWorkersCost
@@ -48,50 +48,45 @@ func update_labels() -> void:
 	extraAppleCostLabel.text = "Cost: $%d" % extraAppleCost
 	extraAppleValueLabel.text = "current multiplier: %dx" % appleMultiplier
 
-func _on_upgrades_store_pressed() -> void:
+func onUpgradesStorePressed() -> void:
 	storeUI.visible = not storeUI.visible
 
-func _on_faster_customers_pressed() -> void:
-	if GameManager.spend_coins(customerSpeedCost):
+func onFasterCustomersPressed() -> void:
+	if GameManager.spendCoins(customerSpeedCost):
 		customerSpeedCost = customerSpeedCost * 2
 		customerSpeedMultiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 
-func _on_feed_workers_pressed() -> void:
-	if GameManager.spend_coins(feedWorkersCost):
+func onFeedWorkersPressed() -> void:
+	if GameManager.spendCoins(feedWorkersCost):
 		feedWorkersCost = feedWorkersCost * 2
 		feedWorkersMultiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 
-func _on_better_apples_pressed() -> void:
-	if GameManager.spend_coins(betterFruitCost):
+func onBetterApplesPressed() -> void:
+	if GameManager.spendCoins(betterFruitCost):
 		betterFruitCost = betterFruitCost * 2
 		betterFruitMultiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 
-func _on_timer_pressed() -> void:
-	if GameManager.spend_coins(timerCost):
+func onTimerPressed() -> void:
+	if GameManager.spendCoins(timerCost):
 		timerCost = timerCost * 2
 		timerMultiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 
-func _on_extra_apples_pressed() -> void:
-	if GameManager.spend_coins(extraAppleCost):
+func onExtraApplesPressed() -> void:
+	if GameManager.spendCoins(extraAppleCost):
 		extraAppleCost = extraAppleCost * 10
 		appleMultiplier += 1
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 
-func _request_save() -> void:
-	var main_node = get_tree().current_scene
-	if main_node and main_node.has_method("save_game"):
-		main_node.save_game()
-
-func get_upgrades_data() -> Dictionary:
+func getUpgradesData() -> Dictionary:
 	return {
 		"customerSpeedCost": customerSpeedCost,
 		"feedWorkersCost": feedWorkersCost,
@@ -105,7 +100,7 @@ func get_upgrades_data() -> Dictionary:
 		"appleMultiplier": appleMultiplier
 	}
 
-func load_upgrades_data(data: Dictionary) -> void:
+func loadUpgradesData(data: Dictionary) -> void:
 	if data.has("customerSpeedCost"): customerSpeedCost = int(data["customerSpeedCost"])
 	if data.has("feedWorkersCost"): feedWorkersCost = int(data["feedWorkersCost"])
 	if data.has("betterFruitCost"): betterFruitCost = int(data["betterFruitCost"])
@@ -116,4 +111,4 @@ func load_upgrades_data(data: Dictionary) -> void:
 	if data.has("betterFruitMultiplier"): betterFruitMultiplier = float(data["betterFruitMultiplier"])
 	if data.has("timerMultiplier"): timerMultiplier = float(data["timerMultiplier"])
 	if data.has("appleMultiplier"): appleMultiplier = int(data["appleMultiplier"])
-	update_labels()
+	updateLabels()

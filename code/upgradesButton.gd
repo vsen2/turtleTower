@@ -2,9 +2,9 @@ extends TextureButton
 @export var targetNode: CanvasItem
 
 func _ready() -> void:
-	pressed.connect(_on_pressed)
+	pressed.connect(onPressed)
 
-func _on_pressed() -> void:
+func onPressed() -> void:
 	if not is_instance_valid(targetNode):
 		push_warning("target_node is not assigned or has been freed.")
 		return

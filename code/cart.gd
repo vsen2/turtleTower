@@ -39,14 +39,14 @@ func _physics_process(delta: float) -> void:
 
 	if global_position.x <= target_x:
 		global_position.x = target_x
-		_on_target_reached()
+		onTargetReached()
 
 	if global_position.x < -200:
 		await get_tree().create_timer(1.0).timeout
 		parent.hasCart = false
 		queue_free()
 
-func _on_target_reached() -> void:
+func onTargetReached() -> void:
 	fallingOreSpeed = 2
 	fallingOre.visible = true
 	if fallingOre.global_position.y > sprite.global_position.y - 30 and not earned_money:
@@ -57,28 +57,12 @@ func _on_target_reached() -> void:
 		if jackpotRandom <= jackpotMultiplier:
 			jackpotMulti = 100
 			jackpot = true
-		spawn_coin_label(coins_reward*gemMultiplier*cartMultiplier*jackpotMulti)
+		spawnCoinLabel(coins_reward*gemMultiplier*cartMultiplier*jackpotMulti)
 		target_x = -1000
 
-func spawn_coin_label(amount: int) -> void:
-	var label: Label = Label.new()
-	label.text = "+%d coins" % amount
-	if jackpot:
-		label.text = "+%d JACKPOT" % amount
-	GameManager.add_coins(amount)
-	label.top_level = true
-	label.global_position = global_position + Vector2(40, -80)
-	label.z_index = 30
-	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
-	label.add_theme_color_override("font_outline_color", Color.BLACK)
-	label.add_theme_constant_override("outline_size", 4)
-	label.add_theme_font_size_override("font_size", 25)
-
-	# Add to the parent so the label stays put when the turtle walks away.
-	get_parent().add_child(label)
-
-	# Float upward and fade out, then delete itself.
-	var tween: Tween = create_tween().set_parallel(true)
-	tween.tween_property(label, "global_position:y", label.global_position.y - 25.0, 0.8)
-	tween.tween_property(label, "modulate:a", 0.0, 0.8)
-	tween.chain().tween_callback(label.queue_free)
+func spawnCoinLabel(amount: int) -> void:
+	GameManager.addCoins(amount)
+	var text: String = ("+%d JACKPOT" if jackpot else "+%d coins") % amount
+	# Added to the parent so the label stays put when the cart moves away.
+	GameManager.spawnFloatingLabel(get_parent(), text, global_position + Vector2(40, -80),
+		Color.BLACK, 25, "", true, 25.0, 0.8, 0.8)

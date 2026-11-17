@@ -1,4 +1,4 @@
-extends Area2D
+extends "res://code/turtleBase.gd"
 
 @export var turtle_icon: Texture2D = preload("res://assets/turtleNoBG.png")
 @export var turtle_scene: PackedScene = preload("res://scenes/seaTurtle.tscn")
@@ -11,21 +11,6 @@ extends Area2D
 ## How fast the body turns toward its new angle. Higher = snappier.
 @export var turn_speed: float = 6.0
 
-var bounds: Rect2
-var direction: Vector2 = Vector2.ZERO
-var is_dragging: bool = false
-var is_assigned_to_store: bool = false
-var drag_offset: Vector2 = Vector2.ZERO
-var current_job: String = "Idle"
-var assigned_station: Node2D = null
-var status_label: Label = null
-var random_hat: int = -1
-var assigned_floor_id: String = ""
-var assigned_spot_index: int = -1
-var hat_from_inventory: bool = false
-var home_pen_id: String = "" 
-
-var hats = GameManager.hats
 var half_size: Vector2 = Vector2(16, 16)
 ## Fine-tune how close the turtle gets to the walls. Negative = can overlap a bit.
 @export var edge_padding: Vector2 = Vector2.ZERO
@@ -33,12 +18,12 @@ var half_size: Vector2 = Vector2(16, 16)
 var facing_right: bool = false
 
 @onready var body: Node2D = $body
-@onready var sprite: AnimatedSprite2D = $body/seaTurtle
-@onready var turtleHat: Sprite2D = $body/turtleHat
-@onready var collision_shape: CollisionShape2D = $turtleHitbox
 
 func _ready() -> void:
-	add_to_group("turtles")
+	sprite = $body/seaTurtle
+	turtleHat = $body/turtleHat
+	collision_shape = $turtleHitbox
+	super()
 	if hats.size() > 0:
 		if random_hat < 0 or random_hat >= hats.size():
 			random_hat = randi_range(0, hats.size() - 1)
@@ -46,13 +31,11 @@ func _ready() -> void:
 		turtleHat.visible = true
 	else:
 		turtleHat.visible = false
-	_calculate_turtle_size()
-	_pick_random_direction()
-	input_event.connect(_on_input_event)
+	calculateTurtleSize()
+	pickRandomDirection()
 	sprite.play("default")
-	z_index = 5
 
-func _calculate_turtle_size() -> void:
+func calculateTurtleSize() -> void:
 	# Use the hitbox first, since it matches the visible turtle.
 	var shape: Shape2D = collision_shape.shape
 	if shape is RectangleShape2D:
@@ -102,10 +85,10 @@ func _process(delta: float) -> void:
 	global_position.x = clamp(global_position.x, min_x, max_x)
 	global_position.y = clamp(global_position.y, min_y, max_y)
 
-	_update_body(delta)
+	updateBody(delta)
 
 ## Flips the body to face the swim direction and tilts it up/down (capped).
-func _update_body(delta: float) -> void:
+func updateBody(delta: float) -> void:
 	if direction.x > 0:
 		facing_right = true
 	elif direction.x < 0:
@@ -121,74 +104,15 @@ func _update_body(delta: float) -> void:
 	var target: float = pitch if facing_right else -pitch
 	body.rotation = lerp_angle(body.rotation, target, clamp(turn_speed * delta, 0.0, 1.0))
 
-func send_to_station(target_pos: Vector2, floor_id: String, spot_index: int, spot_node: Node2D = null, flip: bool = false) -> void:
-	if is_instance_valid(assigned_station):
-		assigned_station.hasWorker = false
-	_set_facing(flip)
-	sprite.stop()
-	assigned_station = spot_node
-	assigned_floor_id = floor_id
-	assigned_spot_index = spot_index
-	is_assigned_to_store = true
-	current_job = "%s #%d" % [floor_id.capitalize(), spot_index + 1]
-	global_position = target_pos
-	if status_label:
-		status_label.text = current_job
-
-func return_to_pen(new_bounds: Rect2) -> void:
-	if is_instance_valid(assigned_station):
-		assigned_station.hasWorker = false
-	current_job = "Idle"
-	assigned_station = null
-	assigned_floor_id = ""
-	assigned_spot_index = -1
-	is_assigned_to_store = false
-	bounds = new_bounds
-	sprite.play("default")
-	_pick_random_direction()
-	if status_label:
-		status_label.text = "Idle"
-
 ## Faces left or right and levels out (used at job spots).
-func _set_facing(flip: bool) -> void:
+func setFacing(flip: bool) -> void:
 	facing_right = flip
 	body.scale.x = -abs(body.scale.x) if flip else abs(body.scale.x)
 	body.rotation = 0.0
 
-func set_hat(hat_id: int, from_inventory: bool) -> void:
-	if hat_id < 0 or hat_id >= hats.size():
-		return
-	random_hat = hat_id
-	hat_from_inventory = from_inventory
-	turtleHat.texture = hats[hat_id]
-	turtleHat.visible = true
-
 ## Picks a new swim direction, never steeper than max_swim_angle.
-func _pick_random_direction() -> void:
+func pickRandomDirection() -> void:
 	var angle: float = deg_to_rad(randf_range(-max_swim_angle, max_swim_angle))
 	direction = Vector2.RIGHT.rotated(angle)
 	if randf() < 0.5:
 		direction.x = -direction.x
-
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		is_dragging = true
-		drag_offset = global_position - get_global_mouse_position()
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if not event.is_pressed() and is_dragging:
-			is_dragging = false
-			_pick_random_direction()
-
-func save_data() -> Dictionary:
-	return {
-		"pos_x": global_position.x,
-		"pos_y": global_position.y,
-		"random_hat": random_hat,
-		"hat_from_inventory": hat_from_inventory,
-		"is_assigned_to_store": is_assigned_to_store,
-		"assigned_floor_id": assigned_floor_id,
-		"assigned_spot_index": assigned_spot_index,
-		"home_pen_id": home_pen_id,
-	}

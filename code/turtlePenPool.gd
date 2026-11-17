@@ -24,17 +24,17 @@ func _ready() -> void:
 		waterLines[i].play("default")
 		
 	for line in waterLines:
-		print(line.name, " width: ", _get_half_width(line) * 2.0)
+		print(line.name, " width: ", getHalfWidth(line) * 2.0)
 
 func _process(delta: float) -> void:
 	if turtlePen == null or turtlePen.texture == null:
 		return
-	var pen_rect: Rect2 = _get_pen_rect()
+	var pen_rect: Rect2 = getPenBounds()
 
 	for i in waterLines.size():
 		var line: AnimatedSprite2D = waterLines[i]
 		var speed: float = waterSpeeds[i] if i < waterSpeeds.size() else 2.0
-		var half_w: float = _get_half_width(line)
+		var half_w: float = getHalfWidth(line)
 
 		# Keep the whole sprite inside the pen, not just its center.
 		var min_x: float = pen_rect.position.x + half_w
@@ -52,24 +52,8 @@ func _process(delta: float) -> void:
 			line.global_position.x = min_x
 			directions[i] = 1
 
-	
-#func assign_turtle_to_spot(turtle: Node, spot: Node) -> void:
-	#var floor_node: Node = get_floor_of(spot)
-	#if floor_node == null:
-		#return
-	#var index: int = get_spot_index(spot)
-	#var target: Vector2 = get_worker_position(spot)
-	#turtle.send_to_station(target, String(floor_node.floor_id), index, spot, get_worker_flip(spot))
-	#spot.hasWorker = true
 
-#func assign_turtle_to_floor(turtle: Node, floor_node: Node) -> void:
-	#var free: Array = floor_node.get_free_spots()
-	#if free.is_empty():
-		#print("No free spots on ", floor_node.floor_id)
-		#return
-	#assign_turtle_to_spot(turtle, free[0])
-	
-func _get_half_width(line: AnimatedSprite2D) -> float:
+func getHalfWidth(line: AnimatedSprite2D) -> float:
 	if line.sprite_frames == null:
 		return 0.0
 	var tex: Texture2D = line.sprite_frames.get_frame_texture(line.animation, line.frame)

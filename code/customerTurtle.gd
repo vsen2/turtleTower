@@ -38,37 +38,23 @@ func _physics_process(delta: float) -> void:
 
 	if global_position.x <= target_x:
 		global_position.x = target_x
-		_on_target_reached()
+		onTargetReached()
 
 	if global_position.x < -100:
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
-func _on_target_reached() -> void:
+func onTargetReached() -> void:
 	await get_tree().create_timer(3.0 / feedWorkersMultiplier).timeout
 	if not earned_money:
 		earned_money = true
 		for apple in apples:
 			apple.queue_free()
-		spawn_coin_label(coins_reward*fruitMultiplier*appleMultiplier)
+		spawnCoinLabel(coins_reward*fruitMultiplier*appleMultiplier)
 	target_x = -1000
 
-func spawn_coin_label(amount: int) -> void:
-	var label: Label = Label.new()
-	label.text = "+%d coins" % amount
-	GameManager.add_coins(amount)
-	label.z_index = 30
-	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
-	label.add_theme_color_override("font_outline_color", Color.BLACK)
-	label.add_theme_constant_override("outline_size", 4)
-	label.add_theme_font_size_override("font_size", 25)
-
-	# Add to the parent so the label stays put when the turtle walks away.
-	get_parent().add_child(label)
-	label.global_position = global_position + Vector2(50, -75)
-
-	# Float upward and fade out, then delete itself.
-	var tween: Tween = create_tween().set_parallel(true)
-	tween.tween_property(label, "global_position:y", label.global_position.y - 25.0, 0.8)
-	tween.tween_property(label, "modulate:a", 0.0, 0.8)
-	tween.chain().tween_callback(label.queue_free)
+func spawnCoinLabel(amount: int) -> void:
+	GameManager.addCoins(amount)
+	# Added to the parent so the label stays put when the turtle walks away.
+	GameManager.spawnFloatingLabel(get_parent(), "+%d coins" % amount, global_position + Vector2(50, -75),
+		Color.BLACK, 25, "", true, 25.0, 0.8, 0.8)

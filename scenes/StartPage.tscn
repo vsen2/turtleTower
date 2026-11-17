@@ -40,4 +40,4 @@ position = Vector2(547, 1267)
 scale = Vector2(0.1976554, 0.19482464)
 texture = ExtResource("7_8g068")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="onButtonPressed"]

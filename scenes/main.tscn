@@ -22,11 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://bv5ut0nqe03no" path="res://assets/squigglyLine2.png" id="8_ksmap"]
 [ext_resource type="Texture2D" uid="uid://s3g1jykfckmv" path="res://assets/kelp1.png" id="8_xaipn"]
 [ext_resource type="Texture2D" uid="uid://6uo7lv6bc8g7" path="res://assets/lineNoBG.png" id="8_xljpf"]
-[ext_resource type="Texture2D" uid="uid://5j3u43h7g3l8" path="res://assets/betterBall.png" id="9_r4e17"]
+[ext_resource type="Texture2D" uid="uid://5j3u43h7g3l8" path="res://assets/hatMachine-betterBall.png" id="9_r4e17"]
 [ext_resource type="Texture2D" uid="uid://jx1wykui2por" path="res://assets/hatMachinePrizeBall.png" id="10_ksmap"]
 [ext_resource type="Texture2D" uid="uid://dlwh0utkxpp6t" path="res://assets/hatMachineSpinner.png" id="11_ygd8o"]
-[ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/buyTurtleWhite.png" id="15_ih3m7"]
-[ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/BuyTurtleGrey.png" id="16_11yus"]
+[ext_resource type="Texture2D" uid="uid://b61llc7bk4nq1" path="res://assets/button-buyTurtle.png" id="15_ih3m7"]
+[ext_resource type="Texture2D" uid="uid://br5womqpf3516" path="res://assets/button-buyTurtleHover.png" id="16_11yus"]
 [ext_resource type="Texture2D" uid="uid://dfq7apr3l6yrb" path="res://assets/upgradePenWhite.png" id="17_b6ruc"]
 [ext_resource type="Texture2D" uid="uid://c6vfe8gx6gj5l" path="res://assets/upgradePenGrey.png" id="18_155or"]
 [ext_resource type="Script" uid="uid://c7dfifirs85k7" path="res://code/MINE.gd" id="19_y57op"]
@@ -47,30 +47,30 @@
 [ext_resource type="Texture2D" uid="uid://bkyy3ynlsnh3q" path="res://assets/UPGRADES.png" id="34_tc087"]
 [ext_resource type="Texture2D" uid="uid://d4a07son86dqf" path="res://assets/speedyTurtleWhite.png" id="35_73205"]
 [ext_resource type="Texture2D" uid="uid://bnjwv8r8p11qm" path="res://assets/speedyTurtleGrey.png" id="36_0tljd"]
-[ext_resource type="Texture2D" uid="uid://bxhr842gb1oe0" path="res://assets/feedWorkerWhite.png" id="37_mgpkq"]
-[ext_resource type="Texture2D" uid="uid://c357puwdbyomg" path="res://assets/feedWorkerGrey.png" id="38_xmrkg"]
-[ext_resource type="Texture2D" uid="uid://b8onj4rhd0mia" path="res://assets/betterApplesWhite.png" id="39_wvlrk"]
-[ext_resource type="Texture2D" uid="uid://7vxplco8ch6u" path="res://assets/betterApplesGrey.png" id="40_engxj"]
+[ext_resource type="Texture2D" uid="uid://bxhr842gb1oe0" path="res://assets/store-feedWorkers.png" id="37_mgpkq"]
+[ext_resource type="Texture2D" uid="uid://c357puwdbyomg" path="res://assets/store-feedWorkersHover.png" id="38_xmrkg"]
+[ext_resource type="Texture2D" uid="uid://b8onj4rhd0mia" path="res://assets/store-betterApplesWhite.png" id="39_wvlrk"]
+[ext_resource type="Texture2D" uid="uid://7vxplco8ch6u" path="res://assets/store-betterApplesGrey.png" id="40_engxj"]
 [ext_resource type="Texture2D" uid="uid://cqnxglyi6bl8y" path="res://assets/jackpotWhite.png" id="41_raiwf"]
 [ext_resource type="Texture2D" uid="uid://82wk4yu305vt" path="res://assets/jackpotGrey.png" id="42_roort"]
 [ext_resource type="Texture2D" uid="uid://b0ae226bpkb6l" path="res://assets/moreApplesWhite.png" id="43_gm02q"]
 [ext_resource type="Texture2D" uid="uid://c26tfcuf3xgsb" path="res://assets/moreApplesGrey.png" id="44_07pt3"]
 [ext_resource type="Script" uid="uid://b2m5mlvdo42qg" path="res://code/STORE.gd" id="45_mlv25"]
 [ext_resource type="Texture2D" uid="uid://dc423hqet2bqx" path="res://assets/storeNoBG.png" id="46_83607"]
-[ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://assets/cashRegister.png" id="47_vny5k"]
+[ext_resource type="Texture2D" uid="uid://27fb28qknlw2" path="res://assets/store-cashRegister.png" id="47_vny5k"]
 [ext_resource type="Script" uid="uid://bgtx877jsf1no" path="res://code/cashRegister.gd" id="48_8lcmr"]
 [ext_resource type="Texture2D" uid="uid://dade68shqm432" path="res://assets/timerWhite.png" id="49_ga3rw"]
 [ext_resource type="Texture2D" uid="uid://7ypx1qde2uj" path="res://assets/timerGrey.png" id="50_f5chs"]
 [ext_resource type="Script" uid="uid://cdmt0somwrnfm" path="res://code/shopUI.gd" id="51_r4e17"]
-[ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/CroppedWhiteTurtleButton.png" id="52_joh2r"]
-[ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://assets/croppedGreyTurtleButton.png" id="53_yton5"]
+[ext_resource type="Texture2D" uid="uid://dneg4ij2ds66k" path="res://assets/button-turtleMenu.png" id="52_joh2r"]
+[ext_resource type="Texture2D" uid="uid://b7nhlrwwjxs8b" path="res://assets/button-turtleMenuHover.png" id="53_yton5"]
 [ext_resource type="Texture2D" uid="uid://b5vn6u86iv88b" path="res://assets/shopIcon.png" id="54_4ahvx"]
 [ext_resource type="Texture2D" uid="uid://ddiha7mtws15h" path="res://assets/shopIconHover.png" id="55_2cr71"]
-[ext_resource type="Texture2D" uid="uid://dnafcu5mg104x" path="res://assets/file1.png" id="56_1hbcg"]
+[ext_resource type="Texture2D" uid="uid://dnafcu5mg104x" path="res://assets/UI-file1.png" id="56_1hbcg"]
 [ext_resource type="Texture2D" uid="uid://b87j0jvsk2fif" path="res://assets/text_Turtles.png" id="57_m4o51"]
-[ext_resource type="Texture2D" uid="uid://cahudswuitt16" path="res://assets/file2.png" id="58_jp61a"]
+[ext_resource type="Texture2D" uid="uid://cahudswuitt16" path="res://assets/UI-file2.png" id="58_jp61a"]
 [ext_resource type="Texture2D" uid="uid://dp1hx43excpn4" path="res://assets/text_Hats.png" id="59_esrwe"]
-[ext_resource type="Texture2D" uid="uid://bxa1p7ley2oca" path="res://assets/file3.png" id="60_4b36k"]
+[ext_resource type="Texture2D" uid="uid://bxa1p7ley2oca" path="res://assets/UI-file3.png" id="60_4b36k"]
 [ext_resource type="Texture2D" uid="uid://bpete4h63n7n8" path="res://assets/TBDimage.png" id="61_1v8b0"]
 [ext_resource type="Texture2D" uid="uid://bca310olj3uhj" path="res://assets/xButton.png" id="62_683hg"]
 [ext_resource type="Script" uid="uid://cnhubnjhanlxn" path="res://code/OFFICE.gd" id="62_v0wtd"]
@@ -84,10 +84,10 @@
 [ext_resource type="Texture2D" uid="uid://bss83turmerq7" path="res://assets/text_shop.png" id="65_kqx4a"]
 [ext_resource type="Texture2D" uid="uid://cykk7pixy5vir" path="res://assets/server3.png" id="65_mgpkq"]
 [ext_resource type="Texture2D" uid="uid://01lchbjs1mig" path="res://assets/hatCoinBasic.png" id="66_pfcs8"]
-[ext_resource type="Texture2D" uid="uid://cgkxrjxhh0tgp" path="res://assets/buyButton.png" id="67_50d7c"]
+[ext_resource type="Texture2D" uid="uid://cgkxrjxhh0tgp" path="res://assets/button-buy.png" id="67_50d7c"]
 [ext_resource type="Texture2D" uid="uid://b0j54u2osujmj" path="res://assets/office_coffee.png" id="67_gr8w0"]
 [ext_resource type="Texture2D" uid="uid://c7cnbiueo7nou" path="res://assets/water1.png" id="67_xmrkg"]
-[ext_resource type="Texture2D" uid="uid://d2pchthksrixp" path="res://assets/buyButtonHover.png" id="68_ruytr"]
+[ext_resource type="Texture2D" uid="uid://d2pchthksrixp" path="res://assets/button-buyHover.png" id="68_ruytr"]
 [ext_resource type="Texture2D" uid="uid://d1284hjwj0txl" path="res://assets/water3.png" id="68_wvlrk"]
 [ext_resource type="Texture2D" uid="uid://dfhqkk8r35ad3" path="res://assets/UITurtle.png" id="69_155or"]
 [ext_resource type="Texture2D" uid="uid://ccdlvimk6rafv" path="res://assets/water5.png" id="69_engxj"]
@@ -110,6 +110,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ttsmga7kyh5" path="res://assets/text_office.png" id="87_fjhjs"]
 [ext_resource type="Texture2D" uid="uid://c6ugmy2goshor" path="res://assets/button_clearData.png" id="92_6nfnn"]
 [ext_resource type="Texture2D" uid="uid://b64ocwd3y6fov" path="res://assets/button_clearDataHover.png" id="93_4ue30"]
+[ext_resource type="Texture2D" uid="uid://bmt5w23vxshtg" path="res://assets/beach-text.png" id="111_07pt3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dwrc3"]
 animations = [{
@@ -2060,11 +2061,6 @@ offset_bottom = -3852.0
 script = ExtResource("79_roort")
 buttonOffset = Vector2(-300, 0)
 
-[node name="TextOffice" type="Sprite2D" parent="BEACH" unique_id=1562842857]
-position = Vector2(311.00003, 101)
-scale = Vector2(0.36827794, 0.30570903)
-texture = ExtResource("87_fjhjs")
-
 [node name="BeachSand" type="Sprite2D" parent="BEACH" unique_id=1826777215]
 position = Vector2(359.49997, 378.93753)
 scale = Vector2(0.38331515, 0.17072257)
@@ -2098,7 +2094,7 @@ script = ExtResource("81_gm02q")
 
 [node name="testerTurtle" type="Sprite2D" parent="BEACH/BeachTree" unique_id=74299162]
 z_index = 1
-position = Vector2(29.065437, 219.75728)
+position = Vector2(77.17379, 192.47023)
 scale = Vector2(0.49511725, 0.44767022)
 texture = ExtResource("83_gm02q")
 
@@ -2108,7 +2104,7 @@ position = Vector2(-518.21643, 165.44083)
 texture = ExtResource("82_07pt3")
 
 [node name="BeachGarbage" type="Sprite2D" parent="BEACH" unique_id=110284991]
-position = Vector2(248, 358)
+position = Vector2(398.00006, 357)
 scale = Vector2(0.16865672, 0.21193415)
 texture = ExtResource("82_07pt3")
 
@@ -2698,6 +2694,11 @@ offset_bottom = 4524.0
 scale = Vector2(0.3231552, 0.35503286)
 texture_normal = ExtResource("92_6nfnn")
 texture_hover = ExtResource("93_4ue30")
+
+[node name="BeachText" type="Sprite2D" parent="." unique_id=1650496662]
+position = Vector2(143.68752, -5048.25)
+scale = Vector2(0.29340884, 0.28240722)
+texture = ExtResource("111_07pt3")
 
 [connection signal="pressed" from="TURTLE PEN/addTurtle" to="." method="_on_addTurtle_pressed"]
 [connection signal="pressed" from="TURTLE PEN/addPenSpace" to="." method="_on_addPenSpace_pressed"]

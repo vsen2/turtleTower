@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bvxorn63o5kr3" path="res://assets/cart22.png" id="3_vrp51"]
 [ext_resource type="Texture2D" uid="uid://b0qi4yxfx4eej" path="res://assets/cart23.png" id="4_oxgae"]
 [ext_resource type="Texture2D" uid="uid://dehyguhek5331" path="res://assets/cartEmpty3.png" id="4_rsqm5"]
-[ext_resource type="Texture2D" uid="uid://cj0qa2umg7p2e" path="res://assets/fallingOre1.png" id="9_rsqm5"]
-[ext_resource type="Texture2D" uid="uid://b4cnlspsfcs4a" path="res://assets/fallingOre2.png" id="10_vr010"]
+[ext_resource type="Texture2D" uid="uid://cj0qa2umg7p2e" path="res://assets/mine-fallingOre1.png" id="9_rsqm5"]
+[ext_resource type="Texture2D" uid="uid://b4cnlspsfcs4a" path="res://assets/mine-fallingOre2.png" id="10_vr010"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6snss"]
 animations = [{

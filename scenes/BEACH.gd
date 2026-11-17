@@ -37,10 +37,10 @@ var upgrade5Cost = 100
 
 func _ready() -> void:
 	super()
-	update_labels()
+	updateLabels()
 
 
-func update_labels() -> void:
+func updateLabels() -> void:
 	upgrade1CostLabel.text = "Cost: $%d" % upgrade1Cost
 	upgrade2CostLabel.text = "Cost: $%d" % upgrade2Cost
 	upgrade3CostLabel.text = "Cost: $%d" % upgrade3Cost
@@ -55,58 +55,52 @@ func update_labels() -> void:
 	amountEarned = 2 * upgrade4Multiplier * (upgrade5Multiplier+1)
 	
 
-func _on_upgrades_office_pressed() -> void:
+func onUpgradesOfficePressed() -> void:
 	officeUI.visible = not officeUI.visible
 
-func _on_upgrade1_pressed() -> void:
-	if GameManager.spend_coins(upgrade1Cost):
+func onUpgrade1Pressed() -> void:
+	if GameManager.spendCoins(upgrade1Cost):
 		upgrade1Cost = upgrade1Cost * 10
 		upgrade1Multiplier += 1
-		_request_save()
 	else:
 		GameManager.spawnNopeLabel("Not enough coins! (brokie haha)")
 	#change label
-	update_labels()
-	_request_save()
+	updateLabels()
+	requestSave()
 		
-func _on_upgrade2_pressed() -> void:
-	if GameManager.spend_coins(upgrade2Cost):
+func onUpgrade2Pressed() -> void:
+	if GameManager.spendCoins(upgrade2Cost):
 		upgrade2Cost = upgrade2Cost * 2
 		upgrade2Multiplier += 1
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 		
-func _on_upgrade3_pressed() -> void:
-	if GameManager.spend_coins(upgrade3Cost):
+func onUpgrade3Pressed() -> void:
+	if GameManager.spendCoins(upgrade3Cost):
 		upgrade3Cost = upgrade3Cost * 2
 		upgrade3Multiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 		
-func _on_upgrade4_pressed() -> void:
-	if GameManager.spend_coins(upgrade4Cost):
+func onUpgrade4Pressed() -> void:
+	if GameManager.spendCoins(upgrade4Cost):
 		upgrade4Cost = upgrade4Cost * 2
 		upgrade4Multiplier += 0.25
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 		
-func _on_upgrade5_pressed() -> void:
+func onUpgrade5Pressed() -> void:
 	if upgrade5Multiplier >= 6:
 		GameManager.spawnNopeLabel("Desk is full of coffee!")
 		return
-	if GameManager.spend_coins(upgrade5Cost):
+	if GameManager.spendCoins(upgrade5Cost):
 		upgrade5Cost = upgrade5Cost * 2
 		upgrade5Multiplier += 1 
-		update_labels()
-		_request_save()
+		updateLabels()
+		requestSave()
 	
 	
-func _request_save() -> void:
-	var main_node = get_tree().current_scene
-	if main_node and main_node.has_method("save_game"):
-		main_node.save_game()
-
-func get_upgrades_data() -> Dictionary:
+func getUpgradesData() -> Dictionary:
 	return {
 		"upgrade1Cost": upgrade1Cost,
 		"upgrade2Cost": upgrade2Cost,
@@ -120,7 +114,7 @@ func get_upgrades_data() -> Dictionary:
 		"upgrade5Multiplier": upgrade5Multiplier,
 	}
 
-func load_upgrades_data(data: Dictionary) -> void:
+func loadUpgradesData(data: Dictionary) -> void:
 	if data.has("upgrade1Cost"): upgrade1Cost = int(data["upgrade1Cost"])
 	if data.has("upgrade2Cost"): upgrade2Cost = int(data["upgrade2Cost"])
 	if data.has("upgrade3Cost"): upgrade3Cost = int(data["upgrade3Cost"])
@@ -131,4 +125,4 @@ func load_upgrades_data(data: Dictionary) -> void:
 	if data.has("upgrade3Multiplier"): upgrade3Multiplier = float(data["upgrade3Multiplier"])
 	if data.has("upgrade4Multiplier"): upgrade4Multiplier = float(data["upgrade4Multiplier"])
 	if data.has("upgrade5Multiplier"): upgrade5Multiplier = int(data["upgrade5Multiplier"])
-	update_labels()
+	updateLabels()

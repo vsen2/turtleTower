@@ -6,7 +6,7 @@ extends Control
 # turtles can be assigned to, plus its own upgrade stats. Each floor saves and
 # loads itself as one self-contained unit, so a floor can later become its own
 # .tscn scene without changing the save format: on instantiation it just calls
-# load_save_data() with its slice of the save file.
+# loadSaveData() with its slice of the save file.
 	
 ## Stable id used as this floor's key in the save file. Defaults to the node
 ## name (snake_cased) if left blank, so it still works out of the box.
@@ -30,43 +30,36 @@ func getDifficulty() -> int:
 func getButtonOffset() -> Vector2:
 	return buttonOffset
 	
-func new()-> void:
-	return
-	
-	
-func spawn_notEnoughCoins_label() -> void:
-	var label: Label = Label.new()
-	label.name = "NotEnoughCoinsLabel"
-	label.text = "Not Enough Hat Coins"
-	label.top_level = true
-	label.global_position = Vector2(450, -450)
-	label.z_index = 30
-	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
-	label.add_theme_font_size_override("font_size", 25)
+## Ask the main scene to save the game (shared by every floor).
+func requestSave() -> void:
+	var main_node = get_tree().current_scene
+	if main_node and main_node.has_method("saveGame"):
+		main_node.saveGame()
 
-	add_child(label)
-	# Float upward and fade out, then delete itself.
-	var tween: Tween = create_tween().set_parallel(true)
-	tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
-	tween.tween_property(label, "modulate:a", 0.0, 0.8)
-	tween.chain().tween_callback(label.queue_free)
+## A random point inside bounds, kept pad pixels away from the edges.
+func randomPointIn(bounds: Rect2, pad: float = 24.0) -> Vector2:
+	var min_x: float = bounds.position.x + pad
+	var max_x: float = max(min_x, bounds.end.x - pad)
+	var min_y: float = bounds.position.y + pad
+	var max_y: float = max(min_y, bounds.end.y - pad)
+	return Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
 
 ## Every descendant node that belongs to the "job_spots" group, in scene order.
-func get_spots() -> Array[Node]:
+func getSpots() -> Array[Node]:
 	var out: Array[Node] = []
-	_collect_spots(self, out)
+	collectSpots(self, out)
 	return out
 
-func _collect_spots(node: Node, out: Array[Node]) -> void:
+func collectSpots(node: Node, out: Array[Node]) -> void:
 	for child in node.get_children():
 		if child.is_in_group("job_spots"):
 			out.append(child)
-		_collect_spots(child, out)
+		collectSpots(child, out)
 
 ## Unlocked spots that don't currently have a turtle working them.
-func get_free_spots() -> Array[Node]:
+func getFreeSpots() -> Array[Node]:
 	var out: Array[Node] = []
-	for spot in get_spots():
+	for spot in getSpots():
 		if spot.unlocked and not spot.hasWorker:
 			out.append(spot)
 	return out
@@ -74,30 +67,30 @@ func get_free_spots() -> Array[Node]:
 # ------------------------------------------------------------ save / load
 
 ## This floor's full state, keyed under floor_id by the game manager.
-func get_save_data() -> Dictionary:
+func getSaveData() -> Dictionary:
 	var spots_data: Array = []
-	for spot in get_spots():
-		if spot.has_method("get_spot_save_data"):
-			spots_data.append(spot.get_spot_save_data())
+	for spot in getSpots():
+		if spot.has_method("getSpotSaveData"):
+			spots_data.append(spot.getSpotSaveData())
 	return {
 		"floor_id": floor_id,
 		"spots": spots_data,
-		"upgrades": get_upgrades_data(),
+		"upgrades": getUpgradesData(),
 	}
 
 ## Restore this floor from its slice of the save file.
-func load_save_data(data: Dictionary) -> void:
-	var spots: Array[Node] = get_spots()
+func loadSaveData(data: Dictionary) -> void:
+	var spots: Array[Node] = getSpots()
 	var spots_data: Array = data.get("spots", [])
 	for i in mini(spots.size(), spots_data.size()):
 		var spot: Node = spots[i]
-		if spot.has_method("load_spot_save_data"):
-			spot.load_spot_save_data(spots_data[i])
-	load_upgrades_data(data.get("upgrades", {}))
+		if spot.has_method("loadSpotSaveData"):
+			spot.loadSpotSaveData(spots_data[i])
+	loadUpgradesData(data.get("upgrades", {}))
 
 # Override these in floors that have upgrade stats.
-func get_upgrades_data() -> Dictionary:
+func getUpgradesData() -> Dictionary:
 	return {}
 
-func load_upgrades_data(_data: Dictionary) -> void:
+func loadUpgradesData(_data: Dictionary) -> void:
 	pass

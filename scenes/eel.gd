@@ -5,7 +5,6 @@ extends Area2D
 @export var max_tilt: float = 20.0
 @export var turn_speed: float = 6.0
 
-var hats = GameManager.hats
 var bounds: Rect2
 var direction: Vector2 = Vector2.ZERO
 
@@ -16,7 +15,7 @@ var facing_right: bool = false
 @onready var collision_shape: CollisionShape2D = $eelHitbox
 
 func _ready() -> void:
-	_pick_random_direction()
+	pickRandomDirection()
 	sprite.play("default")
 	electricity.play("default")
 	z_index = 5
@@ -24,7 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# How far the eel's body reaches from its origin, so the whole eel
 	# (not just its center point) stays inside the tank.
-	var body: Rect2 = _body_rect()
+	var body: Rect2 = bodyRect()
 	var min_x: float = bounds.position.x - body.position.x
 	var max_x: float = bounds.end.x - body.end.x
 	var min_y: float = bounds.position.y - body.position.y
@@ -50,11 +49,11 @@ func _process(delta: float) -> void:
 	global_position.x = clamp(global_position.x, min_x, max_x)
 	global_position.y = clamp(global_position.y, min_y, max_y)
 
-	_update_sprite(delta)
+	updateSprite(delta)
 
 ## The eel's body box relative to its origin, based on the hitbox.
 ## Mirrors with the sprite and grows a bit when the eel tilts.
-func _body_rect() -> Rect2:
+func bodyRect() -> Rect2:
 	var shape := collision_shape.shape as RectangleShape2D
 	if shape == null:
 		return Rect2(-Vector2(16, 16), Vector2(32, 32))
@@ -67,7 +66,7 @@ func _body_rect() -> Rect2:
 	return Rect2(center - half, half * 2.0)
 
 ## Flips the sprite to face the swim direction and tilts it up/down (capped).
-func _update_sprite(delta: float) -> void:
+func updateSprite(delta: float) -> void:
 	if direction.x > 0:
 		facing_right = true
 	elif direction.x < 0:
@@ -84,20 +83,14 @@ func _update_sprite(delta: float) -> void:
 	sprite.rotation = lerp_angle(sprite.rotation, target, clamp(turn_speed * delta, 0.0, 1.0))
 
 ## Faces left or right and levels out (used at job spots).
-func _set_facing(flip: bool) -> void:
+func setFacing(flip: bool) -> void:
 	facing_right = flip
 	sprite.scale.x = -abs(sprite.scale.x) if flip else abs(sprite.scale.x)
 	sprite.rotation = 0.0
 	
 ## Picks a new swim direction, never steeper than max_swim_angle.
-func _pick_random_direction() -> void:
+func pickRandomDirection() -> void:
 	var angle: float = deg_to_rad(randf_range(-max_swim_angle, max_swim_angle))
 	direction = Vector2.RIGHT.rotated(angle)
 	if randf() < 0.5:
 		direction.x = -direction.x
-
-func save_data() -> Dictionary:
-	return {
-		"pos_x": global_position.x,
-		"pos_y": global_position.y,
-	}

@@ -1,30 +1,14 @@
-extends Area2D
+extends "res://code/turtleBase.gd"
 
 @export var speed: float = 80.0
 
-var bounds: Rect2
-var direction: Vector2 = Vector2.ZERO
-var is_dragging: bool = false
-var is_assigned_to_store: bool = false
-var drag_offset: Vector2 = Vector2.ZERO
-var current_job: String = "Idle"
-var assigned_station: Node2D = null
-var status_label: Label = null
-var random_hat: int = -1
-var assigned_floor_id: String = ""
-var assigned_spot_index: int = -1
-var home_pen_id: String = ""
-
-@onready var turtleHat: Sprite2D = $timmyTheTurtle/turtleHat
-var hats = GameManager.hats
 var turtle_radius: float = 16.0
-var hat_from_inventory: bool = false
-
-@onready var sprite: AnimatedSprite2D = $timmyTheTurtle
-@onready var collision_shape: CollisionShape2D = $turtleHitbox
 
 func _ready() -> void:
-	add_to_group("turtles")
+	sprite = $timmyTheTurtle
+	turtleHat = $timmyTheTurtle/turtleHat
+	collision_shape = $turtleHitbox
+	super()
 	if hats.size() > 0:
 		if random_hat < 0 or random_hat >= hats.size():
 			random_hat = randi_range(-10, hats.size() - 1)
@@ -35,13 +19,11 @@ func _ready() -> void:
 		turtleHat.visible = false
 	# Calculate turtle size BEFORE any positioning,
 	# so _process can clamp correctly on save/load.
-	_calculate_turtle_size()
-	_pick_random_direction()
-	input_event.connect(_on_input_event)
+	calculateTurtleSize()
+	pickRandomDirection()
 	sprite.play("default")
-	z_index = 5
 
-func _calculate_turtle_size() -> void:
+func calculateTurtleSize() -> void:
 	var shape: Shape2D = collision_shape.shape
 	if shape is CircleShape2D:
 		turtle_radius = shape.radius * collision_shape.global_scale.x
@@ -52,9 +34,9 @@ func _calculate_turtle_size() -> void:
 	if sprite.texture:
 		var scaled_size: Vector2 = sprite.texture.get_size() * sprite.global_scale
 		turtle_radius = max(scaled_size.x, scaled_size.y) / 2.0
-		print("_calculate_turtle_size: sprite.texture=", sprite.texture, "radius=", turtle_radius)
+		print("calculateTurtleSize: sprite.texture=", sprite.texture, "radius=", turtle_radius)
 	else:
-		print("_calculate_turtle_size: sprite.texture is NULL - radius stays", turtle_radius)
+		print("calculateTurtleSize: sprite.texture is NULL - radius stays", turtle_radius)
 
 func _process(delta: float) -> void:
 	if is_assigned_to_store or bounds == Rect2():
@@ -94,35 +76,7 @@ func _process(delta: float) -> void:
 		turtleHat.flip_h = false
 		turtleHat.global_position.x = sprite.global_position.x - 59
 
-func send_to_station(target_pos: Vector2, floor_id: String, spot_index: int, spot_node: Node2D = null, flip: bool = false) -> void:
-	if is_instance_valid(assigned_station):
-		assigned_station.hasWorker = false
-	_set_facing(flip)
-	sprite.stop()
-	assigned_station = spot_node
-	assigned_floor_id = floor_id
-	assigned_spot_index = spot_index
-	is_assigned_to_store = true
-	current_job = "%s #%d" % [floor_id.capitalize(), spot_index + 1]
-	global_position = target_pos
-	if status_label:
-		status_label.text = current_job
-
-func return_to_pen(new_bounds: Rect2) -> void:
-	if is_instance_valid(assigned_station):
-		assigned_station.hasWorker = false
-	current_job = "Idle"
-	assigned_station = null
-	assigned_floor_id = ""
-	assigned_spot_index = -1
-	is_assigned_to_store = false
-	bounds = new_bounds
-	sprite.play("default")
-	_pick_random_direction()
-	if status_label:
-		status_label.text = "Idle"
-
-func _set_facing(flip: bool) -> void:
+func setFacing(flip: bool) -> void:
 	sprite.flip_h = flip
 	turtleHat.flip_h = flip
 	if flip:
@@ -130,35 +84,5 @@ func _set_facing(flip: bool) -> void:
 	else:
 		turtleHat.global_position.x = sprite.global_position.x - 59
 		
-func set_hat(hat_id: int, from_inventory: bool) -> void:
-	if hat_id < 0 or hat_id >= hats.size():
-		return
-	random_hat = hat_id
-	hat_from_inventory = from_inventory
-	turtleHat.texture = hats[hat_id]
-	turtleHat.visible = true
-	
-func _pick_random_direction() -> void:
+func pickRandomDirection() -> void:
 	direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU)).normalized()
-
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		is_dragging = true
-		drag_offset = global_position - get_global_mouse_position()
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if not event.is_pressed() and is_dragging:
-			is_dragging = false
-			_pick_random_direction()
-
-func save_data() -> Dictionary:
-	return {
-		"pos_x": global_position.x,
-		"pos_y": global_position.y,
-		"random_hat": random_hat,
-		"hat_from_inventory": hat_from_inventory,
-		"is_assigned_to_store": is_assigned_to_store,
-		"assigned_floor_id": assigned_floor_id,
-		"assigned_spot_index": assigned_spot_index
-	}

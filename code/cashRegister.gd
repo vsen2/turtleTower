@@ -17,7 +17,7 @@ func _ready() -> void:
 	customer_timer.wait_time = wait_time
 	customer_timer.one_shot = false
 	customer_timer.autostart = false
-	customer_timer.timeout.connect(spawn_customer_turtle)
+	customer_timer.timeout.connect(spawnCustomerTurtle)
 	add_child(customer_timer)
 
 	timer_label = Label.new()
@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 	if customer_timer.is_stopped() and hasWorker:
 		customer_timer.start()
 
-func spawn_customer_turtle() -> void:
+func spawnCustomerTurtle() -> void:
 	if not customer_turtle_scene:
 		return
 	var customer: Node2D = customer_turtle_scene.instantiate()
@@ -56,17 +56,3 @@ func spawn_customer_turtle() -> void:
 	customer.appleMultiplier = get_parent().appleMultiplier
 	get_parent().add_child(customer)
 	customer.global_position = Vector2(get_viewport_rect().size.x, global_position.y)
-
-func get_spot_save_data() -> Dictionary:
-	return {"spot_id": spot_id, "unlocked": unlocked, "has_worker": hasWorker}
-
-func load_spot_save_data(data: Dictionary) -> void:
-	unlocked = bool(data.get("unlocked", false))
-	hasWorker = bool(data.get("has_worker", false))
-	if unlocked:
-		modulate = Color.WHITE
-		if is_instance_valid(unlock_button):
-			unlock_button.queue_free()
-			unlock_button = null
-	elif not is_instance_valid(unlock_button):
-		create_unlock_button()

@@ -11,14 +11,8 @@ func _ready() -> void:
 	super()
 	add_to_group("job_spots")
 	z_index = 10
-	
-	var cartSpeedMultiplier = get_parent().cartSpeedMultiplier
-	var gemsMultiplier = get_parent().gemsMultiplier
-	var jacpotMultiplier = get_parent().jackpotMultiplier
-	var extraCartMultiplier = get_parent().extraCartMultiplier
 
 func _process(_delta: float) -> void:
-	pickaxe.speed_scale = get_parent().feedWorkersMultiplier
 	pickaxe.speed_scale = get_parent().feedWorkersMultiplier
 	if hasWorker:
 		pickaxe.visible = true
@@ -32,9 +26,9 @@ func _process(_delta: float) -> void:
 		return
 	if hasCart:
 		return
-	spawn_new_cart()
+	spawnNewCart()
 			
-func spawn_new_cart() -> void:
+func spawnNewCart() -> void:
 	if not cart:
 		return
 	var newCart: Node2D = cart.instantiate()

@@ -13,16 +13,12 @@ func _ready() -> void:
 	hatCost.text = "COST: %d" % hatCoinCost
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _on_x_button_pressed() -> void:
+func onXButtonPressed() -> void:
 	shopUI.visible = false
 	turtleUI.visible = false
 	
-func _on_buy_pressed() -> void:
-	if GameManager.spend_coins(hatCoinCost):
+func onBuyPressed() -> void:
+	if GameManager.spendCoins(hatCoinCost):
 		GameManager.hat_coins += 1
 		print(GameManager.hat_coins)
 		hatCoin.text = "Hat Coins: %d" % GameManager.hat_coins

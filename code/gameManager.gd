@@ -80,11 +80,11 @@ var owned_hats: Array[int] = []
 signal coins_changed(new_amount: int)
 signal coins_spent(amount: int)
 		
-func add_coins(amount: int) -> void:
+func addCoins(amount: int) -> void:
 	turtle_coins += amount
 	coins_changed.emit(turtle_coins)
 
-func spend_coins(amount: int) -> bool:
+func spendCoins(amount: int) -> bool:
 	if turtle_coins >= amount:
 		turtle_coins -= amount
 		coins_spent.emit(amount)
@@ -93,24 +93,24 @@ func spend_coins(amount: int) -> bool:
 		return true
 	return false
 
-func spend_hat_coins(amount: int) -> bool:
+func spendHatCoins(amount: int) -> bool:
 	if hat_coins >= amount:
 		hat_coins -= amount
 		return true
 	return false
 	
 
-func add_hat(hat_id: int) -> void:
+func addHat(hat_id: int) -> void:
 	owned_hats.append(hat_id)
 	hats_changed.emit()
 
-func set_owned_hats(list: Array) -> void:
+func setOwnedHats(list: Array) -> void:
 	owned_hats.clear()
 	for h in list:
 		owned_hats.append(int(h))  # JSON loads numbers as floats
 	hats_changed.emit()
 	
-func remove_hat(hat_id: int) -> bool:
+func removeHat(hat_id: int) -> bool:
 	var idx: int = owned_hats.find(hat_id)
 	if idx == -1:
 		return false
@@ -119,17 +119,33 @@ func remove_hat(hat_id: int) -> bool:
 	return true
 
 func spawnNopeLabel(words: String) -> void:
+	if has_node("cantBuyLabel"):
+		return  # don't stack the same warning
+	spawnFloatingLabel(self, words, get_viewport().get_mouse_position(), Color.BLACK, 25, "cantBuyLabel")
+
+## Shared helper for every "+5 coins" / warning style popup text.
+## Creates a label at globalPos, floats it up and fades it out, then deletes it.
+func spawnFloatingLabel(parent: Node, text: String, globalPos: Vector2,
+		color: Color = Color.BLACK, fontSize: int = 25, labelName: String = "",
+		outline: bool = false, rise: float = 20.0, riseTime: float = 0.5, fadeTime: float = 0.8) -> Label:
 	var label: Label = Label.new()
-	label.name = "cantBuyLabel"
-	label.text = words
+	if labelName != "":
+		label.name = labelName
+	label.text = text
 	label.top_level = true
-	label.global_position = get_viewport().get_mouse_position()
 	label.z_index = 30
-	label.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0)) # color
-	label.add_theme_font_size_override("font_size", 25)
-	add_child(label)
-	# Float upward and fade out, then delete itself.
-	var tween: Tween = create_tween().set_parallel(true)
-	tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
-	tween.tween_property(label, "modulate:a", 0.0, 0.8)
+	label.add_theme_color_override("font_color", color)
+	label.add_theme_font_size_override("font_size", fontSize)
+	if outline:
+		label.add_theme_color_override("font_outline_color", Color.BLACK)
+		label.add_theme_constant_override("outline_size", 4)
+	parent.add_child(label)
+	label.global_position = globalPos
+
+	# The tween belongs to the label, so it keeps going even if the node
+	# that spawned it gets deleted.
+	var tween: Tween = label.create_tween().set_parallel(true)
+	tween.tween_property(label, "global_position:y", label.global_position.y - rise, riseTime)
+	tween.tween_property(label, "modulate:a", 0.0, fadeTime)
 	tween.chain().tween_callback(label.queue_free)
+	return label

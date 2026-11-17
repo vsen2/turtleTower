@@ -2,9 +2,6 @@ extends "res://code/workstation.gd"
 
 @export var wait_time: float = 2
 
-var customer_timer: Timer
-var timer_label: Label
-
 @onready var testerTurtle: Sprite2D = $testerTurtle
 @onready var tTgarbage: Sprite2D = $testerTurtle/garbage
 
@@ -26,16 +23,6 @@ func refresh() -> void:
 	else:
 		self_modulate = Color.GRAY
 
-func _on_spot_plus_pressed() -> void:
-	var was_unlocked: bool = unlocked
-	super()
-	refresh()
-	# Save right away so the unlock isn't lost if no turtle gets assigned
-	if unlocked and not was_unlocked:
-		var main: Node = get_tree().current_scene
-		if main and main.has_method("save_game"):
-			main.save_game()
-		
 func _process(_delta: float) -> void:
 	# (unlocked and hasWorker):
 	testerTurtle.global_position.x -= moveSpeed
@@ -46,18 +33,3 @@ func _process(_delta: float) -> void:
 		moveSpeed = cleanupSpeed
 	elif testerTurtle.global_position.x < -100:
 		return
-	
-
-func get_spot_save_data() -> Dictionary:
-	return {"spot_id": spot_id, "unlocked": unlocked, "has_worker": hasWorker}
-
-func load_spot_save_data(data: Dictionary) -> void:
-	unlocked = bool(data.get("unlocked", false))
-	hasWorker = bool(data.get("has_worker", false))
-	if unlocked:
-		modulate = Color.WHITE
-		if is_instance_valid(unlock_button):
-			unlock_button.queue_free()
-			unlock_button = null
-	elif not is_instance_valid(unlock_button):
-		create_unlock_button()

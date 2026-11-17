@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://3x3bwbv24h37"]
 
 [ext_resource type="Script" uid="uid://b6oo62c32ax7r" path="res://scenes/eel.gd" id="1_qh1vq"]
-[ext_resource type="Texture2D" uid="uid://c2gln7j07fug8" path="res://assets/eel_electric1.png" id="2_d34e6"]
-[ext_resource type="Texture2D" uid="uid://c0cdcmpc4e6ls" path="res://assets/eel4.png" id="2_s5ywd"]
-[ext_resource type="Texture2D" uid="uid://c7k5oyy2xtti5" path="res://assets/eel2.png" id="3_8su3r"]
-[ext_resource type="Texture2D" uid="uid://pxhn7kh3o6b8" path="res://assets/eel_electric2.png" id="3_rjb7d"]
-[ext_resource type="Texture2D" uid="uid://6cunx162lj1u" path="res://assets/eel1.png" id="4_d34e6"]
-[ext_resource type="Texture2D" uid="uid://sq8bwsphl0pm" path="res://assets/eel_electric3.png" id="4_datix"]
-[ext_resource type="Texture2D" uid="uid://cos6p3rvski6p" path="res://assets/eel3.png" id="5_rjb7d"]
+[ext_resource type="Texture2D" uid="uid://c2gln7j07fug8" path="res://assets/office-eel_electric1.png" id="2_d34e6"]
+[ext_resource type="Texture2D" uid="uid://c0cdcmpc4e6ls" path="res://assets/office-eel4.png" id="2_s5ywd"]
+[ext_resource type="Texture2D" uid="uid://c7k5oyy2xtti5" path="res://assets/office-eel2.png" id="3_8su3r"]
+[ext_resource type="Texture2D" uid="uid://pxhn7kh3o6b8" path="res://assets/office-eel_electric2.png" id="3_rjb7d"]
+[ext_resource type="Texture2D" uid="uid://6cunx162lj1u" path="res://assets/office-eel1.png" id="4_d34e6"]
+[ext_resource type="Texture2D" uid="uid://sq8bwsphl0pm" path="res://assets/office-eel_electric3.png" id="4_datix"]
+[ext_resource type="Texture2D" uid="uid://cos6p3rvski6p" path="res://assets/office-eel3.png" id="5_rjb7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6snss"]
 size = Vector2(123, 39)

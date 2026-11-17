@@ -3,7 +3,6 @@ extends "res://code/workstation.gd"
 @export var wait_time: float = 2
 
 var customer_timer: Timer
-var timer_label: Label
 
 @onready var officeLaptop: Sprite2D = $OfficeLaptop
 # Filled in _ready() from the coffee1..coffee6 child nodes
@@ -13,7 +12,6 @@ var coffeesUnlocked = 0
 var codedTimes = 0
 	
 func _ready() -> void:
-	timer_label = Label.new()
 	super()
 	add_to_group("job_spots")
 	z_index = 10
@@ -44,16 +42,7 @@ func refresh() -> void:
 
 	for i in get_parent().upgrade5Multiplier:
 		coffees[i].visible = unlocked
-func _on_spot_plus_pressed() -> void:
-	var was_unlocked: bool = unlocked
-	super()
-	refresh()
-	# Save right away so the unlock isn't lost if no turtle gets assigned
-	if unlocked and not was_unlocked:
-		var main: Node = get_tree().current_scene
-		if main and main.has_method("save_game"):
-			main.save_game()
-		
+
 func _process(_delta: float) -> void:
 	if (unlocked and hasWorker):
 		customer_timer.wait_time = get_parent().codeCooldown
@@ -61,55 +50,14 @@ func _process(_delta: float) -> void:
 			customer_timer.start()
 	
 func spawnCode() -> void:
-	GameManager.add_coins(get_parent().amountEarned)
-	var label: Label = Label.new()
-	label.name = "code"
-	label.text = "code code code! +$" + str(get_parent().amountEarned)
-	label.top_level = true
-	label.global_position = global_position + Vector2(-130, -120)
-	label.z_index = 30
-	label.add_theme_color_override("font_color", Color(0.0, 0.439, 0.0, 1.0)) # color
-	label.add_theme_font_size_override("font_size", 15)
-
-	add_child(label)
-	# Float upward and fade out, then delete itself.
-	var tween: Tween = create_tween().set_parallel(true)
-	tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
-	tween.tween_property(label, "modulate:a", 0.0, 0.8)
-	tween.chain().tween_callback(label.queue_free)
+	spawnCodeLabel("code code code! +$", Color(0.0, 0.439, 0.0, 1.0), -120)
 	codedTimes += 1
 	if codedTimes >= (24/get_parent().upgrade2Multiplier):
 		codedTimes = 0
-		spawnClawdeCode()
+		spawnCodeLabel("CLawde code! +$", Color(1.0, 0.439, 0.0, 1.0), -108)
 
-func spawnClawdeCode() -> void:
-	GameManager.add_coins(get_parent().amountEarned)
-	var label: Label = Label.new()
-	label.name = "code"
-	label.text = "CLawde code! +$" + str(get_parent().amountEarned)
-	label.top_level = true
-	label.global_position = global_position + Vector2(-130, -108)
-	label.z_index = 30
-	label.add_theme_color_override("font_color", Color(1.0, 0.439, 0.0, 1.0)) # color
-	label.add_theme_font_size_override("font_size", 15)
-
-	add_child(label)
-	# Float upward and fade out, then delete itself.
-	var tween: Tween = create_tween().set_parallel(true)
-	tween.tween_property(label, "global_position:y", label.global_position.y - 20.0, .5)
-	tween.tween_property(label, "modulate:a", 0.0, 0.8)
-	tween.chain().tween_callback(label.queue_free)
-
-func get_spot_save_data() -> Dictionary:
-	return {"spot_id": spot_id, "unlocked": unlocked, "has_worker": hasWorker}
-
-func load_spot_save_data(data: Dictionary) -> void:
-	unlocked = bool(data.get("unlocked", false))
-	hasWorker = bool(data.get("has_worker", false))
-	if unlocked:
-		modulate = Color.WHITE
-		if is_instance_valid(unlock_button):
-			unlock_button.queue_free()
-			unlock_button = null
-	elif not is_instance_valid(unlock_button):
-		create_unlock_button()
+## Pays out the office's earnings and shows a floating label for it.
+func spawnCodeLabel(text: String, color: Color, offsetY: float) -> void:
+	var amount: int = get_parent().amountEarned
+	GameManager.addCoins(amount)
+	GameManager.spawnFloatingLabel(self, text + str(amount), global_position + Vector2(-130, offsetY), color, 15, "code")

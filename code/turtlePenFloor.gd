@@ -1,7 +1,3 @@
 extends "res://code/turtlePenBase.gd"
 
-func _ready() -> void:
-	super()
-
-func _on_add_pen_button_pressed() -> void:
-	return
+# Plain land pen: everything it needs lives in turtlePenBase.gd.
